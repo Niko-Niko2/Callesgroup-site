@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Calles Group builds websites, branding, and digital marketing for small and local businesses in Chicagoland.">
+<title>Calles Group | Web Design, Branding &amp; Marketing in Chicagoland</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: sticky header, hash-routed 4 pages, 1100px column, egg-white ground with restrained moss accents and one moss CTA band per page */
+:root{
+  --bg:#F4F1E8; --surface:#FAF8F2; --band:#E4E8D8;
+  --moss:#A3B18A; --moss-deep:#5F6F4E; --moss-dark:#4A5A3C;
+  --ink:#2E2E2A; --muted:#6B6B63; --line:#E2DED2; --on-accent:#FAF8F2;
+  --mock-grey:#D9D5CA;
+  --font:"Montserrat",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --r:8px; --max:1100px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#191C16; --surface:#21251D; --band:#283022;
+  --moss:#A3B18A; --moss-deep:#A3B18A; --moss-dark:#BCC8A6;
+  --ink:#ECE8DC; --muted:#A9A699; --line:#343A2D; --on-accent:#191C16;
+  --mock-grey:#3A3F33; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#191C16; --surface:#21251D; --band:#283022;
+  --moss:#A3B18A; --moss-deep:#A3B18A; --moss-dark:#BCC8A6;
+  --ink:#ECE8DC; --muted:#A9A699; --line:#343A2D; --on-accent:#191C16;
+  --mock-grey:#3A3F33; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:var(--moss-deep)}
+h1,h2,h3{line-height:1.15;text-wrap:balance;margin:0;font-weight:700;letter-spacing:-.01em}
+h1{font-size:clamp(2rem,5vw,3.25rem)}
+h2{font-size:clamp(1.5rem,3.2vw,2.15rem)}
+h3{font-size:1.1rem;font-weight:600}
+p{margin:0}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--moss-deep)}
+.lead{font-size:1.125rem;color:var(--muted);max-width:60ch}
+.muted{color:var(--muted)}
+:focus-visible{outline:2px solid var(--moss-deep);outline-offset:3px;border-radius:4px}
+
+/* Header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:700;font-size:1.05rem;letter-spacing:.01em}
+.badge{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--moss-deep);display:grid;place-items:center;font-size:.72rem;font-weight:700;letter-spacing:.06em;color:var(--moss-deep)}
+nav{display:flex;align-items:center;gap:28px}
+nav a.nl{text-decoration:none;color:var(--muted);font-weight:500;font-size:.92rem}
+nav a.nl:hover,nav a.nl[aria-current="page"]{color:var(--ink)}
+nav a.nl[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--moss)}
+.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:var(--r);padding:8px 10px;color:var(--ink);font:inherit;font-weight:600;font-size:.85rem;cursor:pointer}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--moss-deep);color:var(--on-accent);text-decoration:none;font-weight:600;font-size:.95rem;padding:13px 22px;border-radius:var(--r);border:none;cursor:pointer;font-family:inherit;transition:background .15s}
+.btn:hover{background:var(--moss-dark)}
+.btn.sm{padding:10px 16px;font-size:.88rem}
+.tlink{font-weight:600;text-decoration:none;color:var(--ink);border-bottom:1.5px solid var(--moss);padding-bottom:2px}
+.tlink:hover{color:var(--moss-deep)}
+
+section.blk{padding-block:72px}
+section.blk+section.blk{border-top:1px solid var(--line)}
+.stack{display:flex;flex-direction:column;gap:16px}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding-block:72px 64px}
+.hero .ctas{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:8px}
+
+/* Browser mock */
+.mock{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 18px 40px -24px rgba(40,50,30,.35)}
+.mock .chrome{display:flex;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line)}
+.mock .chrome i{width:8px;height:8px;border-radius:50%;background:var(--mock-grey)}
+.mock .chrome span{margin-left:10px;font-size:.68rem;color:var(--muted);letter-spacing:.02em}
+.mock .body{padding:18px;display:flex;flex-direction:column;gap:10px}
+.mk-nav{display:flex;justify-content:space-between;align-items:center}
+.mk-nav b{font-size:.72rem}
+.mk-nav em{display:flex;gap:8px}
+.mk-nav em s{display:block;width:22px;height:5px;border-radius:3px;background:var(--mock-grey)}
+.mk-hero{background:var(--band);border-radius:6px;padding:22px 16px;display:flex;flex-direction:column;gap:8px}
+.mk-hero strong{font-size:.95rem;line-height:1.25;max-width:22ch}
+.mk-line{height:6px;border-radius:3px;background:var(--mock-grey)}
+.mk-btn{width:86px;height:20px;border-radius:4px;background:var(--moss-deep)}
+.mk-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mk-cards div{border:1px solid var(--line);border-radius:5px;padding:10px 8px;display:flex;flex-direction:column;gap:6px}
+.mk-cards div u{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--moss)}
+
+/* Problem */
+.problem{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.equation{font-size:clamp(1.35rem,2.8vw,1.9rem);font-weight:700;line-height:1.3}
+.equation span{color:var(--moss-deep)}
+
+/* Service cards */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:26px;display:flex;flex-direction:column;gap:12px}
+.svc svg{width:28px;height:28px;stroke:var(--moss-deep);fill:none;stroke-width:1.6}
+
+/* Proof */
+.proof{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.ba{display:flex;flex-direction:column;gap:10px}
+.ba .tag{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.before .body{gap:6px}
+.before .clutter{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.before .clutter div{height:22px;background:var(--mock-grey);border-radius:2px}
+.before .mk-hero{background:var(--mock-grey);opacity:.7}
+.quote{margin-top:28px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:26px;display:flex;flex-direction:column;gap:10px;max-width:720px}
+.quote p{font-size:1.08rem;font-weight:500}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:s}
+.step{display:flex;flex-direction:column;gap:10px;padding-top:18px;border-top:2px solid var(--moss)}
+.step .n{font-size:.78rem;font-weight:700;color:var(--moss-deep);letter-spacing:.1em}
+
+/* Pricing teaser */
+.teaser{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.teaser .from{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700}
+.teaser .from small{font-size:.9rem;font-weight:500;color:var(--muted);display:block}
+
+/* About */
+.about{display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:center}
+.portrait{aspect-ratio:4/5;max-width:100%;border-radius:10px;background:var(--band);border:1px solid var(--line);display:grid;place-items:center;color:var(--muted);font-size:.8rem;font-weight:500;text-align:center;padding:16px}
+.portrait b{display:block;font-size:2.2rem;color:var(--moss-deep);letter-spacing:.04em}
+
+/* CTA band */
+.band{background:var(--band)}
+.band .wrap{padding-block:64px;display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap}
+.band .contact-line{display:flex;gap:18px;flex-wrap:wrap;font-size:.92rem;color:var(--muted);margin-top:10px}
+
+/* Pricing page */
+.page-head{padding-block:64px 24px;display:flex;flex-direction:column;gap:14px}
+.prices{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding-block:24px 40px}
+.price{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:26px 22px;display:flex;flex-direction:column;gap:16px;position:relative}
+.price.pop{border:1.5px solid var(--moss-deep)}
+.pop-tag{position:absolute;top:-12px;left:22px;background:var(--moss-deep);color:var(--on-accent);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:20px}
+.amt{font-size:2rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.amt small{font-size:.85rem;font-weight:500;color:var(--muted)}
+.price ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px;font-size:.92rem;flex:1}
+.price li{display:flex;gap:10px}
+.price li::before{content:"";flex:none;width:14px;height:8px;margin-top:6px;border-left:2px solid var(--moss-deep);border-bottom:2px solid var(--moss-deep);transform:rotate(-45deg) translateY(-2px)}
+.turn{font-size:.8rem;font-weight:600;color:var(--muted);letter-spacing:.04em;border-top:1px solid var(--line);padding-top:12px}
+.price .btn{width:100%}
+.note{padding-block:0 64px;color:var(--muted)}
+
+/* Work page */
+.work{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;padding-block:24px 64px}
+.proj{display:flex;flex-direction:column;gap:14px}
+.proj .meta{display:flex;flex-direction:column;gap:4px}
+.proj .trade{font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--moss-deep)}
+
+/* Contact page */
+.contact{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;padding-block:24px 72px;align-items:start}
+form{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:28px;display:flex;flex-direction:column;gap:18px}
+label{font-size:.85rem;font-weight:600;display:flex;flex-direction:column;gap:7px}
+input,textarea{font:inherit;font-size:1rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;width:100%}
+input:focus,textarea:focus{outline:2px solid var(--moss);outline-offset:0;border-color:transparent}
+textarea{min-height:120px;resize:vertical}
+.sent{background:var(--band);border-radius:var(--r);padding:14px 16px;font-size:.92rem}
+.info{display:flex;flex-direction:column;gap:22px}
+.info div{display:flex;flex-direction:column;gap:4px}
+.info dt{font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.info dd{margin:0;font-weight:600;word-break:break-word}
+.copy{background:none;border:1px solid var(--line);color:var(--ink);font:inherit;font-size:.78rem;font-weight:600;padding:5px 10px;border-radius:6px;cursor:pointer;align-self:flex-start;margin-top:4px}
+.copy:hover{border-color:var(--moss-deep)}
+
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:36px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:.88rem;color:var(--muted)}
+footer .fnav{display:flex;gap:20px;flex-wrap:wrap}
+footer .fnav a{color:var(--muted);text-decoration:none}
+footer .fnav a:hover{color:var(--ink)}
+footer strong{color:var(--ink)}
+
+/* Responsive */
+@media (max-width:900px){
+  .prices{grid-template-columns:repeat(2,1fr)}
+  .hero,.problem,.contact{grid-template-columns:1fr;gap:36px}
+}
+@media (max-width:760px){
+  nav .nl,nav .btn{display:none}
+  .menu-btn{display:block}
+  nav.open{position:absolute;top:100%;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:8px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px))}
+  nav.open .nl{display:block;padding:12px 0;border-bottom:1px solid var(--line)}
+  nav.open .nl[aria-current="page"]{box-shadow:none;color:var(--moss-deep)}
+  nav.open .btn{display:flex;margin-top:14px}
+  nav.open .menu-btn{display:none}
+  .grid3,.steps,.proof,.work{grid-template-columns:1fr}
+  .about{grid-template-columns:1fr}
+  .portrait{max-width:200px}
+  section.blk{padding-block:56px}
+  .hero{padding-block:48px}
+}
+@media (max-width:520px){.prices{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#home" aria-label="Calles Group home"><span class="badge">CG</span>Calles Group</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="siteNav">Menu</button>
+    <nav id="siteNav">
+      <a class="nl" href="#home" data-page="home">Home</a>
+      <a class="nl" href="#services" data-page="services">Services</a>
+      <a class="nl" href="#work" data-page="work">Our Work</a>
+      <a class="nl" href="#contact" data-page="contact">Contact</a>
+      <a class="btn sm" href="#contact">Get a Free Quote</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- HOME -->
+<div class="page" id="page-home">
+  <div class="wrap hero">
+    <div class="stack">
+      <span class="eyebrow">Web design · Branding · Digital marketing</span>
+      <h1>Websites that make local businesses look as good as they work.</h1>
+      <p class="lead">Web design, branding, and digital marketing for small businesses in Chicagoland.</p>
+      <div class="ctas">
+        <a class="btn" href="#contact">Get a Free Quote</a>
+        <a class="tlink" href="#work">See Our Work</a>
+      </div>
+    </div>
+    <div class="mock" aria-hidden="true">
+      <div class="chrome"><i></i><i></i><i></i><span>yourbusiness.com</span></div>
+      <div class="body">
+        <div class="mk-nav"><b>Your Painting Co.</b><em><s></s><s></s><s></s></em></div>
+        <div class="mk-hero">
+          <strong>Interior &amp; exterior painting, done right the first time.</strong>
+          <div class="mk-line" style="width:70%"></div>
+          <div class="mk-btn"></div>
+        </div>
+        <div class="mk-cards"><div><u></u><div class="mk-line"></div></div><div><u></u><div class="mk-line"></div></div><div><u></u><div class="mk-line"></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="blk"><div class="wrap problem">
+    <p class="equation">Good business + bad presentation = <span>missed customers.</span></p>
+    <p class="lead">Most people check you out online before they ever call. If your site looks outdated, or you don't have one, they move on to the next name on the list.</p>
+  </div></section>
+
+  <section class="blk"><div class="wrap stack" style="gap:32px">
+    <div class="stack"><span class="eyebrow">What we do</span><h2>One partner for how your business looks.</h2></div>
+    <div class="grid3">
+      <div class="svc">
+        <svg viewBox="0 0 28 28" aria-hidden="true"><rect x="3" y="5" width="22" height="16" rx="2"/><path d="M3 9h22M10 25h8M14 21v4"/></svg>
+        <h3>Web Design</h3>
+        <p class="muted">Clean, fast websites that explain what you do and make it easy to get in touch.</p>
+      </div>
+      <div class="svc">
+        <svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="10"/><path d="M14 4v20M4 14h20"/><circle cx="14" cy="14" r="4"/></svg>
+        <h3>Business Branding</h3>
+        <p class="muted">Logos, business cards, and branded materials that make you look established.</p>
+      </div>
+      <div class="svc">
+        <svg viewBox="0 0 28 28" aria-hidden="true"><path d="M4 22l6-7 5 4 9-11"/><path d="M18 8h6v6"/></svg>
+        <h3>Digital Marketing</h3>
+        <p class="muted">Google Business Profile, social media, and ads that bring local customers to you.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="blk"><div class="wrap stack" style="gap:28px">
+    <div class="stack"><span class="eyebrow">Before &amp; after</span><h2>The difference a clear website makes.</h2></div>
+    <div class="proof" aria-hidden="true">
+      <div class="ba before">
+        <span class="tag">Before</span>
+        <div class="mock"><div class="chrome"><i></i><i></i><i></i><span>old-site.net</span></div>
+          <div class="body">
+            <div class="clutter"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            <div class="mk-hero"><div class="mk-line" style="width:90%"></div><div class="mk-line" style="width:80%"></div><div class="mk-line" style="width:85%"></div></div>
+            <div class="clutter"><div></div><div></div><div></div><div></div></div>
+          </div></div>
+      </div>
+      <div class="ba">
+        <span class="tag">After</span>
+        <div class="mock"><div class="chrome"><i></i><i></i><i></i><span>new-site.com</span></div>
+          <div class="body">
+            <div class="mk-nav"><b>Painting Co.</b><em><s></s><s></s><s></s></em></div>
+            <div class="mk-hero"><strong>Free estimates. Clean work. On schedule.</strong><div class="mk-btn"></div></div>
+            <div class="mk-cards"><div><u></u><div class="mk-line"></div></div><div><u></u><div class="mk-line"></div></div><div><u></u><div class="mk-line"></div></div></div>
+          </div></div>
+      </div>
+    </div>
+    <div class="quote">
+      <p>"Client testimonial goes here once the first project launches."</p>
+      <span class="muted">Client name, Business</span>
+    </div>
+  </div></section>
+
+  <section class="blk"><div class="wrap stack" style="gap:32px">
+    <div class="stack"><span class="eyebrow">How it works</span><h2>Three steps to a site you're proud of.</h2></div>
+    <div class="steps">
+      <div class="step"><span class="n">STEP 1</span><h3>Quick call</h3><p class="muted">15 minutes to learn your business, your customers, and what you need.</p></div>
+      <div class="step"><span class="n">STEP 2</span><h3>We build it</h3><p class="muted">You get a clear plan, a fixed price, and a first draft to review.</p></div>
+      <div class="step"><span class="n">STEP 3</span><h3>You launch</h3><p class="muted">We publish your site, connect your domain, and keep it running.</p></div>
+    </div>
+  </div></section>
+
+  <section class="blk"><div class="wrap teaser">
+    <div class="from"><small>Simple, upfront pricing</small>Websites from $900</div>
+    <a class="tlink" href="#services">See packages and pricing</a>
+  </div></section>
+
+  <section class="blk"><div class="wrap about">
+    <div class="portrait"><span><b>AC</b>Photo of Andrew</span></div>
+    <div class="stack">
+      <span class="eyebrow">About</span>
+      <h2>Hi, I'm Andrew Calles.</h2>
+      <p class="lead">I started Calles Group to help small businesses look as established as they really are. You get one local point of contact for your website, branding, and marketing, so you never have to juggle vendors.</p>
+    </div>
+  </div></section>
+
+  <div class="band"><div class="wrap">
+    <div><h2>Ready to look as professional as you are?</h2>
+      <div class="contact-line"><span>andrew@callesgroup.com</span><span>Serving Chicagoland</span></div></div>
+    <a class="btn" href="#contact">Get a Free Quote</a>
+  </div></div>
+</div>
+
+<!-- SERVICES -->
+<div class="page" id="page-services" hidden>
+  <div class="wrap page-head">
+    <span class="eyebrow">Services &amp; pricing</span>
+    <h1>Clear packages. No surprises.</h1>
+    <p class="lead">Every package includes a mobile-ready design, a first draft to review, and two rounds of revisions. A 50% deposit starts your project.</p>
+  </div>
+  <div class="wrap prices">
+    <div class="price">
+      <h3>Starter</h3>
+      <div class="amt">$900</div>
+      <ul><li>1–3 page website</li><li>Contact form</li><li>Mobile-ready design</li><li>Basic SEO setup</li></ul>
+      <div class="turn">7-day turnaround</div>
+      <a class="btn" href="#contact">Start a Project</a>
+    </div>
+    <div class="price pop">
+      <span class="pop-tag">Most popular</span>
+      <h3>Business</h3>
+      <div class="amt">$1,750</div>
+      <ul><li>Up to 5 pages</li><li>Gallery or portfolio</li><li>Quote request form</li><li>Google Business Profile setup</li></ul>
+      <div class="turn">10–14 day turnaround</div>
+      <a class="btn" href="#contact">Start a Project</a>
+    </div>
+    <div class="price">
+      <h3>Brand + Web</h3>
+      <div class="amt">$3,000</div>
+      <ul><li>Everything in Business</li><li>Logo refresh</li><li>Business cards</li><li>Social media headers</li></ul>
+      <div class="turn">14–21 day turnaround</div>
+      <a class="btn" href="#contact">Start a Project</a>
+    </div>
+    <div class="price">
+      <h3>Care Plan</h3>
+      <div class="amt">$79<small>/month</small></div>
+      <ul><li>Hosting</li><li>Domain management</li><li>Updates and security</li><li>30 minutes of edits each month</li></ul>
+      <div class="turn">Required for sites we host</div>
+      <a class="btn" href="#contact">Start a Project</a>
+    </div>
+  </div>
+  <p class="wrap note">Not sure which fits? <a href="#contact">Get a free quote</a> and I'll recommend one.</p>
+  <div class="band"><div class="wrap">
+    <h2>Let's find the right package for you.</h2>
+    <a class="btn" href="#contact">Get a Free Quote</a>
+  </div></div>
+</div>
+
+<!-- WORK -->
+<div class="page" id="page-work" hidden>
+  <div class="wrap page-head">
+    <span class="eyebrow">Our work</span>
+    <h1>Recent projects.</h1>
+    <p class="lead">Every site is built to load fast, look sharp on a phone, and turn visitors into calls.</p>
+  </div>
+  <div class="wrap work">
+    <div class="proj">
+      <div class="mock" aria-hidden="true"><div class="chrome"><i></i><i></i><i></i><span>paintingco.com</span></div>
+        <div class="body">
+          <div class="mk-nav"><b>Painting Co.</b><em><s></s><s></s><s></s></em></div>
+          <div class="mk-hero"><strong>Interior &amp; exterior painting.</strong><div class="mk-line" style="width:60%"></div><div class="mk-btn"></div></div>
+          <div class="mk-cards"><div><u></u><div class="mk-line"></div></div><div><u></u><div class="mk-line"></div></div><div><u></u><div class="mk-line"></div></div></div>
+        </div></div>
+      <div class="meta"><span class="trade">Painting contractor</span><h3>Painting Company: Informational Website</h3><p class="muted">Services, gallery, service area, and a quote request form.</p></div>
+    </div>
+    <div class="proj">
+      <div class="mock" aria-hidden="true"><div class="chrome"><i></i><i></i><i></i><span>callesgroup.com</span></div>
+        <div class="body">
+          <div class="mk-nav"><b>Calles Group</b><em><s></s><s></s><s></s></em></div>
+          <div class="mk-hero"><strong>Websites that make local businesses look as good as they work.</strong><div class="mk-btn"></div></div>
+          <div class="mk-cards"><div><u></u><div class="mk-line"></div></div><div><u></u><div class="mk-line"></div></div><div><u></u><div class="mk-line"></div></div></div>
+        </div></div>
+      <div class="meta"><span class="trade">Web design &amp; branding</span><h3>Calles Group: Brand &amp; Website</h3><p class="muted">Brand identity, business cards, and this website.</p></div>
+    </div>
+  </div>
+  <div class="band"><div class="wrap">
+    <h2>Your business could be next.</h2>
+    <a class="btn" href="#contact">Get a Free Quote</a>
+  </div></div>
+</div>
+
+<!-- CONTACT -->
+<div class="page" id="page-contact" hidden>
+  <div class="wrap page-head">
+    <span class="eyebrow">Contact</span>
+    <h1>Let's build something that brings you customers.</h1>
+    <p class="lead">Tell me a little about your business. I'll follow up with a recommendation and a quote.</p>
+  </div>
+  <div class="wrap contact">
+    <form id="quoteForm" novalidate>
+      <label for="f-name">Name<input id="f-name" name="name" autocomplete="name" required></label>
+      <label for="f-biz">Business name<input id="f-biz" name="business" autocomplete="organization" required></label>
+      <label for="f-reach">Phone or email<input id="f-reach" name="reach" required></label>
+      <label for="f-need">What do you need?<textarea id="f-need" name="need" placeholder="A new website, a logo refresh, help with Google..."></textarea></label>
+      <button class="btn" type="submit">Get My Free Quote</button>
+      <div class="sent" id="sentMsg" hidden></div>
+    </form>
+    <dl class="info">
+      <div><dt>Email</dt><dd id="emailText">andrew@callesgroup.com</dd><button class="copy" type="button" id="copyBtn">Copy email</button></div>
+      <div><dt>Service area</dt><dd>Chicagoland</dd></div>
+      <div><dt>Response time</dt><dd>I reply within 24 hours.</dd></div>
+    </dl>
+  </div>
+</div>
+</main>
+
+<footer><div class="wrap">
+  <div><strong>Calles Group</strong> · Better Branding. Better Business.<br>andrew@callesgroup.com · Serving Chicagoland</div>
+  <div class="fnav"><a href="#home">Home</a><a href="#services">Services</a><a href="#work">Our Work</a><a href="#contact">Contact</a></div>
+  <div>© <span id="yr">2026</span> Calles Group</div>
+</div></footer>
+
+<script>
+(function(){
+  var pages=["home","services","work","contact"];
+  var nav=document.getElementById("siteNav"), btn=document.getElementById("menuBtn");
+  function show(){
+    var h=(location.hash||"").replace("#","");
+    if(pages.indexOf(h)<0) h="home";
+    pages.forEach(function(p){document.getElementById("page-"+p).hidden=(p!==h);});
+    document.querySelectorAll("nav a.nl").forEach(function(a){
+      if(a.dataset.page===h) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current");
+    });
+    nav.classList.remove("open"); btn.setAttribute("aria-expanded","false");
+    window.scrollTo(0,0);
+  }
+  window.addEventListener("hashchange",show); show();
+  btn.addEventListener("click",function(){
+    var o=nav.classList.toggle("open"); btn.setAttribute("aria-expanded",o?"true":"false");
+  });
+  // keep the menu button visible inside the open nav's parent
+  document.getElementById("yr").textContent=new Date().getFullYear();
+
+  var form=document.getElementById("quoteForm"), msg=document.getElementById("sentMsg");
+  form.addEventListener("submit",function(e){
+    e.preventDefault();
+    var missing=[]; ["f-name","f-biz","f-reach"].forEach(function(id){var el=document.getElementById(id); if(!el.value.trim()) missing.push(el.parentNode.firstChild.textContent.trim());});
+    msg.hidden=false;
+    if(missing.length){msg.textContent="Please add your "+missing.join(", ").toLowerCase()+".";return;}
+    msg.textContent="Thanks, "+document.getElementById("f-name").value.trim()+". This preview form isn't connected yet, so please also email andrew@callesgroup.com.";
+  });
+  document.getElementById("copyBtn").addEventListener("click",function(){
+    var b=this, t=document.getElementById("emailText").textContent;
+    function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById("emailText"));var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Selected";}
+    try{navigator.clipboard.writeText(t).then(function(){b.textContent="Copied";},sel);}catch(err){sel();}
+  });
+})();
+</script>
+</body>
+</html>
