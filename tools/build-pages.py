@@ -117,7 +117,7 @@ CITIES = ['Elgin', 'South Elgin', 'Bartlett', 'Schaumburg', 'Hoffman Estates', '
 BIZ = {
   "@context": "https://schema.org", "@type": "ProfessionalService", "@id": DOMAIN + "/#business",
   "name": "Calles Group", "url": DOMAIN + "/", "email": "andrew@callesgroup.com",
-  "image": DOMAIN + "/og-image.png", "logo": DOMAIN + "/favicon.svg",
+  "image": "https://static.wixstatic.com/media/03855a_96c7c31bf029475a934ad5139d4f888e~mv2.png", "logo": DOMAIN + "/favicon.svg",
   "description": "Web design, logos and branding for local businesses in Elgin, IL, the Fox Valley and Chicagoland.",
   "founder": {"@type": "Person", "name": "Andrew Calles"},
   "address": {"@type": "PostalAddress", "addressLocality": "Elgin", "addressRegion": "IL", "addressCountry": "US"},
@@ -167,7 +167,7 @@ def head(k):
 <meta property="og:title" content="{esc(t)}">
 <meta property="og:description" content="{esc(d)}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{DOMAIN}/og-image.png">
+<meta property="og:image" content="https://static.wixstatic.com/media/03855a_96c7c31bf029475a934ad5139d4f888e~mv2.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Calles Group: website design and branding in Elgin, IL">
