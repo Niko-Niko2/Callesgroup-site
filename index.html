@@ -735,10 +735,29 @@ footer .logo{color:var(--ink)}
 <script type="module">
 import { renderForm } from "/js/wix/form-renderer.js";
 const box=document.querySelector("#page-contact");
-renderForm(document.querySelector("#quote"), {
+const { store } = renderForm(document.querySelector("#quote"), {
   formId: "c2ac0265-7048-492b-91ae-4718707d2a22",
   text: { submit: "Get a free quote", sending: "Sending…" },
   onOutcome: () => box.scrollIntoView({ block: "start" })
+});
+// Wix expects international phone format (+18475551234). Visitors type US numbers any way
+// they like, so add the +1 for a 10-digit number before the form checks it.
+const toUSPhone = (v) => {
+  const s = String(v ?? "");
+  if (s.trim().startsWith("+")) return s;
+  const d = s.replace(/\D/g, "");
+  if (d.length === 10) return "+1" + d;
+  if (d.length === 11 && d[0] === "1") return "+" + d;
+  return s;
+};
+const setValue = store.setValue;
+store.setValue = (target, value) => {
+  const field = store.getState().form?.fields?.find((f) => f.target === target);
+  return setValue.call(store, target, field && field.control === "phone" ? toUSPhone(value) : value);
+};
+store.subscribe(() => {
+  const input = document.querySelector("#quote .form-field--phone input");
+  if (input && !input.placeholder) input.placeholder = "(847) 555-1234";
 });
 </script>
 </body>
