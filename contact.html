@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Get a Free Website Quote | Calles Group | Elgin, IL</title>
+<meta name="description" content="Request a free quote for a website, logo or care plan. Calles Group serves Elgin, the Fox Valley, the northwest suburbs and Chicago.">
+<link rel="canonical" href="https://www.callesgroup.com/contact.html">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#151515">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Calles Group">
+<meta property="og:title" content="Get a Free Website Quote | Calles Group | Elgin, IL">
+<meta property="og:description" content="Request a free quote for a website, logo or care plan. Calles Group serves Elgin, the Fox Valley, the northwest suburbs and Chicago.">
+<meta property="og:url" content="https://www.callesgroup.com/contact.html">
+<meta property="og:image" content="https://www.callesgroup.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Calles Group: website design and branding in Elgin, IL">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="/" aria-label="Calles Group home"><span class="badge">CG</span>Calles Group</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="siteNav">Menu</button>
+    <nav id="siteNav" aria-label="Main">
+      <a class="nl" href="/" data-page="home">Home</a>
+      <a class="nl" href="/pricing.html" data-page="pricing">Services &amp; Pricing</a>
+      <a class="nl" href="/faq.html" data-page="faq">FAQ</a>
+      <a class="nl" href="/contact.html" data-page="contact" aria-current="page">Contact</a>
+      <a class="btn sm" href="/contact.html">Get a free quote</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap page-head">
+    <h1>Get a free website quote</h1>
+    <p class="lead">Tell us a little about your business. Serving Elgin, the Fox Valley, the northwest suburbs and Chicago. <a href="/pricing.html">See pricing</a> first if you like.</p>
+  </div>
+  <div class="wrap contact">
+    <div class="quote-box"><div id="quote"></div><p class="muted small">We reply within 1 business day.</p></div>
+    <dl class="info">
+      <div><dt>Email</dt><dd><a href="mailto:andrew@callesgroup.com">andrew@callesgroup.com</a></dd></div>
+      <div><dt>Based in</dt><dd>Elgin, IL</dd></div>
+      <div><dt>Serving</dt><dd>Elgin, the Fox Valley, the Chicago suburbs and Chicago</dd></div>
+      <div><dt>Reply time</dt><dd>Within 1 business day</dd></div>
+    </dl>
+  </div>
+</main>
+
+<footer><div class="wrap">
+  <div class="fcol">
+    <a class="logo" href="/"><span class="badge">CG</span>Calles Group</a>
+    <span>Based in Elgin, IL. Serving Chicagoland.</span>
+    <a href="mailto:andrew@callesgroup.com">andrew@callesgroup.com</a>
+  </div>
+  <div class="fcol links">
+    <a href="/">Home</a><a href="/pricing.html">Services &amp; Pricing</a><a href="/faq.html">FAQ</a><a href="/contact.html">Contact</a>
+  </div>
+  <div class="fcol links">
+    <a href="/launch-bundle.html">Website + logo bundle</a><a href="/growth-bundle.html">Growth + Brand Kit</a><a href="/premium-bundle.html">Premium + Brand Kit</a>
+  </div>
+  <div class="fcol copy"><span>&copy; <span id="yr">2026</span> Calles Group</span></div>
+</div></footer>
+
+<script src="/site.js" defer></script>
+
+<script type="module">
+import { renderForm } from "/js/wix/form-renderer.js";
+const box=document.querySelector("#page-contact");
+const { store } = renderForm(document.querySelector("#quote"), {
+  formId: "c2ac0265-7048-492b-91ae-4718707d2a22",
+  text: { submit: "Get a free quote", sending: "Sending…" },
+  onOutcome: () => box.scrollIntoView({ block: "start" })
+});
+// Wix expects international phone format (+18475551234). Visitors type US numbers any way
+// they like, so add the +1 for a 10-digit number before the form checks it.
+const toUSPhone = (v) => {
+  const s = String(v ?? "");
+  if (s.trim().startsWith("+")) return s;
+  const d = s.replace(/\D/g, "");
+  if (d.length === 10) return "+1" + d;
+  if (d.length === 11 && d[0] === "1") return "+" + d;
+  return s;
+};
+const setValue = store.setValue;
+store.setValue = (target, value) => {
+  const field = store.getState().form?.fields?.find((f) => f.target === target);
+  return setValue.call(store, target, field && field.control === "phone" ? toUSPhone(value) : value);
+};
+store.subscribe(() => {
+  const input = document.querySelector("#quote .form-field--phone input");
+  if (input && !input.placeholder) input.placeholder = "(847) 555-1234";
+});
+</script>
+</body>
+</html>

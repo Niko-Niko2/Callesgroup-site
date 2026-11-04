@@ -4,15 +4,34 @@ The live site is hosted on Wix (headless site "Calles Group", site ID 26a9ed6b-0
 This repo is the backup: every change to the live site is committed here first, so any commit is a restore point.
 
 ## How changes work
-1. Claude edits `index.html` here and commits it (one commit per change, with a plain-English message).
-2. Claude uploads the same file to the Wix site.
+1. Claude edits the files here and commits them (one commit per change, with a plain-English message).
+2. Claude uploads the same files to the Wix site.
 3. To go back: pick any commit in this repo's history and ask Claude to restore it. That version is re-uploaded to Wix.
 
-## What's in the site
-- `index.html`: the whole site. Pages switch by link: #home, #pricing, #faq, #contact, plus #bundle-launch, #bundle-growth, #bundle-premium.
-- The quote form is a Wix Form ("Quote request", ID c2ac0265-7048-492b-91ae-4718707d2a22). Its code (`/js/wix/*`) is installed on Wix by Wix's own module installer and is not stored here.
-- Wix adds its own `wix-site-script` tag to the page on upload; that tag is not stored here.
+## Pages
+| File | Page |
+| --- | --- |
+| `index.html` | Home |
+| `pricing.html` | Services & Pricing (sections: #websites, #bundles, #branding, #addons, #care) |
+| `faq.html` | FAQ |
+| `contact.html` | Get a free quote (Wix Form "Quote request", ID c2ac0265-7048-492b-91ae-4718707d2a22) |
+| `launch-bundle.html`, `growth-bundle.html`, `premium-bundle.html` | Bundle detail pages |
+
+Shared files: `styles.css`, `site.js` (menu, add-on accordions, old `/#page` link redirects), `favicon.svg`, `og-image.png` (link preview image), `robots.txt`, `sitemap.xml`.
+
+## SEO
+- Each page has its own title, meta description, canonical URL, Open Graph tags and one H1.
+- Structured data: ProfessionalService on Home, FAQPage on FAQ, BreadcrumbList on bundle pages.
+- Canonical URLs, sitemap and share image use https://www.callesgroup.com. They are correct once the domain is moved to this site.
+
+## Not stored here
+- The Wix form code (`/js/wix/*`) is installed on Wix by Wix's own module installer.
+- Wix adds its own `wix-site-script` tag to each page on upload.
+
+## Tools
+- `tools/build-pages.py`: how these pages were generated from the earlier one-page site (kept for reference).
+- `tools/og-image.html`: source for `og-image.png` (1200x630).
 
 ## Still to do
 - Add a phone number (tap-to-call) once there's a business line.
-- Move callesgroup.com and the Premium plan to this site.
+- Move callesgroup.com and the Premium plan to this site, then submit the sitemap in Google Search Console.
