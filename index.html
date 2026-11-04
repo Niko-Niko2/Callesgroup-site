@@ -3,200 +3,282 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Calles Group builds websites, branding, and digital marketing for small and local businesses in Chicagoland.">
-<title>Calles Group | Web Design, Branding &amp; Marketing in Chicagoland</title>
+<title>Website Design &amp; Branding in Elgin, IL | Calles Group</title>
+<meta name="description" content="Website design, logos and branding for local businesses in Elgin, IL, the Fox Valley and Chicagoland.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: sticky header, hash-routed 4 pages, 1100px column, egg-white ground with restrained moss accents and one moss CTA band per page */
+/* Layout: mobile-first, hash-routed pages (home, pricing, faq, contact, 3 bundle pages), 1100px column, graphite ground, gold accent, 12px cards */
 :root{
-  --bg:#F4F1E8; --surface:#FAF8F2; --band:#E4E8D8;
-  --moss:#A3B18A; --moss-deep:#5F6F4E; --moss-dark:#4A5A3C;
-  --ink:#2E2E2A; --muted:#6B6B63; --line:#E2DED2; --on-accent:#FAF8F2;
-  --mock-grey:#D9D5CA;
+  --bg:#151515; --surface:#1E1E1E; --band:#25221C;
+  --moss:#A88B4A; --accent:#C9A962; --accent-hover:#DABB75;
+  --ink:#EDEAE6; --muted:#A8A49E; --line:#2E2C29; --on-accent:#151515;
+  --mock-grey:#363431;
   --font:"Montserrat",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
-  --r:8px; --max:1100px;
+  --r:12px; --max:1100px; --hdr:64px;
+  color-scheme:dark;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#191C16; --surface:#21251D; --band:#283022;
-  --moss:#A3B18A; --moss-deep:#A3B18A; --moss-dark:#BCC8A6;
-  --ink:#ECE8DC; --muted:#A9A699; --line:#343A2D; --on-accent:#191C16;
-  --mock-grey:#3A3F33; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#191C16; --surface:#21251D; --band:#283022;
-  --moss:#A3B18A; --moss-deep:#A3B18A; --moss-dark:#BCC8A6;
-  --ink:#ECE8DC; --muted:#A9A699; --line:#343A2D; --on-accent:#191C16;
-  --mock-grey:#3A3F33; color-scheme:dark}
 
 *{box-sizing:border-box}
 body{margin:0}
 img{max-width:100%}
 [hidden]{display:none!important}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important}}
 body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
-a{color:var(--moss-deep)}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
+a{color:var(--accent)}
 h1,h2,h3{line-height:1.15;text-wrap:balance;margin:0;font-weight:700;letter-spacing:-.01em}
-h1{font-size:clamp(2rem,5vw,3.25rem)}
-h2{font-size:clamp(1.5rem,3.2vw,2.15rem)}
-h3{font-size:1.1rem;font-weight:600}
+h1{font-size:clamp(2rem,6vw,3.1rem)}
+h2{font-size:clamp(1.5rem,4vw,2rem)}
+h3{font-size:1.15rem;font-weight:600}
 p{margin:0}
+ul{margin:0;padding:0;list-style:none}
 .wrap{max-width:var(--max);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.eyebrow{font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--moss-deep)}
-.lead{font-size:1.125rem;color:var(--muted);max-width:60ch}
+.eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.lead{font-size:1.1rem;color:var(--muted);max-width:60ch}
 .muted{color:var(--muted)}
-:focus-visible{outline:2px solid var(--moss-deep);outline-offset:3px;border-radius:4px}
+.small{font-size:.9rem}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.stack{display:flex;flex-direction:column;gap:14px}
+
+/* Buttons: 44px+ tap targets */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;background:var(--accent);color:var(--on-accent);text-decoration:none;font-weight:600;font-size:1rem;padding:12px 22px;border-radius:10px;border:none;cursor:pointer;font-family:inherit;transition:background .15s;text-align:center}
+.btn:hover{background:var(--accent-hover)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn.sm{min-height:44px;padding:10px 16px;font-size:.92rem}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.tlink{display:inline-flex;align-items:center;min-height:44px;font-weight:600;text-decoration:none;color:var(--accent)}
+.tlink:hover{text-decoration:underline}
 
 /* Header */
-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:700;font-size:1.05rem;letter-spacing:.01em}
-.badge{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--moss-deep);display:grid;place-items:center;font-size:.72rem;font-weight:700;letter-spacing:.06em;color:var(--moss-deep)}
-nav{display:flex;align-items:center;gap:28px}
-nav a.nl{text-decoration:none;color:var(--muted);font-weight:500;font-size:.92rem}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:16px;min-height:var(--hdr)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:700;font-size:1.05rem;min-height:44px}
+.badge{width:34px;height:34px;flex:none;border-radius:50%;border:1.5px solid var(--accent);display:grid;place-items:center;font-size:.72rem;font-weight:700;letter-spacing:.06em;color:var(--accent)}
+nav{display:flex;align-items:center;gap:6px;margin-left:auto}
+nav a.nl{display:flex;align-items:center;min-height:44px;padding:0 12px;text-decoration:none;color:var(--muted);font-weight:500;font-size:.93rem}
 nav a.nl:hover,nav a.nl[aria-current="page"]{color:var(--ink)}
 nav a.nl[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--moss)}
-.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:var(--r);padding:8px 10px;color:var(--ink);font:inherit;font-weight:600;font-size:.85rem;cursor:pointer}
+nav .btn{margin-left:10px}
+.menu-btn{display:none;margin-left:auto;min-height:44px;min-width:44px;background:none;border:1px solid var(--line);border-radius:10px;padding:0 14px;color:var(--ink);font:inherit;font-weight:600;font-size:.9rem;cursor:pointer}
 
-/* Buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--moss-deep);color:var(--on-accent);text-decoration:none;font-weight:600;font-size:.95rem;padding:13px 22px;border-radius:var(--r);border:none;cursor:pointer;font-family:inherit;transition:background .15s}
-.btn:hover{background:var(--moss-dark)}
-.btn.sm{padding:10px 16px;font-size:.88rem}
-.tlink{font-weight:600;text-decoration:none;color:var(--ink);border-bottom:1.5px solid var(--moss);padding-bottom:2px}
-.tlink:hover{color:var(--moss-deep)}
-
-section.blk{padding-block:72px}
+section.blk{padding-block:64px}
 section.blk+section.blk{border-top:1px solid var(--line)}
-.stack{display:flex;flex-direction:column;gap:16px}
 
-/* Hero */
-.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding-block:72px 64px}
-.hero .ctas{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:8px}
-
-/* Browser mock */
-.mock{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 18px 40px -24px rgba(40,50,30,.35)}
+/* Home */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding-block:64px}
+.mock{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:0 18px 40px -24px rgba(0,0,0,.6)}
 .mock .chrome{display:flex;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line)}
 .mock .chrome i{width:8px;height:8px;border-radius:50%;background:var(--mock-grey)}
-.mock .chrome span{margin-left:10px;font-size:.68rem;color:var(--muted);letter-spacing:.02em}
+.mock .chrome span{margin-left:10px;font-size:.68rem;color:var(--muted)}
 .mock .body{padding:18px;display:flex;flex-direction:column;gap:10px}
 .mk-nav{display:flex;justify-content:space-between;align-items:center}
 .mk-nav b{font-size:.72rem}
 .mk-nav em{display:flex;gap:8px}
 .mk-nav em s{display:block;width:22px;height:5px;border-radius:3px;background:var(--mock-grey)}
-.mk-hero{background:var(--band);border-radius:6px;padding:22px 16px;display:flex;flex-direction:column;gap:8px}
+.mk-hero{background:var(--band);border-radius:8px;padding:22px 16px;display:flex;flex-direction:column;gap:8px}
 .mk-hero strong{font-size:.95rem;line-height:1.25;max-width:22ch}
 .mk-line{height:6px;border-radius:3px;background:var(--mock-grey)}
-.mk-btn{width:86px;height:20px;border-radius:4px;background:var(--moss-deep)}
+.mk-btn{width:86px;height:20px;border-radius:4px;background:var(--accent)}
 .mk-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.mk-cards div{border:1px solid var(--line);border-radius:5px;padding:10px 8px;display:flex;flex-direction:column;gap:6px}
+.mk-cards div{border:1px solid var(--line);border-radius:6px;padding:10px 8px;display:flex;flex-direction:column;gap:6px}
 .mk-cards div u{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--moss)}
 
-/* Problem */
-.problem{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-.equation{font-size:clamp(1.35rem,2.8vw,1.9rem);font-weight:700;line-height:1.3}
-.equation span{color:var(--moss-deep)}
-
-/* Service cards */
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.svc{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:26px;display:flex;flex-direction:column;gap:12px}
-.svc svg{width:28px;height:28px;stroke:var(--moss-deep);fill:none;stroke-width:1.6}
-
-/* Proof */
-.proof{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.ba{display:flex;flex-direction:column;gap:10px}
-.ba .tag{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.before .body{gap:6px}
-.before .clutter{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
-.before .clutter div{height:22px;background:var(--mock-grey);border-radius:2px}
-.before .mk-hero{background:var(--mock-grey);opacity:.7}
-.quote{margin-top:28px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:26px;display:flex;flex-direction:column;gap:10px;max-width:720px}
-.quote p{font-size:1.08rem;font-weight:500}
-
-/* Steps */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:s}
-.step{display:flex;flex-direction:column;gap:10px;padding-top:18px;border-top:2px solid var(--moss)}
-.step .n{font-size:.78rem;font-weight:700;color:var(--moss-deep);letter-spacing:.1em}
-
-/* Pricing teaser */
-.teaser{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
-.teaser .from{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700}
-.teaser .from small{font-size:.9rem;font-weight:500;color:var(--muted);display:block}
-
-/* About */
-.about{display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:center}
-.portrait{aspect-ratio:4/5;max-width:100%;border-radius:10px;background:var(--band);border:1px solid var(--line);display:grid;place-items:center;color:var(--muted);font-size:.8rem;font-weight:500;text-align:center;padding:16px}
-.portrait b{display:block;font-size:2.2rem;color:var(--moss-deep);letter-spacing:.04em}
-
-/* CTA band */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.svc{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:10px;text-decoration:none;color:var(--ink);transition:border-color .15s}
+.svc:hover{border-color:var(--accent)}
+.svc svg{width:28px;height:28px;stroke:var(--accent);fill:none;stroke-width:1.6}
+.svc .go{margin-top:auto;font-weight:600;font-size:.92rem;color:var(--accent)}
+.why{display:flex;flex-direction:column;gap:8px;padding-top:16px;border-top:2px solid var(--moss)}
+.why b{font-size:1.02rem;line-height:1.35}
+.step{display:flex;flex-direction:column;gap:8px;padding-top:16px;border-top:2px solid var(--moss)}
+.step .n{font-size:.78rem;font-weight:700;color:var(--accent);letter-spacing:.1em}
+.about{display:grid;grid-template-columns:180px 1fr;gap:36px;align-items:center}
+.portrait{aspect-ratio:4/5;max-width:100%;border-radius:var(--r);background:var(--band);border:1px solid var(--line);display:grid;place-items:center;color:var(--muted);font-size:.8rem;font-weight:500;text-align:center;padding:16px}
+.portrait b{display:block;font-size:2rem;color:var(--accent)}
 .band{background:var(--band)}
-.band .wrap{padding-block:64px;display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap}
-.band .contact-line{display:flex;gap:18px;flex-wrap:wrap;font-size:.92rem;color:var(--muted);margin-top:10px}
+.band .wrap{padding-block:56px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
 
-/* Pricing page */
-.page-head{padding-block:64px 24px;display:flex;flex-direction:column;gap:14px}
-.prices{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding-block:24px 40px}
-.price{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:26px 22px;display:flex;flex-direction:column;gap:16px;position:relative}
-.price.pop{border:1.5px solid var(--moss-deep)}
-.pop-tag{position:absolute;top:-12px;left:22px;background:var(--moss-deep);color:var(--on-accent);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:20px}
-.amt{font-size:2rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
-.amt small{font-size:.85rem;font-weight:500;color:var(--muted)}
-.price ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px;font-size:.92rem;flex:1}
-.price li{display:flex;gap:10px}
-.price li::before{content:"";flex:none;width:14px;height:8px;margin-top:6px;border-left:2px solid var(--moss-deep);border-bottom:2px solid var(--moss-deep);transform:rotate(-45deg) translateY(-2px)}
-.turn{font-size:.8rem;font-weight:600;color:var(--muted);letter-spacing:.04em;border-top:1px solid var(--line);padding-top:12px}
-.price .btn{width:100%}
-.note{padding-block:0 64px;color:var(--muted)}
+/* Pricing */
+.page-head{padding-block:48px 8px;display:flex;flex-direction:column;gap:14px}
+.jump{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--hdr));z-index:8;background:var(--bg);border-bottom:1px solid var(--line)}
+.jump .wrap{display:flex;flex-wrap:wrap;gap:8px;padding-block:10px}
+.jump a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:24px;border:1px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none;font-weight:600;font-size:.9rem}
+.jump a:hover{border-color:var(--accent);color:var(--accent)}
+.psec{display:flex;flex-direction:column;gap:20px;padding-block:44px;scroll-margin-top:calc(var(--hdr) + 80px)}
+.psec+.psec{border-top:1px solid var(--line)}
+.cards{display:grid;gap:18px}
+.cards.c3{grid-template-columns:repeat(3,1fr)}
+.cards.c2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px 22px;display:flex;flex-direction:column;gap:14px;position:relative;min-width:0}
+.card.pop{border:2px solid var(--accent)}
+.pop-tag{position:absolute;top:-13px;left:20px;background:var(--accent);color:var(--on-accent);font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:20px}
+.amt{font-size:2.1rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.05}
+.amt small{font-size:.95rem;font-weight:500;color:var(--muted)}
+.was{font-size:1.05rem;font-weight:500;color:var(--muted);margin-left:6px}
+.save{align-self:flex-start;background:var(--accent);color:var(--on-accent);font-size:.8rem;font-weight:700;letter-spacing:.03em;padding:5px 12px;border-radius:20px}
+.desc{font-size:.98rem}
+.check{display:flex;flex-direction:column;gap:9px;font-size:.95rem;flex:1}
+.check li{display:flex;gap:10px}
+.check li::before{content:"";flex:none;width:14px;height:8px;margin-top:6px;border-left:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(-45deg) translateY(-2px)}
+.card .btn{width:100%}
+.note{font-size:.92rem;color:var(--muted)}
+.founding{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;background:var(--band);border:2px solid var(--accent);border-radius:var(--r);padding:24px}
+.founding .amt{font-size:2.4rem}
+.founding .btn{min-width:200px}
 
-/* Work page */
-.work{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;padding-block:24px 64px}
-.proj{display:flex;flex-direction:column;gap:14px}
-.proj .meta{display:flex;flex-direction:column;gap:4px}
-.proj .trade{font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--moss-deep)}
+/* Add-ons accordion */
+.addons{display:flex;flex-direction:column;gap:12px}
+.addons details,.faq details{background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+.addons summary,.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:56px;padding:12px 20px;font-weight:600;font-size:1.02rem}
+.addons summary::-webkit-details-marker,.faq summary::-webkit-details-marker{display:none}
+.addons summary::after,.faq summary::after{content:"+";flex:none;font-size:1.4rem;font-weight:500;color:var(--accent);line-height:1}
+.addons details[open] summary::after,.faq details[open] summary::after{content:"\2212"}
+.alist div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 20px;border-top:1px solid var(--line)}
+.alist dt{font-weight:500;min-width:0}
+.alist dt span{display:block;font-size:.88rem;font-weight:400;color:var(--muted);margin-top:2px}
+.alist dd{margin:0;font-weight:700;font-variant-numeric:tabular-nums;text-align:right;flex:none;max-width:45%}
+.alist{margin:0}
 
-/* Contact page */
-.contact{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;padding-block:24px 72px;align-items:start}
-form{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:28px;display:flex;flex-direction:column;gap:18px}
-label{font-size:.85rem;font-weight:600;display:flex;flex-direction:column;gap:7px}
-input,textarea{font:inherit;font-size:1rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;width:100%}
-input:focus,textarea:focus{outline:2px solid var(--moss);outline-offset:0;border-color:transparent}
+/* Care plans: horizontal rows */
+.care{display:flex;flex-direction:column;gap:18px}
+.care-row{display:grid;grid-template-columns:190px 1fr 180px;gap:28px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px 26px;position:relative}
+.care-row.pop{border:2px solid var(--accent)}
+.care-name{display:flex;flex-direction:column;gap:8px}
+.care-row .check{display:grid;grid-template-columns:1fr 1fr;gap:9px 24px}
+.notes{display:flex;flex-direction:column;gap:8px}
+.notes li{display:flex;gap:10px;font-size:.95rem;color:var(--muted)}
+.notes li::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--moss);margin-top:10px}
+.soon{font-size:.92rem;color:var(--muted);text-align:center;padding-block:8px 32px}
+
+/* Bundle detail */
+.back{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;min-height:44px;font-size:.95rem;font-weight:600;text-decoration:none;color:var(--accent);background:var(--band);border:1.5px solid var(--moss);padding:0 18px;border-radius:24px}
+.back:hover{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.dprice{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.save.big{font-size:.95rem;padding:9px 16px}
+
+/* FAQ */
+.faq{display:flex;flex-direction:column;gap:12px;padding-block:24px 64px;max-width:820px}
+.faq .ans{padding:0 20px 18px;color:var(--muted);max-width:68ch}
+
+/* Contact */
+.contact{display:grid;grid-template-columns:1.25fr .75fr;gap:44px;padding-block:24px 72px;align-items:start}
+form{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px;display:flex;flex-direction:column;gap:18px;min-width:0}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+label,legend{font-size:.92rem;font-weight:600}
+.field{display:flex;flex-direction:column;gap:7px}
+input,textarea,select{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px;width:100%;min-height:48px}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--moss);outline-offset:0;border-color:transparent}
 textarea{min-height:120px;resize:vertical}
-.sent{background:var(--band);border-radius:var(--r);padding:14px 16px;font-size:.92rem}
+fieldset{border:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.checks label{display:flex;align-items:center;gap:10px;min-height:44px;padding:0 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);font-weight:500;cursor:pointer}
+.checks input{width:20px;height:20px;min-height:0;padding:0;accent-color:var(--accent)}
+.sent{background:var(--band);border-radius:10px;padding:14px 16px;font-size:.95rem}
 .info{display:flex;flex-direction:column;gap:22px}
 .info div{display:flex;flex-direction:column;gap:4px}
-.info dt{font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.info dt{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .info dd{margin:0;font-weight:600;word-break:break-word}
-.copy{background:none;border:1px solid var(--line);color:var(--ink);font:inherit;font-size:.78rem;font-weight:600;padding:5px 10px;border-radius:6px;cursor:pointer;align-self:flex-start;margin-top:4px}
-.copy:hover{border-color:var(--moss-deep)}
+.info dd a{display:inline-flex;align-items:center;min-height:44px}
 
 footer{border-top:1px solid var(--line)}
-footer .wrap{padding-block:36px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:.88rem;color:var(--muted)}
-footer .fnav{display:flex;gap:20px;flex-wrap:wrap}
-footer .fnav a{color:var(--muted);text-decoration:none}
-footer .fnav a:hover{color:var(--ink)}
-footer strong{color:var(--ink)}
+footer .wrap{padding-block:36px;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px;font-size:.92rem;color:var(--muted)}
+footer .fcol{display:flex;flex-direction:column;gap:6px}
+footer a{color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+footer a:hover{color:var(--ink)}
+footer .logo{color:var(--ink)}
 
-/* Responsive */
-@media (max-width:900px){
-  .prices{grid-template-columns:repeat(2,1fr)}
-  .hero,.problem,.contact{grid-template-columns:1fr;gap:36px}
+/* Desktop refinements */
+.wrap.faq{max-width:var(--max)}
+.faq details{max-width:820px;width:100%}
+@media (min-width:961px){
+  .addons{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+  footer .wrap{grid-template-columns:1fr auto;align-items:start}
+  footer .fcol.links{flex-direction:row;gap:28px;justify-content:flex-end}
+  footer .fcol.copy{grid-column:1 / -1;border-top:1px solid var(--line);padding-top:18px}
 }
-@media (max-width:760px){
-  nav .nl,nav .btn{display:none}
+
+/* Home: quick FAQ + areas */
+.faq-mini{display:flex;flex-direction:column;gap:12px;max-width:820px}
+.faq-mini details{background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+.faq-mini summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:56px;padding:12px 20px;font-weight:600;font-size:1.02rem}
+.faq-mini summary::-webkit-details-marker{display:none}
+.faq-mini summary::after{content:"+";flex:none;font-size:1.4rem;font-weight:500;color:var(--accent);line-height:1}
+.faq-mini details[open] summary::after{content:"\2212"}
+.faq-mini .ans{padding:0 20px 18px;color:var(--muted);max-width:68ch}
+.area{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.areas{display:flex;flex-wrap:wrap;gap:10px}
+.areas li{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 16px;background:var(--surface);border:1px solid var(--line);border-radius:24px;font-weight:600;font-size:.95rem}
+.areas li::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+@media (max-width:700px){.area{grid-template-columns:1fr;gap:24px}}
+
+/* Sticky mobile CTA */
+.mcta{display:none}
+
+@media (max-width:960px){
+  .cards.c3{grid-template-columns:1fr 1fr}
+  .grid4{grid-template-columns:1fr 1fr}
+  .care-row{grid-template-columns:1fr;gap:16px}
+  .care-row .btn{width:100%}
+  .hero,.contact{grid-template-columns:1fr;gap:36px}
+}
+@media (max-width:800px){
+  nav:not(.open){display:none}
   .menu-btn{display:block}
-  nav.open{position:absolute;top:100%;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:8px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px))}
-  nav.open .nl{display:block;padding:12px 0;border-bottom:1px solid var(--line)}
-  nav.open .nl[aria-current="page"]{box-shadow:none;color:var(--moss-deep)}
-  nav.open .btn{display:flex;margin-top:14px}
-  nav.open .menu-btn{display:none}
-  .grid3,.steps,.proof,.work{grid-template-columns:1fr}
-  .about{grid-template-columns:1fr}
-  .portrait{max-width:200px}
-  section.blk{padding-block:56px}
-  .hero{padding-block:48px}
+  nav.open{position:absolute;top:100%;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:6px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px))}
+  nav.open a.nl{border-bottom:1px solid var(--line);padding:0;min-height:52px}
+  nav.open a.nl[aria-current="page"]{box-shadow:none;color:var(--accent)}
+  nav.open .btn{margin:14px 0 0}
+  .mcta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:9;background:var(--bg);border-top:1px solid var(--line);padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+  .mcta .btn{width:100%}
+  body.has-mcta{padding-bottom:72px}
 }
-@media (max-width:520px){.prices{grid-template-columns:1fr}}
+@media (max-width:700px){
+  .grid3,.cards.c3,.cards.c2,.about,.row2,.checks{grid-template-columns:1fr}
+  .grid4{grid-template-columns:1fr}
+  .care-row .check{grid-template-columns:1fr}
+  .founding{grid-template-columns:1fr}
+  .founding .btn{width:100%}
+  footer .wrap{grid-template-columns:1fr}
+  section.blk{padding-block:48px}
+  .hero{padding-block:40px}
+  .portrait{max-width:160px}
+  .btns .btn{flex:1 1 100%}
+  .alist div{flex-direction:column;gap:4px}
+  .alist dd{text-align:left;max-width:none}
+  .jump .wrap{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;gap:6px;padding-block:8px}
+  .jump .wrap::-webkit-scrollbar{display:none}
+  .jump a{flex:none;padding:0 14px;font-size:.88rem}
+  .psec{scroll-margin-top:calc(var(--hdr) + 72px)}
+}
+
+/* Wix Forms renderer */
+.quote-box{display:flex;flex-direction:column;gap:12px;min-width:0}
+#quote .form{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px;display:flex;flex-direction:column;gap:18px}
+#quote .form-loading{color:var(--muted)}
+#quote .form-fields{display:flex;flex-direction:column;gap:18px}
+#quote .form-field{display:flex;flex-direction:column;gap:7px;min-width:0}
+#quote .form-label{font-size:.92rem;font-weight:600}
+#quote .form-required{color:var(--accent);margin-left:3px}
+#quote .form-help{font-size:.85rem;color:var(--muted)}
+#quote .form-error,#quote .form-form-error{color:#F0A38E;font-size:.88rem}
+#quote [aria-invalid="true"]{border-color:#F0A38E}
+#quote .form-choices{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+#quote .form-choice{display:flex;align-items:center;gap:10px;min-height:44px;padding:0 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);font-weight:500;cursor:pointer}
+#quote .form-choice input{width:20px;height:20px;min-height:0;padding:0;flex:none;accent-color:var(--accent)}
+#quote .form-choice--selected{border-color:var(--accent)}
+#quote .form-field--phone .form-control{display:flex;gap:8px}
+#quote .form-field--phone select{width:auto;flex:0 0 auto}
+#quote .form-actions{display:flex;gap:12px}
+#quote .form-submit,#quote .form-next{flex:1;min-height:48px;background:var(--accent);color:var(--on-accent);border:none;border-radius:10px;font:inherit;font-weight:600;font-size:1rem;cursor:pointer}
+#quote .form-submit:hover,#quote .form-next:hover{background:var(--accent-hover)}
+#quote .form-submit[disabled]{opacity:.7;cursor:progress}
+#quote .form-back{min-height:48px;padding:0 18px;background:transparent;color:var(--ink);border:1.5px solid var(--line);border-radius:10px;font:inherit;font-weight:600;cursor:pointer}
+#quote .form-success{background:var(--band);border-radius:10px;padding:20px;font-size:1.02rem}
+@media (max-width:700px){#quote .form-choices{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -204,12 +286,12 @@ footer strong{color:var(--ink)}
   <div class="wrap bar">
     <a class="logo" href="#home" aria-label="Calles Group home"><span class="badge">CG</span>Calles Group</a>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="siteNav">Menu</button>
-    <nav id="siteNav">
+    <nav id="siteNav" aria-label="Main">
       <a class="nl" href="#home" data-page="home">Home</a>
-      <a class="nl" href="#services" data-page="services">Services</a>
-      <a class="nl" href="#work" data-page="work">Our Work</a>
+      <a class="nl" href="#pricing" data-page="pricing">Services &amp; Pricing</a>
+      <a class="nl" href="#faq" data-page="faq">FAQ</a>
       <a class="nl" href="#contact" data-page="contact">Contact</a>
-      <a class="btn sm" href="#contact">Get a Free Quote</a>
+      <a class="btn sm" href="#contact">Get a free quote</a>
     </nav>
   </div>
 </header>
@@ -219,256 +301,445 @@ footer strong{color:var(--ink)}
 <div class="page" id="page-home">
   <div class="wrap hero">
     <div class="stack">
-      <span class="eyebrow">Web design · Branding · Digital marketing</span>
-      <h1>Websites that make local businesses look as good as they work.</h1>
-      <p class="lead">Web design, branding, and digital marketing for small businesses in Chicagoland.</p>
-      <div class="ctas">
-        <a class="btn" href="#contact">Get a Free Quote</a>
-        <a class="tlink" href="#work">See Our Work</a>
+      <h1>Look polished. Get found. Win more customers.</h1>
+      <p class="lead">Websites, logos and branding for local businesses in Elgin, the Fox Valley and Chicagoland.</p>
+      <div class="btns">
+        <a class="btn" href="#contact">Get a free quote</a>
+        <a class="btn ghost" href="#pricing">See pricing</a>
       </div>
     </div>
     <div class="mock" aria-hidden="true">
       <div class="chrome"><i></i><i></i><i></i><span>yourbusiness.com</span></div>
       <div class="body">
-        <div class="mk-nav"><b>Your Painting Co.</b><em><s></s><s></s><s></s></em></div>
-        <div class="mk-hero">
-          <strong>Interior &amp; exterior painting, done right the first time.</strong>
-          <div class="mk-line" style="width:70%"></div>
-          <div class="mk-btn"></div>
-        </div>
+        <div class="mk-nav"><b>Your Business</b><em><s></s><s></s><s></s></em></div>
+        <div class="mk-hero"><strong>Quality work. Fair prices. Call today.</strong><div class="mk-line" style="width:70%"></div><div class="mk-btn"></div></div>
         <div class="mk-cards"><div><u></u><div class="mk-line"></div></div><div><u></u><div class="mk-line"></div></div><div><u></u><div class="mk-line"></div></div></div>
       </div>
     </div>
   </div>
 
-  <section class="blk"><div class="wrap problem">
-    <p class="equation">Good business + bad presentation = <span>missed customers.</span></p>
-    <p class="lead">Most people check you out online before they ever call. If your site looks outdated, or you don't have one, they move on to the next name on the list.</p>
-  </div></section>
-
-  <section class="blk"><div class="wrap stack" style="gap:32px">
-    <div class="stack"><span class="eyebrow">What we do</span><h2>One partner for how your business looks.</h2></div>
+  <section class="blk"><div class="wrap stack" style="gap:28px">
+    <h2>What we do</h2>
     <div class="grid3">
-      <div class="svc">
+      <a class="svc" href="#websites">
         <svg viewBox="0 0 28 28" aria-hidden="true"><rect x="3" y="5" width="22" height="16" rx="2"/><path d="M3 9h22M10 25h8M14 21v4"/></svg>
-        <h3>Web Design</h3>
-        <p class="muted">Clean, fast websites that explain what you do and make it easy to get in touch.</p>
-      </div>
-      <div class="svc">
+        <h3>Websites</h3><p class="muted">Clean, mobile-friendly Wix sites, from $1,500.</p><span class="go">See website pricing &rarr;</span>
+      </a>
+      <a class="svc" href="#branding">
         <svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="10"/><path d="M14 4v20M4 14h20"/><circle cx="14" cy="14" r="4"/></svg>
-        <h3>Business Branding</h3>
-        <p class="muted">Logos, business cards, and branded materials that make you look established.</p>
-      </div>
-      <div class="svc">
-        <svg viewBox="0 0 28 28" aria-hidden="true"><path d="M4 22l6-7 5 4 9-11"/><path d="M18 8h6v6"/></svg>
-        <h3>Digital Marketing</h3>
-        <p class="muted">Google Business Profile, social media, and ads that bring local customers to you.</p>
-      </div>
+        <h3>Branding</h3><p class="muted">Logos, business cards and brand kits, from $500.</p><span class="go">See branding pricing &rarr;</span>
+      </a>
+      <a class="svc" href="#care">
+        <svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 24s-9-5.5-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.5-9 12-9 12z"/></svg>
+        <h3>Care plans</h3><p class="muted">We keep your site fresh and working, from $99/mo.</p><span class="go">See care plans &rarr;</span>
+      </a>
     </div>
   </div></section>
 
   <section class="blk"><div class="wrap stack" style="gap:28px">
-    <div class="stack"><span class="eyebrow">Before &amp; after</span><h2>The difference a clear website makes.</h2></div>
-    <div class="proof" aria-hidden="true">
-      <div class="ba before">
-        <span class="tag">Before</span>
-        <div class="mock"><div class="chrome"><i></i><i></i><i></i><span>old-site.net</span></div>
-          <div class="body">
-            <div class="clutter"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-            <div class="mk-hero"><div class="mk-line" style="width:90%"></div><div class="mk-line" style="width:80%"></div><div class="mk-line" style="width:85%"></div></div>
-            <div class="clutter"><div></div><div></div><div></div><div></div></div>
-          </div></div>
-      </div>
-      <div class="ba">
-        <span class="tag">After</span>
-        <div class="mock"><div class="chrome"><i></i><i></i><i></i><span>new-site.com</span></div>
-          <div class="body">
-            <div class="mk-nav"><b>Painting Co.</b><em><s></s><s></s><s></s></em></div>
-            <div class="mk-hero"><strong>Free estimates. Clean work. On schedule.</strong><div class="mk-btn"></div></div>
-            <div class="mk-cards"><div><u></u><div class="mk-line"></div></div><div><u></u><div class="mk-line"></div></div><div><u></u><div class="mk-line"></div></div></div>
-          </div></div>
-      </div>
-    </div>
-    <div class="quote">
-      <p>"Client testimonial goes here once the first project launches."</p>
-      <span class="muted">Client name, Business</span>
+    <h2>Why Calles Group</h2>
+    <div class="grid4">
+      <div class="why"><b>You own everything.</b><p class="muted">Your site and domain are in your name.</p></div>
+      <div class="why"><b>Clear, flat prices.</b><p class="muted">No surprises.</p></div>
+      <div class="why"><b>Built for phones first.</b><p class="muted">Because that's where your customers are.</p></div>
+      <div class="why"><b>Local.</b><p class="muted">Based in Elgin, working across Chicagoland.</p></div>
     </div>
   </div></section>
 
-  <section class="blk"><div class="wrap stack" style="gap:32px">
-    <div class="stack"><span class="eyebrow">How it works</span><h2>Three steps to a site you're proud of.</h2></div>
-    <div class="steps">
-      <div class="step"><span class="n">STEP 1</span><h3>Quick call</h3><p class="muted">15 minutes to learn your business, your customers, and what you need.</p></div>
-      <div class="step"><span class="n">STEP 2</span><h3>We build it</h3><p class="muted">You get a clear plan, a fixed price, and a first draft to review.</p></div>
-      <div class="step"><span class="n">STEP 3</span><h3>You launch</h3><p class="muted">We publish your site, connect your domain, and keep it running.</p></div>
+  <section class="blk"><div class="wrap stack" style="gap:28px">
+    <h2>How it works</h2>
+    <div class="grid4">
+      <div class="step"><span class="n">STEP 1</span><h3>Free quote call</h3></div>
+      <div class="step"><span class="n">STEP 2</span><h3>Design and feedback</h3></div>
+      <div class="step"><span class="n">STEP 3</span><h3>Launch</h3></div>
+      <div class="step"><span class="n">STEP 4</span><h3>Ongoing care, if you want it</h3></div>
     </div>
   </div></section>
 
-  <section class="blk"><div class="wrap teaser">
-    <div class="from"><small>Simple, upfront pricing</small>Websites from $900</div>
-    <a class="tlink" href="#services">See packages and pricing</a>
+  <section class="blk"><div class="wrap stack" style="gap:24px">
+    <h2>Common questions</h2>
+    <div class="faq-mini">
+      <details><summary>Who owns the website?</summary><p class="ans">You do. Your Wix account and domain are set up in your name and you pay for them directly. We just need collaborator access to build. Your logo files and full admin access are handed over once your final payment is made.</p></details>
+      <details><summary>How does payment work?</summary><p class="ans">50% deposit to start and the rest before your site goes live. For projects over $2,500, it's 50% to start, 25% when you approve the design, and 25% before launch. We accept card through a Wix invoice, Zelle, or check. Invoices are due within 7 days.</p></details>
+      <details><summary>How long does it take?</summary><p class="ans">About 2 to 5 weeks depending on the package. The clock starts once we have your text, photos and logo.</p></details>
+      <details><summary>Can I cancel a care plan?</summary><p class="ans">Yes, anytime. Your plan runs to the end of that month. Plans are billed monthly in advance.</p></details>
+    </div>
+    <a class="tlink" href="#faq">See all FAQs &rarr;</a>
   </div></section>
 
-  <section class="blk"><div class="wrap about">
-    <div class="portrait"><span><b>AC</b>Photo of Andrew</span></div>
+  <section class="blk"><div class="wrap area">
     <div class="stack">
-      <span class="eyebrow">About</span>
-      <h2>Hi, I'm Andrew Calles.</h2>
-      <p class="lead">I started Calles Group to help small businesses look as established as they really are. You get one local point of contact for your website, branding, and marketing, so you never have to juggle vendors.</p>
+      <h2>Areas we serve</h2>
+      <p class="lead">Based in Elgin, IL. We work with businesses across the Fox Valley, the northwest suburbs and Chicago, in person or over video.</p>
     </div>
+    <ul class="areas"><li>Elgin</li><li>South Elgin</li><li>Bartlett</li><li>Schaumburg</li><li>Hoffman Estates</li><li>Barrington</li><li>South Barrington</li><li>Inverness</li><li>St. Charles</li><li>Geneva</li><li>Algonquin</li><li>Crystal Lake</li><li>Naperville</li><li>Chicago</li></ul>
   </div></section>
 
   <div class="band"><div class="wrap">
-    <div><h2>Ready to look as professional as you are?</h2>
-      <div class="contact-line"><span>andrew@callesgroup.com</span><span>Serving Chicagoland</span></div></div>
-    <a class="btn" href="#contact">Get a Free Quote</a>
+    <h2>Ready to look the part?</h2>
+    <a class="btn" href="#contact">Get a free quote</a>
   </div></div>
 </div>
 
-<!-- SERVICES -->
-<div class="page" id="page-services" hidden>
+<!-- PRICING -->
+<div class="page" id="page-pricing" hidden>
   <div class="wrap page-head">
-    <span class="eyebrow">Services &amp; pricing</span>
-    <h1>Clear packages. No surprises.</h1>
-    <p class="lead">Every package includes a mobile-ready design, a first draft to review, and two rounds of revisions. A 50% deposit starts your project.</p>
+    <h1>Services &amp; Pricing</h1>
+    <p class="lead">Simple, flat pricing. Every project starts with a free quote call so we can match the right package to your business.</p>
   </div>
-  <div class="wrap prices">
-    <div class="price">
-      <h3>Starter</h3>
-      <div class="amt">$900</div>
-      <ul><li>1–3 page website</li><li>Contact form</li><li>Mobile-ready design</li><li>Basic SEO setup</li></ul>
-      <div class="turn">7-day turnaround</div>
-      <a class="btn" href="#contact">Start a Project</a>
-    </div>
-    <div class="price pop">
-      <span class="pop-tag">Most popular</span>
-      <h3>Business</h3>
-      <div class="amt">$1,750</div>
-      <ul><li>Up to 5 pages</li><li>Gallery or portfolio</li><li>Quote request form</li><li>Google Business Profile setup</li></ul>
-      <div class="turn">10–14 day turnaround</div>
-      <a class="btn" href="#contact">Start a Project</a>
-    </div>
-    <div class="price">
-      <h3>Brand + Web</h3>
-      <div class="amt">$3,000</div>
-      <ul><li>Everything in Business</li><li>Logo refresh</li><li>Business cards</li><li>Social media headers</li></ul>
-      <div class="turn">14–21 day turnaround</div>
-      <a class="btn" href="#contact">Start a Project</a>
-    </div>
-    <div class="price">
-      <h3>Care Plan</h3>
-      <div class="amt">$79<small>/month</small></div>
-      <ul><li>Hosting</li><li>Domain management</li><li>Updates and security</li><li>30 minutes of edits each month</li></ul>
-      <div class="turn">Required for sites we host</div>
-      <a class="btn" href="#contact">Start a Project</a>
-    </div>
-  </div>
-  <p class="wrap note">Not sure which fits? <a href="#contact">Get a free quote</a> and I'll recommend one.</p>
-  <div class="band"><div class="wrap">
-    <h2>Let's find the right package for you.</h2>
-    <a class="btn" href="#contact">Get a Free Quote</a>
+  <div class="jump"><div class="wrap" role="navigation" aria-label="Pricing sections">
+    <a href="#websites">Websites</a><a href="#bundles">Bundles</a><a href="#branding">Branding</a><a href="#addons">Add-ons</a><a href="#care">Care plans</a>
   </div></div>
+
+  <div class="wrap psec" id="sec-websites">
+    <h2>Websites</h2>
+    <div class="cards c3">
+      <div class="card">
+        <h3>Launch</h3><div class="amt">$1,500</div>
+        <p class="desc">A clean, professional site to get you online.</p>
+        <ul class="check"><li>Up to 3 pages</li><li>Template-based design, built for mobile</li><li>Contact form</li><li>Basic SEO (page titles, descriptions, sitemap)</li><li>2 rounds of changes</li><li>About 2 weeks</li></ul>
+        <a class="btn" href="#contact">Get a free quote</a>
+      </div>
+      <div class="card pop"><span class="pop-tag">Most popular</span>
+        <h3>Growth</h3><div class="amt">$2,500</div>
+        <p class="desc">A custom site built to bring in calls and leads.</p>
+        <ul class="check"><li>Up to 5 pages</li><li>Everything in Launch</li><li>Custom layout</li><li>Copy polish on every page</li><li>Google Business Profile setup</li><li>Google Search Console and analytics</li><li>Booking or quote request form</li><li>3 rounds of changes</li><li>About 3 weeks</li></ul>
+        <a class="btn" href="#contact">Get a free quote</a>
+      </div>
+      <div class="card">
+        <h3>Premium</h3><div class="amt">$3,800</div>
+        <p class="desc">A complete site with copywriting and extra support.</p>
+        <ul class="check"><li>Up to 8 pages</li><li>Everything in Growth</li><li>Full copywriting</li><li>Stock photo sourcing</li><li>Blog or project gallery</li><li>30 days of free edits after launch</li><li>1-hour training call</li><li>About 4 to 5 weeks</li></ul>
+        <a class="btn" href="#contact">Get a free quote</a>
+      </div>
+    </div>
+    <p class="note">Timelines start once we have your content (text, photos and logo).</p>
+  </div>
+
+  <div class="wrap psec" id="sec-bundles">
+    <h2>Bundle and save.</h2>
+    <div class="cards c3">
+      <div class="card">
+        <h3>Launch website + logo + business cards</h3>
+        <div class="amt">$1,950 <s class="was">$2,175</s></div>
+        <span class="save">Save $225</span>
+        <ul class="check"><li>Launch website ($1,500)</li><li>Logo ($500)</li><li>Business card design ($175)</li></ul>
+        <a class="tlink" href="#bundle-launch">See what's included &rarr;</a>
+        <a class="btn" href="#contact">Get a free quote</a>
+      </div>
+      <div class="card pop"><span class="pop-tag">Most popular</span>
+        <h3>Growth website + Brand Kit</h3>
+        <div class="amt">$3,200 <s class="was">$3,400</s></div>
+        <span class="save">Save $200</span>
+        <ul class="check"><li>Growth website ($2,500)</li><li>Brand Kit ($900)</li></ul>
+        <a class="tlink" href="#bundle-growth">See what's included &rarr;</a>
+        <a class="btn" href="#contact">Get a free quote</a>
+      </div>
+      <div class="card">
+        <h3>Premium website + Brand Kit</h3>
+        <div class="amt">$4,400 <s class="was">$4,700</s></div>
+        <span class="save">Save $300</span>
+        <ul class="check"><li>Premium website ($3,800)</li><li>Brand Kit ($900)</li></ul>
+        <a class="tlink" href="#bundle-premium">See what's included &rarr;</a>
+        <a class="btn" href="#contact">Get a free quote</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap psec" id="sec-branding">
+    <h2>Branding</h2>
+    <div class="founding">
+      <div class="stack" style="gap:8px">
+        <span class="eyebrow">Founding client rate</span>
+        <h3>Logo + business cards</h3>
+        <div class="amt">$400 <s class="was">$600</s></div>
+        <p class="desc">Founding client rate for our first 5 clients.</p>
+      </div>
+      <a class="btn" href="#contact">Get a free quote</a>
+    </div>
+    <div class="cards c2">
+      <div class="card">
+        <h3>Logo</h3><div class="amt">$500</div>
+        <ul class="check"><li>3 initial concepts</li><li>2 rounds of changes</li><li>Full file pack (PNG, SVG, PDF, light and dark versions)</li></ul>
+        <a class="btn" href="#contact">Get a free quote</a>
+      </div>
+      <div class="card">
+        <h3>Business card design</h3><div class="amt">$175</div>
+        <ul class="check"><li>Front and back</li><li>Print-ready files</li><li>Printing quoted separately</li></ul>
+        <a class="btn" href="#contact">Get a free quote</a>
+      </div>
+      <div class="card">
+        <h3>Brand Kit</h3><div class="amt">$900</div>
+        <ul class="check"><li>Logo</li><li>Business cards</li><li>Color palette</li><li>Font pairing</li><li>A one-page brand guide</li><li>Social media profile and cover images</li></ul>
+        <a class="btn" href="#contact">Get a free quote</a>
+      </div>
+      <div class="card">
+        <h3>Brand refresh</h3><div class="amt">$300</div>
+        <p class="desc">Already have a logo? We'll clean it up, redraw it, and give you a new file pack and color palette.</p>
+        <ul class="check"><li>Clean-up and redraw of your logo</li><li>New file pack</li><li>Color palette</li></ul>
+        <a class="btn" href="#contact">Get a free quote</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap psec" id="sec-addons">
+    <h2>Add-ons</h2>
+    <p class="muted">Add any of these to a project, or book them on their own.</p>
+    <div class="addons">
+      <details><summary>Website extras</summary><dl class="alist">
+        <div><dt>Extra page</dt><dd>$175</dd></div>
+        <div><dt>Copywriting</dt><dd>$100 per page</dd></div>
+        <div><dt>Rush delivery (under 1 week)<span>When our schedule allows</span></dt><dd>+25% of the project price</dd></div>
+        <div><dt>Redesign of an existing site</dt><dd>From $900</dd></div>
+      </dl></details>
+      <details><summary>Get found online</summary><dl class="alist">
+        <div><dt>Google Business Profile setup<span>Categories, hours, photos, services, review link</span></dt><dd>$250</dd></div>
+        <div><dt>SEO starter setup<span>Keywords for each page, titles, descriptions, Search Console, sitemap</span></dt><dd>$300</dd></div>
+        <div><dt>Review QR card or counter sign<span>Links straight to your Google review page</span></dt><dd>$100</dd></div>
+      </dl></details>
+      <details><summary>Booking and selling</summary><dl class="alist">
+        <div><dt>Online booking setup (Wix Bookings)</dt><dd>$250</dd></div>
+        <div><dt>Online store setup<span>Up to 20 products, then $15 per product</span></dt><dd>$750</dd></div>
+      </dl></details>
+      <details><summary>Branding and print</summary><dl class="alist">
+        <div><dt>Social media kit<span>Profile and cover images, plus 5 post templates in Canva</span></dt><dd>$250</dd></div>
+        <div><dt>Print design (flyer, menu or door hanger)<span>Printing quoted separately</span></dt><dd>$125 each</dd></div>
+        <div><dt>Email signature</dt><dd>$75</dd></div>
+      </dl></details>
+      <details><summary>Email and training</summary><dl class="alist">
+        <div><dt>Professional email setup<span>Google Workspace or Microsoft 365</span></dt><dd>$100</dd></div>
+        <div><dt>Email newsletter template and signup form</dt><dd>$300</dd></div>
+        <div><dt>Training call, recorded</dt><dd>$100 per hour</dd></div>
+      </dl></details>
+      <details><summary>Other work</summary><dl class="alist">
+        <div><dt>Changes or work outside a package<span>30-minute minimum</span></dt><dd>$75 per hour</dd></div>
+      </dl></details>
+    </div>
+  </div>
+
+  <div class="wrap psec" id="sec-care">
+    <h2>Monthly care plans</h2>
+    <p class="muted">Your site stays fresh, working and up to date, without you lifting a finger. Cancel anytime.</p>
+    <div class="care">
+      <div class="care-row">
+        <div class="care-name"><h3>Essentials</h3><div class="amt">$99<small>/mo</small></div></div>
+        <ul class="check"><li>Up to 1 hour of edits each month</li><li>Monthly check of forms, links and mobile layout</li><li>Wix and domain renewal reminders</li><li>Edits done within 3 business days</li></ul>
+        <a class="btn" href="#contact">Get a free quote</a>
+      </div>
+      <div class="care-row pop"><span class="pop-tag">Most popular</span>
+        <div class="care-name"><h3>Plus</h3><div class="amt">$199<small>/mo</small></div></div>
+        <ul class="check"><li>Up to 2.5 hours of edits each month</li><li>Everything in Essentials</li><li>New job or product photos added</li><li>2 Google Business Profile posts each month</li><li>Short monthly report (visits, calls and form leads)</li><li>Edits done within 2 business days</li></ul>
+        <a class="btn" href="#contact">Get a free quote</a>
+      </div>
+      <div class="care-row">
+        <div class="care-name"><h3>Growth</h3><div class="amt">$349<small>/mo</small></div></div>
+        <ul class="check"><li>Up to 4 hours of edits each month</li><li>Everything in Plus</li><li>4 Google Business Profile posts each month (instead of 2)</li><li>4 branded social media graphics each month</li><li>Quarterly SEO tune-up</li><li>20-minute monthly check-in call</li></ul>
+        <a class="btn" href="#contact">Get a free quote</a>
+      </div>
+    </div>
+    <ul class="notes">
+      <li>Pay yearly and get 1 month free: Essentials $1,089/yr, Plus $2,189/yr, Growth $3,839/yr.</li>
+      <li>Start a plan when your new site launches and get your first month half off.</li>
+      <li>Unused hours don't roll over. Cancel anytime; your plan ends at the end of that month.</li>
+    </ul>
+  </div>
+
+  <div class="band"><div class="wrap">
+    <h2>Not sure what you need? Book a free quote call.</h2>
+    <a class="btn" href="#contact">Get a free quote</a>
+  </div></div>
+  <p class="wrap soon">Coming soon: Facebook and Instagram ad campaigns. Ask us about it.</p>
 </div>
 
-<!-- WORK -->
-<div class="page" id="page-work" hidden>
+<!-- BUNDLE: LAUNCH -->
+<div class="page" id="page-bundle-launch" hidden>
   <div class="wrap page-head">
-    <span class="eyebrow">Our work</span>
-    <h1>Recent projects.</h1>
-    <p class="lead">Every site is built to load fast, look sharp on a phone, and turn visitors into calls.</p>
+    <a class="back" href="#bundles">&larr; Back to pricing</a>
+    <span class="eyebrow">Bundle</span>
+    <h1>Launch website + logo + business cards</h1>
+    <div class="dprice"><div class="amt">$1,950 <s class="was">$2,175</s></div><span class="save big">Save $225 vs. buying separately</span></div>
+    <div class="btns"><a class="btn" href="#contact">Get a free quote</a></div>
   </div>
-  <div class="wrap work">
-    <div class="proj">
-      <div class="mock" aria-hidden="true"><div class="chrome"><i></i><i></i><i></i><span>paintingco.com</span></div>
-        <div class="body">
-          <div class="mk-nav"><b>Painting Co.</b><em><s></s><s></s><s></s></em></div>
-          <div class="mk-hero"><strong>Interior &amp; exterior painting.</strong><div class="mk-line" style="width:60%"></div><div class="mk-btn"></div></div>
-          <div class="mk-cards"><div><u></u><div class="mk-line"></div></div><div><u></u><div class="mk-line"></div></div><div><u></u><div class="mk-line"></div></div></div>
-        </div></div>
-      <div class="meta"><span class="trade">Painting contractor</span><h3>Painting Company: Informational Website</h3><p class="muted">Services, gallery, service area, and a quote request form.</p></div>
+  <div class="wrap psec">
+    <h2>What's included</h2>
+    <div class="cards c3">
+      <div class="card"><h3>Launch website</h3><p class="desc">A clean, professional site to get you online.</p><ul class="check"><li>Up to 3 pages</li><li>Template-based design, built for mobile</li><li>Contact form</li><li>Basic SEO (page titles, descriptions, sitemap)</li><li>2 rounds of changes</li><li>About 2 weeks</li></ul></div>
+      <div class="card"><h3>Logo</h3><ul class="check"><li>3 initial concepts</li><li>2 rounds of changes</li><li>Full file pack (PNG, SVG, PDF, light and dark versions)</li></ul></div>
+      <div class="card"><h3>Business card design</h3><ul class="check"><li>Front and back</li><li>Print-ready files</li><li>Printing quoted separately</li></ul></div>
     </div>
-    <div class="proj">
-      <div class="mock" aria-hidden="true"><div class="chrome"><i></i><i></i><i></i><span>callesgroup.com</span></div>
-        <div class="body">
-          <div class="mk-nav"><b>Calles Group</b><em><s></s><s></s><s></s></em></div>
-          <div class="mk-hero"><strong>Websites that make local businesses look as good as they work.</strong><div class="mk-btn"></div></div>
-          <div class="mk-cards"><div><u></u><div class="mk-line"></div></div><div><u></u><div class="mk-line"></div></div><div><u></u><div class="mk-line"></div></div></div>
-        </div></div>
-      <div class="meta"><span class="trade">Web design &amp; branding</span><h3>Calles Group: Brand &amp; Website</h3><p class="muted">Brand identity, business cards, and this website.</p></div>
+  </div>
+  <div class="wrap psec">
+    <h2>Good to know</h2>
+    <ul class="notes">
+      <li>Timelines start once we have your content (text, photos and logo).</li>
+      <li>50% deposit to start and the rest before your site goes live.</li>
+      <li>Your Wix account and domain are set up in your name, so you own everything.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- BUNDLE: GROWTH -->
+<div class="page" id="page-bundle-growth" hidden>
+  <div class="wrap page-head">
+    <a class="back" href="#bundles">&larr; Back to pricing</a>
+    <span class="eyebrow">Bundle</span>
+    <h1>Growth website + Brand Kit</h1>
+    <div class="dprice"><div class="amt">$3,200 <s class="was">$3,400</s></div><span class="save big">Save $200 vs. buying separately</span></div>
+    <div class="btns"><a class="btn" href="#contact">Get a free quote</a></div>
+  </div>
+  <div class="wrap psec">
+    <h2>What's included</h2>
+    <div class="cards c2">
+      <div class="card"><h3>Growth website</h3><p class="desc">A custom site built to bring in calls and leads.</p><ul class="check"><li>Up to 5 pages</li><li>Everything in Launch</li><li>Custom layout</li><li>Copy polish on every page</li><li>Google Business Profile setup</li><li>Google Search Console and analytics</li><li>Booking or quote request form</li><li>3 rounds of changes</li><li>About 3 weeks</li></ul></div>
+      <div class="card"><h3>Brand Kit</h3><ul class="check"><li>Logo</li><li>Business cards</li><li>Color palette</li><li>Font pairing</li><li>A one-page brand guide</li><li>Social media profile and cover images</li></ul></div>
     </div>
+  </div>
+  <div class="wrap psec">
+    <h2>Good to know</h2>
+    <ul class="notes">
+      <li>Timelines start once we have your content (text, photos and logo).</li>
+      <li>For projects over $2,500, it's 50% to start, 25% when you approve the design, and 25% before launch.</li>
+      <li>Your Wix account and domain are set up in your name, so you own everything.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- BUNDLE: PREMIUM -->
+<div class="page" id="page-bundle-premium" hidden>
+  <div class="wrap page-head">
+    <a class="back" href="#bundles">&larr; Back to pricing</a>
+    <span class="eyebrow">Bundle</span>
+    <h1>Premium website + Brand Kit</h1>
+    <div class="dprice"><div class="amt">$4,400 <s class="was">$4,700</s></div><span class="save big">Save $300 vs. buying separately</span></div>
+    <div class="btns"><a class="btn" href="#contact">Get a free quote</a></div>
+  </div>
+  <div class="wrap psec">
+    <h2>What's included</h2>
+    <div class="cards c2">
+      <div class="card"><h3>Premium website</h3><p class="desc">A complete site with copywriting and extra support.</p><ul class="check"><li>Up to 8 pages</li><li>Everything in Growth</li><li>Full copywriting</li><li>Stock photo sourcing</li><li>Blog or project gallery</li><li>30 days of free edits after launch</li><li>1-hour training call</li><li>About 4 to 5 weeks</li></ul></div>
+      <div class="card"><h3>Brand Kit</h3><ul class="check"><li>Logo</li><li>Business cards</li><li>Color palette</li><li>Font pairing</li><li>A one-page brand guide</li><li>Social media profile and cover images</li></ul></div>
+    </div>
+  </div>
+  <div class="wrap psec">
+    <h2>Good to know</h2>
+    <ul class="notes">
+      <li>Timelines start once we have your content (text, photos and logo).</li>
+      <li>For projects over $2,500, it's 50% to start, 25% when you approve the design, and 25% before launch.</li>
+      <li>Your Wix account and domain are set up in your name, so you own everything.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="page" id="page-faq" hidden>
+  <div class="wrap page-head"><h1>FAQ</h1></div>
+  <div class="wrap faq">
+    <details><summary>How does payment work?</summary><p class="ans">50% deposit to start and the rest before your site goes live. For projects over $2,500, it's 50% to start, 25% when you approve the design, and 25% before launch. We accept card through a Wix invoice, Zelle, or check. Invoices are due within 7 days.</p></details>
+    <details><summary>Is the deposit refundable?</summary><p class="ans">The deposit is non-refundable once work starts. Work starts at our kickoff call or when we send your first design, whichever comes first.</p></details>
+    <details><summary>Who owns the website?</summary><p class="ans">You do. Your Wix account and domain are set up in your name and you pay for them directly. We just need collaborator access to build. Your logo files and full admin access are handed over once your final payment is made.</p></details>
+    <details><summary>What counts as a round of changes?</summary><p class="ans">One round is one list of all your feedback, sent together within 5 business days. Extra rounds are $75 per hour.</p></details>
+    <details><summary>How long does it take?</summary><p class="ans">About 2 to 5 weeks depending on the package. The clock starts once we have your text, photos and logo.</p></details>
+    <details><summary>What if I need to pause?</summary><p class="ans">No problem. If a project goes quiet for 30 days, we pause it. The next payment comes due, and restarting costs $150.</p></details>
+    <details><summary>Can I cancel a care plan?</summary><p class="ans">Yes, anytime. Your plan runs to the end of that month. Plans are billed monthly in advance.</p></details>
+    <details><summary>Do you work outside Elgin?</summary><p class="ans">Yes. We work across the Fox Valley, the Chicago suburbs and Chicago, in person or over video.</p></details>
+    <details><summary>Can you show my project in your portfolio?</summary><p class="ans">We may show finished work in our portfolio. Just tell us if you'd prefer we didn't.</p></details>
   </div>
   <div class="band"><div class="wrap">
-    <h2>Your business could be next.</h2>
-    <a class="btn" href="#contact">Get a Free Quote</a>
+    <h2>Still have a question?</h2>
+    <a class="btn" href="#contact">Get a free quote</a>
   </div></div>
 </div>
 
 <!-- CONTACT -->
 <div class="page" id="page-contact" hidden>
   <div class="wrap page-head">
-    <span class="eyebrow">Contact</span>
-    <h1>Let's build something that brings you customers.</h1>
-    <p class="lead">Tell me a little about your business. I'll follow up with a recommendation and a quote.</p>
+    <h1>Get a free quote</h1>
+    <p class="lead">Tell us a little about your business.</p>
   </div>
   <div class="wrap contact">
-    <form id="quoteForm" novalidate>
-      <label for="f-name">Name<input id="f-name" name="name" autocomplete="name" required></label>
-      <label for="f-biz">Business name<input id="f-biz" name="business" autocomplete="organization" required></label>
-      <label for="f-reach">Phone or email<input id="f-reach" name="reach" required></label>
-      <label for="f-need">What do you need?<textarea id="f-need" name="need" placeholder="A new website, a logo refresh, help with Google..."></textarea></label>
-      <button class="btn" type="submit">Get My Free Quote</button>
-      <div class="sent" id="sentMsg" hidden></div>
-    </form>
+    <div class="quote-box"><div id="quote"></div><p class="muted small">We reply within 1 business day.</p></div>
     <dl class="info">
-      <div><dt>Email</dt><dd id="emailText">andrew@callesgroup.com</dd><button class="copy" type="button" id="copyBtn">Copy email</button></div>
-      <div><dt>Service area</dt><dd>Chicagoland</dd></div>
-      <div><dt>Response time</dt><dd>I reply within 24 hours.</dd></div>
+      <div><dt>Email</dt><dd><a href="mailto:andrew@callesgroup.com">andrew@callesgroup.com</a></dd></div>
+      <div><dt>Based in</dt><dd>Elgin, IL</dd></div>
+      <div><dt>Serving</dt><dd>Elgin, the Fox Valley, the Chicago suburbs and Chicago</dd></div>
+      <div><dt>Reply time</dt><dd>Within 1 business day</dd></div>
     </dl>
   </div>
 </div>
 </main>
 
 <footer><div class="wrap">
-  <div><strong>Calles Group</strong> · Better Branding. Better Business.<br>andrew@callesgroup.com · Serving Chicagoland</div>
-  <div class="fnav"><a href="#home">Home</a><a href="#services">Services</a><a href="#work">Our Work</a><a href="#contact">Contact</a></div>
-  <div>© <span id="yr">2026</span> Calles Group</div>
+  <div class="fcol">
+    <a class="logo" href="#home"><span class="badge">CG</span>Calles Group</a>
+    <span>Based in Elgin, IL. Serving Chicagoland.</span>
+    <a href="mailto:andrew@callesgroup.com">andrew@callesgroup.com</a>
+  </div>
+  <div class="fcol links">
+    <a href="#home">Home</a><a href="#pricing">Services &amp; Pricing</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+  </div>
+  <div class="fcol copy"><span>&copy; <span id="yr">2026</span> Calles Group</span></div>
 </div></footer>
+
+<div class="mcta" id="mcta"><a class="btn" href="#contact">Get a free quote</a></div>
 
 <script>
 (function(){
-  var pages=["home","services","work","contact"];
-  var nav=document.getElementById("siteNav"), btn=document.getElementById("menuBtn");
+  var pages=["home","pricing","faq","contact","bundle-launch","bundle-growth","bundle-premium"];
+  var secs=["websites","bundles","branding","addons","care"];
+  var meta={
+    home:["Website Design & Branding in Elgin, IL | Calles Group","Websites, logos and branding for local businesses in Elgin, the Fox Valley and Chicagoland."],
+    pricing:["Pricing | Websites, Logos & Care Plans | Calles Group","Flat pricing for websites, logos, brand kits, add-ons and monthly care plans in Elgin, IL and Chicagoland."],
+    faq:["FAQ | Calles Group | Elgin, IL","Answers about payment, ownership, timelines and care plans from Calles Group in Elgin, IL."],
+    contact:["Get a Free Quote | Calles Group | Elgin, IL","Request a free quote for a website, logo or care plan from Calles Group in Elgin, IL."],
+    "bundle-launch":["Launch Website + Logo + Business Cards Bundle | Calles Group","Launch website, logo and business cards for $1,950 in Elgin, IL and Chicagoland."],
+    "bundle-growth":["Growth Website + Brand Kit Bundle | Calles Group","Growth website and Brand Kit for $3,200 in Elgin, IL and Chicagoland."],
+    "bundle-premium":["Premium Website + Brand Kit Bundle | Calles Group","Premium website and Brand Kit for $4,400 in Elgin, IL and Chicagoland."]
+  };
+  var nav=document.getElementById("siteNav"), btn=document.getElementById("menuBtn"), mcta=document.getElementById("mcta");
+  var descTag=document.querySelector('meta[name="description"]');
   function show(){
     var h=(location.hash||"").replace("#","");
-    if(pages.indexOf(h)<0) h="home";
-    pages.forEach(function(p){document.getElementById("page-"+p).hidden=(p!==h);});
+    var sec=secs.indexOf(h)>=0?h:null;
+    var page=sec?"pricing":(pages.indexOf(h)>=0?h:"home");
+    pages.forEach(function(p){document.getElementById("page-"+p).hidden=(p!==page);});
+    var navKey=(page.indexOf("bundle")===0)?"pricing":page;
     document.querySelectorAll("nav a.nl").forEach(function(a){
-      if(a.dataset.page===h) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current");
+      if(a.dataset.page===navKey) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current");
     });
     nav.classList.remove("open"); btn.setAttribute("aria-expanded","false");
-    window.scrollTo(0,0);
+    var onContact=(page==="contact");
+    mcta.hidden=onContact; document.body.classList.toggle("has-mcta",!onContact);
+    var m=meta[page]; document.title=m[0]; if(descTag) descTag.setAttribute("content",m[1]);
+    if(sec){
+      var el=document.getElementById("sec-"+sec);
+      requestAnimationFrame(function(){el.scrollIntoView({block:"start"});});
+    } else window.scrollTo(0,0);
   }
-  window.addEventListener("hashchange",show); show();
+  window.addEventListener("hashchange",show);
+  document.addEventListener("click",function(e){
+    var a=e.target.closest('a[href^="#"]'); if(!a) return;
+    if(a.getAttribute("href")===location.hash) show();
+  });
   btn.addEventListener("click",function(){
     var o=nav.classList.toggle("open"); btn.setAttribute("aria-expanded",o?"true":"false");
   });
-  // keep the menu button visible inside the open nav's parent
+  // Add-ons open on desktop, collapsed on phones
+  if(window.matchMedia("(min-width:801px)").matches){
+    document.querySelectorAll(".addons details").forEach(function(d){d.open=true;});
+  }
   document.getElementById("yr").textContent=new Date().getFullYear();
+  show();
 
-  var form=document.getElementById("quoteForm"), msg=document.getElementById("sentMsg");
-  form.addEventListener("submit",function(e){
-    e.preventDefault();
-    var missing=[]; ["f-name","f-biz","f-reach"].forEach(function(id){var el=document.getElementById(id); if(!el.value.trim()) missing.push(el.parentNode.firstChild.textContent.trim());});
-    msg.hidden=false;
-    if(missing.length){msg.textContent="Please add your "+missing.join(", ").toLowerCase()+".";return;}
-    msg.textContent="Thanks, "+document.getElementById("f-name").value.trim()+". This preview form isn't connected yet, so please also email andrew@callesgroup.com.";
-  });
-  document.getElementById("copyBtn").addEventListener("click",function(){
-    var b=this, t=document.getElementById("emailText").textContent;
-    function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById("emailText"));var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Selected";}
-    try{navigator.clipboard.writeText(t).then(function(){b.textContent="Copied";},sel);}catch(err){sel();}
-  });
 })();
+</script>
+<script type="module">
+import { renderForm } from "/js/wix/form-renderer.js";
+const box=document.querySelector("#page-contact");
+renderForm(document.querySelector("#quote"), {
+  formId: "c2ac0265-7048-492b-91ae-4718707d2a22",
+  text: { submit: "Get a free quote", sending: "Sending…" },
+  onOutcome: () => box.scrollIntoView({ block: "start" })
+});
 </script>
 </body>
 </html>
