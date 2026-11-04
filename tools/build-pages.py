@@ -8,7 +8,7 @@ DOMAIN = 'https://www.callesgroup.com'
 css = s[s.index('<style>') + 7:s.index('</style>')].strip('\n')
 header = s[s.index('<header>'):s.index('</header>') + 9]
 footer = s[s.index('<footer>'):s.index('</footer>') + 9]
-form_script = s[s.index('<script type="module">'):s.index('</script>', s.index('<script type="module">')) + 9]
+form_script = s[s.index('<script type="module">'):s.index('</script>', s.index('<script type="module">')) + 9].replace('document.querySelector("#page-contact")', 'document.querySelector("main")')
 
 def page(pid):
     start = s.index(f'<div class="page" id="page-{pid}"')
