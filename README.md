@@ -1,6 +1,6 @@
 # Calles Group Website
 
-The live site is hosted on Wix (headless site "Calles Group", site ID 26a9ed6b-069a-439d-bf8c-4c4a64176f46).
+The live site is https://www.callesgroup.com, hosted on Wix (Premium site "Calles Group", site ID 95f7b2da-02f4-4d86-b63c-1c979194352b). It moved there from the headless test site 26a9ed6b-069a-439d-bf8c-4c4a64176f46 on November 4, 2026. The site's form code lives in js/wix/ on Wix and is not stored here.
 This repo is the backup: every change to the live site is committed here first, so any commit is a restore point.
 
 ## How changes work
