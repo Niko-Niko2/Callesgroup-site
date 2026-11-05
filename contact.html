@@ -32,6 +32,7 @@
     <nav id="siteNav" aria-label="Main">
       <a class="nl" href="/" data-page="home">Home</a>
       <a class="nl" href="/pricing.html" data-page="pricing">Services &amp; Pricing</a>
+      <a class="nl" href="/custom-merchandise.html" data-page="merch">Custom Merchandise</a>
       <a class="nl" href="/faq.html" data-page="faq">FAQ</a>
       <a class="nl" href="/contact.html" data-page="contact" aria-current="page">Contact</a>
       <a class="btn sm" href="/contact.html">Get a free quote</a>
@@ -41,8 +42,8 @@
 
 <main>
   <div class="wrap page-head">
-    <h1>Get a free website quote</h1>
-    <p class="lead">Tell us a little about your business. Serving Elgin, the Fox Valley, the northwest suburbs and Chicago. <a href="/pricing.html">See pricing</a> first if you like.</p>
+    <h1 id="contactH1">Get a free website quote</h1>
+    <p class="lead" id="contactLead">Tell us a little about your business. Serving Elgin, the Fox Valley, the northwest suburbs and Chicago. <a href="/pricing.html">See pricing</a> first if you like.</p>
   </div>
   <div class="wrap contact">
     <div class="quote-box"><div id="quote"></div><p class="muted small">We reply within 1 business day. See our <a href="/privacy-policy.html">privacy policy</a>.</p></div>
@@ -62,7 +63,7 @@
     <a href="mailto:andrew@callesgroup.com">andrew@callesgroup.com</a>
   </div>
   <div class="fcol links">
-    <a href="/">Home</a><a href="/pricing.html">Services &amp; Pricing</a><a href="/faq.html">FAQ</a><a href="/contact.html">Contact</a>
+    <a href="/">Home</a><a href="/pricing.html">Services &amp; Pricing</a><a href="/custom-merchandise.html">Custom Merchandise</a><a href="/faq.html">FAQ</a><a href="/contact.html">Contact</a>
   </div>
   <div class="fcol links">
     <a href="/launch-bundle.html">Launch + Starter Kit</a><a href="/growth-bundle.html">Growth + Brand Kit</a><a href="/premium-bundle.html">Premium + Brand Kit</a>
@@ -99,6 +100,52 @@ store.subscribe(() => {
   const input = document.querySelector("#quote .form-field--phone input");
   if (input && !input.placeholder) input.placeholder = "(847) 555-1234";
 });
+// Orders from the Custom Merchandise page arrive as /contact.html?need=...&item=...
+// Pre-select the matching "What do you need?" option, and write the order into the message box
+// (always for single products, and for packs if the option isn't on the form).
+const params = new URLSearchParams(location.search);
+const NEEDS = { "contractor-pack": ["Contractor Starter Pack", "$899"], "brand-launch-kit": ["Brand Launch Kit", "$999"],
+  "grand-opening-pack": ["Grand Opening Pack", "$549"], "single": ["Single print product", ""], "unsure": ["Not sure yet", ""] };
+const ITEMS = { "business-cards": "Business Cards (from $79)", "yard-signs": "Yard Signs (from $149)", "banners": "Banners (from $99)",
+  "door-hangers-flyers": "Door Hangers & Flyers (from $149)", "car-magnets": "Car Magnets (from $109)", "stickers-labels": "Stickers & Labels (from $99)" };
+const need = NEEDS[params.get("need")];
+if (need) {
+  document.getElementById("contactH1").textContent = params.get("quote") ? "Get a free quote" : "Start your order";
+  document.getElementById("contactLead").innerHTML = 'Tell us what you need and send your logo or artwork if you have it. We send a proof before anything prints. <a href="/custom-merchandise.html">Back to Custom Merchandise</a>';
+  const item = ITEMS[params.get("item")];
+  const orderLine = item ? "I'd like to order: " + item + "." : (need[1] ? "I'd like to order: " + need[0] + " (" + need[1] + ")." : "");
+  let done = false;
+  const apply = () => {
+    if (done) return;
+    const fields = store.getState().form?.fields;
+    if (!fields || !document.querySelector("#quote .form-field")) return;
+    done = true;
+    let selected = false;
+    document.querySelectorAll("#quote .form-field").forEach((f) => {
+      const lab = f.querySelector(".form-label");
+      if (!lab || !/what do you need/i.test(lab.textContent)) return;
+      f.querySelectorAll("label").forEach((l) => {
+        if (selected || l.textContent.trim() !== need[0]) return;
+        const inp = l.querySelector("input") || document.getElementById(l.htmlFor);
+        if (inp && !inp.checked) { inp.click(); selected = true; }
+      });
+      const sel = f.querySelector("select");
+      if (!selected && sel) {
+        const opt = [...sel.options].find((o) => o.textContent.trim() === need[0]);
+        if (opt) { sel.value = opt.value; sel.dispatchEvent(new Event("change", { bubbles: true })); selected = true; }
+      }
+    });
+    const msg = item || !selected ? orderLine : "";
+    const ta = document.querySelector("#quote textarea");
+    if (msg && ta && !ta.value) {
+      ta.value = msg;
+      ta.dispatchEvent(new Event("input", { bubbles: true }));
+      ta.dispatchEvent(new Event("change", { bubbles: true }));
+    }
+  };
+  store.subscribe(apply);
+  apply();
+}
 </script>
 </body>
 </html>

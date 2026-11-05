@@ -16,4 +16,17 @@
     document.querySelectorAll(".addons details").forEach(function (d) { d.open = true; });
   }
   var yr = document.getElementById("yr"); if (yr) yr.textContent = new Date().getFullYear();
+
+  // Sticky phone button steps aside while the page's own hero or final buttons or the footer are on screen,
+  // so it never sits on top of them.
+  var mcta = document.getElementById("mcta");
+  var ends = document.querySelectorAll("#heroBtns, #final, footer");
+  if (mcta && ends.length && "IntersectionObserver" in window) {
+    var seen = new Set();
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { e.isIntersecting ? seen.add(e.target) : seen.delete(e.target); });
+      mcta.classList.toggle("mcta-off", seen.size > 0);
+    });
+    ends.forEach(function (el) { io.observe(el); });
+  }
 })();

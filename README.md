@@ -13,6 +13,7 @@ This repo is the backup: every change to the live site is committed here first, 
 | --- | --- |
 | `index.html` | Home |
 | `pricing.html` | Services & Pricing (sections: #websites, #bundles, #branding, #addons, #care) |
+| `custom-merchandise.html` | Custom Merchandise: starter packs and print products (sections: #packs, #how, #products, #faq). Testimonials section is hidden until real quotes are added. |
 | `faq.html` | FAQ |
 | `contact.html` | Get a free quote (Wix Form "Quote request", ID c2ac0265-7048-492b-91ae-4718707d2a22) |
 | `launch-bundle.html`, `growth-bundle.html`, `premium-bundle.html` | Bundle detail pages |
@@ -34,4 +35,5 @@ Shared files: `styles.css`, `site.js` (menu, add-on accordions, old `/#page` lin
 
 ## Still to do
 - Add a phone number (tap-to-call) once there's a business line.
+- Quote form: add "What do you need?" options (Contractor Starter Pack, Brand Launch Kit, Grand Opening Pack, Single print product, Not sure yet), an "I have my logo/artwork" yes/no question and a file upload. contact.html already pre-selects these from Custom Merchandise links (?need=...&item=...).
 - Move callesgroup.com and the Premium plan to this site, then submit the sitemap in Google Search Console.
