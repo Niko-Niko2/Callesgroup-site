@@ -35,5 +35,5 @@ Shared files: `styles.css`, `site.js` (menu, add-on accordions, old `/#page` lin
 
 ## Still to do
 - Add a phone number (tap-to-call) once there's a business line.
-- Quote form: add a file upload for logo/artwork. Wix refused it on the current plan ("File upload field is not enabled for the given site"); it needs a Core plan or higher. The merchandise options and the "I have my logo/artwork" question are live.
+- Quote form (Wix form 8b564ebe…): 3 steps. 1) What do you need? (required), budget. 2) Business type, current website, logo. 3) Name, business name, email, phone, message. The plan caps forms at 10 fields, so start date, "how did you hear about us" and best way to reach were left out; a Core plan or higher would allow more fields and a file upload.
 - Move callesgroup.com and the Premium plan to this site, then submit the sitemap in Google Search Console.
