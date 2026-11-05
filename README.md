@@ -15,7 +15,7 @@ This repo is the backup: every change to the live site is committed here first, 
 | `pricing.html` | Services & Pricing (sections: #websites, #bundles, #branding, #addons, #care) |
 | `custom-merchandise.html` | Custom Merchandise: starter packs and print products (sections: #packs, #how, #products, #faq). Testimonials section is hidden until real quotes are added. |
 | `faq.html` | FAQ |
-| `contact.html` | Get a free quote (Wix Form "Quote request", ID c2ac0265-7048-492b-91ae-4718707d2a22) |
+| `contact.html` | Get a free quote (Wix Form "Quote request", ID 8b564ebe-a6cc-4e87-8255-c3ebdfde4c20) |
 | `launch-bundle.html`, `growth-bundle.html`, `premium-bundle.html` | Bundle detail pages |
 
 Shared files: `styles.css`, `site.js` (menu, add-on accordions, old `/#page` link redirects), `favicon.svg`, `og-image.png` (link preview image), `robots.txt`, `sitemap.xml`.
@@ -35,5 +35,5 @@ Shared files: `styles.css`, `site.js` (menu, add-on accordions, old `/#page` lin
 
 ## Still to do
 - Add a phone number (tap-to-call) once there's a business line.
-- Quote form: add "What do you need?" options (Contractor Starter Pack, Brand Launch Kit, Grand Opening Pack, Single print product, Not sure yet), an "I have my logo/artwork" yes/no question and a file upload. contact.html already pre-selects these from Custom Merchandise links (?need=...&item=...).
+- Quote form: add a file upload for logo/artwork. Wix refused it on the current plan ("File upload field is not enabled for the given site"); it needs a Core plan or higher. The merchandise options and the "I have my logo/artwork" question are live.
 - Move callesgroup.com and the Premium plan to this site, then submit the sitemap in Google Search Console.
