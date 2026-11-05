@@ -348,3 +348,5 @@ nav.crumbs{font-size:.88rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:6
 }
 .mcta{transition:transform .2s}
 .mcta.mcta-off{transform:translateY(110%)}
+/* Custom Merchandise: keep all body text at 16px or larger on every screen */
+body.merch main :is(.trust,.check,.pack .for,.desc,.note,.sep,.saved,.muted,.ans,.honest,.nudge){font-size:1rem}

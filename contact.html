@@ -136,12 +136,10 @@ if (need) {
       }
     });
     const msg = item || !selected ? orderLine : "";
-    const ta = document.querySelector("#quote textarea");
-    if (msg && ta && !ta.value) {
-      ta.value = msg;
-      ta.dispatchEvent(new Event("input", { bubbles: true }));
-      ta.dispatchEvent(new Event("change", { bubbles: true }));
-    }
+    // Write through the form's own store so the text is part of the submission, not just shown on screen.
+    const msgField = fields.find((f) => /^message/i.test(f.target)) || fields.find((f) => /textarea|paragraph/i.test(f.control || ""));
+    const current = msgField && store.getState().values?.[msgField.target];
+    if (msg && msgField && !current) store.setValue(msgField.target, msg);
   };
   store.subscribe(apply);
   apply();
