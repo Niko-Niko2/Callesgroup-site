@@ -13,6 +13,7 @@ This repo is the backup: every change to the live site is committed here first, 
 | --- | --- |
 | `index.html` | Home |
 | `pricing.html` | Services & Pricing (sections: #websites, #bundles, #branding, #addons, #care) |
+| `custom-merchandise.html` | Custom Merchandise (printing: products, starter packs, quote form #quote-form) |
 | `faq.html` | FAQ |
 | `contact.html` | Get a free quote (Wix Form "Quote request", ID c2ac0265-7048-492b-91ae-4718707d2a22) |
 | `launch-bundle.html`, `growth-bundle.html`, `premium-bundle.html` | Bundle detail pages |
