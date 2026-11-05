@@ -33,7 +33,8 @@ Shared files: `styles.css`, `site.js` (menu, add-on accordions, old `/#page` lin
 - `tools/build-pages.py`: how these pages were generated from the earlier one-page site (kept for reference).
 - `tools/og-image.html`: source for `og-image.png` (1200x630).
 
+Phone: 312-600-0590 (Google Voice), tap-to-call in every footer, on the contact page, in the privacy policy and in the homepage structured data.
+
 ## Still to do
-- Add a phone number (tap-to-call) once there's a business line.
 - Quote form (Wix form 8b564ebe…): 3 steps. 1) What do you need? (required), budget. 2) Business type, current website, logo. 3) Name, business name, email, phone, message. The plan caps forms at 10 fields, so start date, "how did you hear about us" and best way to reach were left out; a Core plan or higher would allow more fields and a file upload.
 - Move callesgroup.com and the Premium plan to this site, then submit the sitemap in Google Search Console.
