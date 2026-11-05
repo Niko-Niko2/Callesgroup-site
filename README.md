@@ -12,8 +12,8 @@ This repo is the backup: every change to the live site is committed here first, 
 | File | Page |
 | --- | --- |
 | `index.html` | Home |
-| `pricing.html` | Services & Pricing (sections: #websites, #bundles, #branding, #addons, #care) |
-| `custom-merchandise.html` | Custom Merchandise: starter packs and print products (sections: #packs, #how, #products, #faq). Testimonials section is hidden until real quotes are added. |
+| `pricing.html` | Packages (menu label; was Services & Pricing) (sections: #websites, #bundles, #branding, #addons, #care) |
+| `custom-merchandise.html` | Print & Signs (menu label; was Custom Merchandise): starter packs and print products (sections: #packs, #how, #products, #faq). Testimonials section is hidden until real quotes are added. |
 | `faq.html` | FAQ |
 | `contact.html` | Get a free quote (Wix Form "Quote request", ID 8b564ebe-a6cc-4e87-8255-c3ebdfde4c20) |
 | `launch-bundle.html`, `growth-bundle.html`, `premium-bundle.html` | Bundle detail pages |

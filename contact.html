@@ -31,8 +31,8 @@
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="siteNav">Menu</button>
     <nav id="siteNav" aria-label="Main">
       <a class="nl" href="/" data-page="home">Home</a>
-      <a class="nl" href="/pricing.html" data-page="pricing">Services &amp; Pricing</a>
-      <a class="nl" href="/custom-merchandise.html" data-page="merch">Custom Merchandise</a>
+      <a class="nl" href="/pricing.html" data-page="pricing">Packages</a>
+      <a class="nl" href="/custom-merchandise.html" data-page="merch">Print &amp; Signs</a>
       <a class="nl" href="/faq.html" data-page="faq">FAQ</a>
       <a class="nl" href="/contact.html" data-page="contact" aria-current="page">Contact</a>
       <a class="btn sm" href="/contact.html">Get a free quote</a>
@@ -63,7 +63,7 @@
     <a href="mailto:andrew@callesgroup.com">andrew@callesgroup.com</a>
   </div>
   <div class="fcol links">
-    <a href="/">Home</a><a href="/pricing.html">Services &amp; Pricing</a><a href="/custom-merchandise.html">Custom Merchandise</a><a href="/faq.html">FAQ</a><a href="/contact.html">Contact</a>
+    <a href="/">Home</a><a href="/pricing.html">Packages</a><a href="/custom-merchandise.html">Print &amp; Signs</a><a href="/faq.html">FAQ</a><a href="/contact.html">Contact</a>
   </div>
   <div class="fcol links">
     <a href="/launch-bundle.html">Launch + Starter Kit</a><a href="/growth-bundle.html">Growth + Brand Kit</a><a href="/premium-bundle.html">Premium + Brand Kit</a>
@@ -111,7 +111,7 @@ const ITEMS = { "business-cards": "Business Cards (from $79)", "yard-signs": "Ya
 const need = NEEDS[params.get("need")];
 if (need) {
   document.getElementById("contactH1").textContent = params.get("quote") ? "Get a free quote" : "Start your order";
-  document.getElementById("contactLead").innerHTML = 'Tell us what you need and send your logo or artwork if you have it. We send a proof before anything prints. <a href="/custom-merchandise.html">Back to Custom Merchandise</a>';
+  document.getElementById("contactLead").innerHTML = 'Tell us what you need and send your logo or artwork if you have it. We send a proof before anything prints. <a href="/custom-merchandise.html">Back to Print &amp; Signs</a>';
   const item = ITEMS[params.get("item")];
   const orderLine = item ? "I'd like to order: " + item + "." : (need[1] ? "I'd like to order: " + need[0] + " (" + need[1] + ")." : "");
   let done = false;
