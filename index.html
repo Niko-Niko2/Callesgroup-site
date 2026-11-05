@@ -24,8 +24,152 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="/styles.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://www.callesgroup.com/#business","name":"Calles Group","url":"https://www.callesgroup.com/","email":"andrew@callesgroup.com","image":"https://static.wixstatic.com/media/03855a_96c7c31bf029475a934ad5139d4f888e~mv2.png","logo":"https://www.callesgroup.com/favicon.svg","description":"Web design, logos and branding for local businesses in Elgin, IL, the Fox Valley and Chicagoland.","founder":{"@type":"Person","name":"Andrew Calles"},"address":{"@type":"PostalAddress","addressLocality":"Elgin","addressRegion":"IL","addressCountry":"US"},"areaServed":[{"@type":"City","name":"Elgin, IL"},{"@type":"City","name":"South Elgin, IL"},{"@type":"City","name":"Bartlett, IL"},{"@type":"City","name":"Schaumburg, IL"},{"@type":"City","name":"Hoffman Estates, IL"},{"@type":"City","name":"Barrington, IL"},{"@type":"City","name":"South Barrington, IL"},{"@type":"City","name":"Inverness, IL"},{"@type":"City","name":"St. Charles, IL"},{"@type":"City","name":"Geneva, IL"},{"@type":"City","name":"Algonquin, IL"},{"@type":"City","name":"Crystal Lake, IL"},{"@type":"City","name":"Naperville, IL"},{"@type":"City","name":"Chicago, IL"}],"priceRange":"$$","makesOffer":[{"@type":"Offer","name":"Launch website","price":"1500","priceCurrency":"USD","url":"https://www.callesgroup.com/pricing.html#websites"},{"@type":"Offer","name":"Growth website","price":"2500","priceCurrency":"USD","url":"https://www.callesgroup.com/pricing.html#websites"},{"@type":"Offer","name":"Premium website","price":"3800","priceCurrency":"USD","url":"https://www.callesgroup.com/pricing.html#websites"},{"@type":"Offer","name":"Logo design","price":"500","priceCurrency":"USD","url":"https://www.callesgroup.com/pricing.html#branding"}]}</script>
+<script>document.documentElement.classList.add("js")</script>
+<style>
+/* Home: a welcome, then the proof (before/after), then a guided path to the right package.
+   Builds on the shared pr- styles in styles.css; home-only pieces start with hm-. */
+.hm-hero{grid-template-columns:1fr minmax(0,520px)}
+.hm-sec{display:flex;flex-direction:column;gap:28px;padding-block:72px;scroll-margin-top:calc(var(--hdr) + 16px)}
+.hm-sec.tight{padding-top:24px}
+
+/* Before / after showpiece */
+.hm-ba{position:relative;width:100%;aspect-ratio:4/3;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 60px -36px rgba(0,0,0,.9);user-select:none;touch-action:pan-y;background:var(--surface)}
+.hm-pane{position:absolute;inset:0;display:flex;flex-direction:column}
+.hm-after{clip-path:inset(0 0 0 var(--cut,50%));transition:clip-path .05s linear}
+.hm-ba.anim .hm-after{transition:clip-path 1.6s var(--ease)}
+.hm-chrome{display:flex;align-items:center;gap:6px;height:30px;padding-inline:12px;flex:none}
+.hm-chrome i{width:8px;height:8px;border-radius:50%;background:#3A3733}
+.hm-chrome span{margin-left:8px;height:12px;flex:1;max-width:46%;border-radius:6px}
+/* Before: a dated, cluttered site */
+.hm-before{background:#E9E6DF;font-family:"Times New Roman",Times,serif;color:#1a1a7a}
+.hm-before .hm-chrome{background:#cfcbc2}.hm-before .hm-chrome span{background:#f4f2ec}
+.hm-old-top{background:#2348b8;color:#ffef5a;text-align:left;padding:10px 6px;font-size:clamp(.9rem,2.4vw,1.25rem);font-weight:700;font-style:italic;text-decoration:underline}
+.hm-old-body{display:grid;grid-template-columns:1fr 28%;gap:8px;padding:10px;flex:1}
+.hm-old-side{display:flex;flex-direction:column;gap:6px}
+.hm-old-side u{display:block;height:12px;background:#9fb3ff;border:1px solid #2348b8}
+.hm-old-main{display:flex;flex-direction:column;gap:6px;align-items:flex-start;min-width:0}
+.hm-old-main b{font-size:clamp(.7rem,1.9vw,.95rem);color:#b81d1d}
+.hm-old-img{width:60%;aspect-ratio:3/2;background:repeating-linear-gradient(45deg,#c8c2b6 0 6px,#d9d4c9 6px 12px);border:2px ridge #999}
+.hm-old-main s{display:block;height:6px;width:92%;background:#8a8a8a;text-decoration:none}
+.hm-old-main s.short{width:60%}
+.hm-old-link{font-size:clamp(.65rem,1.7vw,.85rem);color:#0000ee;text-decoration:underline}
+/* After: clean, modern, phone-ready */
+.hm-after{background:#151515}
+.hm-after .hm-chrome{background:#1E1E1E}.hm-after .hm-chrome span{background:#2A2825}
+.hm-new{display:flex;flex-direction:column;gap:12px;padding:16px;flex:1}
+.hm-new-nav{display:flex;justify-content:space-between;align-items:center}
+.hm-new-nav i{width:54px;height:10px;border-radius:4px;background:#EDEAE6}
+.hm-new-nav em{display:flex;gap:8px}.hm-new-nav em s{width:26px;height:6px;border-radius:3px;background:#5E5A54}
+.hm-new-hero{display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:10px;background:linear-gradient(135deg,#25221C,#1E1E1E)}
+.hm-new-hero b{display:block;width:72%;height:16px;border-radius:5px;background:#EDEAE6}
+.hm-new-hero s{display:block;width:52%;height:8px;border-radius:4px;background:#5E5A54}
+.hm-new-hero u{display:block;width:30%;height:22px;border-radius:7px;background:var(--accent);margin-top:4px}
+.hm-new-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;flex:1}
+.hm-new-cards div{border-radius:8px;background:#1E1E1E;border:1px solid #2E2C29;display:flex;flex-direction:column;justify-content:flex-end;gap:5px;padding:8px}
+.hm-new-cards div::before{content:"";flex:1;border-radius:5px;background:#2B2925}
+.hm-new-cards s{display:block;height:5px;border-radius:3px;background:#5E5A54;width:80%}
+.hm-tag{position:absolute;bottom:12px;padding:4px 12px;border-radius:20px;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-family:var(--font);pointer-events:none}
+.hm-tag.b{left:12px;background:rgba(21,21,21,.75);color:#EDEAE6}
+.hm-tag.a{right:12px;background:var(--accent);color:var(--on-accent)}
+.hm-handle{position:absolute;top:0;bottom:0;left:var(--cut,50%);width:2px;margin-left:-1px;background:var(--accent);pointer-events:none}
+.hm-handle::after{content:"";position:absolute;top:50%;left:50%;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 6l-5 6 5 6M15 6l5 6-5 6' fill='none' stroke='%23151515' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/22px no-repeat;box-shadow:0 6px 18px rgba(0,0,0,.5)}
+.hm-ba.anim .hm-handle{transition:left 1.6s var(--ease)}
+.hm-range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
+.hm-cap{color:var(--muted);font-size:.9rem;text-align:center}
+
+/* Welcome note from the founder */
+.hm-hello{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;padding:28px;border-radius:20px;background:var(--surface);border:1px solid var(--line)}
+.hm-mono{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;background:var(--band);border:1.5px solid var(--accent);color:var(--accent);font-weight:800;font-size:1.6rem}
+.hm-hello .stack{gap:8px;min-width:0}
+.hm-hello p{color:var(--muted);max-width:62ch}
+.hm-hello b{color:var(--ink)}
+
+/* Services */
+.hm-svcs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.hm-svc{display:flex;flex-direction:column;gap:10px;padding:20px;border-radius:16px;background:var(--surface);border:1px solid var(--line);color:var(--ink);text-decoration:none;transition:transform .35s var(--ease),border-color .35s,box-shadow .35s}
+.hm-svc:hover{transform:translateY(-5px);border-color:var(--moss);box-shadow:0 22px 40px -28px rgba(0,0,0,.9)}
+.hm-svc svg{width:100%;height:auto;border-radius:10px;background:var(--band)}
+.hm-svc .from{color:var(--muted);font-size:.95rem}
+.hm-svc .from b{color:var(--ink);font-size:1.25rem;font-weight:800}
+.hm-svc p{color:var(--muted);font-size:.95rem}
+.hm-svc .go{margin-top:auto;color:var(--accent);font-weight:600;display:inline-flex;align-items:center;gap:6px;min-height:32px}
+.hm-svc .go::after{content:"\2192";transition:transform .3s var(--ease)}
+.hm-svc:hover .go::after{transform:translateX(4px)}
+.hm-svc .sv{transition:transform .5s var(--ease)}
+.hm-svc:hover .sv1{transform:translateY(-4px)}
+.hm-svc:hover .sv2{transform:translateY(4px)}
+
+/* Package finder */
+.hm-find{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:28px;align-items:center;padding:28px;border-radius:20px;background:radial-gradient(ellipse at 0% 0%,rgba(201,169,98,.13),transparent 60%),var(--surface);border:1px solid var(--line)}
+.hm-choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hm-choice{min-height:56px;padding:10px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;font-weight:600;text-align:left;cursor:pointer;transition:border-color .25s,background .25s,transform .25s var(--ease)}
+.hm-choice:hover{border-color:var(--moss)}
+.hm-choice[aria-pressed="true"]{border-color:var(--accent);background:rgba(201,169,98,.12)}
+.hm-pick{display:flex;flex-direction:column;gap:10px;padding:22px;border-radius:16px;background:var(--bg);border:1px solid var(--line);min-height:228px}
+.hm-pick .eyebrow{font-size:.7rem}
+.hm-pick h3{font-size:1.3rem}
+.hm-pick p{color:var(--muted)}
+.hm-pick .btns{margin-top:auto}
+.hm-pick.swap>*{animation:prUp .45s var(--ease) both}
+.hm-pick.swap>*:nth-child(2){animation-delay:.04s}.hm-pick.swap>*:nth-child(3){animation-delay:.08s}.hm-pick.swap>*:nth-child(4){animation-delay:.12s}.hm-pick.swap>*:nth-child(5){animation-delay:.16s}
+
+/* Steps */
+.hm-stepwrap{position:relative}
+.hm-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;list-style:none;margin:0;padding:0}
+.hm-steps li{display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center;padding:6px}
+.hm-steps .n{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--surface);border:1.5px solid var(--accent);color:var(--accent);font-weight:800;font-size:1.2rem;position:relative;z-index:1}
+.hm-steps p{color:var(--muted);font-size:.95rem;max-width:24ch}
+.hm-line{position:absolute;top:32px;left:12.5%;right:12.5%;height:2px;background:var(--line);overflow:hidden}
+.hm-line::after{content:"";position:absolute;inset:0;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 1.6s var(--ease)}
+#hmSteps.go .hm-line::after{transform:scaleX(1)}
+
+/* Promises */
+.hm-why{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.hm-why div{display:flex;flex-direction:column;gap:6px;padding:20px;border-radius:16px;background:var(--surface);border:1px solid var(--line)}
+.hm-why svg{width:28px;height:28px;stroke:var(--accent);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.hm-why p{color:var(--muted);font-size:.95rem}
+
+/* FAQ + area */
+.hm-faq{max-width:760px;margin-inline:auto;width:100%;display:flex;flex-direction:column;gap:10px}
+.hm-faq details{background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.hm-faq summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:56px;padding:10px 18px;cursor:pointer;font-weight:600}
+.hm-faq summary::-webkit-details-marker{display:none}
+.hm-faq summary svg{width:14px;height:14px;flex:none;transition:transform .35s var(--ease)}
+.hm-faq details[open] summary svg{transform:rotate(180deg)}
+.hm-faq .ans{padding:0 18px 16px;color:var(--muted)}
+.hm-area{display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center}
+.hm-area ul{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:820px}
+.hm-area li{padding:6px 14px;border-radius:20px;border:1px solid var(--line);color:var(--muted);font-size:.92rem}
+
+/* Scroll reveal: only things below the first screen, and only when JS runs */
+.js .rv{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+
+@media (max-width:960px){
+  .hm-hero{grid-template-columns:1fr}
+  .hm-svcs{grid-template-columns:1fr 1fr}
+  .hm-why{grid-template-columns:1fr 1fr}
+  .hm-find{grid-template-columns:1fr}
+  .hm-steps{grid-template-columns:1fr 1fr;row-gap:28px}
+  .hm-line{display:none}
+}
+@media (max-width:700px){
+  .hm-sec{padding-block:52px}
+  .hm-svcs,.hm-why{grid-template-columns:1fr}
+  .hm-hello{grid-template-columns:1fr;text-align:center;justify-items:center;padding:24px 20px}
+  .hm-choices{grid-template-columns:1fr}
+  .hm-find{padding:20px}
+  .hm-steps{grid-template-columns:1fr;row-gap:14px}
+  .hm-steps li{flex-direction:row;text-align:left;gap:16px}
+  .hm-steps .n{flex:none}
+}
+@media (prefers-reduced-motion: reduce){
+  .js .rv{opacity:1;transform:none;transition:none}
+  .hm-ba.anim .hm-after,.hm-ba.anim .hm-handle,.hm-line::after{transition:none}
+}
+</style>
 </head>
-<body class="has-mcta">
+<body class="has-mcta pr">
 <header>
   <div class="wrap bar">
     <a class="logo" href="/" aria-label="Calles Group home"><span class="wm"><span class="wm-top">CALLES<span class="wm-dot"></span></span><span class="wm-sub"><span>GROUP</span></span></span></a>
@@ -42,86 +186,163 @@
 </header>
 
 <main>
-  <div class="wrap hero">
+  <!-- Hero: the welcome and the proof, side by side -->
+  <div class="wrap pr-hero hm-hero">
     <div class="stack">
-      <h1><span class="h1-eyebrow">Website design &amp; branding in Elgin, IL</span> Look polished. Get found. Win more customers.</h1>
-      <p class="lead">Websites, logos and branding for local businesses in Elgin, the Fox Valley and Chicagoland.</p>
-      <div class="btns">
+      <span class="eyebrow pr-up">Website design &amp; branding &middot; Elgin, IL</span>
+      <h1 class="pr-up" style="animation-delay:.08s">Look polished. Get found. <em>Win more customers.</em></h1>
+      <p class="lead pr-up" style="animation-delay:.16s">Websites, logos and branding for local businesses across Chicagoland. Built for phones, priced up front.</p>
+      <div class="btns pr-up" style="animation-delay:.24s" id="heroBtns">
         <a class="btn" href="/contact.html">Get a free quote</a>
-        <a class="btn ghost" href="/pricing.html">See pricing</a>
+        <a class="btn ghost" href="#offer">See what we offer</a>
       </div>
+      <ul class="pr-chips pr-up" style="animation-delay:.32s"><li>Free quote call</li><li>Flat prices</li><li>You own everything</li></ul>
     </div>
-    <div class="mock" role="img" aria-label="Example of a clean, mobile-friendly local business website">
-      <div class="chrome"><i></i><i></i><i></i><span>yourbusiness.com</span></div>
-      <div class="body">
-        <div class="mk-nav"><b>Your Business</b><em><s></s><s></s><s></s></em></div>
-        <div class="mk-hero"><strong>Quality work. Fair prices. Call today.</strong><div class="mk-line" style="width:70%"></div><div class="mk-btn"></div></div>
-        <div class="mk-cards"><div><u></u><div class="mk-line"></div></div><div><u></u><div class="mk-line"></div></div><div><u></u><div class="mk-line"></div></div></div>
+    <div class="stack pr-up" style="animation-delay:.2s;gap:10px">
+      <div class="hm-ba" id="ba" style="--cut:50%">
+        <div class="hm-pane hm-before" aria-hidden="true">
+          <div class="hm-chrome"><i></i><i></i><i></i><span></span></div>
+          <div class="hm-old-top">Welcome to Our Website!!!</div>
+          <div class="hm-old-body">
+            <div class="hm-old-main"><b>*** BEST PRICES IN TOWN ***</b><div class="hm-old-img"></div><s></s><s></s><s class="short"></s><span class="hm-old-link">Click here to contact us</span></div>
+            <div class="hm-old-side"><u></u><u></u><u></u><u></u><u></u></div>
+          </div>
+        </div>
+        <div class="hm-pane hm-after" aria-hidden="true">
+          <div class="hm-chrome"><i></i><i></i><i></i><span></span></div>
+          <div class="hm-new">
+            <div class="hm-new-nav"><i></i><em><s></s><s></s><s></s></em></div>
+            <div class="hm-new-hero"><b></b><s></s><u></u></div>
+            <div class="hm-new-cards"><div><s></s></div><div><s></s></div><div><s></s></div></div>
+          </div>
+        </div>
+        <span class="hm-tag b">Before</span><span class="hm-tag a">After</span>
+        <span class="hm-handle"></span>
+        <input class="hm-range" id="baRange" type="range" min="0" max="100" value="50" aria-label="Drag to compare an outdated website with a modern one">
       </div>
+      <p class="hm-cap">Drag to compare. Illustration, not a client site.</p>
     </div>
   </div>
 
-  <section class="blk"><div class="wrap stack" style="gap:28px">
-    <h2>Websites, branding and care plans</h2>
-    <div class="grid3">
-      <a class="svc" href="/pricing.html#websites">
-        <svg viewBox="0 0 28 28" aria-hidden="true" focusable="false"><rect x="3" y="5" width="22" height="16" rx="2"/><path d="M3 9h22M10 25h8M14 21v4"/></svg>
-        <h3>Websites</h3><p class="muted">Clean, mobile-friendly Wix sites, from $1,500.</p><span class="go">See website design pricing &rarr;</span>
+  <!-- Welcome from the founder -->
+  <section class="wrap hm-sec tight" aria-labelledby="hello-h">
+    <div class="hm-hello rv">
+      <span class="hm-mono" aria-hidden="true">AC</span>
+      <div class="stack">
+        <h2 id="hello-h" style="font-size:1.5rem">Hi, I'm Andrew. Welcome to Calles Group.</h2>
+        <p>I design websites and brands for local businesses, right here in Elgin. You work with me directly, from the first call to launch day. <b>Clear prices, honest advice, and a site you'll be proud to send people to.</b></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What we offer -->
+  <section class="wrap hm-sec" id="offer" aria-labelledby="offer-h" style="padding-top:24px">
+    <div class="pr-head rv"><span class="eyebrow">What we offer</span><h2 id="offer-h">Everything your business needs to look the part.</h2></div>
+    <div class="hm-svcs">
+      <a class="hm-svc rv" href="/pricing.html#websites">
+        <svg viewBox="0 0 240 120" aria-hidden="true"><rect class="sv sv1" x="30" y="18" width="150" height="90" rx="8" fill="#1E1E1E" stroke="#363431"/><rect class="sv sv1" x="44" y="34" width="80" height="10" rx="3" fill="#EDEAE6"/><rect class="sv sv1" x="44" y="52" width="56" height="6" rx="3" fill="#5E5A54"/><rect class="sv sv1" x="44" y="66" width="36" height="14" rx="4" fill="#C9A962"/><rect class="sv sv2" x="160" y="40" width="48" height="74" rx="8" fill="#151515" stroke="#5E5A54"/><rect class="sv sv2" x="168" y="54" width="32" height="6" rx="3" fill="#EDEAE6"/><rect class="sv sv2" x="168" y="66" width="22" height="9" rx="3" fill="#C9A962"/></svg>
+        <h3>Websites</h3>
+        <div class="from">From <b>$1,500</b></div>
+        <p>Clean, mobile-friendly sites that bring in calls.</p>
+        <span class="go">View website packages</span>
       </a>
-      <a class="svc" href="/pricing.html#branding">
-        <svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="10"/><path d="M14 4v20M4 14h20"/><circle cx="14" cy="14" r="4"/></svg>
-        <h3>Branding</h3><p class="muted">Logos, business cards and brand kits, from $500.</p><span class="go">See logo and branding pricing &rarr;</span>
+      <a class="hm-svc rv" href="/pricing.html#branding" style="transition-delay:.06s">
+        <svg viewBox="0 0 240 120" aria-hidden="true"><rect class="sv sv1" x="40" y="30" width="60" height="60" rx="12" fill="#C9A962"/><circle class="sv sv2" cx="130" cy="44" r="12" fill="#A88B4A"/><circle class="sv sv1" cx="160" cy="44" r="12" fill="#EDEAE6"/><circle class="sv sv2" cx="190" cy="44" r="12" fill="#363431"/><rect class="sv sv2" x="118" y="70" width="86" height="10" rx="3" fill="#363431"/><rect class="sv sv1" x="118" y="86" width="56" height="6" rx="3" fill="#5E5A54"/></svg>
+        <h3>Branding</h3>
+        <div class="from">From <b>$500</b></div>
+        <p>Logos, business cards and full brand kits.</p>
+        <span class="go">View branding packages</span>
       </a>
-      <a class="svc" href="/pricing.html#care">
-        <svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 24s-9-5.5-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.5-9 12-9 12z"/></svg>
-        <h3>Care plans</h3><p class="muted">We keep your site fresh and working, from $99/mo.</p><span class="go">See website care plans &rarr;</span>
+      <a class="hm-svc rv" href="/custom-merchandise.html" style="transition-delay:.12s">
+        <svg viewBox="0 0 240 120" aria-hidden="true"><rect class="sv sv1" x="34" y="24" width="80" height="54" rx="4" fill="#EDEAE6"/><rect class="sv sv1" x="44" y="34" width="10" height="10" fill="#C9A962"/><rect class="sv sv1" x="44" y="52" width="54" height="7" rx="2" fill="#363431"/><rect class="sv sv1" x="50" y="78" width="3" height="28" fill="#8E8A83"/><rect class="sv sv1" x="96" y="78" width="3" height="28" fill="#8E8A83"/><rect class="sv sv2" x="132" y="50" width="78" height="44" rx="4" fill="#1A1A1A" stroke="#3A3733"/><rect class="sv sv2" x="144" y="60" width="9" height="9" fill="#C9A962"/><rect class="sv sv2" x="144" y="76" width="44" height="5" rx="2" fill="#5E5A54"/></svg>
+        <h3>Cards, signs &amp; magnets</h3>
+        <div class="from">From <b>$79</b></div>
+        <p>Designed, proofed and shipped to your door.</p>
+        <span class="go">View print products</span>
+      </a>
+      <a class="hm-svc rv" href="/pricing.html#care" style="transition-delay:.18s">
+        <svg viewBox="0 0 240 120" aria-hidden="true"><rect class="sv sv1" x="40" y="24" width="160" height="76" rx="8" fill="#1E1E1E" stroke="#363431"/><polyline class="sv sv2" points="56,80 86,66 112,72 140,50 170,56 184,38" fill="none" stroke="#C9A962" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle class="sv sv2" cx="184" cy="38" r="5" fill="#C9A962"/><rect class="sv sv1" x="56" y="34" width="44" height="6" rx="3" fill="#5E5A54"/></svg>
+        <h3>Care plans</h3>
+        <div class="from">From <b>$99</b>/mo</div>
+        <p>We keep your site fresh and working.</p>
+        <span class="go">View care plans</span>
       </a>
     </div>
-  </div></section>
+  </section>
 
-  <section class="blk"><div class="wrap stack" style="gap:28px">
-    <h2>Why local businesses choose Calles Group</h2>
-    <div class="grid4">
-      <div class="why"><b>You own everything.</b><p class="muted">Your site and domain are in your name.</p></div>
-      <div class="why"><b>Clear, flat prices.</b><p class="muted">No surprises.</p></div>
-      <div class="why"><b>Built for phones first.</b><p class="muted">Because that's where your customers are.</p></div>
-      <div class="why"><b>Local.</b><p class="muted">Based in Elgin, working across Chicagoland.</p></div>
+  <!-- Package finder -->
+  <section class="wrap hm-sec" aria-labelledby="find-h" style="padding-top:0">
+    <div class="hm-find rv">
+      <div class="stack" style="gap:16px">
+        <span class="eyebrow">Not sure where to start?</span>
+        <h2 id="find-h">Tell us what you need. We'll point you to the right package.</h2>
+        <div class="hm-choices" role="group" aria-label="What do you need?">
+          <button class="hm-choice" type="button" data-k="site" aria-pressed="true">A website</button>
+          <button class="hm-choice" type="button" data-k="logo" aria-pressed="false">A logo or brand</button>
+          <button class="hm-choice" type="button" data-k="both" aria-pressed="false">Both</button>
+          <button class="hm-choice" type="button" data-k="care" aria-pressed="false">Help keeping my site up</button>
+        </div>
+      </div>
+      <div class="hm-pick" id="pick" aria-live="polite">
+        <span class="eyebrow">Most popular</span>
+        <h3>Growth website</h3>
+        <div class="pr-price"><b>$2,500</b></div>
+        <p>A custom site with up to 5 pages, Google Business Profile setup and a quote request form. About 3 weeks.</p>
+        <div class="btns"><a class="btn" href="/pricing.html#websites">View our packages</a><a class="btn ghost" href="/contact.html">Get a free quote</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="msec-band" aria-labelledby="how-h"><div class="wrap hm-sec">
+    <div class="pr-head rv"><span class="eyebrow">How it works</span><h2 id="how-h">From first call to launch day.</h2></div>
+    <div class="hm-stepwrap" id="hmSteps"><span class="hm-line" aria-hidden="true"></span>
+      <ol class="hm-steps">
+        <li class="rv"><span class="n">1</span><div><h3>Free quote call</h3><p>Tell us about your business. We'll recommend a package.</p></div></li>
+        <li class="rv" style="transition-delay:.08s"><span class="n">2</span><div><h3>Design and feedback</h3><p>You see it before it's live and tell us what to change.</p></div></li>
+        <li class="rv" style="transition-delay:.16s"><span class="n">3</span><div><h3>Launch</h3><p>Your site goes live in your name, ready for customers.</p></div></li>
+        <li class="rv" style="transition-delay:.24s"><span class="n">4</span><div><h3>Ongoing care</h3><p>If you want it, we keep it fresh every month.</p></div></li>
+      </ol>
     </div>
   </div></section>
 
-  <section class="blk"><div class="wrap stack" style="gap:28px">
-    <h2>How a website project works</h2>
-    <div class="grid4">
-      <div class="step"><span class="n">STEP 1</span><h3>Free quote call</h3></div>
-      <div class="step"><span class="n">STEP 2</span><h3>Design and feedback</h3></div>
-      <div class="step"><span class="n">STEP 3</span><h3>Launch</h3></div>
-      <div class="step"><span class="n">STEP 4</span><h3>Ongoing care, if you want it</h3></div>
+  <!-- Why -->
+  <section class="wrap hm-sec" aria-labelledby="why-h">
+    <div class="pr-head rv"><span class="eyebrow">Why Calles Group</span><h2 id="why-h">Why local businesses choose us</h2></div>
+    <div class="hm-why">
+      <div class="rv"><svg viewBox="0 0 28 28" aria-hidden="true"><rect x="6" y="12" width="16" height="12" rx="2"/><path d="M10 12V8a4 4 0 0 1 8 0v4"/></svg><b>You own everything.</b><p>Your site and domain are in your name.</p></div>
+      <div class="rv" style="transition-delay:.06s"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M4 14h20M14 4v20"/><circle cx="14" cy="14" r="10"/></svg><b>Clear, flat prices.</b><p>You know the price before we start.</p></div>
+      <div class="rv" style="transition-delay:.12s"><svg viewBox="0 0 28 28" aria-hidden="true"><rect x="8" y="3" width="12" height="22" rx="3"/><path d="M12 21h4"/></svg><b>Built for phones first.</b><p>Because that's where your customers are.</p></div>
+      <div class="rv" style="transition-delay:.18s"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 25s-8-7-8-13a8 8 0 0 1 16 0c0 6-8 13-8 13z"/><circle cx="14" cy="12" r="3"/></svg><b>Local.</b><p>Based in Elgin, working across Chicagoland.</p></div>
     </div>
-  </div></section>
+  </section>
 
-  <section class="blk"><div class="wrap stack" style="gap:24px">
-    <h2>Common questions about our web design services</h2>
-    <div class="faq-mini">
-      <details><summary>Who owns the website?</summary><p class="ans">You do. Your Wix account and domain are set up in your name and you pay for them directly. We just need collaborator access to build. Your logo files and full admin access are handed over once your final payment is made.</p></details>
-      <details><summary>How does payment work?</summary><p class="ans">50% deposit to start and the rest before your site goes live. For projects over $2,500, it's 50% to start, 25% when you approve the design, and 25% before launch. We accept card through a Wix invoice, Zelle, or check. Invoices are due within 7 days.</p></details>
-      <details><summary>How long does it take?</summary><p class="ans">About 2 to 5 weeks depending on the package. The clock starts once we have your text, photos and logo.</p></details>
-      <details><summary>Can I cancel a care plan?</summary><p class="ans">Yes, anytime. Your plan runs to the end of that month. Plans are billed monthly in advance.</p></details>
+  <!-- FAQ -->
+  <section class="wrap hm-sec" aria-labelledby="faq-h" style="padding-top:0">
+    <div class="pr-head rv"><h2 id="faq-h">Common questions</h2></div>
+    <div class="hm-faq rv">
+      <details><summary>Who owns the website?<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></summary><p class="ans">You do. Your Wix account and domain are set up in your name and you pay for them directly. We just need collaborator access to build. Your logo files and full admin access are handed over once your final payment is made.</p></details>
+      <details><summary>How does payment work?<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></summary><p class="ans">50% deposit to start and the rest before your site goes live. For projects over $2,500, it's 50% to start, 25% when you approve the design, and 25% before launch. We accept card through a Wix invoice, Zelle, or check. Invoices are due within 7 days.</p></details>
+      <details><summary>How long does it take?<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></summary><p class="ans">About 2 to 5 weeks depending on the package. The clock starts once we have your text, photos and logo.</p></details>
+      <details><summary>Can I cancel a care plan?<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></summary><p class="ans">Yes, anytime. Your plan runs to the end of that month. Plans are billed monthly in advance.</p></details>
     </div>
-    <a class="tlink" href="/faq.html">See all web design FAQs &rarr;</a>
-  </div></section>
+    <a class="tlink" href="/faq.html" style="align-self:center">See all questions &rarr;</a>
+  </section>
 
-  <section class="blk"><div class="wrap area">
-    <div class="stack">
-      <h2>Web design for Elgin, the Fox Valley and the northwest suburbs</h2>
-      <p class="lead">Based in Elgin, IL. We work with businesses across the Fox Valley, the northwest suburbs and Chicago, in person or over video.</p>
-      <a class="tlink" href="/contact.html">Get a free quote for your business &rarr;</a>
+  <!-- Service area -->
+  <section class="wrap hm-sec" aria-labelledby="area-h" style="padding-top:0">
+    <div class="hm-area rv">
+      <h2 id="area-h" style="font-size:1.4rem">Web design for Elgin, the Fox Valley and the northwest suburbs</h2>
+      <p class="muted">In person or over video.</p>
+      <ul><li>Elgin</li><li>South Elgin</li><li>Bartlett</li><li>Schaumburg</li><li>Hoffman Estates</li><li>Barrington</li><li>South Barrington</li><li>Inverness</li><li>St. Charles</li><li>Geneva</li><li>Algonquin</li><li>Crystal Lake</li><li>Naperville</li><li>Chicago</li></ul>
     </div>
-    <ul class="areas"><li>Elgin</li><li>South Elgin</li><li>Bartlett</li><li>Schaumburg</li><li>Hoffman Estates</li><li>Barrington</li><li>South Barrington</li><li>Inverness</li><li>St. Charles</li><li>Geneva</li><li>Algonquin</li><li>Crystal Lake</li><li>Naperville</li><li>Chicago</li></ul>
-  </div></section>
+  </section>
 
-  <div class="band"><div class="wrap">
+  <!-- Final -->
+  <div class="pr-final" id="final"><div class="wrap">
     <h2>Ready to look the part?</h2>
-    <a class="btn" href="/contact.html">Get a free quote</a>
+    <p>Book a free quote call. No pressure, just a plan for your business.</p>
+    <div class="btns" style="justify-content:center"><a class="btn" href="/contact.html">Get a free quote</a><a class="btn ghost" href="/pricing.html">View our packages</a></div>
   </div></div>
 </main>
 
@@ -143,5 +364,59 @@
 <div class="mcta" id="mcta"><a class="btn" href="/contact.html">Get a free quote</a></div>
 
 <script src="/site.js" defer></script>
+<script>
+(function () {
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Before / after: sweeps once on load, then follows the viewer's finger or mouse
+  var ba = document.getElementById("ba"), range = document.getElementById("baRange");
+  function setCut(v) { ba.style.setProperty("--cut", v + "%"); range.value = v; }
+  range.addEventListener("input", function () { ba.classList.remove("anim"); setCut(range.value); });
+  if (!reduce) {
+    setCut(92);
+    setTimeout(function () { ba.classList.add("anim"); setCut(18); }, 900);
+    setTimeout(function () { setCut(50); }, 2700);
+    setTimeout(function () { ba.classList.remove("anim"); }, 4400);
+  }
+
+  // Package finder
+  var picks = {
+    site: { tag: "Most popular", name: "Growth website", price: "$2,500", text: "A custom site with up to 5 pages, Google Business Profile setup and a quote request form. About 3 weeks.", href: "/pricing.html#websites" },
+    logo: { tag: "Most complete", name: "Brand Kit", price: "$900", text: "Logo, business cards, colors, fonts, a one-page brand guide and social media images.", href: "/pricing.html#branding" },
+    both: { tag: "Save $200", name: "Growth website + Brand Kit", price: "$3,200", was: "$3,400", text: "Your custom site and your full brand, designed together so everything matches.", href: "/pricing.html#bundles" },
+    care: { tag: "Most popular", name: "Plus care plan", price: "$199", per: "/mo", text: "2.5 hours of edits a month, Google posts and a short monthly report. Cancel anytime.", href: "/pricing.html#care" }
+  };
+  var pick = document.getElementById("pick");
+  document.querySelectorAll(".hm-choice").forEach(function (b) {
+    b.addEventListener("click", function () {
+      document.querySelectorAll(".hm-choice").forEach(function (o) { o.setAttribute("aria-pressed", o === b); });
+      var p = picks[b.getAttribute("data-k")];
+      pick.querySelector(".eyebrow").textContent = p.tag;
+      pick.querySelector("h3").textContent = p.name;
+      pick.querySelector(".pr-price").innerHTML = "<b>" + p.price + "</b>" + (p.per ? "<small>" + p.per + "</small>" : "") + (p.was ? "<s>" + p.was + "</s>" : "");
+      pick.querySelector("p").textContent = p.text;
+      pick.querySelector(".btn").setAttribute("href", p.href);
+      pick.classList.remove("swap"); void pick.offsetWidth; pick.classList.add("swap");
+    });
+  });
+
+  // Reveal on scroll, only for things starting below the first screen
+  var els = [].slice.call(document.querySelectorAll(".rv"));
+  if (!reduce && "IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    els.forEach(function (el) {
+      if (el.getBoundingClientRect().top < innerHeight) el.classList.add("in"); else io.observe(el);
+    });
+  } else { els.forEach(function (el) { el.classList.add("in"); }); }
+
+  var steps = document.getElementById("hmSteps");
+  if ("IntersectionObserver" in window) {
+    var so = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { steps.classList.add("go"); so.disconnect(); } }, { threshold: .4 });
+    so.observe(steps);
+  } else { steps.classList.add("go"); }
+})();
+</script>
 </body>
 </html>
