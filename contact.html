@@ -176,7 +176,7 @@ const bar = document.getElementById("ctBar"), card = document.getElementById("fo
 let lastStep = 0;
 store.subscribe(() => requestAnimationFrame(() => {
   const q = document.querySelector("#quote"), form = q.querySelector(".form");
-  if (form && form.dataset.state === "done") { bar.style.width = "100%"; return; }
+  if (form && form.dataset.state === "done") { bar.style.width = "100%"; if (!window.cgSent) { window.cgSent = true; setTimeout(() => location.assign("/thank-you.html"), 600); } return; }
   const m = (q.querySelector(".form-step-count")?.textContent || "").match(/(\d+)\D+(\d+)/);
   const n = m ? +m[1] : 1, total = m ? +m[2] : 1;
   bar.style.width = Math.max(8, (n / (total + 1)) * 100) + "%";
