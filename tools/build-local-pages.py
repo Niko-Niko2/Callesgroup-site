@@ -234,6 +234,8 @@ def page(t):
 .lfaq summary{{cursor:pointer;font-weight:600}}
 .lfaq p{{margin:10px 0 0}}
 .lprose p{{max-width:68ch}}
+footer .fcol.copy .areas{{display:block;margin-bottom:6px}}
+footer .fcol.copy .areas a{{min-height:0;display:inline}}
 </style>
 </head>
 <body class="has-mcta">

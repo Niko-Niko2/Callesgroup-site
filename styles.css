@@ -481,7 +481,3 @@ body.merch main :is(.trust,.check,.pack .for,.desc,.note,.sep,.saved,.muted,.ans
   .pr-art .piece,.pr-up,.pr-panel.enter *{animation:none!important;opacity:1!important}
   .pr-art .float{animation:none}
 }
-
-/* Service-area links in the footer copy row */
-footer .fcol.copy .areas{display:block;margin-bottom:6px}
-footer .fcol.copy .areas a{min-height:0;display:inline}
