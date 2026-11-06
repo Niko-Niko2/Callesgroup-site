@@ -56,6 +56,9 @@
   .cp-art .tick,.cp-art .line{animation:none;stroke-dashoffset:0}
   .js .rv{opacity:1;transform:none;transition:none}
 }
+.pr-price .pr-was{display:none;align-self:center}
+#plans.yearly .pr-price .pr-was{display:inline}
+.pr-note{margin:6px 0 0;color:var(--muted);font-size:.9rem}
 </style>
 <script>document.documentElement.classList.add("js")</script>
 </head>
@@ -121,14 +124,15 @@
   </section>
 
   <!-- Plans -->
-  <section class="wrap cp-sec" id="plans" aria-labelledby="plans-h" style="padding-top:8px">
+  <section class="wrap cp-sec yearly" id="plans" aria-labelledby="plans-h" style="padding-top:8px">
     <div class="pr-head rv"><span class="eyebrow">The plans</span><h2 id="plans-h">Pick how much help you want.</h2></div>
-    <div class="pr-bill"><span id="lblMonthly" class="on">Monthly</span><button class="pr-switch" id="billSwitch" role="switch" aria-checked="false" aria-labelledby="lblYearly"></button><span id="lblYearly">Yearly</span><span class="free">1 month free</span></div>
+    <div class="pr-bill"><span id="lblMonthly">Monthly</span><button class="pr-switch" id="billSwitch" role="switch" aria-checked="true" aria-labelledby="lblYearly"></button><span id="lblYearly" class="on">Yearly</span><span class="free">Save up to 25%</span></div>
     <div class="pr-grid">
       <article class="pr-card rv">
         <h3>Essentials</h3>
         <p class="pr-one">Keep it running.</p>
-        <div class="pr-price"><b class="pr-num" data-m="$99" data-y="$1,089">$99</b><small class="per">/mo</small></div>
+        <div class="pr-price"><b class="pr-num" data-m="$99" data-y="$83">$83</b><small class="per">/mo</small><s class="pr-was">$99</s></div>
+        <p class="pr-note" data-m="Billed monthly" data-y="$996 billed yearly">$996 billed yearly</p>
         <ul class="pr-keys"><li>1 hour of edits a month</li><li>Monthly check of forms and links</li><li>Edits within 3 business days</li></ul>
         <div class="pr-more" id="m-ess"><div><ul><li>Mobile layout check every month</li><li>Wix and domain renewal reminders</li></ul></div></div>
         <button class="pr-toggle" aria-expanded="false" aria-controls="m-ess">See everything <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
@@ -137,7 +141,8 @@
       <article class="pr-card pop rv" style="transition-delay:.06s"><span class="tag">Most popular</span>
         <h3>Plus</h3>
         <p class="pr-one">Keep it fresh.</p>
-        <div class="pr-price"><b class="pr-num" data-m="$199" data-y="$2,189">$199</b><small class="per">/mo</small></div>
+        <div class="pr-price"><b class="pr-num" data-m="$199" data-y="$158">$158</b><small class="per">/mo</small><s class="pr-was">$199</s></div>
+        <p class="pr-note" data-m="Billed monthly" data-y="$1,896 billed yearly">$1,896 billed yearly</p>
         <ul class="pr-keys"><li>2.5 hours of edits a month</li><li>2 Google posts a month</li><li>Monthly visits and leads report</li></ul>
         <div class="pr-more" id="m-plus"><div><ul><li>Everything in Essentials</li><li>New job or product photos added</li><li>Edits within 2 business days</li></ul></div></div>
         <button class="pr-toggle" aria-expanded="false" aria-controls="m-plus">See everything <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
@@ -146,7 +151,8 @@
       <article class="pr-card rv" style="transition-delay:.12s">
         <h3>Growth</h3>
         <p class="pr-one">Keep it growing.</p>
-        <div class="pr-price"><b class="pr-num" data-m="$349" data-y="$3,839">$349</b><small class="per">/mo</small></div>
+        <div class="pr-price"><b class="pr-num" data-m="$349" data-y="$262">$262</b><small class="per">/mo</small><s class="pr-was">$349</s></div>
+        <p class="pr-note" data-m="Billed monthly" data-y="$3,144 billed yearly">$3,144 billed yearly</p>
         <ul class="pr-keys"><li>4 hours of edits a month</li><li>4 Google posts and 4 social graphics</li><li>20-minute monthly call</li></ul>
         <div class="pr-more" id="m-gro"><div><ul><li>Everything in Plus</li><li>Quarterly SEO tune-up</li></ul></div></div>
         <button class="pr-toggle" aria-expanded="false" aria-controls="m-gro">See everything <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
@@ -214,11 +220,12 @@
     sw.setAttribute("aria-checked", yearly);
     document.getElementById("lblYearly").classList.toggle("on", yearly);
     document.getElementById("lblMonthly").classList.toggle("on", !yearly);
+    document.getElementById("plans").classList.toggle("yearly", yearly);
     document.querySelectorAll("#plans .pr-num").forEach(function (n) {
       n.classList.add("swap");
       setTimeout(function () {
         n.textContent = n.getAttribute(yearly ? "data-y" : "data-m");
-        n.nextElementSibling.textContent = yearly ? "/yr" : "/mo";
+        n.parentNode.nextElementSibling.textContent = n.parentNode.nextElementSibling.getAttribute(yearly ? "data-y" : "data-m");
         n.classList.remove("swap");
       }, 180);
     });
