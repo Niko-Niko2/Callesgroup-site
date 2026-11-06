@@ -59,6 +59,20 @@
 .pr-price .pr-was{display:none;align-self:center}
 #plans.yearly .pr-price .pr-was{display:inline}
 .pr-note{margin:6px 0 0;color:var(--muted);font-size:.9rem}
+.pr-deal{display:none;align-items:center;gap:8px;border:1.5px solid #3FB37F;color:#5FD39C;background:rgba(63,179,127,.08);border-radius:10px;padding:8px 12px;font-weight:700;font-size:.92rem}
+.pr-deal span{background:#3FB37F;color:#0F1F17;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:5px}
+#plans.yearly .pr-deal{display:flex}
+#plans .pr-switch,#plans .pr-switch::after,#plans .pr-bill .free{transition:background .4s,border-color .4s,color .4s,transform .35s var(--ease)}
+#plans.yearly .pr-switch{background:rgba(63,179,127,.18);border-color:#3FB37F}
+#plans.yearly .pr-switch::after{background:#3FB37F}
+#plans.yearly .pr-bill .free{color:#5FD39C;border-color:rgba(63,179,127,.6)}
+#plans .pr-card.pop,#plans .pr-card.pop .tag,#plans .pr-card.pop .btn{transition:border-color 2s ease,background 2s ease,box-shadow .35s}
+#plans.yearly .pr-card.pop{border-color:#3FB37F;box-shadow:0 0 0 6px rgba(63,179,127,.10)}
+#plans.yearly .pr-card.pop .tag,#plans.yearly .pr-card.pop .btn{background:#3FB37F}
+#plans.yearly .pr-card.pop .btn:hover{background:#52C892}
+#plans.glow .pr-card.pop{animation:dealGlow 2s ease-out}
+@keyframes dealGlow{0%{box-shadow:0 0 0 0 rgba(63,179,127,.55)}50%{box-shadow:0 0 0 14px rgba(63,179,127,.18)}100%{box-shadow:0 0 0 6px rgba(63,179,127,.10)}}
+@media (prefers-reduced-motion: reduce){#plans.glow .pr-card.pop{animation:none}}
 </style>
 <script>document.documentElement.classList.add("js")</script>
 </head>
@@ -124,7 +138,7 @@
   </section>
 
   <!-- Plans -->
-  <section class="wrap cp-sec yearly" id="plans" aria-labelledby="plans-h" style="padding-top:8px">
+  <section class="wrap cp-sec yearly glow" id="plans" aria-labelledby="plans-h" style="padding-top:8px">
     <div class="pr-head rv"><span class="eyebrow">The plans</span><h2 id="plans-h">Pick how much help you want.</h2></div>
     <div class="pr-bill"><span id="lblMonthly">Monthly</span><button class="pr-switch" id="billSwitch" role="switch" aria-checked="true" aria-labelledby="lblYearly"></button><span id="lblYearly" class="on">Yearly</span><span class="free">Save up to 25%</span></div>
     <div class="pr-grid">
@@ -132,9 +146,10 @@
         <h3>Essentials</h3>
         <p class="pr-one">Keep it running.</p>
         <div class="pr-price"><b class="pr-num" data-m="$99" data-y="$83">$83</b><small class="per">/mo</small><s class="pr-was">$99</s></div>
+        <div class="pr-deal"><span>Best deal</span> Save $192 a year</div>
         <p class="pr-note" data-m="Billed monthly" data-y="$996 billed yearly">$996 billed yearly</p>
         <ul class="pr-keys"><li>1 hour of edits a month</li><li>Monthly check of forms and links</li><li>Edits within 3 business days</li></ul>
-        <div class="pr-more" id="m-ess"><div><ul><li>Mobile layout check every month</li><li>Wix and domain renewal reminders</li></ul></div></div>
+        <div class="pr-more" id="m-ess"><div><ul><li>Broken links and forms fixed</li><li>Hours and prices kept current</li><li>Spam blocked on your forms</li><li>Google search errors caught and fixed</li><li>Monthly phone layout check</li><li>Wix and domain renewal reminders</li><li>Direct text line to your designer</li></ul></div></div>
         <button class="pr-toggle" aria-expanded="false" aria-controls="m-ess">See everything <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
         <a class="btn ghost" href="/contact.html?need=care-essentials">Choose Essentials</a>
       </article>
@@ -142,9 +157,10 @@
         <h3>Plus</h3>
         <p class="pr-one">Keep it fresh.</p>
         <div class="pr-price"><b class="pr-num" data-m="$199" data-y="$158">$158</b><small class="per">/mo</small><s class="pr-was">$199</s></div>
+        <div class="pr-deal"><span>Best deal</span> Save $492 a year</div>
         <p class="pr-note" data-m="Billed monthly" data-y="$1,896 billed yearly">$1,896 billed yearly</p>
         <ul class="pr-keys"><li>2.5 hours of edits a month</li><li>2 Google posts a month</li><li>Monthly visits and leads report</li></ul>
-        <div class="pr-more" id="m-plus"><div><ul><li>Everything in Essentials</li><li>New job or product photos added</li><li>Edits within 2 business days</li></ul></div></div>
+        <div class="pr-more" id="m-plus"><div><ul><li>Everything in Essentials</li><li>Google Business Profile kept fresh: hours, photos and offers</li><li>New job or product photos added</li><li>Seasonal promos and banners, so your site never looks stale</li><li>A "Leave us a review" link and QR code set up for you</li><li>Edits within 2 business days</li></ul></div></div>
         <button class="pr-toggle" aria-expanded="false" aria-controls="m-plus">See everything <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
         <a class="btn" href="/contact.html?need=care-plus">Choose Plus</a>
       </article>
@@ -152,9 +168,10 @@
         <h3>Growth</h3>
         <p class="pr-one">Keep it growing.</p>
         <div class="pr-price"><b class="pr-num" data-m="$349" data-y="$262">$262</b><small class="per">/mo</small><s class="pr-was">$349</s></div>
+        <div class="pr-deal"><span>Best deal</span> Save $1,044 a year</div>
         <p class="pr-note" data-m="Billed monthly" data-y="$3,144 billed yearly">$3,144 billed yearly</p>
         <ul class="pr-keys"><li>4 hours of edits a month</li><li>4 Google posts and 4 social graphics</li><li>20-minute monthly call</li></ul>
-        <div class="pr-more" id="m-gro"><div><ul><li>Everything in Plus</li><li>Quarterly SEO tune-up</li></ul></div></div>
+        <div class="pr-more" id="m-gro"><div><ul><li>Everything in Plus</li><li>Edits within 1 business day. You're first in line.</li><li>Quarterly SEO tune-up to help you climb on Google</li><li>Replies to your Google reviews written for you</li><li>A new landing page for a promo or service each quarter</li><li>Monthly call to plan what to promote next</li></ul></div></div>
         <button class="pr-toggle" aria-expanded="false" aria-controls="m-gro">See everything <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
         <a class="btn ghost" href="/contact.html?need=care-growth">Choose Growth</a>
       </article>
@@ -220,12 +237,15 @@
     sw.setAttribute("aria-checked", yearly);
     document.getElementById("lblYearly").classList.toggle("on", yearly);
     document.getElementById("lblMonthly").classList.toggle("on", !yearly);
-    document.getElementById("plans").classList.toggle("yearly", yearly);
+    var plans = document.getElementById("plans");
+    plans.classList.toggle("yearly", yearly);
+    plans.classList.remove("glow"); void plans.offsetWidth; if (yearly) plans.classList.add("glow");
     document.querySelectorAll("#plans .pr-num").forEach(function (n) {
       n.classList.add("swap");
       setTimeout(function () {
         n.textContent = n.getAttribute(yearly ? "data-y" : "data-m");
-        n.parentNode.nextElementSibling.textContent = n.parentNode.nextElementSibling.getAttribute(yearly ? "data-y" : "data-m");
+        var note = n.closest(".pr-card").querySelector(".pr-note");
+        note.textContent = note.getAttribute(yearly ? "data-y" : "data-m");
         n.classList.remove("swap");
       }, 180);
     });
