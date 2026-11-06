@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="/styles.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://www.callesgroup.com/#business","name":"Calles Group","url":"https://www.callesgroup.com/","email":"andrew@callesgroup.com","telephone":"+1-312-600-0590","image":"https://static.wixstatic.com/media/03855a_96c7c31bf029475a934ad5139d4f888e~mv2.png","logo":"https://www.callesgroup.com/favicon.svg","description":"Web design, logos and branding for local businesses in Elgin, IL, the Fox Valley and Chicagoland.","founder":{"@type":"Person","name":"Andrew Calles"},"address":{"@type":"PostalAddress","addressLocality":"Elgin","addressRegion":"IL","addressCountry":"US"},"areaServed":[{"@type":"City","name":"Elgin, IL"},{"@type":"City","name":"South Elgin, IL"},{"@type":"City","name":"Bartlett, IL"},{"@type":"City","name":"Schaumburg, IL"},{"@type":"City","name":"Hoffman Estates, IL"},{"@type":"City","name":"Barrington, IL"},{"@type":"City","name":"South Barrington, IL"},{"@type":"City","name":"Inverness, IL"},{"@type":"City","name":"St. Charles, IL"},{"@type":"City","name":"Geneva, IL"},{"@type":"City","name":"Algonquin, IL"},{"@type":"City","name":"Crystal Lake, IL"},{"@type":"City","name":"Naperville, IL"},{"@type":"City","name":"Chicago, IL"}],"priceRange":"$$","makesOffer":[{"@type":"Offer","name":"Launch website","price":"1500","priceCurrency":"USD","url":"https://www.callesgroup.com/pricing.html#websites"},{"@type":"Offer","name":"Growth website","price":"2500","priceCurrency":"USD","url":"https://www.callesgroup.com/pricing.html#websites"},{"@type":"Offer","name":"Premium website","price":"3800","priceCurrency":"USD","url":"https://www.callesgroup.com/pricing.html#websites"},{"@type":"Offer","name":"Logo design","price":"500","priceCurrency":"USD","url":"https://www.callesgroup.com/pricing.html#branding"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://www.callesgroup.com/#business","name":"Calles Group","url":"https://www.callesgroup.com/","email":"andrew@callesgroup.com","telephone":"+1-312-600-0590","image":"https://static.wixstatic.com/media/03855a_96c7c31bf029475a934ad5139d4f888e~mv2.png","logo":"https://www.callesgroup.com/favicon.svg","description":"Web design, logos and branding for local businesses in Elgin, IL, the Fox Valley and Chicagoland.","founder":{"@type":"Person","name":"Andrew Calles"},"address":{"@type":"PostalAddress","addressLocality":"Elgin","addressRegion":"IL","addressCountry":"US"},"areaServed":[{"@type":"City","name":"Elgin, IL"},{"@type":"City","name":"South Elgin, IL"},{"@type":"City","name":"Bartlett, IL"},{"@type":"City","name":"Schaumburg, IL"},{"@type":"City","name":"Hoffman Estates, IL"},{"@type":"City","name":"Barrington, IL"},{"@type":"City","name":"South Barrington, IL"},{"@type":"City","name":"Inverness, IL"},{"@type":"City","name":"St. Charles, IL"},{"@type":"City","name":"Geneva, IL"},{"@type":"City","name":"Algonquin, IL"},{"@type":"City","name":"Crystal Lake, IL"},{"@type":"City","name":"Naperville, IL"},{"@type":"City","name":"Chicago, IL"}],"priceRange":"$$","makesOffer":[{"@type":"Offer","name":"Launch website","price":"1500","priceCurrency":"USD","url":"https://www.callesgroup.com/pricing.html#websites"},{"@type":"Offer","name":"Growth website","price":"2500","priceCurrency":"USD","url":"https://www.callesgroup.com/pricing.html#websites"},{"@type":"Offer","name":"Premium website","price":"3800","priceCurrency":"USD","url":"https://www.callesgroup.com/pricing.html#websites"},{"@type":"Offer","name":"Logo design","price":"500","priceCurrency":"USD","url":"https://www.callesgroup.com/pricing.html#branding"},{"@type":"Offer","name":"Website care plan","price":"99","priceCurrency":"USD","url":"https://www.callesgroup.com/care-plans.html"}]}</script>
 <script>document.documentElement.classList.add("js")</script>
 <style>
 /* Home: a welcome, then the proof (before/after), then a guided path to the right package.
@@ -85,50 +85,32 @@
 .hm-hello p{color:var(--muted);max-width:62ch}
 .hm-hello b{color:var(--ink)}
 
-/* Services */
-.hm-svcs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.hm-svc{display:flex;flex-direction:column;gap:10px;padding:20px;border-radius:16px;background:var(--surface);border:1px solid var(--line);color:var(--ink);text-decoration:none;transition:transform .35s var(--ease),border-color .35s,box-shadow .35s}
+/* Three services: Build it. Print it. Keep it running. */
+.hm-svcs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.hm-svc{display:flex;flex-direction:column;gap:10px;padding:22px;border-radius:18px;background:var(--surface);border:1px solid var(--line);color:var(--ink);text-decoration:none;transition:transform .35s var(--ease),border-color .35s,box-shadow .35s}
 .hm-svc:hover{transform:translateY(-5px);border-color:var(--moss);box-shadow:0 22px 40px -28px rgba(0,0,0,.9)}
-.hm-svc svg{width:100%;height:auto;border-radius:10px;background:var(--band)}
-.hm-svc .from{color:var(--muted);font-size:.95rem}
+.hm-svc svg{width:100%;height:auto;border-radius:12px;background:var(--band);margin-bottom:6px}
+.hm-svc .verb{color:var(--accent);font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.hm-svc h3{font-size:1.3rem}
+.hm-svc p{color:var(--muted)}
+.hm-svc .from{color:var(--muted);font-size:.95rem;margin-top:auto;padding-top:12px;border-top:1px solid var(--line)}
 .hm-svc .from b{color:var(--ink);font-size:1.25rem;font-weight:800}
-.hm-svc p{color:var(--muted);font-size:.95rem}
-.hm-svc .go{margin-top:auto;color:var(--accent);font-weight:600;display:inline-flex;align-items:center;gap:6px;min-height:32px}
+.hm-svc .go{color:var(--accent);font-weight:600;display:inline-flex;align-items:center;gap:6px;min-height:32px}
 .hm-svc .go::after{content:"\2192";transition:transform .3s var(--ease)}
 .hm-svc:hover .go::after{transform:translateX(4px)}
 .hm-svc .sv{transition:transform .5s var(--ease)}
 .hm-svc:hover .sv1{transform:translateY(-4px)}
 .hm-svc:hover .sv2{transform:translateY(4px)}
 
-/* Package finder */
-.hm-find{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:28px;align-items:center;padding:28px;border-radius:20px;background:radial-gradient(ellipse at 0% 0%,rgba(201,169,98,.13),transparent 60%),var(--surface);border:1px solid var(--line)}
-.hm-choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.hm-choice{min-height:56px;padding:10px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;font-weight:600;text-align:left;cursor:pointer;transition:border-color .25s,background .25s,transform .25s var(--ease)}
-.hm-choice:hover{border-color:var(--moss)}
-.hm-choice[aria-pressed="true"]{border-color:var(--accent);background:rgba(201,169,98,.12)}
-.hm-pick{display:flex;flex-direction:column;gap:10px;padding:22px;border-radius:16px;background:var(--bg);border:1px solid var(--line);min-height:228px}
-.hm-pick .eyebrow{font-size:.7rem}
-.hm-pick h3{font-size:1.3rem}
-.hm-pick p{color:var(--muted)}
-.hm-pick .btns{margin-top:auto}
-.hm-pick.swap>*{animation:prUp .45s var(--ease) both}
-.hm-pick.swap>*:nth-child(2){animation-delay:.04s}.hm-pick.swap>*:nth-child(3){animation-delay:.08s}.hm-pick.swap>*:nth-child(4){animation-delay:.12s}.hm-pick.swap>*:nth-child(5){animation-delay:.16s}
-
 /* Steps */
 .hm-stepwrap{position:relative}
-.hm-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;list-style:none;margin:0;padding:0}
+.hm-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;list-style:none;margin:0;padding:0}
 .hm-steps li{display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center;padding:6px}
 .hm-steps .n{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--surface);border:1.5px solid var(--accent);color:var(--accent);font-weight:800;font-size:1.2rem;position:relative;z-index:1}
 .hm-steps p{color:var(--muted);font-size:.95rem;max-width:24ch}
-.hm-line{position:absolute;top:32px;left:12.5%;right:12.5%;height:2px;background:var(--line);overflow:hidden}
+.hm-line{position:absolute;top:32px;left:16.67%;right:16.67%;height:2px;background:var(--line);overflow:hidden}
 .hm-line::after{content:"";position:absolute;inset:0;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 1.6s var(--ease)}
 #hmSteps.go .hm-line::after{transform:scaleX(1)}
-
-/* Promises */
-.hm-why{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-.hm-why div{display:flex;flex-direction:column;gap:6px;padding:20px;border-radius:16px;background:var(--surface);border:1px solid var(--line)}
-.hm-why svg{width:28px;height:28px;stroke:var(--accent);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.hm-why p{color:var(--muted);font-size:.95rem}
 
 /* FAQ + area */
 .hm-faq{max-width:760px;margin-inline:auto;width:100%;display:flex;flex-direction:column;gap:10px}
@@ -141,6 +123,8 @@
 .hm-area{display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center}
 .hm-area ul{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:820px}
 .hm-area li{padding:6px 14px;border-radius:20px;border:1px solid var(--line);color:var(--muted);font-size:.92rem}
+.hm-area li a{color:var(--ink);text-decoration:none}
+.hm-area li:has(a):hover{border-color:var(--accent)}
 
 /* Scroll reveal: only things below the first screen, and only when JS runs */
 .js .rv{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
@@ -148,21 +132,15 @@
 
 @media (max-width:960px){
   .hm-hero{grid-template-columns:1fr}
-  .hm-svcs{grid-template-columns:1fr 1fr}
-  .hm-why{grid-template-columns:1fr 1fr}
-  .hm-find{grid-template-columns:1fr}
-  .hm-steps{grid-template-columns:1fr 1fr;row-gap:28px}
+  .hm-svcs{grid-template-columns:1fr;max-width:520px;margin-inline:auto;width:100%}
+  .hm-steps{grid-template-columns:1fr;row-gap:14px;max-width:520px;margin-inline:auto;width:100%}
+  .hm-steps li{flex-direction:row;text-align:left;gap:16px}
+  .hm-steps .n{flex:none}
   .hm-line{display:none}
 }
 @media (max-width:700px){
   .hm-sec{padding-block:52px}
-  .hm-svcs,.hm-why{grid-template-columns:1fr}
   .hm-hello{grid-template-columns:1fr;text-align:center;justify-items:center;padding:24px 20px}
-  .hm-choices{grid-template-columns:1fr}
-  .hm-find{padding:20px}
-  .hm-steps{grid-template-columns:1fr;row-gap:14px}
-  .hm-steps li{flex-direction:row;text-align:left;gap:16px}
-  .hm-steps .n{flex:none}
 }
 @media (prefers-reduced-motion: reduce){
   .js .rv{opacity:1;transform:none;transition:none}
@@ -179,6 +157,7 @@
       <a class="nl" href="/" data-page="home" aria-current="page">Home</a>
       <a class="nl" href="/pricing.html" data-page="pricing">Packages</a>
       <a class="nl" href="/custom-merchandise.html" data-page="merch">Print &amp; Signs</a>
+      <a class="nl" href="/care-plans.html" data-page="care">Care plans</a>
       <a class="nl" href="/faq.html" data-page="faq">FAQ</a>
       <a class="nl" href="/contact.html" data-page="contact">Contact</a>
       <a class="btn sm" href="/contact.html">Get a free quote</a>
@@ -230,102 +209,62 @@
     <div class="hm-hello rv">
       <span class="hm-mono" aria-hidden="true">AC</span>
       <div class="stack">
-        <h2 id="hello-h" style="font-size:1.5rem">Hi, I'm Andrew. Welcome to Calles Group.</h2>
-        <p>I design websites and brands for local businesses, right here in Elgin. You work with me directly, from the first call to launch day. <b>Clear prices, honest advice, and a site you'll be proud to send people to.</b></p>
+        <h2 id="hello-h" style="font-size:1.5rem">Hi, I'm Andrew.</h2>
+        <p>I build websites and brands for local businesses, right here in Elgin. <b>You work with me directly, from the first call to launch day.</b></p>
       </div>
     </div>
   </section>
 
-  <!-- What we offer -->
+  <!-- What we do: matches the menu (Packages, Print & Signs, Care plans) -->
   <section class="wrap hm-sec" id="offer" aria-labelledby="offer-h" style="padding-top:24px">
-    <div class="pr-head rv"><span class="eyebrow">What we offer</span><h2 id="offer-h">Everything your business needs to look the part.</h2></div>
+    <div class="pr-head rv"><span class="eyebrow">What we do</span><h2 id="offer-h">Build it. Print it. <em style="font-style:normal;color:var(--accent)">Keep it running.</em></h2></div>
     <div class="hm-svcs">
-      <a class="hm-svc rv" href="/pricing.html#websites">
+      <a class="hm-svc rv" href="/pricing.html">
         <svg viewBox="0 0 240 120" aria-hidden="true"><rect class="sv sv1" x="30" y="18" width="150" height="90" rx="8" fill="#1E1E1E" stroke="#363431"/><rect class="sv sv1" x="44" y="34" width="80" height="10" rx="3" fill="#EDEAE6"/><rect class="sv sv1" x="44" y="52" width="56" height="6" rx="3" fill="#5E5A54"/><rect class="sv sv1" x="44" y="66" width="36" height="14" rx="4" fill="#C9A962"/><rect class="sv sv2" x="160" y="40" width="48" height="74" rx="8" fill="#151515" stroke="#5E5A54"/><rect class="sv sv2" x="168" y="54" width="32" height="6" rx="3" fill="#EDEAE6"/><rect class="sv sv2" x="168" y="66" width="22" height="9" rx="3" fill="#C9A962"/></svg>
-        <h3>Websites</h3>
+        <span class="verb">Build it</span>
+        <h3>Websites &amp; branding</h3>
+        <p>A site that brings in calls, and a look that matches.</p>
         <div class="from">From <b>$1,500</b></div>
-        <p>Clean, mobile-friendly sites that bring in calls.</p>
-        <span class="go">View website packages</span>
+        <span class="go">See packages</span>
       </a>
-      <a class="hm-svc rv" href="/pricing.html#branding" style="transition-delay:.06s">
-        <svg viewBox="0 0 240 120" aria-hidden="true"><rect class="sv sv1" x="40" y="30" width="60" height="60" rx="12" fill="#C9A962"/><circle class="sv sv2" cx="130" cy="44" r="12" fill="#A88B4A"/><circle class="sv sv1" cx="160" cy="44" r="12" fill="#EDEAE6"/><circle class="sv sv2" cx="190" cy="44" r="12" fill="#363431"/><rect class="sv sv2" x="118" y="70" width="86" height="10" rx="3" fill="#363431"/><rect class="sv sv1" x="118" y="86" width="56" height="6" rx="3" fill="#5E5A54"/></svg>
-        <h3>Branding</h3>
-        <div class="from">From <b>$500</b></div>
-        <p>Logos, business cards and full brand kits.</p>
-        <span class="go">View branding packages</span>
-      </a>
-      <a class="hm-svc rv" href="/custom-merchandise.html" style="transition-delay:.12s">
+      <a class="hm-svc rv" href="/custom-merchandise.html" style="transition-delay:.06s">
         <svg viewBox="0 0 240 120" aria-hidden="true"><rect class="sv sv1" x="34" y="24" width="80" height="54" rx="4" fill="#EDEAE6"/><rect class="sv sv1" x="44" y="34" width="10" height="10" fill="#C9A962"/><rect class="sv sv1" x="44" y="52" width="54" height="7" rx="2" fill="#363431"/><rect class="sv sv1" x="50" y="78" width="3" height="28" fill="#8E8A83"/><rect class="sv sv1" x="96" y="78" width="3" height="28" fill="#8E8A83"/><rect class="sv sv2" x="132" y="50" width="78" height="44" rx="4" fill="#1A1A1A" stroke="#3A3733"/><rect class="sv sv2" x="144" y="60" width="9" height="9" fill="#C9A962"/><rect class="sv sv2" x="144" y="76" width="44" height="5" rx="2" fill="#5E5A54"/></svg>
+        <span class="verb">Print it</span>
         <h3>Cards, signs &amp; magnets</h3>
-        <div class="from">From <b>$79</b></div>
         <p>Designed, proofed and shipped to your door.</p>
-        <span class="go">View print products</span>
+        <div class="from">From <b>$79</b></div>
+        <span class="go">See print &amp; signs</span>
       </a>
-      <a class="hm-svc rv" href="/pricing.html#care" style="transition-delay:.18s">
+      <a class="hm-svc rv" href="/care-plans.html" style="transition-delay:.12s">
         <svg viewBox="0 0 240 120" aria-hidden="true"><rect class="sv sv1" x="40" y="24" width="160" height="76" rx="8" fill="#1E1E1E" stroke="#363431"/><polyline class="sv sv2" points="56,80 86,66 112,72 140,50 170,56 184,38" fill="none" stroke="#C9A962" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle class="sv sv2" cx="184" cy="38" r="5" fill="#C9A962"/><rect class="sv sv1" x="56" y="34" width="44" height="6" rx="3" fill="#5E5A54"/></svg>
+        <span class="verb">Keep it running</span>
         <h3>Care plans</h3>
+        <p>We keep your site fresh, so you don't have to.</p>
         <div class="from">From <b>$99</b>/mo</div>
-        <p>We keep your site fresh and working.</p>
-        <span class="go">View care plans</span>
+        <span class="go">See care plans</span>
       </a>
-    </div>
-  </section>
-
-  <!-- Package finder -->
-  <section class="wrap hm-sec" aria-labelledby="find-h" style="padding-top:0">
-    <div class="hm-find rv">
-      <div class="stack" style="gap:16px">
-        <span class="eyebrow">Not sure where to start?</span>
-        <h2 id="find-h">Tell us what you need. We'll point you to the right package.</h2>
-        <div class="hm-choices" role="group" aria-label="What do you need?">
-          <button class="hm-choice" type="button" data-k="site" aria-pressed="true">A website</button>
-          <button class="hm-choice" type="button" data-k="logo" aria-pressed="false">A logo or brand</button>
-          <button class="hm-choice" type="button" data-k="both" aria-pressed="false">Both</button>
-          <button class="hm-choice" type="button" data-k="care" aria-pressed="false">Help keeping my site up</button>
-        </div>
-      </div>
-      <div class="hm-pick" id="pick" aria-live="polite">
-        <span class="eyebrow">Most popular</span>
-        <h3>Growth website</h3>
-        <div class="pr-price"><b>$2,500</b></div>
-        <p>A custom site with up to 5 pages, Google Business Profile setup and a quote request form. About 3 weeks.</p>
-        <div class="btns"><a class="btn" href="/pricing.html#websites">View our packages</a><a class="btn ghost" href="/contact.html">Get a free quote</a></div>
-      </div>
     </div>
   </section>
 
   <!-- How it works -->
   <section class="msec-band" aria-labelledby="how-h"><div class="wrap hm-sec">
-    <div class="pr-head rv"><span class="eyebrow">How it works</span><h2 id="how-h">From first call to launch day.</h2></div>
+    <div class="pr-head rv"><span class="eyebrow">How it works</span><h2 id="how-h">Three steps. That's it.</h2></div>
     <div class="hm-stepwrap" id="hmSteps"><span class="hm-line" aria-hidden="true"></span>
       <ol class="hm-steps">
-        <li class="rv"><span class="n">1</span><div><h3>Free quote call</h3><p>Tell us about your business. We'll recommend a package.</p></div></li>
-        <li class="rv" style="transition-delay:.08s"><span class="n">2</span><div><h3>Design and feedback</h3><p>You see it before it's live and tell us what to change.</p></div></li>
-        <li class="rv" style="transition-delay:.16s"><span class="n">3</span><div><h3>Launch</h3><p>Your site goes live in your name, ready for customers.</p></div></li>
-        <li class="rv" style="transition-delay:.24s"><span class="n">4</span><div><h3>Ongoing care</h3><p>If you want it, we keep it fresh every month.</p></div></li>
+        <li class="rv"><span class="n">1</span><div><h3>Free quote call</h3><p>Tell us about your business.</p></div></li>
+        <li class="rv" style="transition-delay:.08s"><span class="n">2</span><div><h3>You see it first</h3><p>Nothing goes live until you approve it.</p></div></li>
+        <li class="rv" style="transition-delay:.16s"><span class="n">3</span><div><h3>Launch</h3><p>Your site goes live, in your name.</p></div></li>
       </ol>
     </div>
   </div></section>
 
-  <!-- Why -->
-  <section class="wrap hm-sec" aria-labelledby="why-h">
-    <div class="pr-head rv"><span class="eyebrow">Why Calles Group</span><h2 id="why-h">Why local businesses choose us</h2></div>
-    <div class="hm-why">
-      <div class="rv"><svg viewBox="0 0 28 28" aria-hidden="true"><rect x="6" y="12" width="16" height="12" rx="2"/><path d="M10 12V8a4 4 0 0 1 8 0v4"/></svg><b>You own everything.</b><p>Your site and domain are in your name.</p></div>
-      <div class="rv" style="transition-delay:.06s"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M4 14h20M14 4v20"/><circle cx="14" cy="14" r="10"/></svg><b>Clear, flat prices.</b><p>You know the price before we start.</p></div>
-      <div class="rv" style="transition-delay:.12s"><svg viewBox="0 0 28 28" aria-hidden="true"><rect x="8" y="3" width="12" height="22" rx="3"/><path d="M12 21h4"/></svg><b>Built for phones first.</b><p>Because that's where your customers are.</p></div>
-      <div class="rv" style="transition-delay:.18s"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 25s-8-7-8-13a8 8 0 0 1 16 0c0 6-8 13-8 13z"/><circle cx="14" cy="12" r="3"/></svg><b>Local.</b><p>Based in Elgin, working across Chicagoland.</p></div>
-    </div>
-  </section>
-
   <!-- FAQ -->
-  <section class="wrap hm-sec" aria-labelledby="faq-h" style="padding-top:0">
+  <section class="wrap hm-sec" aria-labelledby="faq-h">
     <div class="pr-head rv"><h2 id="faq-h">Common questions</h2></div>
     <div class="hm-faq rv">
       <details><summary>Who owns the website?<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></summary><p class="ans">You do. Your Wix account and domain are set up in your name and you pay for them directly. We just need collaborator access to build. Your logo files and full admin access are handed over once your final payment is made.</p></details>
-      <details><summary>How does payment work?<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></summary><p class="ans">50% deposit to start and the rest before your site goes live. For projects over $2,500, it's 50% to start, 25% when you approve the design, and 25% before launch. We accept card through a Wix invoice, Zelle, or check. Invoices are due within 7 days.</p></details>
       <details><summary>How long does it take?<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></summary><p class="ans">About 2 to 5 weeks depending on the package. The clock starts once we have your text, photos and logo.</p></details>
-      <details><summary>Can I cancel a care plan?<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></summary><p class="ans">Yes, anytime. Your plan runs to the end of that month. Plans are billed monthly in advance.</p></details>
+      <details><summary>How does payment work?<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></summary><p class="ans">50% deposit to start and the rest before your site goes live. For projects over $2,500, it's 50% to start, 25% when you approve the design, and 25% before launch. We accept card through a Wix invoice, Zelle, or check. Invoices are due within 7 days.</p></details>
     </div>
     <a class="tlink" href="/faq.html" style="align-self:center">See all questions &rarr;</a>
   </section>
@@ -335,15 +274,15 @@
     <div class="hm-area rv">
       <h2 id="area-h" style="font-size:1.4rem">Web design for Elgin, the Fox Valley and the northwest suburbs</h2>
       <p class="muted">In person or over video.</p>
-      <ul><li>Elgin</li><li>South Elgin</li><li>Bartlett</li><li>Schaumburg</li><li>Hoffman Estates</li><li>Barrington</li><li>South Barrington</li><li>Inverness</li><li>St. Charles</li><li>Geneva</li><li>Algonquin</li><li>Crystal Lake</li><li>Naperville</li><li>Chicago</li></ul>
+      <ul><li><a href="/web-design-elgin.html">Elgin</a></li><li><a href="/web-design-south-elgin.html">South Elgin</a></li><li><a href="/web-design-bartlett.html">Bartlett</a></li><li><a href="/web-design-schaumburg.html">Schaumburg</a></li><li>Hoffman Estates</li><li>Barrington</li><li>South Barrington</li><li>Inverness</li><li><a href="/web-design-st-charles.html">St. Charles</a></li><li>Geneva</li><li>Algonquin</li><li><a href="/web-design-crystal-lake.html">Crystal Lake</a></li><li>Naperville</li><li>Chicago</li></ul>
     </div>
   </section>
 
   <!-- Final -->
   <div class="pr-final" id="final"><div class="wrap">
-    <h2>Ready to look the part?</h2>
-    <p>Book a free quote call. No pressure, just a plan for your business.</p>
-    <div class="btns" style="justify-content:center"><a class="btn" href="/contact.html">Get a free quote</a><a class="btn ghost" href="/pricing.html">View our packages</a></div>
+    <h2>Your business is good. <em style="font-style:normal;color:var(--accent)">Let's make it look that way.</em></h2>
+    <p>Free quote call. No pressure, just a plan.</p>
+    <div class="btns" style="justify-content:center"><a class="btn" href="/contact.html">Get a free quote</a><a class="btn ghost" href="tel:+13126000590">Call or text 312-600-0590</a></div>
   </div></div>
 </main>
 
@@ -355,7 +294,7 @@
     <a href="tel:+13126000590">312-600-0590</a>
   </div>
   <div class="fcol links">
-    <a href="/">Home</a><a href="/pricing.html">Packages</a><a href="/custom-merchandise.html">Print &amp; Signs</a><a href="/faq.html">FAQ</a><a href="/contact.html">Contact</a>
+    <a href="/">Home</a><a href="/pricing.html">Packages</a><a href="/custom-merchandise.html">Print &amp; Signs</a><a href="/care-plans.html">Care plans</a><a href="/faq.html">FAQ</a><a href="/contact.html">Contact</a>
   </div>
   <div class="fcol links">
     <a href="/launch-bundle.html">Launch + Starter Kit</a><a href="/growth-bundle.html">Growth + Brand Kit</a><a href="/premium-bundle.html">Premium + Brand Kit</a>
@@ -381,35 +320,16 @@
     setTimeout(function () { ba.classList.remove("anim"); }, 4400);
   }
 
-  // Package finder
-  var picks = {
-    site: { tag: "Most popular", name: "Growth website", price: "$2,500", text: "A custom site with up to 5 pages, Google Business Profile setup and a quote request form. About 3 weeks.", href: "/pricing.html#websites" },
-    logo: { tag: "Most complete", name: "Brand Kit", price: "$900", text: "Logo, business cards, colors, fonts, a one-page brand guide and social media images.", href: "/pricing.html#branding" },
-    both: { tag: "Save $200", name: "Growth website + Brand Kit", price: "$3,200", was: "$3,400", text: "Your custom site and your full brand, designed together so everything matches.", href: "/pricing.html#bundles" },
-    care: { tag: "Most popular", name: "Plus care plan", price: "$199", per: "/mo", text: "2.5 hours of edits a month, Google posts and a short monthly report. Cancel anytime.", href: "/pricing.html#care" }
-  };
-  var pick = document.getElementById("pick");
-  document.querySelectorAll(".hm-choice").forEach(function (b) {
-    b.addEventListener("click", function () {
-      document.querySelectorAll(".hm-choice").forEach(function (o) { o.setAttribute("aria-pressed", o === b); });
-      var p = picks[b.getAttribute("data-k")];
-      pick.querySelector(".eyebrow").textContent = p.tag;
-      pick.querySelector("h3").textContent = p.name;
-      pick.querySelector(".pr-price").innerHTML = "<b>" + p.price + "</b>" + (p.per ? "<small>" + p.per + "</small>" : "") + (p.was ? "<s>" + p.was + "</s>" : "");
-      pick.querySelector("p").textContent = p.text;
-      pick.querySelector(".btn").setAttribute("href", p.href);
-      pick.classList.remove("swap"); void pick.offsetWidth; pick.classList.add("swap");
-    });
-  });
-
   // Reveal on scroll, only for things starting below the first screen
   var els = [].slice.call(document.querySelectorAll(".rv"));
+  // Once revealed, drop the reveal classes so card hover effects work normally.
+  function show(el) { el.classList.add("in"); setTimeout(function () { el.classList.remove("rv", "in"); }, 1000); }
   if (!reduce && "IntersectionObserver" in window) {
     var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+      es.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
     }, { rootMargin: "0px 0px -8% 0px" });
     els.forEach(function (el) {
-      if (el.getBoundingClientRect().top < innerHeight) el.classList.add("in"); else io.observe(el);
+      if (el.getBoundingClientRect().top < innerHeight) show(el); else io.observe(el);
     });
   } else { els.forEach(function (el) { el.classList.add("in"); }); }
 

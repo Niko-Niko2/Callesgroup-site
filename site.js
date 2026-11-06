@@ -3,7 +3,7 @@
   var old = { pricing: "/pricing.html", faq: "/faq.html", contact: "/contact.html",
     "bundle-launch": "/launch-bundle.html", "bundle-growth": "/growth-bundle.html", "bundle-premium": "/premium-bundle.html",
     websites: "/pricing.html#websites", bundles: "/pricing.html#bundles", branding: "/pricing.html#branding",
-    addons: "/pricing.html#addons", care: "/pricing.html#care" };
+    addons: "/pricing.html#addons", care: "/care-plans.html" };
   var h = location.hash.replace("#", "");
   if ((location.pathname === "/" || location.pathname === "/index.html") && old[h]) { location.replace(old[h]); return; }
 

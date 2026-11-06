@@ -102,6 +102,7 @@
       <a class="nl" href="/" data-page="home">Home</a>
       <a class="nl" href="/pricing.html" data-page="pricing">Packages</a>
       <a class="nl" href="/custom-merchandise.html" data-page="merch">Print &amp; Signs</a>
+      <a class="nl" href="/care-plans.html" data-page="care">Care plans</a>
       <a class="nl" href="/faq.html" data-page="faq">FAQ</a>
       <a class="nl" href="/contact.html" data-page="contact" aria-current="page">Contact</a>
       <a class="btn sm" href="/contact.html">Get a free quote</a>
@@ -135,7 +136,7 @@
     <a href="tel:+13126000590">312-600-0590</a>
   </div>
   <div class="fcol links">
-    <a href="/">Home</a><a href="/pricing.html">Packages</a><a href="/custom-merchandise.html">Print &amp; Signs</a><a href="/faq.html">FAQ</a><a href="/contact.html">Contact</a>
+    <a href="/">Home</a><a href="/pricing.html">Packages</a><a href="/custom-merchandise.html">Print &amp; Signs</a><a href="/care-plans.html">Care plans</a><a href="/faq.html">FAQ</a><a href="/contact.html">Contact</a>
   </div>
   <div class="fcol links">
     <a href="/launch-bundle.html">Launch + Starter Kit</a><a href="/growth-bundle.html">Growth + Brand Kit</a><a href="/premium-bundle.html">Premium + Brand Kit</a>
@@ -192,15 +193,24 @@ store.subscribe(() => requestAnimationFrame(() => {
 const params = new URLSearchParams(location.search);
 // Each link picks one "What do you need?" option; packs also write their name and price into the message.
 const NEEDS = { "contractor-pack": ["Cards, signs or magnets", "Contractor Starter Pack ($899)"], "brand-launch-kit": ["Logo or branding", "Brand Launch Kit ($999)"],
-  "grand-opening-pack": ["Cards, signs or magnets", "Grand Opening Pack ($549)"], "single": ["Cards, signs or magnets", ""], "unsure": ["Not sure yet", ""] };
+  "grand-opening-pack": ["Cards, signs or magnets", "Grand Opening Pack ($549)"], "single": ["Cards, signs or magnets", ""], "unsure": ["Not sure yet", ""],
+  "care": ["Care plan", ""], "care-essentials": ["Care plan", "Essentials care plan ($99/mo)"], "care-plus": ["Care plan", "Plus care plan ($199/mo)"],
+  "care-growth": ["Care plan", "Growth care plan ($349/mo)"] };
 const ITEMS = { "business-cards": "Business Cards (from $79)", "yard-signs": "Yard Signs (from $149)", "banners": "Banners (from $99)",
   "door-hangers-flyers": "Door Hangers & Flyers (from $149)", "car-magnets": "Car Magnets (from $109)", "stickers-labels": "Stickers & Labels (from $99)" };
 const need = NEEDS[params.get("need")];
-if (need) {
+// Links from the Care plans page start with "care".
+const isCare = /^care/.test(params.get("need") || "");
+if (need && isCare) {
+  document.getElementById("contactH1").textContent = "Start your care plan";
+  document.getElementById("contactLead").innerHTML = 'Tell us a little about your site and we\'ll get your plan set up. We reply within 24 hours. <a href="/care-plans.html">Back to Care plans</a>';
+} else if (need) {
   document.getElementById("contactH1").textContent = params.get("quote") ? "Get a free quote" : "Start your order";
   document.getElementById("contactLead").innerHTML = 'Tell us what you need and send your logo or artwork if you have it. We send a proof before anything prints, and reply within 24 hours. <a href="/custom-merchandise.html">Back to Print &amp; Signs</a>';
+}
+if (need) {
   const item = ITEMS[params.get("item")];
-  const orderLine = item ? "I'd like to order: " + item + "." : (need[1] ? "I'd like to order: " + need[1] + "." : "");
+  const orderLine = item ? "I'd like to order: " + item + "." : (need[1] ? (isCare ? "I'm interested in the " : "I'd like to order: ") + need[1] + "." : "");
   let done = false;
   const apply = () => {
     if (done) return;
