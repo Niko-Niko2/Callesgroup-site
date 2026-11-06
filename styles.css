@@ -358,9 +358,8 @@ body.merch main :is(.trust,.check,.pack .for,.desc,.note,.sep,.saved,.muted,.ans
 .pr-hero .stack{gap:18px;min-width:0}
 .pr-hero h1{font-size:clamp(2.2rem,6vw,3.4rem);letter-spacing:-.02em}
 .pr-hero h1 em{font-style:normal;color:var(--accent)}
-.pr-chips{display:flex;flex-wrap:wrap;gap:8px 18px;color:var(--muted);font-size:.95rem}
+.pr-chips{display:flex;flex-wrap:wrap;gap:8px 24px;color:var(--muted);font-size:.95rem}
 .pr-chips li{display:flex;align-items:center;gap:8px}
-.pr-chips li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
 
 /* Hero art: a page assembling itself */
 .pr-art{width:100%;height:auto;display:block}
