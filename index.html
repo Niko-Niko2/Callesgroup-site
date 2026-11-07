@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="/styles.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://www.callesgroup.com/#business","name":"Calles Group","url":"https://www.callesgroup.com/","email":"andrew@callesgroup.com","telephone":"+1-312-600-0590","image":"https://static.wixstatic.com/media/03855a_96c7c31bf029475a934ad5139d4f888e~mv2.png","logo":"https://www.callesgroup.com/favicon.svg","description":"Web design, logos and branding for local businesses in Elgin, IL, the Fox Valley and Chicagoland.","founder":{"@type":"Person","name":"Andrew Calles"},"address":{"@type":"PostalAddress","addressLocality":"Elgin","addressRegion":"IL","addressCountry":"US"},"areaServed":[{"@type":"City","name":"Elgin, IL"},{"@type":"City","name":"South Elgin, IL"},{"@type":"City","name":"Bartlett, IL"},{"@type":"City","name":"Schaumburg, IL"},{"@type":"City","name":"Hoffman Estates, IL"},{"@type":"City","name":"Barrington, IL"},{"@type":"City","name":"South Barrington, IL"},{"@type":"City","name":"Inverness, IL"},{"@type":"City","name":"St. Charles, IL"},{"@type":"City","name":"Geneva, IL"},{"@type":"City","name":"Algonquin, IL"},{"@type":"City","name":"Crystal Lake, IL"},{"@type":"City","name":"Naperville, IL"},{"@type":"City","name":"Chicago, IL"}],"priceRange":"$$","makesOffer":[{"@type":"Offer","name":"Launch website","price":"1500","priceCurrency":"USD","url":"https://www.callesgroup.com/pricing.html#websites"},{"@type":"Offer","name":"Growth website","price":"2500","priceCurrency":"USD","url":"https://www.callesgroup.com/pricing.html#websites"},{"@type":"Offer","name":"Premium website","price":"3800","priceCurrency":"USD","url":"https://www.callesgroup.com/pricing.html#websites"},{"@type":"Offer","name":"Logo design","price":"500","priceCurrency":"USD","url":"https://www.callesgroup.com/pricing.html#branding"},{"@type":"Offer","name":"Website care plan","price":"99","priceCurrency":"USD","url":"https://www.callesgroup.com/care-plans.html"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://www.callesgroup.com/#business","name":"Calles Group","url":"https://www.callesgroup.com/","email":"andrew@callesgroup.com","telephone":"+1-312-600-0590","image":"https://static.wixstatic.com/media/03855a_96c7c31bf029475a934ad5139d4f888e~mv2.png","logo":"https://www.callesgroup.com/favicon.svg","description":"Web design, logos and branding for local businesses in Elgin, IL, the Fox Valley and Chicagoland.","founder":{"@type":"Person","name":"Andrew Calles"},"address":{"@type":"PostalAddress","addressLocality":"Elgin","addressRegion":"IL","addressCountry":"US"},"areaServed":[{"@type":"City","name":"Elgin, IL"},{"@type":"City","name":"South Elgin, IL"},{"@type":"City","name":"Bartlett, IL"},{"@type":"City","name":"Schaumburg, IL"},{"@type":"City","name":"Hoffman Estates, IL"},{"@type":"City","name":"Barrington, IL"},{"@type":"City","name":"South Barrington, IL"},{"@type":"City","name":"Inverness, IL"},{"@type":"City","name":"St. Charles, IL"},{"@type":"City","name":"Geneva, IL"},{"@type":"City","name":"Algonquin, IL"},{"@type":"City","name":"Crystal Lake, IL"},{"@type":"City","name":"Naperville, IL"},{"@type":"City","name":"Chicago, IL"}],"priceRange":"$$","makesOffer":[{"@type":"Offer","name":"Launch website","price":"1500","priceCurrency":"USD","url":"https://www.callesgroup.com/pricing.html#websites"},{"@type":"Offer","name":"Growth website","price":"2500","priceCurrency":"USD","url":"https://www.callesgroup.com/pricing.html#websites"},{"@type":"Offer","name":"Premium website","price":"3800","priceCurrency":"USD","url":"https://www.callesgroup.com/pricing.html#websites"},{"@type":"Offer","name":"Logo design","price":"500","priceCurrency":"USD","url":"https://www.callesgroup.com/pricing.html#client-addons"},{"@type":"Offer","name":"Website care plan","price":"99","priceCurrency":"USD","url":"https://www.callesgroup.com/care-plans.html"}]}</script>
 <script>document.documentElement.classList.add("js")</script>
 <style>
 /* Home: a welcome, then the proof (before/after), then a guided path to the right package.
@@ -85,8 +85,8 @@
 .hm-hello p{color:var(--muted);max-width:62ch}
 .hm-hello b{color:var(--ink)}
 
-/* Three services: Build it. Print it. Keep it running. */
-.hm-svcs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+/* Two services: Build it. Keep it bringing in calls. */
+.hm-svcs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;max-width:880px;margin-inline:auto;width:100%}
 .hm-svc{display:flex;flex-direction:column;gap:10px;padding:22px;border-radius:18px;background:var(--surface);border:1px solid var(--line);color:var(--ink);text-decoration:none;transition:transform .35s var(--ease),border-color .35s,box-shadow .35s}
 .hm-svc:hover{transform:translateY(-5px);border-color:var(--moss);box-shadow:0 22px 40px -28px rgba(0,0,0,.9)}
 .hm-svc svg{width:100%;height:auto;border-radius:12px;background:var(--band);margin-bottom:6px}
@@ -156,8 +156,7 @@
     <nav id="siteNav" aria-label="Main">
       <a class="nl" href="/" data-page="home" aria-current="page">Home</a>
       <a class="nl" href="/pricing.html" data-page="pricing">Website Packages</a>
-      <a class="nl" href="/care-plans.html" data-page="care">Monthly Care Plans</a>
-      <a class="nl" href="/custom-merchandise.html" data-page="merch">Business Merchandise</a>
+      <a class="nl" href="/care-plans.html" data-page="care">Care Plans</a>
       <a class="nl" href="/faq.html" data-page="faq">FAQ</a>
       <a class="nl" href="/contact.html" data-page="contact">Contact</a>
       <a class="btn sm" href="/contact.html">Get a free quote</a>
@@ -214,29 +213,21 @@
     </div>
   </section>
 
-  <!-- What we do: matches the menu (Packages, Print & Signs, Care plans) -->
+  <!-- What we do: matches the menu (Website Packages, Care Plans) -->
   <section class="wrap hm-sec" id="offer" aria-labelledby="offer-h" style="padding-top:24px">
-    <div class="pr-head rv"><span class="eyebrow">What we do</span><h2 id="offer-h">Build it. Print it. <em style="font-style:normal;color:var(--accent)">Keep it running.</em></h2></div>
+    <div class="pr-head rv"><span class="eyebrow">What we do</span><h2 id="offer-h">Build it. <em style="font-style:normal;color:var(--accent)">Keep it bringing in calls.</em></h2></div>
     <div class="hm-svcs">
       <a class="hm-svc rv" href="/pricing.html">
         <svg viewBox="0 0 240 120" aria-hidden="true"><rect class="sv sv1" x="30" y="18" width="150" height="90" rx="8" fill="#1E1E1E" stroke="#363431"/><rect class="sv sv1" x="44" y="34" width="80" height="10" rx="3" fill="#EDEAE6"/><rect class="sv sv1" x="44" y="52" width="56" height="6" rx="3" fill="#5E5A54"/><rect class="sv sv1" x="44" y="66" width="36" height="14" rx="4" fill="#C9A962"/><rect class="sv sv2" x="160" y="40" width="48" height="74" rx="8" fill="#151515" stroke="#5E5A54"/><rect class="sv sv2" x="168" y="54" width="32" height="6" rx="3" fill="#EDEAE6"/><rect class="sv sv2" x="168" y="66" width="22" height="9" rx="3" fill="#C9A962"/></svg>
         <span class="verb">Build it</span>
-        <h3>Websites &amp; branding</h3>
-        <p>A site that brings in calls, and a look that matches.</p>
+        <h3>Websites</h3>
+        <p>A fast, phone-friendly site that makes your business look established.</p>
         <div class="from">From <b>$1,500</b></div>
         <span class="go">See packages</span>
       </a>
-      <a class="hm-svc rv" href="/custom-merchandise.html" style="transition-delay:.06s">
-        <svg viewBox="0 0 240 120" aria-hidden="true"><rect class="sv sv1" x="34" y="24" width="80" height="54" rx="4" fill="#EDEAE6"/><rect class="sv sv1" x="44" y="34" width="10" height="10" fill="#C9A962"/><rect class="sv sv1" x="44" y="52" width="54" height="7" rx="2" fill="#363431"/><rect class="sv sv1" x="50" y="78" width="3" height="28" fill="#8E8A83"/><rect class="sv sv1" x="96" y="78" width="3" height="28" fill="#8E8A83"/><rect class="sv sv2" x="132" y="50" width="78" height="44" rx="4" fill="#1A1A1A" stroke="#3A3733"/><rect class="sv sv2" x="144" y="60" width="9" height="9" fill="#C9A962"/><rect class="sv sv2" x="144" y="76" width="44" height="5" rx="2" fill="#5E5A54"/></svg>
-        <span class="verb">Print it</span>
-        <h3>Cards, signs &amp; magnets</h3>
-        <p>Designed, proofed and shipped to your door.</p>
-        <div class="from">From <b>$79</b></div>
-        <span class="go">See print &amp; signs</span>
-      </a>
-      <a class="hm-svc rv" href="/care-plans.html" style="transition-delay:.12s">
+      <a class="hm-svc rv" href="/care-plans.html" style="transition-delay:.06s">
         <svg viewBox="0 0 240 120" aria-hidden="true"><rect class="sv sv1" x="40" y="24" width="160" height="76" rx="8" fill="#1E1E1E" stroke="#363431"/><polyline class="sv sv2" points="56,80 86,66 112,72 140,50 170,56 184,38" fill="none" stroke="#C9A962" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle class="sv sv2" cx="184" cy="38" r="5" fill="#C9A962"/><rect class="sv sv1" x="56" y="34" width="44" height="6" rx="3" fill="#5E5A54"/></svg>
-        <span class="verb">Keep it running</span>
+        <span class="verb">Keep it bringing in calls</span>
         <h3>Care plans</h3>
         <p>We keep your site fresh, so you don't have to.</p>
         <div class="from">From <b>$99</b>/mo</div>
@@ -293,10 +284,7 @@
     <a href="tel:+13126000590">312-600-0590</a>
   </div>
   <div class="fcol links">
-    <a href="/">Home</a><a href="/pricing.html">Website Packages</a><a href="/care-plans.html">Monthly Care Plans</a><a href="/custom-merchandise.html">Business Merchandise</a><a href="/faq.html">FAQ</a><a href="/contact.html">Contact</a>
-  </div>
-  <div class="fcol links">
-    <a href="/launch-bundle.html">Launch + Starter Kit</a><a href="/growth-bundle.html">Growth + Brand Kit</a><a href="/premium-bundle.html">Premium + Brand Kit</a>
+    <a href="/">Home</a><a href="/pricing.html">Website Packages</a><a href="/care-plans.html">Care Plans</a><a href="/faq.html">FAQ</a><a href="/contact.html">Contact</a>
   </div>
   <div class="fcol copy"><span>&copy; <span id="yr">2026</span> Calles Group &middot; <a href="/privacy-policy.html">Privacy policy</a></span></div>
 </div></footer>

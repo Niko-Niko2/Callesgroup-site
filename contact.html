@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Free Website &amp; Branding Quote | Elgin, IL | Calles Group</title>
-<meta name="description" content="Get a free quote for a website, logo or print in Elgin, IL. Takes about 2 minutes, and we reply within 24 hours. Call or text 312-600-0590.">
+<meta name="description" content="Get a free quote for a website or care plan in Elgin, IL. Takes about 2 minutes, and we reply within 24 hours. Call or text 312-600-0590.">
 <link rel="canonical" href="https://www.callesgroup.com/contact.html">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#151515">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Calles Group">
 <meta property="og:title" content="Free Website &amp; Branding Quote | Elgin, IL | Calles Group">
-<meta property="og:description" content="Get a free quote for a website, logo or print in Elgin, IL. Takes about 2 minutes, and we reply within 24 hours. Call or text 312-600-0590.">
+<meta property="og:description" content="Get a free quote for a website or care plan in Elgin, IL. Takes about 2 minutes, and we reply within 24 hours. Call or text 312-600-0590.">
 <meta property="og:url" content="https://www.callesgroup.com/contact.html">
 <meta property="og:image" content="https://static.wixstatic.com/media/03855a_96c7c31bf029475a934ad5139d4f888e~mv2.png">
 <meta property="og:image:width" content="1200">
@@ -112,8 +112,7 @@
     <nav id="siteNav" aria-label="Main">
       <a class="nl" href="/" data-page="home">Home</a>
       <a class="nl" href="/pricing.html" data-page="pricing">Website Packages</a>
-      <a class="nl" href="/care-plans.html" data-page="care">Monthly Care Plans</a>
-      <a class="nl" href="/custom-merchandise.html" data-page="merch">Business Merchandise</a>
+      <a class="nl" href="/care-plans.html" data-page="care">Care Plans</a>
       <a class="nl" href="/faq.html" data-page="faq">FAQ</a>
       <a class="nl" href="/contact.html" data-page="contact" aria-current="page">Contact</a>
       <a class="btn sm" href="/contact.html">Get a free quote</a>
@@ -164,10 +163,7 @@
     <a href="tel:+13126000590">312-600-0590</a>
   </div>
   <div class="fcol links">
-    <a href="/">Home</a><a href="/pricing.html">Website Packages</a><a href="/care-plans.html">Monthly Care Plans</a><a href="/custom-merchandise.html">Business Merchandise</a><a href="/faq.html">FAQ</a><a href="/contact.html">Contact</a>
-  </div>
-  <div class="fcol links">
-    <a href="/launch-bundle.html">Launch + Starter Kit</a><a href="/growth-bundle.html">Growth + Brand Kit</a><a href="/premium-bundle.html">Premium + Brand Kit</a>
+    <a href="/">Home</a><a href="/pricing.html">Website Packages</a><a href="/care-plans.html">Care Plans</a><a href="/faq.html">FAQ</a><a href="/contact.html">Contact</a>
   </div>
   <div class="fcol copy"><span>&copy; <span id="yr">2026</span> Calles Group &middot; <a href="/privacy-policy.html">Privacy policy</a></span></div>
 </div></footer>
@@ -215,32 +211,23 @@ store.subscribe(() => requestAnimationFrame(() => {
     lastStep = n;
   }
 }));
-// Orders from the Print & Signs page arrive as /contact.html?need=...&item=...
-// Pre-select the matching "What do you need?" option, and write the order into the message box
-// (always for single products, and for packs if the option isn't on the form).
+// Links from the Care plans page arrive as /contact.html?need=...
+// Pre-select the matching "What do you need?" option, and write the chosen plan into the message box.
 const params = new URLSearchParams(location.search);
-// Each link picks one "What do you need?" option; packs also write their name and price into the message.
-const NEEDS = { "contractor-pack": ["Cards, signs or magnets", "Contractor Starter Pack ($899)"], "brand-launch-kit": ["Logo or branding", "Brand Launch Kit ($999)"],
-  "grand-opening-pack": ["Cards, signs or magnets", "Grand Opening Pack ($549)"], "single": ["Cards, signs or magnets", ""], "unsure": ["Not sure yet", ""],
+// Each link picks one "What do you need?" option; plans also write their name and price into the message.
+const NEEDS = { "unsure": ["Not sure yet", ""],
   "care": ["Care plan", ""], "care-essentials": ["Care plan", "Essentials care plan ($99/mo)"], "care-plus": ["Care plan", "Plus care plan ($199/mo)"],
   "care-growth": ["Care plan", "Growth care plan ($349/mo)"] };
-const ITEMS = { "business-cards": "Business Cards (from $79)", "yard-signs": "Yard Signs (from $149)", "banners": "Banners (from $99)",
-  "door-hangers-flyers": "Door Hangers & Flyers (from $149)", "car-magnets": "Car Magnets (from $109)", "stickers-labels": "Stickers & Labels (from $99)" };
 const need = NEEDS[params.get("need")];
 // Links from the Care plans page start with "care".
 const isCare = /^care/.test(params.get("need") || "");
 if (need && isCare) {
   document.getElementById("contactH1").textContent = "Start your care plan";
-  document.getElementById("contactLead").innerHTML = 'Tell us a little about your site and we\'ll get your plan set up. <a href="/care-plans.html">Back to Monthly Care Plans</a>';
-  document.getElementById("contactLead").hidden = false;
-} else if (need) {
-  document.getElementById("contactH1").textContent = params.get("quote") ? "Get a free quote" : "Start your order";
-  document.getElementById("contactLead").innerHTML = 'Tell us what you need. We send a proof before anything prints. <a href="/custom-merchandise.html">Back to Business Merchandise</a>';
+  document.getElementById("contactLead").innerHTML = 'Tell us a little about your site and we\'ll get your plan set up. <a href="/care-plans.html">Back to Care Plans</a>';
   document.getElementById("contactLead").hidden = false;
 }
 if (need) {
-  const item = ITEMS[params.get("item")];
-  const orderLine = item ? "I'd like to order: " + item + "." : (need[1] ? (isCare ? "I'm interested in the " : "I'd like to order: ") + need[1] + "." : "");
+  const orderLine = need[1] ? "I'm interested in the " + need[1] + "." : "";
   let done = false;
   const apply = () => {
     if (done) return;

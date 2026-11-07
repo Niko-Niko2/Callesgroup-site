@@ -1,4 +1,4 @@
-/* Layout: mobile-first, one HTML file per page (home, pricing, faq, contact, 3 bundle pages), 1100px column, graphite ground, gold accent, 12px cards */
+/* Layout: mobile-first, one HTML file per page (home, pricing, care plans, faq, contact, town pages), 1100px column, graphite ground, gold accent, 12px cards */
 :root{
   --bg:#151515; --surface:#1E1E1E; --band:#25221C;
   --moss:#A88B4A; --accent:#C9A962; --accent-hover:#DABB75;
@@ -174,7 +174,7 @@ fieldset{border:none;padding:0;margin:0;display:flex;flex-direction:column;gap:1
 .info dd a{display:inline-flex;align-items:center;min-height:44px}
 
 footer{border-top:1px solid var(--line)}
-footer .wrap{padding-block:36px;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px;font-size:.92rem;color:var(--muted)}
+footer .wrap{padding-block:36px;display:grid;grid-template-columns:1.2fr 1fr;gap:24px;font-size:.92rem;color:var(--muted)}
 footer .fcol{display:flex;flex-direction:column;gap:6px}
 footer a{color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
 footer a:hover{color:var(--ink)}
@@ -279,7 +279,7 @@ nav.crumbs{font-size:.88rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:6
 .crumbs a{color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;min-height:32px}
 .crumbs a:hover{color:var(--ink)}
 .lead a,.soon a,.notes a,.psec .muted a{color:var(--accent)}
-@media (min-width:961px){footer .wrap{grid-template-columns:1fr auto auto}footer .fcol.links{display:grid;grid-template-columns:repeat(3,auto);column-gap:24px;align-content:start}footer .fcol.links+.fcol.links{grid-template-columns:auto}}
+@media (min-width:961px){footer .wrap{grid-template-columns:1fr auto}footer .fcol.links{display:grid;grid-template-columns:repeat(3,auto);column-gap:24px;align-content:start}footer .fcol.links+.fcol.links{grid-template-columns:auto}}
 .wm{display:inline-flex;flex-direction:column;gap:4px;line-height:1}
 .wm-top{display:flex;align-items:flex-end;gap:2px;font-weight:800;font-size:1.3rem;letter-spacing:.14em;color:var(--ink)}
 .wm-dot{width:5px;height:5px;flex:none;background:var(--accent);margin-bottom:2px}
@@ -395,6 +395,9 @@ body.merch main :is(.trust,.check,.pack .for,.desc,.note,.sep,.saved,.muted,.ans
 /* Cards */
 .pr-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:start}
 .pr-grid.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.pr-grid.g2{grid-template-columns:repeat(2,minmax(0,1fr));max-width:820px;margin-inline:auto;width:100%;align-items:stretch}
+.pr-grid.g2 .btn{margin-top:auto}
+.pr-clients{padding-block:8px 64px}
 .pr-card{position:relative;display:flex;flex-direction:column;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;transition:transform .35s var(--ease),border-color .35s,box-shadow .35s}
 .pr-card:hover{transform:translateY(-4px);border-color:#3D3A35;box-shadow:0 18px 40px -26px rgba(0,0,0,.8)}
 .pr-card.pop{border:2px solid var(--accent);box-shadow:0 0 0 6px rgba(201,169,98,.06)}
@@ -468,7 +471,7 @@ body.merch main :is(.trust,.check,.pack .for,.desc,.note,.sep,.saved,.muted,.ans
 @media (max-width:960px){
   .pr-hero{grid-template-columns:1fr;gap:28px;padding-block:32px 24px}
   .pr-hero .pr-art{max-width:440px}
-  .pr-grid,.pr-grid.g4{grid-template-columns:1fr;max-width:520px;margin-inline:auto;width:100%}
+  .pr-grid,.pr-grid.g4,.pr-grid.g2{grid-template-columns:1fr;max-width:520px;margin-inline:auto;width:100%}
   .pr-grid .pop{order:-1}
 }
 @media (max-width:700px){

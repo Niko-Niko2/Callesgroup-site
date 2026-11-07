@@ -83,7 +83,7 @@ TOWNS = [
         "faq": [
             ("Why hire an Elgin studio instead of a big Schaumburg agency?", "You work directly with the person building your site, you get flat package prices with no retainer, and your site and domain are in your name."),
             ("Can you build an online store?", "Yes. Online store setup is $750 for up to 20 products, then $15 for each additional product."),
-            ("Do you offer branding too?", "Yes. Logos start at $500, and the full Brand Kit (logo, business cards, colors, fonts and a brand guide) is $900, or less when bundled with a website."),
+            ("Do you offer branding too?", "Yes. Logo design is a $500 add-on for website clients: 3 concepts, 2 rounds of changes and every file you need."),
         ],
     },
     {
@@ -139,8 +139,7 @@ def header():
     <nav id="siteNav" aria-label="Main">
       <a class="nl" href="/" data-page="home">Home</a>
       <a class="nl" href="/pricing.html" data-page="pricing">Website Packages</a>
-      <a class="nl" href="/care-plans.html" data-page="care">Monthly Care Plans</a>
-      <a class="nl" href="/custom-merchandise.html" data-page="merch">Business Merchandise</a>
+      <a class="nl" href="/care-plans.html" data-page="care">Care Plans</a>
       <a class="nl" href="/faq.html" data-page="faq">FAQ</a>
       <a class="nl" href="/contact.html" data-page="contact">Contact</a>
       <a class="btn sm" href="/contact.html">Get a free quote</a>
@@ -163,10 +162,7 @@ def footer():
     <a href="tel:+13126000590">312-600-0590</a>
   </div>
   <div class="fcol links">
-    <a href="/">Home</a><a href="/pricing.html">Website Packages</a><a href="/care-plans.html">Monthly Care Plans</a><a href="/custom-merchandise.html">Business Merchandise</a><a href="/faq.html">FAQ</a><a href="/contact.html">Contact</a>
-  </div>
-  <div class="fcol links">
-    <a href="/launch-bundle.html">Launch + Starter Kit</a><a href="/growth-bundle.html">Growth + Brand Kit</a><a href="/premium-bundle.html">Premium + Brand Kit</a>
+    <a href="/">Home</a><a href="/pricing.html">Website Packages</a><a href="/care-plans.html">Care Plans</a><a href="/faq.html">FAQ</a><a href="/contact.html">Contact</a>
   </div>
   <div class="fcol copy">""" + areas_col() + """<span>&copy; <span id="yr">2026</span> Calles Group &middot; <a href="/privacy-policy.html">Privacy policy</a></span></div>
 </div></footer>"""
@@ -260,7 +256,7 @@ footer .fcol.copy .areas a{{min-height:0;display:inline}}
       <div class="card"><h3>Growth &middot; $2,500</h3><ul class="check"><li>Up to 5 pages, custom layout</li><li>Google Business Profile setup</li><li>Search Console and analytics</li><li>Booking or quote form</li><li>About 3 weeks</li></ul></div>
       <div class="card"><h3>Premium &middot; $3,800</h3><ul class="check"><li>Up to 8 pages</li><li>Full copywriting</li><li>Blog or project gallery</li><li>30 days of free edits</li><li>About 4 to 5 weeks</li></ul></div>
     </div>
-    <p class="muted">See <a href="/pricing.html">all packages and pricing</a>, including logos, bundles and monthly care plans. Need print too? See <a href="/custom-merchandise.html">Print &amp; Signs</a>.</p>
+    <p class="muted">See <a href="/pricing.html">all website packages and pricing</a>, plus <a href="/care-plans.html">monthly care plans</a> to keep your site bringing in calls.</p>
   </div>
   <div class="wrap psec">
     <h2>Who we build for in {esc(t['name'])}</h2>
