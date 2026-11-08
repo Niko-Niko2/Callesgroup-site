@@ -12,7 +12,7 @@ This repo is the backup: every change to the live site is committed here first, 
 | File | Page |
 | --- | --- |
 | `index.html` | Home |
-| `pricing.html` | Website Packages (sections: #websites, #addons, #client-addons). Print is not sold on the site: it is offered to website clients on the quote call only. |
+| `pricing.html` | Website Packages (sections: #websites, #bundles, #addons, #client-addons). Print is not sold on the site: it is offered to website clients on the quote call only. |
 | `care-plans.html` | Care Plans |
 | `faq.html` | FAQ |
 | `contact.html` | Get a free quote (Wix Form "Quote request", ID 8b564ebe-a6cc-4e87-8255-c3ebdfde4c20) |
@@ -39,6 +39,8 @@ Phone: 312-600-0590 (Google Voice), tap-to-call in every footer, on the contact 
 ## Still to do
 - Quote form (Wix form 8b564ebe…): 3 steps. 1) What do you need? (required), budget. 2) Business type, current website, logo. 3) Name, business name, email, phone, message. The plan caps forms at 10 fields, so start date, "how did you hear about us" and best way to reach were left out; a Core plan or higher would allow more fields and a file upload.
 - Move callesgroup.com and the Premium plan to this site, then submit the sitemap in Google Search Console.
+
+| `launch-bundle.html`, `growth-bundle.html`, `premium-bundle.html` | Website + Brand Kit bundle pages, linked from the Bundles section on pricing. Restored Nov 8, 2026 (their 301 redirects were deleted). |
 
 ## Removed pages (Nov 7, 2026)
 `custom-merchandise.html`, `launch-bundle.html`, `growth-bundle.html` and `premium-bundle.html` were deleted. Each has a 301 redirect to `/pricing.html` in the Wix SEO redirects (site dashboard), not in this repo. To bring them back, restore them from the commit "Backup before removing merch" and delete those redirects.
