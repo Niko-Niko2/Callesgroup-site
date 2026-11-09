@@ -266,7 +266,6 @@ a.chip:hover{background:var(--accent);color:var(--on-accent)}
 .ct-bar i{display:block;height:100%;width:8%;background:var(--accent);transition:width .45s var(--ease)}
 .fast{display:flex;align-items:center;gap:12px;margin:16px 0 6px}
 .fast svg{width:28px;height:28px;flex:none;fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linecap:round}
-/* Wix form renderer classes (form-*) inside #quote */
 /* Contact page: intro beside the form on wide screens, stacked on phones */
 .ct{padding-block:clamp(28px,6vw,64px) clamp(48px,9vw,88px)}
 .ct-grid{display:grid;gap:28px;align-items:start}
@@ -277,6 +276,7 @@ a.chip:hover{background:var(--accent);color:var(--on-accent)}
 .ct-main{min-width:0}
 .ct-fine{margin-top:12px}
 @media (min-width:960px){.ct-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px}.ct-intro{position:sticky;top:calc(var(--hdr) + 32px)}}
+/* Wix form renderer classes (form-*) inside #quote */
 #quote{min-height:280px}
 #quote .form{display:flex;flex-direction:column;gap:22px}
 #quote .form-step{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
