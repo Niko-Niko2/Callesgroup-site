@@ -10,3 +10,5 @@ partials/
 tools/
 data/
 palette-preview.html
+CNAME
+.nojekyll
