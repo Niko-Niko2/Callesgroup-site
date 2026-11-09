@@ -33,7 +33,7 @@
       <h2 class="sr">Quote request form</h2>
       <div class="card form-card" id="formCard">
         <div class="ct-bar" aria-hidden="true"><i id="ctBar"></i></div>
-        <!-- WIX FORM MOUNT: Wix installs the quote form (ID 8b564ebe-a6cc-4e87-8255-c3ebdfde4c20) here. Do not rebuild it. -->
+        <!-- QUOTE FORM MOUNT: js/quote-form.js builds the form here. -->
         <div id="quote"></div>
         <noscript><p>The quote form needs JavaScript. Call or text {{phone}}, or email {{email}}, and Andrew will reply {{reply}}.</p></noscript>
       </div>
@@ -56,75 +56,21 @@
 })();
 </script>
 <script type="module">
-// Wix's quote form. The renderer file is installed by Wix on the live site.
-import { renderForm } from "/js/wix/form-renderer.js";
-const { store } = renderForm(document.querySelector("#quote"), {
-  formId: "8b564ebe-a6cc-4e87-8255-c3ebdfde4c20",
-  text: { submit: "Send my request", next: "Continue", back: "Back", sending: "Sending…", stepOf: "Step {n} of {total}" },
-  onOutcome: () => document.getElementById("formCard").scrollIntoView({ block: "start" })
-});
-// Wix wants +1 phone numbers. Add it for a 10-digit US number.
-const toUSPhone = (v) => {
-  const s = String(v ?? "");
-  if (s.trim().startsWith("+")) return s;
-  const d = s.replace(/\D/g, "");
-  if (d.length === 10) return "+1" + d;
-  if (d.length === 11 && d[0] === "1") return "+" + d;
-  return s;
-};
-const setValue = store.setValue;
-store.setValue = (target, value) => {
-  const field = store.getState().form?.fields?.find((f) => f.target === target);
-  return setValue.call(store, target, field && field.control === "phone" ? toUSPhone(value) : value);
-};
-// Progress bar, a soft entrance for each new step, then the thank-you page when sent.
+// Quote form (js/quote-form.js). Leads are emailed to Andrew through Web3Forms.
+import { renderQuoteForm } from "/js/quote-form.js";
 const bar = document.getElementById("ctBar"), card = document.getElementById("formCard");
 const calm = matchMedia("(prefers-reduced-motion: reduce)");
-let lastStep = 0;
-store.subscribe(() => requestAnimationFrame(() => {
-  const q = document.querySelector("#quote"), form = q.querySelector(".form");
-  const input = q.querySelector(".form-field--phone input");
-  if (input && !input.placeholder) input.placeholder = "(847) 555-1234";
-  if (form && form.dataset.state === "done") { bar.style.width = "100%"; if (!window.cgSent) { window.cgSent = true; setTimeout(() => location.assign("/thank-you.html"), 600); } return; }
-  const m = (q.querySelector(".form-step-count")?.textContent || "").match(/(\d+)\D+(\d+)/);
-  const n = m ? +m[1] : 1, total = m ? +m[2] : 1;
-  bar.style.width = Math.max(8, (n / (total + 1)) * 100) + "%";
-  if (n !== lastStep) {
-    const fs = q.querySelector(".form-fields");
-    if (fs && lastStep) {
-      fs.classList.remove("enter"); void fs.offsetWidth; fs.classList.add("enter");
+let last = 0;
+renderQuoteForm(document.querySelector("#quote"), {
+  need: window.CG_NEED,
+  onStep: (n, total, box) => {
+    bar.style.width = Math.max(8, (n / (total + 1)) * 100) + "%";
+    if (last) {
+      box.classList.remove("enter"); void box.offsetWidth; box.classList.add("enter");
       if (card.getBoundingClientRect().top < 0) card.scrollIntoView({ block: "start", behavior: calm.matches ? "auto" : "smooth" });
     }
-    lastStep = n;
-  }
-}));
-// ?need=<key>: tick the matching "What do you need?" boxes and note the choice (map is set above).
-const need = window.CG_NEED;
-if (need) {
-  let done = false;
-  const apply = () => {
-    if (done) return;
-    const fields = store.getState().form?.fields;
-    if (!fields || !document.querySelector("#quote .form-field")) return;
-    done = true;
-    document.querySelectorAll("#quote .form-field").forEach((f) => {
-      const lab = f.querySelector(".form-label");
-      if (!lab || !/what do you need/i.test(lab.textContent)) return;
-      f.querySelectorAll("label").forEach((l) => {
-        if (!need.checks.includes(l.textContent.trim())) return;
-        const inp = l.querySelector("input") || document.getElementById(l.htmlFor);
-        if (inp && !inp.checked) inp.click();
-      });
-      // If the field is ever switched to a dropdown in Wix, pick the first match there.
-      const sel = f.querySelector("select");
-      const opt = sel && [...sel.options].find((o) => need.checks.includes(o.textContent.trim()));
-      if (opt) { sel.value = opt.value; sel.dispatchEvent(new Event("change", { bubbles: true })); }
-    });
-    const msgField = fields.find((f) => /^message/i.test(f.target)) || fields.find((f) => /textarea|paragraph/i.test(f.control || ""));
-    const current = msgField && store.getState().values?.[msgField.target];
-    if (need.note && msgField && !current) store.setValue(msgField.target, need.note);
-  };
-  store.subscribe(apply);
-  apply();
-}
+    last = n;
+  },
+  onDone: () => { bar.style.width = "100%"; setTimeout(() => location.assign("/thank-you.html"), 600); }
+});
 </script>
