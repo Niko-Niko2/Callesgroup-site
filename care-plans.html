@@ -3,91 +3,262 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Website Care Plans from $99/mo | Elgin, IL | Calles Group</title>
-<meta name="description" content="Monthly website care for local businesses: edits, fixes, Google posts and checks done for you. Plans from $99/mo, save up to 25% yearly. Cancel anytime.">
+<title>Website Care Plans | Elgin, IL | Calles Group</title>
+<meta name="description" content="Monthly website care from $99/mo. We keep your site updated and working so you don't have to. You own your site, and you can cancel anytime.">
 <link rel="canonical" href="https://www.callesgroup.com/care-plans.html">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#FAF8F4">
+<meta name="theme-color" content="#151515">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Calles Group">
-<meta property="og:title" content="Website Care Plans from $99/mo | Elgin, IL | Calles Group">
-<meta property="og:description" content="Monthly website care for local businesses: edits, fixes, Google posts and checks done for you. Plans from $99/mo, save up to 25% yearly. Cancel anytime.">
+<meta property="og:title" content="Website Care Plans | Elgin, IL | Calles Group">
+<meta property="og:description" content="Monthly website care from $99/mo. We keep your site updated and working so you don't have to. You own your site, and you can cancel anytime.">
 <meta property="og:url" content="https://www.callesgroup.com/care-plans.html">
-<meta property="og:image" content="https://www.callesgroup.com/og-image.png">
+<meta property="og:image" content="https://static.wixstatic.com/media/03855a_96c7c31bf029475a934ad5139d4f888e~mv2.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Calles Group: website design and branding in Elgin, IL">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap">
-<link rel="stylesheet" href="/assets/styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="/styles.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.callesgroup.com/"},{"@type":"ListItem","position":2,"name":"Care plans","item":"https://www.callesgroup.com/care-plans.html"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"OfferCatalog","@id":"https://www.callesgroup.com/care-plans.html#catalog","name":"Calles Group website care plans","url":"https://www.callesgroup.com/care-plans.html","itemListElement":[{"@type":"Offer","name":"Essentials website care plan","price":"99","priceCurrency":"USD","url":"https://www.callesgroup.com/care-plans.html#plans","seller":{"@id":"https://www.callesgroup.com/#business"},"priceSpecification":{"@type":"UnitPriceSpecification","price":"99","priceCurrency":"USD","unitText":"MONTH"}},{"@type":"Offer","name":"Plus website care plan","price":"199","priceCurrency":"USD","url":"https://www.callesgroup.com/care-plans.html#plans","seller":{"@id":"https://www.callesgroup.com/#business"},"priceSpecification":{"@type":"UnitPriceSpecification","price":"199","priceCurrency":"USD","unitText":"MONTH"}},{"@type":"Offer","name":"Growth website care plan","price":"349","priceCurrency":"USD","url":"https://www.callesgroup.com/care-plans.html#plans","seller":{"@id":"https://www.callesgroup.com/#business"},"priceSpecification":{"@type":"UnitPriceSpecification","price":"349","priceCurrency":"USD","unitText":"MONTH"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is this the same as my Wix bill?","acceptedAnswer":{"@type":"Answer","text":"No. Your Wix plan pays Wix to host your site. A care plan pays for our time to keep it updated and working. They're billed separately."}},{"@type":"Question","name":"Can I cancel?","acceptedAnswer":{"@type":"Answer","text":"Yes, anytime. Your plan runs to the end of that month. Plans are billed monthly in advance."}},{"@type":"Question","name":"Can I move my site somewhere else?","acceptedAnswer":{"@type":"Answer","text":"Yes. Your site and domain are in your name, so you can take them anywhere, anytime."}},{"@type":"Question","name":"Do I need a care plan?","acceptedAnswer":{"@type":"Answer","text":"No, it's optional. It's for owners who would rather hand the website off and focus on the business."}}]}</script>
+<style>
+/* Care plans: what we handle, the three plans, and the short answers people ask first. Builds on the shared pr- styles. */
+.cp-sec{display:flex;flex-direction:column;gap:28px;padding-block:56px;scroll-margin-top:calc(var(--hdr) + 16px)}
+.cp-how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.cp-how div{display:flex;flex-direction:column;gap:8px;padding:22px;border-radius:16px;background:var(--surface);border:1px solid var(--line)}
+.cp-how svg{width:30px;height:30px;stroke:var(--accent);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.cp-how b{font-size:1.1rem}
+.cp-how p{color:var(--muted)}
+.cp-note{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;text-align:center;padding:16px 20px;border-radius:14px;border:1px dashed rgba(201,169,98,.5);color:var(--muted)}
+.cp-note b{color:var(--ink)}
+.cp-faq{max-width:760px;margin-inline:auto;width:100%;display:flex;flex-direction:column;gap:10px}
+.cp-faq details{background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.cp-faq summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:56px;padding:10px 18px;cursor:pointer;font-weight:600}
+.cp-faq summary::-webkit-details-marker{display:none}
+.cp-faq summary svg{width:14px;height:14px;flex:none;transition:transform .35s var(--ease)}
+.cp-faq details[open] summary svg{transform:rotate(180deg)}
+.cp-faq .ans{padding:0 18px 16px;color:var(--muted)}
+/* Hero art: a checklist that ticks itself off, and a steady line */
+.cp-art .tick{fill:none;stroke:var(--on-accent);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:20;stroke-dashoffset:20;animation:cpTick .5s var(--ease) forwards}
+.cp-art .line{fill:none;stroke:var(--accent);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:420;stroke-dashoffset:420;animation:cpDraw 1.8s var(--ease) 1.6s forwards}
+@keyframes cpTick{to{stroke-dashoffset:0}}
+@keyframes cpDraw{to{stroke-dashoffset:0}}
+.js .rv{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+@media (max-width:960px){.cp-how{grid-template-columns:1fr;max-width:520px;margin-inline:auto;width:100%}}
+@media (max-width:700px){.cp-sec{padding-block:44px}}
+@media (prefers-reduced-motion: reduce){
+  .cp-art .tick,.cp-art .line{animation:none;stroke-dashoffset:0}
+  .js .rv{opacity:1;transform:none;transition:none}
+}
+.pr-price .pr-was{display:none;align-self:center}
+#plans.yearly .pr-price .pr-was{display:inline}
+.pr-note{margin:6px 0 0;color:var(--muted);font-size:.9rem}
+.pr-deal{display:none;align-items:center;gap:8px;border:1.5px solid #3FB37F;color:#5FD39C;background:rgba(63,179,127,.08);border-radius:10px;padding:8px 12px;font-weight:700;font-size:.92rem}
+.pr-deal span{background:#3FB37F;color:#0F1F17;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:5px}
+#plans.yearly .pr-deal{display:flex}
+#plans .pr-switch,#plans .pr-switch::after,#plans .pr-bill .free{transition:background .4s,border-color .4s,color .4s,transform .35s var(--ease)}
+#plans.yearly .pr-switch{background:rgba(63,179,127,.18);border-color:#3FB37F}
+#plans.yearly .pr-switch::after{background:#3FB37F}
+#plans.yearly .pr-bill .free{color:#5FD39C;border-color:rgba(63,179,127,.6)}
+#plans .pr-card.pop,#plans .pr-card.pop .tag,#plans .pr-card.pop .btn{transition:border-color 2s ease,background 2s ease,box-shadow .35s}
+#plans.yearly .pr-card.pop{border-color:#3FB37F;box-shadow:0 0 0 6px rgba(63,179,127,.10)}
+#plans.yearly .pr-card.pop .tag,#plans.yearly .pr-card.pop .btn{background:#3FB37F}
+#plans.yearly .pr-card.pop .btn:hover{background:#52C892}
+#plans.glow .pr-card.pop{animation:dealGlow 2s ease-out}
+@keyframes dealGlow{0%{box-shadow:0 0 0 0 rgba(63,179,127,.55)}50%{box-shadow:0 0 0 14px rgba(63,179,127,.18)}100%{box-shadow:0 0 0 6px rgba(63,179,127,.10)}}
+@media (prefers-reduced-motion: reduce){#plans.glow .pr-card.pop{animation:none}}
+</style>
 <script>document.documentElement.classList.add("js")</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is a care plan the same as my Wix plan?","acceptedAnswer":{"@type":"Answer","text":"No. Wix hosts your site and bills you for that. A care plan is us taking care of the site: edits, checks and fixes."}},{"@type":"Question","name":"Can I cancel anytime?","acceptedAnswer":{"@type":"Answer","text":"Yes. Plans are billed monthly in advance, and when you cancel your plan runs to the end of that month."}},{"@type":"Question","name":"Do unused hours roll over?","acceptedAnswer":{"@type":"Answer","text":"No. Each month's edit hours are for that month."}},{"@type":"Question","name":"Is there a deal for starting at launch?","acceptedAnswer":{"@type":"Answer","text":"Yes. Your first month is half off when you start a care plan at launch."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.callesgroup.com/"},{"@type":"ListItem","position":2,"name":"Care Plans","item":"https://www.callesgroup.com/care-plans.html"}]}</script>
 </head>
-<body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="hdr"><div class="wrap">
-  <a class="brand" href="/"><span class="badge" aria-hidden="true">CG</span><span class="brand-word">CALLES GROUP</span></a>
-  <nav id="nav" class="nav" aria-label="Main">
-    <button class="nav-close btn btn-ghost btn-sm" type="button">Close</button>
-    <a href="/">Home</a><a href="/pricing.html">Website Packages</a><a href="/care-plans.html" aria-current="page">Care Plans</a><a href="/faq.html">FAQ</a><a href="/contact.html">Contact</a>
-    <a class="nav-phone" href="tel:+13126000590">Call or text 312-600-0590</a>
-    <a class="nav-phone" href="/contact.html#book">Book a free call</a>
-    <a class="btn btn-primary" href="/contact.html">Get a free quote</a>
-  </nav>
-  <div class="hdr-m"><a class="btn btn-primary btn-sm" href="/contact.html">Contact</a><a id="menuBtn" class="btn btn-ghost btn-sm" href="#footer" role="button" aria-controls="nav" aria-expanded="false">Menu</a></div>
-</div></header>
-<main id="main">
-<section class="hero hero-short"><div class="wrap">
-  <div class="hero-copy">
-    <p class="eyebrow">Monthly care plans</p>
-    <h1>You run the business. <em>We'll run the website.</em></h1>
-    <p class="lede">Text us a change and it gets done. We keep your site working and up to date every month.</p>
-    <div class="btns"><a class="btn btn-primary" href="/contact.html?need=care">Get a free quote</a><a class="btn btn-ghost" href="/contact.html#book">Book a free call</a></div>
+<body class="pr">
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="/" aria-label="Calles Group home"><span class="wm"><span class="wm-top">CALLES<span class="wm-dot"></span></span><span class="wm-sub"><span>GROUP</span></span></span></a>
+    <a class="btn sm hdr-contact" href="/contact.html">Contact</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="siteNav">Menu</button>
+    <nav id="siteNav" aria-label="Main">
+      <a class="nl" href="/" data-page="home">Home</a>
+      <a class="nl" href="/pricing.html" data-page="pricing">Website Packages</a>
+      <a class="nl" href="/care-plans.html" data-page="care" aria-current="page">Care Plans</a>
+      <a class="nl" href="/faq.html" data-page="faq">FAQ</a>
+      <a class="nl" href="/contact.html" data-page="contact">Contact</a>
+      <a class="btn sm" href="/contact.html">Get a free quote</a>
+    </nav>
   </div>
-</div></section>
+</header>
 
-<section class="sec sec-tight" aria-labelledby="ben-h"><div class="wrap">
-  <h2 id="ben-h" class="sr">What a care plan gets you</h2>
-  <ul class="benefits">
-    <li class="rv"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 24l3-8L22 3l5 5-13 13-8 3z"/><path d="M19 6l5 5"/></svg><h3>Changes done for you</h3><p class="muted">New hours, prices or photos? Send them over and we make the change.</p></li>
-    <li class="rv"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3l11 4v8c0 7-5 12-11 14C10 27 5 22 5 15V7z"/><path d="M11 16l4 4 7-8"/></svg><h3>Always working</h3><p class="muted">Forms, links and the phone layout get checked every month, and anything broken gets fixed.</p></li>
-    <li class="rv"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="7" y="14" width="18" height="14" rx="3"/><path d="M11 14V9a5 5 0 0110 0v5"/></svg><h3>Still yours</h3><p class="muted">Your site, Wix account and domain stay in your name. Cancel anytime.</p></li>
-  </ul>
-</div></section>
+<main>
+  <div class="wrap pr-hero">
+    <div class="stack">
+      <span class="eyebrow pr-up">Care plans</span>
+      <h1 class="pr-up" style="animation-delay:.08s">You run the business. <em>We&rsquo;ll run the website.</em></h1>
+      <p class="lead pr-up" style="animation-delay:.16s">Edits, checks and updates every month, so you never have to think about it.</p>
+      <div class="btns pr-up" style="animation-delay:.24s" id="heroBtns">
+        <a class="btn" href="#plans">See the plans</a>
+        <a class="btn ghost" href="/contact.html?need=care">Get a free quote</a>
+      </div>
+    </div>
+    <svg class="pr-art cp-art" viewBox="0 0 440 320" role="img" aria-label="Illustration of a website checklist ticking itself off, with no branding">
+      <g class="float">
+        <rect class="frame" x="8" y="8" width="424" height="300" rx="14"/>
+        <rect class="bar" x="9" y="9" width="422" height="30" rx="13"/>
+        <circle class="dot" cx="28" cy="24" r="4"/><circle class="dot" cx="42" cy="24" r="4"/><circle class="dot" cx="56" cy="24" r="4"/>
+        <rect class="piece soft" x="28" y="56" width="384" height="44" rx="10" style="animation-delay:.3s"/>
+        <circle class="piece gold" cx="52" cy="78" r="12" style="animation-delay:.45s"/>
+        <path class="tick" d="M46 78l4 4 8-8" style="animation-delay:.7s"/>
+        <rect class="piece blk" x="76" y="72" width="150" height="10" rx="4" style="animation-delay:.5s"/>
+        <rect class="piece soft" x="28" y="110" width="384" height="44" rx="10" style="animation-delay:.6s"/>
+        <circle class="piece gold" cx="52" cy="132" r="12" style="animation-delay:.75s"/>
+        <path class="tick" d="M46 132l4 4 8-8" style="animation-delay:1s"/>
+        <rect class="piece blk" x="76" y="126" width="196" height="10" rx="4" style="animation-delay:.8s"/>
+        <rect class="piece soft" x="28" y="164" width="384" height="44" rx="10" style="animation-delay:.9s"/>
+        <circle class="piece gold" cx="52" cy="186" r="12" style="animation-delay:1.05s"/>
+        <path class="tick" d="M46 186l4 4 8-8" style="animation-delay:1.3s"/>
+        <rect class="piece blk" x="76" y="180" width="120" height="10" rx="4" style="animation-delay:1.1s"/>
+        <rect class="piece soft" x="28" y="220" width="384" height="72" rx="10" style="animation-delay:1.2s"/>
+        <polyline class="line" points="48,276 100,262 150,268 200,248 250,254 300,236 350,240 392,226"/>
+      </g>
+    </svg>
+  </div>
 
-<section class="sec band" id="plans" aria-labelledby="pl-h"><div class="wrap">
-  <div class="sec-head rv"><h2 id="pl-h">Pick a <em>plan.</em></h2></div>
-  <div class="switch-row rv"><div class="seg" data-switch="care" role="group" aria-label="Show prices"><button type="button" data-value="monthly" aria-pressed="true">Monthly</button><button type="button" data-value="yearly" data-hash="yearly" aria-pressed="false">Yearly</button></div><span class="save-tag">Save up to 25%</span></div><div class="row swipe cards3"><article class="card plan rv" id="care-essentials"><h3>Essentials</h3><div class="price"><span class="roll" data-care-monthly="$99" data-care-yearly="$83">$99</span><small>/mo</small></div><p class="muted bill" data-care-monthly="Billed monthly. Cancel anytime." data-care-yearly="$996 a year. Save $192.">Billed monthly. Cancel anytime.<span class="nojs"> Or $83/mo paid yearly: $996 a year. Save $192.</span></p><ul class="ticks"><li>1 hour of edits a month</li><li>Edits within 3 business days</li><li>Monthly check of forms and links</li><li>Direct text line to your designer</li></ul><div class="acc-item xp"><div class="xp-h"><button type="button" class="acc-btn xp-btn" aria-expanded="false" aria-controls="x-care-essentials" id="xb-care-essentials">See everything<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div><div class="acc-body" id="x-care-essentials" role="region" aria-labelledby="xb-care-essentials"><div><div class="acc-in"><ul class="ticks"><li>Broken links and forms fixed</li><li>Hours and prices kept current</li><li>Spam blocked on forms</li><li>Google search errors caught and fixed</li><li>Monthly phone layout check</li><li>Wix and domain renewal reminders</li></ul></div></div></div></div><a class="btn btn-primary" href="/contact.html?need=care-essentials">Get a free quote</a></article><article class="card plan rv pop" id="care-plus"><span class="tag">Most popular</span><h3>Plus</h3><div class="price"><span class="roll" data-care-monthly="$199" data-care-yearly="$158">$199</span><small>/mo</small></div><p class="muted bill" data-care-monthly="Billed monthly. Cancel anytime." data-care-yearly="$1,896 a year. Save $492.">Billed monthly. Cancel anytime.<span class="nojs"> Or $158/mo paid yearly: $1,896 a year. Save $492.</span></p><ul class="ticks"><li>2.5 hours of edits a month</li><li>Edits within 2 business days</li><li>2 Google posts a month</li><li>Monthly visits and leads report</li></ul><div class="acc-item xp"><div class="xp-h"><button type="button" class="acc-btn xp-btn" aria-expanded="false" aria-controls="x-care-plus" id="xb-care-plus">See everything<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div><div class="acc-body" id="x-care-plus" role="region" aria-labelledby="xb-care-plus"><div><div class="acc-in"><ul class="ticks"><li>Everything in Essentials</li><li>Google Business Profile kept fresh</li><li>New job or product photos added</li><li>Seasonal promos</li><li>Review link and QR code set up</li></ul></div></div></div></div><a class="btn btn-primary" href="/contact.html?need=care-plus">Get a free quote</a></article><article class="card plan rv" id="care-growth"><h3>Growth</h3><div class="price"><span class="roll" data-care-monthly="$349" data-care-yearly="$262">$349</span><small>/mo</small></div><p class="muted bill" data-care-monthly="Billed monthly. Cancel anytime." data-care-yearly="$3,144 a year. Save $1,044.">Billed monthly. Cancel anytime.<span class="nojs"> Or $262/mo paid yearly: $3,144 a year. Save $1,044.</span></p><ul class="ticks"><li>4 hours of edits a month</li><li>Edits within 1 business day</li><li>4 Google posts and 4 social graphics a month</li><li>20-minute monthly call</li></ul><div class="acc-item xp"><div class="xp-h"><button type="button" class="acc-btn xp-btn" aria-expanded="false" aria-controls="x-care-growth" id="xb-care-growth">See everything<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></div><div class="acc-body" id="x-care-growth" role="region" aria-labelledby="xb-care-growth"><div><div class="acc-in"><ul class="ticks"><li>Everything in Plus</li><li>Quarterly SEO tune-up</li><li>Replies to Google reviews written for you</li><li>A new landing page each quarter</li></ul></div></div></div></div><a class="btn btn-primary" href="/contact.html?need=care-growth">Get a free quote</a></article></div><div class="dots" aria-hidden="true"><i></i><i></i><i></i></div><p class="swipe-hint muted" aria-hidden="true">Swipe to compare</p>
-  <p class="note-line rv">Separate from your Wix plan. Wix hosts your site, we take care of it. First month half off when you start at launch. Unused hours don&#x27;t roll over. Cancel anytime. Your plan runs to the end of the month. Billed monthly in advance.</p>
-</div></section>
+  <!-- What we handle -->
+  <section class="wrap cp-sec" aria-labelledby="how-h" style="padding-top:16px">
+    <div class="pr-head rv"><span class="eyebrow">What you get</span><h2 id="how-h">One less thing on your plate.</h2></div>
+    <div class="cp-how">
+      <div class="rv"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M5 21l3-1 12-12-2-2L6 18z"/><path d="M16 8l2 2"/><path d="M5 24h18"/></svg><b>Changes, done for you.</b><p>New photos, prices or hours. Just ask.</p></div>
+      <div class="rv" style="transition-delay:.06s"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 3l9 4v6c0 6-4 10-9 12-5-2-9-6-9-12V7z"/><path d="M10 14l3 3 5-6"/></svg><b>Always working.</b><p>We check your forms, links and phone layout every month.</p></div>
+      <div class="rv" style="transition-delay:.12s"><svg viewBox="0 0 28 28" aria-hidden="true"><rect x="6" y="12" width="16" height="12" rx="2"/><path d="M10 12V8a4 4 0 0 1 8 0v4"/></svg><b>Still yours.</b><p>Your site and domain stay in your name. Move them anytime.</p></div>
+    </div>
+  </section>
 
-<section class="sec" aria-labelledby="cq-h"><div class="wrap narrow">
-  <div class="sec-head rv"><h2 id="cq-h">Quick <em>answers.</em></h2></div>
-  <div class="rv"><div class="acc "><div class="acc-item"><h3><button type="button" class="acc-btn" aria-expanded="false" aria-controls="a-care-wix" id="q-care-wix">Is a care plan the same as my Wix plan?<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h3><div class="acc-body" id="a-care-wix" role="region" aria-labelledby="q-care-wix"><div><div class="acc-in"><p>No. Wix hosts your site and bills you for that. A care plan is us taking care of the site: edits, checks and fixes.</p></div></div></div></div><div class="acc-item"><h3><button type="button" class="acc-btn" aria-expanded="false" aria-controls="a-care-cancel" id="q-care-cancel">Can I cancel anytime?<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h3><div class="acc-body" id="a-care-cancel" role="region" aria-labelledby="q-care-cancel"><div><div class="acc-in"><p>Yes. Plans are billed monthly in advance, and when you cancel your plan runs to the end of that month.</p></div></div></div></div><div class="acc-item"><h3><button type="button" class="acc-btn" aria-expanded="false" aria-controls="a-care-hours" id="q-care-hours">Do unused hours roll over?<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h3><div class="acc-body" id="a-care-hours" role="region" aria-labelledby="q-care-hours"><div><div class="acc-in"><p>No. Each month&#x27;s edit hours are for that month.</p></div></div></div></div><div class="acc-item"><h3><button type="button" class="acc-btn" aria-expanded="false" aria-controls="a-care-launch" id="q-care-launch">Is there a deal for starting at launch?<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h3><div class="acc-body" id="a-care-launch" role="region" aria-labelledby="q-care-launch"><div><div class="acc-in"><p>Yes. Your first month is half off when you start a care plan at launch.</p></div></div></div></div></div></div>
-  <p class="sec-end rv"><a href="/faq.html">See all questions</a></p>
-</div></section>
+  <!-- Plans -->
+  <section class="wrap cp-sec yearly glow" id="plans" aria-labelledby="plans-h" style="padding-top:8px">
+    <div class="pr-head rv"><span class="eyebrow">The plans</span><h2 id="plans-h">Pick how much help you want.</h2></div>
+    <div class="pr-bill"><span id="lblMonthly">Monthly</span><button class="pr-switch" id="billSwitch" role="switch" aria-checked="true" aria-labelledby="lblYearly"></button><span id="lblYearly" class="on">Yearly</span><span class="free">Save up to 25%</span></div>
+    <div class="pr-grid">
+      <article class="pr-card rv">
+        <h3>Essentials</h3>
+        <p class="pr-one">Keep it running.</p>
+        <div class="pr-price"><b class="pr-num" data-m="$99" data-y="$83">$83</b><small class="per">/mo</small><s class="pr-was">$99</s></div>
+        <div class="pr-deal"><span>Best deal</span> Save $192 a year</div>
+        <p class="pr-note" data-m="Billed monthly" data-y="$996 billed yearly">$996 billed yearly</p>
+        <ul class="pr-keys"><li>1 hour of edits a month</li><li>Monthly check of forms and links</li><li>Edits within 3 business days</li></ul>
+        <div class="pr-more" id="m-ess"><div><ul><li>Broken links and forms fixed</li><li>Hours and prices kept current</li><li>Spam blocked on your forms</li><li>Google search errors caught and fixed</li><li>Monthly phone layout check</li><li>Wix and domain renewal reminders</li><li>Direct text line to your designer</li></ul></div></div>
+        <button class="pr-toggle" aria-expanded="false" aria-controls="m-ess">See everything <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+        <a class="btn ghost" href="/contact.html?need=care-essentials">Choose Essentials</a>
+      </article>
+      <article class="pr-card pop rv" style="transition-delay:.06s"><span class="tag">Most popular</span>
+        <h3>Plus</h3>
+        <p class="pr-one">Keep it fresh.</p>
+        <div class="pr-price"><b class="pr-num" data-m="$199" data-y="$158">$158</b><small class="per">/mo</small><s class="pr-was">$199</s></div>
+        <div class="pr-deal"><span>Best deal</span> Save $492 a year</div>
+        <p class="pr-note" data-m="Billed monthly" data-y="$1,896 billed yearly">$1,896 billed yearly</p>
+        <ul class="pr-keys"><li>2.5 hours of edits a month</li><li>2 Google posts a month</li><li>Monthly visits and leads report</li></ul>
+        <div class="pr-more" id="m-plus"><div><ul><li>Everything in Essentials</li><li>Google Business Profile kept fresh: hours, photos and offers</li><li>New job or product photos added</li><li>Seasonal promos and announcements, so your site never looks stale</li><li>A "Leave us a review" link and QR code set up for you</li><li>Edits within 2 business days</li></ul></div></div>
+        <button class="pr-toggle" aria-expanded="false" aria-controls="m-plus">See everything <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+        <a class="btn" href="/contact.html?need=care-plus">Choose Plus</a>
+      </article>
+      <article class="pr-card rv" style="transition-delay:.12s">
+        <h3>Growth</h3>
+        <p class="pr-one">Keep it growing.</p>
+        <div class="pr-price"><b class="pr-num" data-m="$349" data-y="$262">$262</b><small class="per">/mo</small><s class="pr-was">$349</s></div>
+        <div class="pr-deal"><span>Best deal</span> Save $1,044 a year</div>
+        <p class="pr-note" data-m="Billed monthly" data-y="$3,144 billed yearly">$3,144 billed yearly</p>
+        <ul class="pr-keys"><li>4 hours of edits a month</li><li>4 Google posts and 4 social graphics</li><li>20-minute monthly call</li></ul>
+        <div class="pr-more" id="m-gro"><div><ul><li>Everything in Plus</li><li>Edits within 1 business day. You're first in line.</li><li>Quarterly SEO tune-up to help you climb on Google</li><li>Replies to your Google reviews written for you</li><li>A new landing page for a promo or service each quarter</li><li>Monthly call to plan what to promote next</li></ul></div></div>
+        <button class="pr-toggle" aria-expanded="false" aria-controls="m-gro">See everything <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+        <a class="btn ghost" href="/contact.html?need=care-growth">Choose Growth</a>
+      </article>
+    </div>
+    <p class="cp-note rv"><b>Separate from your Wix plan.</b> Wix hosts your site. We take care of it.</p>
+    <p class="pr-fine">Start a plan when your site launches and your first month is half off. Unused hours don't roll over.</p>
+  </section>
 
-<section class="sec cta-band rv" aria-labelledby="cta-h"><div class="wrap">
-  <h2 id="cta-h">Keep your site <em>working for you.</em></h2>
-  <p class="muted prose">Tell us about your site and we'll suggest the right plan. We reply within 24 hours.</p>
-  <div class="btns"><a class="btn btn-primary" href="/contact.html">Get a free quote</a><a class="btn btn-ghost" href="/contact.html#book">Book a free call</a></div>
-  <p class="small muted">Or call or text <a href="tel:+13126000590">312-600-0590</a>. Replies within 24 hours.</p>
-</div></section>
+  <!-- Questions -->
+  <section class="wrap cp-sec" aria-labelledby="faq-h" style="padding-top:8px">
+    <div class="pr-head rv"><h2 id="faq-h">Quick answers</h2></div>
+    <div class="cp-faq rv">
+      <details><summary>Is this the same as my Wix bill?<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></summary><p class="ans">No. Your Wix plan pays Wix to host your site. A care plan pays for our time to keep it updated and working. They're billed separately.</p></details>
+      <details><summary>Can I cancel?<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></summary><p class="ans">Yes, anytime. Your plan runs to the end of that month. Plans are billed monthly in advance.</p></details>
+      <details><summary>Can I move my site somewhere else?<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></summary><p class="ans">Yes. Your site and domain are in your name, so you can take them anywhere, anytime.</p></details>
+      <details><summary>Do I need a care plan?<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></summary><p class="ans">No, it's optional. It's for owners who would rather hand the website off and focus on the business.</p></details>
+    </div>
+  </section>
+
+  <div class="pr-final" id="final"><div class="wrap">
+    <h2>Hand it off. Get back to business.</h2>
+    <p>Tell us about your site and we'll recommend a plan.</p>
+    <div class="btns" style="justify-content:center"><a class="btn" href="/contact.html?need=care">Get a free quote</a><a class="btn ghost" href="tel:+13126000590">Call or text 312-600-0590</a></div>
+  </div></div>
 </main>
-<footer id="footer" class="ftr"><div class="wrap">
-  <div class="ftr-main">
-    <a class="brand" href="/"><span class="badge" aria-hidden="true">CG</span><span>CALLES GROUP</span></a>
-    <p>Based in Elgin, IL. Serving Chicagoland.</p>
-    <p><a href="tel:+13126000590">312-600-0590</a><br><a href="mailto:andrew@callesgroup.com">andrew@callesgroup.com</a></p>
+
+<footer><div class="wrap">
+  <div class="fcol">
+    <a class="logo" href="/" aria-label="Calles Group home"><span class="wm"><span class="wm-top">CALLES<span class="wm-dot"></span></span><span class="wm-sub"><span>GROUP</span></span></span></a>
+    <span>Based in Elgin, IL. Serving Chicagoland.</span>
+    <a href="mailto:andrew@callesgroup.com">andrew@callesgroup.com</a>
+    <a href="tel:+13126000590">312-600-0590</a>
   </div>
-  <nav class="ftr-col" aria-label="Pages"><b>Pages</b><a href="/">Home</a><a href="/pricing.html">Website Packages</a><a href="/care-plans.html">Care Plans</a><a href="/faq.html">FAQ</a><a href="/contact.html">Contact</a><a href="/contact.html#book">Book a free call</a><a href="/pay-deposit.html">Pay your deposit</a></nav>
-  <nav class="ftr-col" aria-label="Service area"><b>Web design near you</b><a href="/web-design-elgin.html">Web design Elgin</a><a href="/web-design-south-elgin.html">Web design South Elgin</a><a href="/web-design-bartlett.html">Web design Bartlett</a><a href="/web-design-schaumburg.html">Web design Schaumburg</a><a href="/web-design-st-charles.html">Web design St. Charles</a><a href="/web-design-crystal-lake.html">Web design Crystal Lake</a></nav>
-</div>
-<div class="wrap ftr-base"><span>&copy; <span id="yr">2026</span> Calles Group</span><a href="/privacy-policy.html">Privacy policy</a></div>
-</footer>
-<script src="/assets/site.js" defer></script>
+  <div class="fcol links">
+    <a href="/">Home</a><a href="/pricing.html">Website Packages</a><a href="/care-plans.html">Care Plans</a><a href="/faq.html">FAQ</a><a href="/contact.html">Contact</a>
+  </div>
+  <div class="fcol copy"><span>&copy; <span id="yr">2026</span> Calles Group &middot; <a href="/privacy-policy.html">Privacy policy</a></span></div>
+</div></footer>
+
+<script src="/site.js" defer></script>
+<script>
+(function () {
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // "See everything" drawers
+  document.querySelectorAll(".pr-toggle").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var card = b.closest(".pr-card"), open = !card.classList.contains("open");
+      card.classList.toggle("open", open); b.setAttribute("aria-expanded", open);
+      b.firstChild.nodeValue = open ? "Show less " : "See everything ";
+    });
+  });
+
+  // Monthly / yearly
+  var sw = document.getElementById("billSwitch");
+  sw.addEventListener("click", function () {
+    var yearly = sw.getAttribute("aria-checked") !== "true";
+    sw.setAttribute("aria-checked", yearly);
+    document.getElementById("lblYearly").classList.toggle("on", yearly);
+    document.getElementById("lblMonthly").classList.toggle("on", !yearly);
+    var plans = document.getElementById("plans");
+    plans.classList.toggle("yearly", yearly);
+    plans.classList.remove("glow"); void plans.offsetWidth; if (yearly) plans.classList.add("glow");
+    document.querySelectorAll("#plans .pr-num").forEach(function (n) {
+      n.classList.add("swap");
+      setTimeout(function () {
+        n.textContent = n.getAttribute(yearly ? "data-y" : "data-m");
+        var note = n.closest(".pr-card").querySelector(".pr-note");
+        note.textContent = note.getAttribute(yearly ? "data-y" : "data-m");
+        n.classList.remove("swap");
+      }, 180);
+    });
+  });
+
+  // Reveal on scroll, only for things starting below the first screen
+  var els = [].slice.call(document.querySelectorAll(".rv"));
+  // Once revealed, drop the reveal classes so card hover effects work normally.
+  function show(el) { el.classList.add("in"); setTimeout(function () { el.classList.remove("rv", "in"); }, 1000); }
+  if (!reduce && "IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    els.forEach(function (el) {
+      if (el.getBoundingClientRect().top < innerHeight) show(el); else io.observe(el);
+    });
+  } else { els.forEach(function (el) { el.classList.add("in"); }); }
+})();
+</script>
 </body>
 </html>

@@ -3,104 +3,183 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Get a Free Website Quote | Elgin, IL | Calles Group</title>
-<meta name="description" content="Get a free quote for a website, Brand Kit or care plan in Elgin, IL. Tap a few answers or book a free call. Replies within 24 hours. Call or text 312-600-0590.">
+<title>Free Website &amp; Branding Quote | Elgin, IL | Calles Group</title>
+<meta name="description" content="Get a free quote for a website or care plan in Elgin, IL. Takes about 2 minutes, and we reply within 24 hours. Call or text 312-600-0590.">
 <link rel="canonical" href="https://www.callesgroup.com/contact.html">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#FAF8F4">
+<meta name="theme-color" content="#151515">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Calles Group">
-<meta property="og:title" content="Get a Free Website Quote | Elgin, IL | Calles Group">
-<meta property="og:description" content="Get a free quote for a website, Brand Kit or care plan in Elgin, IL. Tap a few answers or book a free call. Replies within 24 hours. Call or text 312-600-0590.">
+<meta property="og:title" content="Free Website &amp; Branding Quote | Elgin, IL | Calles Group">
+<meta property="og:description" content="Get a free quote for a website or care plan in Elgin, IL. Takes about 2 minutes, and we reply within 24 hours. Call or text 312-600-0590.">
 <meta property="og:url" content="https://www.callesgroup.com/contact.html">
-<meta property="og:image" content="https://www.callesgroup.com/og-image.png">
+<meta property="og:image" content="https://static.wixstatic.com/media/03855a_96c7c31bf029475a934ad5139d4f888e~mv2.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Calles Group: website design and branding in Elgin, IL">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap">
-<link rel="stylesheet" href="/assets/styles.css">
-<script>document.documentElement.classList.add("js")</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="/styles.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.callesgroup.com/"},{"@type":"ListItem","position":2,"name":"Contact","item":"https://www.callesgroup.com/contact.html"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Get a free quote","url":"https://www.callesgroup.com/contact.html","about":{"@id":"https://www.callesgroup.com/#business"}}</script>
+<style>
+/* Contact: a short welcome on the left, a 3-step form of mostly one-tap answers on the right.
+   Styles the Wix form renderer's classes (form-*) inside #quote. */
+.ct{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:48px;align-items:start;padding-block:48px 72px}
+.ct-intro{position:sticky;top:calc(var(--hdr) + 32px);display:flex;flex-direction:column;gap:18px;min-width:0}
+.ct-intro h1{font-size:clamp(2.1rem,5vw,3rem);letter-spacing:-.02em}
+.ct-intro h1 em{font-style:normal;color:var(--accent)}
+.ct-fast{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:16px;background:linear-gradient(120deg,rgba(201,169,98,.16),rgba(201,169,98,.04) 70%);border:1px solid rgba(201,169,98,.45)}
+.ct-fast svg{width:34px;height:34px;flex:none;stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round}
+.ct-fast b{display:block;font-size:1.05rem}
+.ct-fast span{color:var(--muted);font-size:.95rem}
+/* Three step cards, left to right with arrows between, on every screen size */
+.ct-steps{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:6px;list-style:none;margin:4px 0 0;padding:0}
+.ct-step{display:flex;flex-direction:column;align-items:center;gap:10px;padding:12px 8px 14px;border-radius:16px;background:var(--surface);border:1px solid var(--line);text-align:center;animation:prUp .6s var(--ease) both}
+.ct-step svg{width:100%;max-width:96px;height:auto;border-radius:10px;background:var(--band)}
+.ct-step b{font-size:.92rem;line-height:1.25;font-weight:600}
+.ct-arrow{display:flex;animation:ctNudge 2.4s ease-in-out infinite}
+.ct-arrow svg{width:16px;height:16px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ct-steps>li:nth-child(4){animation-delay:.3s}
+@keyframes ctNudge{0%,100%{transform:translateX(0);opacity:.6}50%{transform:translateX(3px);opacity:1}}
+.ct-side{display:flex;flex-direction:column;gap:18px;min-width:0}
+.ct-mail{color:var(--muted);font-size:.95rem;text-align:center}
+.ct-mail a{font-weight:600}
+
+/* The form card */
+.ct-card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:0 30px 60px -40px rgba(0,0,0,.9);scroll-margin-top:calc(var(--hdr) + 16px);min-width:0}
+.ct-bar{height:4px;border-radius:4px;background:var(--line);overflow:hidden;margin-bottom:20px}
+.ct-bar i{display:block;height:100%;width:33.4%;background:var(--accent);border-radius:4px;transition:width .6s var(--ease)}
+#quote .form{background:none;border:0;padding:0;display:flex;flex-direction:column;gap:22px}
+#quote .form-step{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+#quote .form-step-title{font-size:1.35rem;font-weight:700}
+#quote .form-step-count{color:var(--muted);font-size:.85rem;font-weight:600;white-space:nowrap}
+#quote .form-fields{border:0;margin:0;padding:0;min-width:0;display:flex;flex-direction:column;gap:22px}
+#quote .form-fields.enter>.form-field{animation:prUp .5s var(--ease) both}
+#quote .form-fields.enter>.form-field:nth-child(2){animation-delay:.05s}
+#quote .form-fields.enter>.form-field:nth-child(3){animation-delay:.1s}
+#quote .form-fields.enter>.form-field:nth-child(4){animation-delay:.15s}
+#quote .form-fields.enter>.form-field:nth-child(5){animation-delay:.2s}
+#quote .form-fields.enter>.form-field:nth-child(6){animation-delay:.25s}
+#quote .form-label{font-size:1rem;font-weight:600}
+#quote .form-control{width:100%;min-height:50px;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;transition:border-color .2s,box-shadow .2s}
+#quote textarea.form-control{min-height:96px;resize:vertical}
+#quote .form-control:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(201,169,98,.15)}
+#quote .form-choices{display:flex;flex-wrap:wrap;gap:8px}
+#quote .form-choice{position:relative;display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 16px;border:1.5px solid var(--line);border-radius:999px;background:var(--bg);font-weight:500;cursor:pointer;transition:border-color .2s,background .2s,transform .2s var(--ease)}
+#quote .form-choice:hover{border-color:var(--moss)}
+#quote .form-choice:active{transform:scale(.97)}
+#quote .form-choice input{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+#quote .form-choice:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:3px}
+#quote .form-choice::before{content:"";width:16px;height:16px;flex:none;border-radius:50%;border:1.5px solid #5E5A54;transition:all .2s}
+#quote .form-field--checkboxGroup .form-choice::before{border-radius:5px}
+#quote .form-choice--selected{border-color:var(--accent);background:rgba(201,169,98,.14);color:var(--ink)}
+#quote .form-choice--selected::before{border-color:var(--accent);background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='%23151515' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
+#quote .form-actions{display:flex;gap:12px;padding-top:4px}
+#quote .form-submit,#quote .form-next{flex:1;min-height:52px;border-radius:12px;font-size:1.02rem;transition:background .2s,transform .2s var(--ease)}
+#quote .form-submit:active,#quote .form-next:active{transform:scale(.98)}
+#quote .form-back{min-height:52px;border-radius:12px}
+#quote .form-success{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:36px 16px;background:none;animation:prUp .6s var(--ease) both}
+#quote .form-success::before{content:"";width:64px;height:64px;border-radius:50%;background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4L18 8' fill='none' stroke='%23151515' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/30px no-repeat;animation:ctPop .6s var(--ease) both}
+@keyframes ctPop{from{transform:scale(.4);opacity:0}to{transform:none;opacity:1}}
+.ct-fine{margin-top:16px;text-align:center;color:var(--muted);font-size:.88rem}
+.ct-fine a{color:var(--muted)}
+@media (max-width:960px){
+  .ct{grid-template-columns:1fr;gap:28px;padding-block:28px 56px}
+  .ct-intro{position:static}
+}
+@media (max-width:700px){
+  .ct-card{padding:20px 16px;border-radius:16px}
+  .ct-steps{gap:4px}
+  .ct-step{padding:10px 6px 12px;gap:8px}
+  .ct-step b{font-size:.85rem}
+  .ct-arrow svg{width:14px;height:14px}
+  #quote .form-choice{flex:1 1 auto;justify-content:flex-start}
+}
+@media (prefers-reduced-motion: reduce){
+  #quote .form-fields.enter>.form-field,#quote .form-success,#quote .form-success::before,.ct-step,.ct-arrow{animation:none}
+}
+</style>
 </head>
-<body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="hdr"><div class="wrap">
-  <a class="brand" href="/"><span class="badge" aria-hidden="true">CG</span><span class="brand-word">CALLES GROUP</span></a>
-  <nav id="nav" class="nav" aria-label="Main">
-    <button class="nav-close btn btn-ghost btn-sm" type="button">Close</button>
-    <a href="/">Home</a><a href="/pricing.html">Website Packages</a><a href="/care-plans.html">Care Plans</a><a href="/faq.html">FAQ</a><a href="/contact.html" aria-current="page">Contact</a>
-    <a class="nav-phone" href="tel:+13126000590">Call or text 312-600-0590</a>
-    <a class="nav-phone" href="/contact.html#book">Book a free call</a>
-    <a class="btn btn-primary" href="/contact.html">Get a free quote</a>
-  </nav>
-  <div class="hdr-m"><a class="btn btn-primary btn-sm" href="/contact.html">Contact</a><a id="menuBtn" class="btn btn-ghost btn-sm" href="#footer" role="button" aria-controls="nav" aria-expanded="false">Menu</a></div>
-</div></header>
-<main id="main">
-<section class="ct" aria-label="Get a free quote"><div class="wrap ct-grid">
-  <div class="ct-intro">
-    <p class="eyebrow">Free quote</p>
-    <h1>Let's talk about <em>your business.</em></h1>
-    <p class="need-line" id="needLine" hidden></p>
-    <ol class="trust">
-      <li><span class="num">1</span>Tap a few answers</li>
-      <li><span class="num">2</span>Get a plan and a price</li>
-      <li><span class="num">3</span>You decide, no pressure</li>
-    </ol>
-    <p class="fast"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M16 9v7l5 3"/></svg><span><b>Replies within 24 hours.</b> From Andrew, not a bot.</span></p>
+<body class="pr">
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="/" aria-label="Calles Group home"><span class="wm"><span class="wm-top">CALLES<span class="wm-dot"></span></span><span class="wm-sub"><span>GROUP</span></span></span></a>
+    <a class="btn sm hdr-contact" href="/contact.html">Contact</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="siteNav">Menu</button>
+    <nav id="siteNav" aria-label="Main">
+      <a class="nl" href="/" data-page="home">Home</a>
+      <a class="nl" href="/pricing.html" data-page="pricing">Website Packages</a>
+      <a class="nl" href="/care-plans.html" data-page="care">Care Plans</a>
+      <a class="nl" href="/faq.html" data-page="faq">FAQ</a>
+      <a class="nl" href="/contact.html" data-page="contact" aria-current="page">Contact</a>
+      <a class="btn sm" href="/contact.html">Get a free quote</a>
+    </nav>
   </div>
+</header>
 
-  <div class="ct-main">
-    <span id="book"></span><span id="details"></span>
-    <div class="switch-row">
-      <div class="seg seg-wide" data-switch="mode" role="group" aria-label="How do you want to start?">
-        <button type="button" data-value="book" data-hash="book" aria-pressed="false">Book a call</button>
-        <button type="button" data-value="details" data-hash="details" aria-pressed="true">Send your details</button>
-      </div>
+<main>
+  <div class="wrap ct">
+    <div class="ct-intro">
+      <span class="eyebrow pr-up">Free quote</span>
+      <h1 class="pr-up" id="contactH1" style="animation-delay:.06s">Let's talk about <em>your business.</em></h1>
+      <p class="lead" id="contactLead" hidden></p>
+      <ol class="ct-steps" aria-label="How it works">
+        <li class="ct-step" style="animation-delay:.12s">
+          <svg viewBox="0 0 96 64" aria-hidden="true"><rect x="32" y="8" width="32" height="50" rx="6" fill="#1E1E1E" stroke="#5E5A54" stroke-width="1.5"/><rect x="37" y="18" width="22" height="8" rx="4" fill="#C9A962"/><rect x="37" y="30" width="22" height="8" rx="4" fill="none" stroke="#5E5A54" stroke-width="1.5"/><rect x="37" y="42" width="22" height="8" rx="4" fill="none" stroke="#5E5A54" stroke-width="1.5"/></svg>
+          <b>Tap a few answers</b>
+        </li>
+        <li class="ct-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></li>
+        <li class="ct-step" style="animation-delay:.2s">
+          <svg viewBox="0 0 96 64" aria-hidden="true"><rect x="30" y="8" width="36" height="48" rx="5" fill="#EDEAE6"/><rect x="36" y="16" width="20" height="4" rx="2" fill="#363431"/><rect x="36" y="24" width="24" height="3" rx="1.5" fill="#A8A49E"/><rect x="36" y="30" width="18" height="3" rx="1.5" fill="#A8A49E"/><circle cx="62" cy="48" r="11" fill="#C9A962"/><path d="M62 42v12M65 44.5c-.8-1-2-1.5-3.2-1.5-1.8 0-3 .9-3 2.3 0 3 6.4 1.6 6.4 4.6 0 1.4-1.3 2.4-3.2 2.4-1.4 0-2.7-.6-3.4-1.6" fill="none" stroke="#151515" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <b>Get a plan and a price</b>
+        </li>
+        <li class="ct-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></li>
+        <li class="ct-step" style="animation-delay:.28s">
+          <svg viewBox="0 0 96 64" aria-hidden="true"><circle cx="48" cy="32" r="20" fill="#C9A962"/><path d="M39 32.5l6 6 12-13" fill="none" stroke="#151515" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <b>You decide.<br>No pressure.</b>
+        </li>
+      </ol>
     </div>
-
-    <div class="mode" data-mode-show="book" data-pre-hide>
-      <!-- BOOKING: shows the Wix Bookings widget when "bookingLive" is true in data/offers.json, otherwise the placeholder. -->
-      <div class="card placeholder"><span class="tag">Coming soon</span><h2 class="h3">Online booking is coming soon.</h2><p class="muted">For now, call or text <a href="tel:+13126000590">312-600-0590</a> to set up your free 20-minute quote call, in person or video. Or send your details and Andrew will reach out to set a time.</p><div class="btns"><a class="btn btn-primary" href="tel:+13126000590">Call or text 312-600-0590</a><a class="btn btn-ghost" href="/contact.html#details">Send your details</a></div></div>
-    </div>
-
-    <div class="mode" data-mode-show="details">
-      <h2 class="sr">Quote request form</h2>
-      <div class="card form-card" id="formCard">
+    <div class="ct-side">
+      <div class="ct-card pr-up" id="formCard" style="animation-delay:.15s">
         <div class="ct-bar" aria-hidden="true"><i id="ctBar"></i></div>
-        <!-- WIX FORM MOUNT: Wix installs the quote form (ID 8b564ebe-a6cc-4e87-8255-c3ebdfde4c20) here. Do not rebuild it. -->
         <div id="quote"></div>
-        <noscript><p>The quote form needs JavaScript. Call or text <a href="tel:+13126000590">312-600-0590</a>, or email <a href="mailto:andrew@callesgroup.com">andrew@callesgroup.com</a>, and Andrew will reply within 24 hours.</p></noscript>
+        <p class="ct-fine">See our <a href="/privacy-policy.html">privacy policy</a>.</p>
       </div>
-      <p class="small muted ct-fine">See our <a href="/privacy-policy.html">privacy policy</a>.</p>
-    </div>
-
-    <div class="other-ways">
-      <h2 class="h3">Rather talk now?</h2>
-      <p class="ways-num">Call or text <a href="tel:+13126000590">312-600-0590</a> or email <a href="mailto:andrew@callesgroup.com">andrew@callesgroup.com</a></p><ul class="ways"><li><a class="btn btn-ghost" href="tel:+13126000590">Call</a></li><li><a class="btn btn-ghost" href="sms:+13126000590">Text</a></li><li><a class="btn btn-ghost" href="mailto:andrew@callesgroup.com">Email</a></li></ul>
+      <div class="ct-fast pr-up" style="animation-delay:.3s"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M16 9v7l5 3"/></svg><div><b>Replies within 24 hours</b><span>From Andrew, not a bot.</span></div></div>
+      <p class="ct-mail pr-up" style="animation-delay:.36s">Rather talk? Call or text <a href="tel:+13126000590">312-600-0590</a>, or email <a href="mailto:andrew@callesgroup.com">andrew@callesgroup.com</a></p>
     </div>
   </div>
-</div></section>
+</main>
 
-<script>
-// ?need=<key> from package, bundle and care plan buttons. Built from data/offers.json.
-(function () {
-  var NEEDS = {"unsure": {"checks": ["Not sure yet"], "label": "", "note": ""}, "care": {"checks": ["Care plan"], "label": "a care plan", "note": ""}, "extras": {"checks": [], "label": "an extra", "note": "I'm asking about an extra: "}, "launch": {"checks": ["Website"], "label": "the Launch website ($1,500)", "note": "I'm interested in the Launch website ($1,500)."}, "growth": {"checks": ["Website"], "label": "the Growth website ($2,500)", "note": "I'm interested in the Growth website ($2,500)."}, "premium": {"checks": ["Website"], "label": "the Premium website ($3,800)", "note": "I'm interested in the Premium website ($3,800)."}, "launch-bundle": {"checks": ["Website", "Logo or branding"], "label": "the Launch website + Starter Kit ($1,950)", "note": "I'm interested in the Launch website + Starter Kit ($1,950)."}, "growth-bundle": {"checks": ["Website", "Logo or branding"], "label": "the Growth website + Brand Kit ($3,200)", "note": "I'm interested in the Growth website + Brand Kit ($3,200)."}, "premium-bundle": {"checks": ["Website", "Logo or branding"], "label": "the Premium website + Brand Kit ($4,400)", "note": "I'm interested in the Premium website + Brand Kit ($4,400)."}, "care-essentials": {"checks": ["Care plan"], "label": "the Essentials care plan ($99/mo)", "note": "I'm interested in the Essentials care plan ($99/mo)."}, "care-plus": {"checks": ["Care plan"], "label": "the Plus care plan ($199/mo)", "note": "I'm interested in the Plus care plan ($199/mo)."}, "care-growth": {"checks": ["Care plan"], "label": "the Growth care plan ($349/mo)", "note": "I'm interested in the Growth care plan ($349/mo)."}};
-  var need = window.CG_NEED = NEEDS[new URLSearchParams(location.search).get("need")];
-  if (need && need.label) { var l = document.getElementById("needLine"); l.textContent = "You're asking about " + need.label + ". You can change it in the form."; l.hidden = false; }
-})();
-</script>
+<footer><div class="wrap">
+  <div class="fcol">
+    <a class="logo" href="/" aria-label="Calles Group home"><span class="wm"><span class="wm-top">CALLES<span class="wm-dot"></span></span><span class="wm-sub"><span>GROUP</span></span></span></a>
+    <span>Based in Elgin, IL. Serving Chicagoland.</span>
+    <a href="mailto:andrew@callesgroup.com">andrew@callesgroup.com</a>
+    <a href="tel:+13126000590">312-600-0590</a>
+  </div>
+  <div class="fcol links">
+    <a href="/">Home</a><a href="/pricing.html">Website Packages</a><a href="/care-plans.html">Care Plans</a><a href="/faq.html">FAQ</a><a href="/contact.html">Contact</a>
+  </div>
+  <div class="fcol copy"><span>&copy; <span id="yr">2026</span> Calles Group &middot; <a href="/privacy-policy.html">Privacy policy</a></span></div>
+</div></footer>
+
+<script src="/site.js" defer></script>
+
 <script type="module">
-// Wix's quote form. The renderer file is installed by Wix on the live site.
 import { renderForm } from "/js/wix/form-renderer.js";
 const { store } = renderForm(document.querySelector("#quote"), {
   formId: "8b564ebe-a6cc-4e87-8255-c3ebdfde4c20",
   text: { submit: "Send my request", next: "Continue", back: "Back", sending: "Sending…", stepOf: "Step {n} of {total}" },
   onOutcome: () => document.getElementById("formCard").scrollIntoView({ block: "start" })
 });
-// Wix wants +1 phone numbers. Add it for a 10-digit US number.
+// Wix expects international phone format (+18475551234). Visitors type US numbers any way
+// they like, so add the +1 for a 10-digit number before the form checks it.
 const toUSPhone = (v) => {
   const s = String(v ?? "");
   if (s.trim().startsWith("+")) return s;
@@ -114,69 +193,72 @@ store.setValue = (target, value) => {
   const field = store.getState().form?.fields?.find((f) => f.target === target);
   return setValue.call(store, target, field && field.control === "phone" ? toUSPhone(value) : value);
 };
-// Progress bar, a soft entrance for each new step, then the thank-you page when sent.
+store.subscribe(() => {
+  const input = document.querySelector("#quote .form-field--phone input");
+  if (input && !input.placeholder) input.placeholder = "(847) 555-1234";
+});
+// Progress bar and a soft entrance for each step. Reads the renderer's "Step n of total" line.
 const bar = document.getElementById("ctBar"), card = document.getElementById("formCard");
-const calm = matchMedia("(prefers-reduced-motion: reduce)");
 let lastStep = 0;
 store.subscribe(() => requestAnimationFrame(() => {
   const q = document.querySelector("#quote"), form = q.querySelector(".form");
-  const input = q.querySelector(".form-field--phone input");
-  if (input && !input.placeholder) input.placeholder = "(847) 555-1234";
   if (form && form.dataset.state === "done") { bar.style.width = "100%"; if (!window.cgSent) { window.cgSent = true; setTimeout(() => location.assign("/thank-you.html"), 600); } return; }
   const m = (q.querySelector(".form-step-count")?.textContent || "").match(/(\d+)\D+(\d+)/);
   const n = m ? +m[1] : 1, total = m ? +m[2] : 1;
   bar.style.width = Math.max(8, (n / (total + 1)) * 100) + "%";
   if (n !== lastStep) {
     const fs = q.querySelector(".form-fields");
-    if (fs && lastStep) {
-      fs.classList.remove("enter"); void fs.offsetWidth; fs.classList.add("enter");
-      if (card.getBoundingClientRect().top < 0) card.scrollIntoView({ block: "start", behavior: calm.matches ? "auto" : "smooth" });
-    }
+    if (fs && lastStep) { fs.classList.remove("enter"); void fs.offsetWidth; fs.classList.add("enter"); if (card.getBoundingClientRect().top < 0) card.scrollIntoView({ block: "start", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); }
     lastStep = n;
   }
 }));
-// ?need=<key>: tick the matching "What do you need?" boxes and note the choice (map is set above).
-const need = window.CG_NEED;
+// Links from the Care plans page arrive as /contact.html?need=...
+// Pre-select the matching "What do you need?" option, and write the chosen plan into the message box.
+const params = new URLSearchParams(location.search);
+// Each link picks one "What do you need?" option; plans also write their name and price into the message.
+const NEEDS = { "unsure": ["Not sure yet", ""],
+  "care": ["Care plan", ""], "care-essentials": ["Care plan", "Essentials care plan ($99/mo)"], "care-plus": ["Care plan", "Plus care plan ($199/mo)"],
+  "care-growth": ["Care plan", "Growth care plan ($349/mo)"] };
+const need = NEEDS[params.get("need")];
+// Links from the Care plans page start with "care".
+const isCare = /^care/.test(params.get("need") || "");
+if (need && isCare) {
+  document.getElementById("contactH1").textContent = "Start your care plan";
+  document.getElementById("contactLead").innerHTML = 'Tell us a little about your site and we\'ll get your plan set up. <a href="/care-plans.html">Back to Care Plans</a>';
+  document.getElementById("contactLead").hidden = false;
+}
 if (need) {
+  const orderLine = need[1] ? "I'm interested in the " + need[1] + "." : "";
   let done = false;
   const apply = () => {
     if (done) return;
     const fields = store.getState().form?.fields;
     if (!fields || !document.querySelector("#quote .form-field")) return;
     done = true;
+    let selected = false;
     document.querySelectorAll("#quote .form-field").forEach((f) => {
       const lab = f.querySelector(".form-label");
       if (!lab || !/what do you need/i.test(lab.textContent)) return;
       f.querySelectorAll("label").forEach((l) => {
-        if (!need.checks.includes(l.textContent.trim())) return;
+        if (selected || l.textContent.trim() !== need[0]) return;
         const inp = l.querySelector("input") || document.getElementById(l.htmlFor);
-        if (inp && !inp.checked) inp.click();
+        if (inp && !inp.checked) { inp.click(); selected = true; }
       });
-      // If the field is ever switched to a dropdown in Wix, pick the first match there.
       const sel = f.querySelector("select");
-      const opt = sel && [...sel.options].find((o) => need.checks.includes(o.textContent.trim()));
-      if (opt) { sel.value = opt.value; sel.dispatchEvent(new Event("change", { bubbles: true })); }
+      if (!selected && sel) {
+        const opt = [...sel.options].find((o) => o.textContent.trim() === need[0]);
+        if (opt) { sel.value = opt.value; sel.dispatchEvent(new Event("change", { bubbles: true })); selected = true; }
+      }
     });
+    const msg = orderLine;
+    // Write through the form's own store so the text is part of the submission, not just shown on screen.
     const msgField = fields.find((f) => /^message/i.test(f.target)) || fields.find((f) => /textarea|paragraph/i.test(f.control || ""));
     const current = msgField && store.getState().values?.[msgField.target];
-    if (need.note && msgField && !current) store.setValue(msgField.target, need.note);
+    if (msg && msgField && !current) store.setValue(msgField.target, msg);
   };
   store.subscribe(apply);
   apply();
 }
 </script>
-</main>
-<footer id="footer" class="ftr"><div class="wrap">
-  <div class="ftr-main">
-    <a class="brand" href="/"><span class="badge" aria-hidden="true">CG</span><span>CALLES GROUP</span></a>
-    <p>Based in Elgin, IL. Serving Chicagoland.</p>
-    <p><a href="tel:+13126000590">312-600-0590</a><br><a href="mailto:andrew@callesgroup.com">andrew@callesgroup.com</a></p>
-  </div>
-  <nav class="ftr-col" aria-label="Pages"><b>Pages</b><a href="/">Home</a><a href="/pricing.html">Website Packages</a><a href="/care-plans.html">Care Plans</a><a href="/faq.html">FAQ</a><a href="/contact.html">Contact</a><a href="/contact.html#book">Book a free call</a><a href="/pay-deposit.html">Pay your deposit</a></nav>
-  <nav class="ftr-col" aria-label="Service area"><b>Web design near you</b><a href="/web-design-elgin.html">Web design Elgin</a><a href="/web-design-south-elgin.html">Web design South Elgin</a><a href="/web-design-bartlett.html">Web design Bartlett</a><a href="/web-design-schaumburg.html">Web design Schaumburg</a><a href="/web-design-st-charles.html">Web design St. Charles</a><a href="/web-design-crystal-lake.html">Web design Crystal Lake</a></nav>
-</div>
-<div class="wrap ftr-base"><span>&copy; <span id="yr">2026</span> Calles Group</span><a href="/privacy-policy.html">Privacy policy</a></div>
-</footer>
-<script src="/assets/site.js" defer></script>
 </body>
 </html>
