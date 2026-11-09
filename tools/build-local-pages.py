@@ -236,7 +236,7 @@ footer .fcol.copy .areas{{display:block;margin-bottom:6px}}
 footer .fcol.copy .areas a{{min-height:0;display:inline}}
 </style>
 </head>
-<body class="has-mcta">
+<body>
 {header()}
 
 <main>
@@ -277,8 +277,6 @@ footer .fcol.copy .areas a{{min-height:0;display:inline}}
 </main>
 
 {footer()}
-
-<div class="mcta" id="mcta"><a class="btn" href="/contact.html">Get a free quote</a></div>
 
 <script src="/site.js" defer></script>
 </body>

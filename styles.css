@@ -472,7 +472,6 @@ body.merch main :is(.trust,.check,.pack .for,.desc,.note,.sep,.saved,.muted,.ans
   .pr-hero{grid-template-columns:1fr;gap:28px;padding-block:32px 24px}
   .pr-hero .pr-art{max-width:440px}
   .pr-grid,.pr-grid.g4,.pr-grid.g2{grid-template-columns:1fr;max-width:520px;margin-inline:auto;width:100%}
-  .pr-grid .pop{order:-1}
 }
 @media (max-width:700px){
   .pr-tab{font-size:.85rem}
