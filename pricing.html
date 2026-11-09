@@ -31,6 +31,19 @@
 .pr-tab[aria-selected="true"] .pr-tab-save{color:var(--on-accent);opacity:.8}
 .pr-swap{font-weight:600;color:var(--accent);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .pr-swap:hover{color:var(--ink)}
+/* Phones: swipe through the 3 package cards, most popular first */
+.pr-dots{display:none}
+@media (max-width:760px){
+  .pr-panel .pr-grid{display:flex;gap:12px;max-width:none;width:auto;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:16px max(16px,env(safe-area-inset-left,0px)) 6px;margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)))}
+  .pr-panel .pr-grid::-webkit-scrollbar{display:none}
+  .pr-panel .pr-grid{align-items:stretch}
+  .pr-panel .pr-card{flex:0 0 84%;scroll-snap-align:center}
+  .pr-panel .pr-card .btn{margin-top:auto}
+  .pr-panel .pr-card:hover{transform:none}
+  .pr-dots{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:-14px;color:var(--muted);font-size:.85rem}
+  .pr-dots i{width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .25s,width .25s}
+  .pr-dots i.on{width:22px;border-radius:4px;background:var(--accent)}
+}
 </style>
 </head>
 <body class="has-mcta pr">
@@ -131,6 +144,7 @@
           <a class="btn ghost" href="/contact.html">Get a free quote</a>
         </article>
       </div>
+      <div class="pr-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><span>Swipe to compare</span></div>
       <p class="pr-fine">Want your logo and business cards too? <a class="pr-swap" href="#bundles" data-tab="bundles">See the Brand Kit bundles</a></p>
       <p class="pr-fine">Timelines start once we have your text, photos and logo.</p>
     </section>
@@ -167,6 +181,7 @@
           <a class="btn ghost" href="/contact.html">Get a free quote</a>
         </article>
       </div>
+      <div class="pr-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><span>Swipe to compare</span></div>
       <p class="pr-fine">Just need the website? <a class="pr-swap" href="#websites" data-tab="websites">See website-only prices</a></p>
     </section>
   </div>
@@ -283,6 +298,19 @@
   });
   document.querySelectorAll("[data-tab]").forEach(function (a) {
     a.addEventListener("click", function (e) { e.preventDefault(); show(a.getAttribute("data-tab"), { scroll: true }); });
+  });
+  // Phone swipe: light up the dot of the card in view
+  document.querySelectorAll(".pr-panel .pr-grid").forEach(function (g) {
+    var dots = g.parentNode.querySelectorAll(".pr-dots i");
+    var cards = [].slice.call(g.children);
+    function mark() {
+      var mid = g.scrollLeft + g.clientWidth / 2, best = 0, bd = 1e9;
+      cards.forEach(function (c, i) { var d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid); if (d < bd) { bd = d; best = i; } });
+      var order = cards.map(function (c) { return getComputedStyle(c).order === "-1" ? -1 : 0; });
+      var sorted = cards.map(function (c, i) { return i; }).sort(function (a, b) { return order[a] - order[b] || a - b; });
+      dots.forEach(function (d, i) { d.classList.toggle("on", sorted[i] === best); });
+    }
+    g.addEventListener("scroll", function () { requestAnimationFrame(mark); }, { passive: true });
   });
   window.addEventListener("resize", function () { var s = document.querySelector('.pr-tab[aria-selected="true"]'); if (s) placePill(s); });
   placePill(tabs[0]);
