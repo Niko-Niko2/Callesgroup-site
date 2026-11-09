@@ -60,7 +60,7 @@ TOWNS = [{'slug': 'elgin',
   'faq': [['Are you close to South Elgin?',
            'Yes. Calles Group is based in Elgin, right next to South Elgin along the Fox River.'],
           ['What does a basic website cost?',
-           'A Launch site with up to 3 pages, a contact form and basic SEO is $1,500 and takes about 2 weeks '
+           'A Launch site with up to 3 pages, a contact form and basic SEO is $1,500 and takes about 1 week '
            'once we have your text, photos and logo.'],
           ['Do I own my website?',
            'Yes. Your Wix account and domain are set up in your name, so the site is yours, even if you stop '
@@ -92,7 +92,7 @@ TOWNS = [{'slug': 'elgin',
            'Yes. Redesigning an existing site starts at $900, depending on how many pages it has and what '
            'needs to change.'],
           ['How long does a website take?',
-           'About 2 weeks for a Launch site, 3 weeks for Growth and 4 to 5 weeks for Premium. Timelines '
+           'About 1 week for a Launch site, 1 to 2 weeks for Growth and about 2 weeks for Premium. Timelines '
            'start once we have your text, photos and logo.']]},
  {'slug': 'schaumburg',
   'name': 'Schaumburg',

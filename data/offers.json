@@ -28,12 +28,12 @@
       "name": "Launch",
       "price": 1500,
       "pitch": "Get online with a clean, professional site.",
-      "timeline": "About 2 weeks",
+      "timeline": "About 1 week",
       "keyFeatures": [
         "Up to 3 pages",
         "Template-based design built for mobile",
         "Contact form",
-        "About 2 weeks"
+        "About 1 week"
       ],
       "moreFeatures": [
         "Basic SEO (titles, descriptions, sitemap)",
@@ -46,12 +46,12 @@
       "price": 2500,
       "popular": true,
       "pitch": "A custom site built to bring in leads.",
-      "timeline": "About 3 weeks",
+      "timeline": "About 1 to 2 weeks",
       "keyFeatures": [
         "Up to 5 pages, custom layout",
         "Google Business Profile setup",
         "Booking or quote request form",
-        "About 3 weeks"
+        "About 1 to 2 weeks"
       ],
       "moreFeatures": [
         "Everything in Launch",
@@ -65,12 +65,12 @@
       "name": "Premium",
       "price": 3800,
       "pitch": "The complete site, words written for you.",
-      "timeline": "About 4 to 5 weeks",
+      "timeline": "About 2 weeks",
       "keyFeatures": [
         "Up to 8 pages",
         "Full copywriting",
         "30 days of free edits after launch",
-        "About 4 to 5 weeks"
+        "About 2 weeks"
       ],
       "moreFeatures": [
         "Everything in Growth",
@@ -334,7 +334,7 @@
     "rounds": "A round of changes is one list of all your feedback, sent within 5 business days. Extra rounds are $75/hr.",
     "pause": "If a project goes quiet for 30 days, it pauses and the next payment comes due. Restarting costs $150.",
     "portfolio": "Finished work may be shown in our portfolio unless you opt out.",
-    "timeline": "2 to 5 weeks depending on the package. The clock starts once we have your text, photos and logo."
+    "timeline": "1 to 2 weeks depending on the package. The clock starts once we have your text, photos and logo."
   },
   "serviceArea": {
     "note": "In person or over video.",
@@ -430,7 +430,7 @@
       "id": "time-how",
       "group": "Timeline",
       "q": "How long does a website take?",
-      "a": "2 to 5 weeks depending on the package: about 2 weeks for Launch, 3 for Growth and 4 to 5 for Premium. The clock starts once we have your text, photos and logo."
+      "a": "1 to 2 weeks depending on the package: about 1 week for Launch, 1 to 2 weeks for Growth and about 2 weeks for Premium. The clock starts once we have your text, photos and logo."
     },
     {
       "id": "time-rounds",
