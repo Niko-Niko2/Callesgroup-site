@@ -27,7 +27,7 @@
       d.body.style.overflow = open ? "hidden" : "";
       if (open) { var c = nav.querySelector(".nav-close"); c && c.focus(); } else mb.focus();
     };
-    mb.addEventListener("click", function () { setMenu(true); });
+    mb.addEventListener("click", function (e) { e.preventDefault(); setMenu(true); });
     nav.addEventListener("click", function (e) { if (e.target.closest(".nav-close")) setMenu(false); });
     d.addEventListener("keydown", function (e) { if (e.key === "Escape" && nav.classList.contains("open")) setMenu(false); });
   }
@@ -79,6 +79,34 @@
       ba.classList.add("nudge"); set(38);
       setTimeout(function () { set(50); setTimeout(function () { ba.classList.remove("nudge"); }, 460); }, 460);
     }, 700);
+  });
+
+  // Accordions. Data attribute data-open-desktop keeps a group open on wide screens.
+  d.querySelectorAll(".acc").forEach(function (acc) {
+    var openAll = acc.classList.contains("open-desktop") && matchMedia("(min-width:760px)").matches;
+    acc.querySelectorAll(".acc-item").forEach(function (it) {
+      var b = it.querySelector(".acc-btn");
+      if (openAll) { it.classList.add("open"); b.setAttribute("aria-expanded", "true"); }
+      b.addEventListener("click", function () {
+        var o = it.classList.toggle("open"); b.setAttribute("aria-expanded", o);
+      });
+    });
+  });
+
+  // Swipe rows: dots follow the card in view; the active dot grows into a pill.
+  d.querySelectorAll(".swipe").forEach(function (row) {
+    var dots = d.createElement("div"); dots.className = "dots"; dots.setAttribute("aria-hidden", "true");
+    var cards = [].slice.call(row.children);
+    cards.forEach(function () { dots.appendChild(d.createElement("i")); });
+    row.after(dots);
+    var mark = function () {
+      var best = 0, bd = 1e9, left = row.getBoundingClientRect().left;
+      cards.forEach(function (c, i) { var dd = Math.abs(c.getBoundingClientRect().left - left - 16); if (dd < bd) { bd = dd; best = i; } });
+      [].forEach.call(dots.children, function (x, i) { x.classList.toggle("on", i === best); });
+    };
+    row.addEventListener("scroll", function () { requestAnimationFrame(mark); }, { passive: true });
+    row.scrollToCard = function (i) { row.scrollLeft = cards[i].offsetLeft - row.offsetLeft - 16; mark(); };
+    mark();
   });
 
   // Fade sections up once as they enter the viewport. Cards stagger by 60ms.

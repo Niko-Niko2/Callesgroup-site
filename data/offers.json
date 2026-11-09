@@ -388,5 +388,91 @@
         "name": "Chicago"
       }
     ]
-  }
+  },
+  "faqs": [
+    {
+      "id": "pay-how",
+      "group": "Payment",
+      "q": "How does payment work?",
+      "a": "A 50% deposit starts the project and the rest is due before launch. Projects over $2,500 split into 50% to start, 25% at design approval and 25% before launch. Pay by card through a Wix invoice, Zelle or check. Invoices are due in 7 days."
+    },
+    {
+      "id": "pay-refund",
+      "group": "Payment",
+      "q": "Is the deposit refundable?",
+      "a": "The deposit is non-refundable once work starts. Work starts at the kickoff call or the first design, whichever comes first."
+    },
+    {
+      "id": "pay-extra",
+      "group": "Payment",
+      "q": "What if I need work outside my package?",
+      "a": "Work outside a package is $75 an hour with a 30-minute minimum. Common extras like an extra page ($175) or a logo ($500) have flat prices on the Website Packages page."
+    },
+    {
+      "id": "own-site",
+      "group": "Ownership",
+      "q": "Do I own my website?",
+      "a": "Yes. Your Wix account and domain are in your name, and you pay Wix for them directly. Your logo files and full admin access are handed over after the final payment."
+    },
+    {
+      "id": "own-wix",
+      "group": "Ownership",
+      "q": "Do I pay Wix separately?",
+      "a": "Yes. Your Wix plan and domain are billed by Wix to you, in your name. Our prices cover the design and build, and care plans cover upkeep."
+    },
+    {
+      "id": "own-portfolio",
+      "group": "Ownership",
+      "q": "Will you show my site as an example of your work?",
+      "a": "Finished work may be shown in our portfolio unless you tell us you'd rather opt out."
+    },
+    {
+      "id": "time-how",
+      "group": "Timeline",
+      "q": "How long does a website take?",
+      "a": "2 to 5 weeks depending on the package: about 2 weeks for Launch, 3 for Growth and 4 to 5 for Premium. The clock starts once we have your text, photos and logo."
+    },
+    {
+      "id": "time-rounds",
+      "group": "Timeline",
+      "q": "What counts as a round of changes?",
+      "a": "One list of all your feedback, sent within 5 business days. Launch includes 2 rounds, Growth and Premium include 3. Extra rounds are $75 an hour."
+    },
+    {
+      "id": "time-rush",
+      "group": "Timeline",
+      "q": "Can you build it faster?",
+      "a": "Rush builds in under a week are +25%, when the schedule allows. Ask on your quote call."
+    },
+    {
+      "id": "time-pause",
+      "group": "Timeline",
+      "q": "What if I go quiet during the project?",
+      "a": "After 30 days with no reply, the project pauses and the next payment comes due. Restarting costs $150."
+    },
+    {
+      "id": "care-wix",
+      "group": "Care plans",
+      "q": "Is a care plan the same as my Wix plan?",
+      "a": "No. Wix hosts your site and bills you for that. A care plan is us taking care of the site: edits, checks and fixes."
+    },
+    {
+      "id": "care-cancel",
+      "group": "Care plans",
+      "q": "Can I cancel anytime?",
+      "a": "Yes. Plans are billed monthly in advance, and when you cancel your plan runs to the end of that month."
+    },
+    {
+      "id": "care-hours",
+      "group": "Care plans",
+      "q": "Do unused hours roll over?",
+      "a": "No. Each month's edit hours are for that month."
+    },
+    {
+      "id": "care-launch",
+      "group": "Care plans",
+      "q": "Is there a deal for starting at launch?",
+      "a": "Yes. Your first month is half off when you start a care plan at launch."
+    }
+  ]
 }
