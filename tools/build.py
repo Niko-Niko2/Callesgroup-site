@@ -224,7 +224,7 @@ def t_faqgroup(*words):
 
 def t_needs():
     """The ?need= keys the contact page understands, built from offers.json.
-    checks = which "What do you need?" boxes to tick on the Wix form; note = line written into the message box."""
+    checks = which "What do you need?" boxes to tick on the quote form; note = line written into the message box."""
     n = {"unsure": {"checks": ["Not sure yet"], "label": "", "note": ""},
          "care": {"checks": ["Care plan"], "label": "a care plan", "note": ""},
          "extras": {"checks": [], "label": "an extra", "note": "I'm asking about an extra: "}}
@@ -274,7 +274,7 @@ def t_payment():
     return ('<div class="card placeholder"><span class="tag">Online payment coming soon</span>'
             '<h2 class="h3">How to pay today</h2>'
             '<ol class="pay-steps">'
-            '<li><b>Card:</b> pay the Wix invoice Andrew emails you.</li>'
+            '<li><b>Card:</b> pay the invoice Andrew emails you.</li>'
             '<li><b>Zelle or check:</b> call or text <a href="%s">%s</a> and Andrew will give you the details.</li></ol>'
             '<p class="muted small">%s</p></div>' % (B["phoneHref"], B["phoneDisplay"], esc(pay["invoiceDue"])))
 
