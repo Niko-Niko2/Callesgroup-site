@@ -50,20 +50,32 @@
     pill.style.width = on.offsetWidth + "px";
     pill.style.transform = "translateX(" + (on.offsetLeft - 4) + "px)";
   }
+  function applySwitch(seg, b, animate) {
+    var name = seg.dataset.switch, v = b.dataset.value, attr = "data-" + name + "-" + v;
+    seg.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
+    placePill(seg);
+    d.querySelectorAll("[" + attr + "]").forEach(function (el) {
+      var t = el.getAttribute(attr);
+      animate ? rollTo(el, t) : (el.textContent = t);
+    });
+    d.querySelectorAll("[data-" + name + "-href-" + v + "]").forEach(function (el) { el.href = el.getAttribute("data-" + name + "-href-" + v); });
+    d.querySelectorAll("[data-" + name + "-show]").forEach(function (el) { el.hidden = el.getAttribute("data-" + name + "-show") !== v; });
+  }
   d.querySelectorAll(".seg").forEach(function (seg) {
-    var name = seg.dataset.switch;
     var pill = d.createElement("span"); pill.className = "seg-pill"; pill.setAttribute("aria-hidden", "true");
-    seg.prepend(pill); placePill(seg);
+    seg.prepend(pill);
+    // A button with data-hash="bundles" is chosen when the page opens at #bundles.
+    var start = (location.hash && seg.querySelector('[data-hash="' + location.hash.slice(1) + '"]')) || seg.querySelector("[aria-pressed=true]");
+    applySwitch(seg, start, false);
     seg.addEventListener("click", function (e) {
       var b = e.target.closest("button"); if (!b || b.getAttribute("aria-pressed") === "true") return;
-      seg.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
-      placePill(seg);
-      var v = b.dataset.value, attr = "data-" + name + "-" + v;
-      d.querySelectorAll("[" + attr + "]").forEach(function (el) { rollTo(el, el.getAttribute(attr)); });
-      d.querySelectorAll("[data-" + name + "-href-" + v + "]").forEach(function (el) { el.href = el.getAttribute("data-" + name + "-href-" + v); });
-      d.querySelectorAll("[data-" + name + "-show]").forEach(function (el) { el.hidden = el.getAttribute("data-" + name + "-show") !== v; });
-      seg.dispatchEvent(new CustomEvent("switch", { detail: v }));
+      applySwitch(seg, b, true);
     });
+  });
+  // A link to #book or #details on the same page flips the matching switch.
+  addEventListener("hashchange", function () {
+    var b = location.hash && d.querySelector('.seg [data-hash="' + location.hash.slice(1) + '"]');
+    if (b) applySwitch(b.closest(".seg"), b, true);
   });
   addEventListener("resize", function () { d.querySelectorAll(".seg").forEach(placePill); });
   if (d.fonts) d.fonts.ready.then(function () { d.querySelectorAll(".seg").forEach(placePill); });
@@ -81,24 +93,20 @@
     }, 700);
   });
 
-  // Accordions. Data attribute data-open-desktop keeps a group open on wide screens.
-  d.querySelectorAll(".acc").forEach(function (acc) {
-    var openAll = acc.classList.contains("open-desktop") && matchMedia("(min-width:760px)").matches;
-    acc.querySelectorAll(".acc-item").forEach(function (it) {
-      var b = it.querySelector(".acc-btn");
-      if (openAll) { it.classList.add("open"); b.setAttribute("aria-expanded", "true"); }
-      b.addEventListener("click", function () {
-        var o = it.classList.toggle("open"); b.setAttribute("aria-expanded", o);
-      });
+  // Accordions and See-everything expanders. Inside .open-desktop they start open on wide screens.
+  var wide = matchMedia("(min-width:760px)").matches;
+  d.querySelectorAll(".acc-item").forEach(function (it) {
+    var b = it.querySelector(".acc-btn");
+    if (wide && it.closest(".open-desktop")) { it.classList.add("open"); b.setAttribute("aria-expanded", "true"); }
+    b.addEventListener("click", function () {
+      var o = it.classList.toggle("open"); b.setAttribute("aria-expanded", o);
     });
   });
 
   // Swipe rows: dots follow the card in view; the active dot grows into a pill.
   d.querySelectorAll(".swipe").forEach(function (row) {
-    var dots = d.createElement("div"); dots.className = "dots"; dots.setAttribute("aria-hidden", "true");
-    var cards = [].slice.call(row.children);
-    cards.forEach(function () { dots.appendChild(d.createElement("i")); });
-    row.after(dots);
+    var cards = [].slice.call(row.children), dots = row.nextElementSibling;
+    if (!dots || !dots.classList.contains("dots")) return;
     var mark = function () {
       var best = 0, bd = 1e9, left = row.getBoundingClientRect().left;
       cards.forEach(function (c, i) { var dd = Math.abs(c.getBoundingClientRect().left - left - 16); if (dd < bd) { bd = dd; best = i; } });
@@ -122,5 +130,6 @@
     });
   } else rv.forEach(function (el) { el.classList.add("in"); });
 
+  de.classList.add("ready");
   var yr = d.getElementById("yr"); if (yr) yr.textContent = new Date().getFullYear();
 })();

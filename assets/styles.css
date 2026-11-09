@@ -10,7 +10,8 @@
 }
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--hdr) + 12px)}
-body{margin:0;background:var(--bg);color:var(--ink);font:500 1rem/1.6 Montserrat,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+@font-face{font-family:"Montserrat Fallback";src:local("Arial"),local("Helvetica"),local("Liberation Sans");size-adjust:113.4%;ascent-override:85.8%;descent-override:22.3%;line-gap-override:0%}
+body{margin:0;background:var(--bg);color:var(--ink);font:500 1rem/1.6 Montserrat,"Montserrat Fallback",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 img,svg{display:block;max-width:100%}
 a{color:inherit;text-underline-offset:3px}
 a:not([class]){color:var(--accent);font-weight:700}
@@ -124,7 +125,7 @@ p{margin:0}
 /* ---------- Layout pieces ---------- */
 .sec-tight{padding-top:8px}
 .band{background:var(--surface);border-block:1px solid var(--line)}
-.narrow{max-width:calc(760px + var(--gut)*2)}
+.narrow>*{max-width:760px}
 .small{font-size:.875rem}
 .hero-art{margin:0}
 
@@ -205,3 +206,120 @@ a.chip:hover{background:var(--accent);color:var(--on-accent)}
 
 /* Before/after mock site follows the palette */
 .m-bg{fill:var(--bg)}.m-sf{fill:var(--surface);stroke:var(--line)}.m-ink{fill:var(--ink)}.m-mu{fill:var(--muted);opacity:.55}.m-ac{fill:var(--accent)}.m-ln{fill:var(--line)}
+
+/* Before JS finishes, hide the non-default side of a switch so nothing flashes. With JS off, both sides show. */
+.js:not(.ready) [data-pre-hide]{display:none}
+.js .nojs{display:none}
+[hidden]{display:none!important}
+.morph:not([hidden]){animation:fadein .3s var(--ease)}
+@keyframes fadein{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+/* Pricing */
+.switch-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-bottom:20px}
+.save-tag{font-size:.8rem;font-weight:700;color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,var(--surface));padding:5px 10px;border-radius:999px}
+.cards3{align-items:start}
+.pkg .pitch{min-height:3.2em}
+.pkg .save{font-size:.9rem;font-weight:700;color:var(--accent);margin-bottom:10px}
+.price s:empty{display:none}
+.xp{border-top:1px solid var(--line);margin-top:2px}
+.xp-btn{min-height:48px;font-size:.92rem;color:var(--accent)}
+.xp .acc-in{color:var(--ink);padding-bottom:8px}
+.xp .ticks{font-size:.92rem}
+.xp-sub{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:14px 0 8px}
+.xp-link{margin-top:12px;font-size:.92rem}
+.note-line{font-size:.92rem;color:var(--muted);margin-top:18px}
+.teaser{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:22px 24px}
+.teaser p{font-weight:700;font-size:1.05rem}
+.plist{list-style:none;margin:0;padding:0}
+.plist li{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-top:1px dashed var(--line);color:var(--ink)}
+.plist li:first-child{border-top:0}
+.plist b{white-space:nowrap}
+.extras .acc-in{max-width:none}
+@media (min-width:760px){.extras{display:grid;grid-template-columns:1fr 1fr;column-gap:40px;border-top:0}.extras .acc-item{border-top:1px solid var(--line)}}
+@media (max-width:759px){.cards3>*{flex-basis:86%}.pkg .pitch{min-height:0}}
+.hero-short{padding-bottom:20px}.hero-short .hero-copy{max-width:640px}
+.pkg .tag,.plan .tag{position:absolute;top:-13px;left:22px}
+.teaser{flex-direction:row}
+.seg button{white-space:nowrap}
+@media (max-width:479px){.switch-row .seg{width:100%}.seg button{padding:0 10px;font-size:.88rem}}
+@media (max-width:759px){.swipe.cards3{padding-top:18px}}
+.benefits{list-style:none;margin:0;padding:0;display:grid;gap:20px;grid-template-columns:repeat(3,minmax(0,1fr))}
+.benefits li{display:grid;gap:8px;align-content:start}
+.benefits svg{width:36px;height:36px;fill:none;stroke:var(--accent);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:759px){.benefits{grid-template-columns:1fr;gap:16px}.benefits li{grid-template-columns:36px 1fr;column-gap:14px}.benefits svg{grid-row:span 2}}
+.plan .bill{font-size:.9rem;min-height:1.5em}
+
+/* Contact */
+.h3{font-size:1.2rem}
+.trust{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px 22px;font-weight:700;font-size:.95rem}
+.trust li{display:flex;align-items:center;gap:10px}
+.trust .num{width:30px;height:30px;font-size:.85rem}
+.seg-wide{display:grid;width:100%;max-width:440px}
+.mode:not([hidden]){animation:fadein .3s var(--ease)}
+.placeholder{gap:12px}
+.ways{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.ways .btn{min-height:48px}
+.other-ways{display:grid;gap:12px;margin-top:32px;padding-top:24px;border-top:1px solid var(--line)}
+.form-card{padding:24px;gap:0;overflow:hidden}
+.ct-bar{height:4px;margin:-24px -24px 20px;background:var(--line)}
+.ct-bar i{display:block;height:100%;width:8%;background:var(--accent);transition:width .45s var(--ease)}
+.fast{display:flex;align-items:center;gap:12px;margin:16px 0 6px}
+.fast svg{width:28px;height:28px;flex:none;fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linecap:round}
+/* Wix form renderer classes (form-*) inside #quote */
+#quote{min-height:280px}
+#quote .form{display:flex;flex-direction:column;gap:22px}
+#quote .form-step{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+#quote .form-step-title{font-size:1.25rem;font-weight:700}
+#quote .form-step-count{color:var(--muted);font-size:.85rem;white-space:nowrap}
+#quote .form-fields{border:0;margin:0;padding:0;min-width:0;display:flex;flex-direction:column;gap:22px}
+#quote .form-field{display:flex;flex-direction:column;gap:10px}
+#quote .form-label{font-weight:700}
+#quote .form-control{width:100%;min-height:50px;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;transition:border-color .2s var(--ease)}
+#quote textarea.form-control{min-height:96px;resize:vertical}
+#quote .form-control:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)}
+#quote .form-choices{display:flex;flex-wrap:wrap;gap:8px}
+#quote .form-choice{position:relative;display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 16px;border:1.5px solid var(--line);border-radius:999px;background:var(--bg);cursor:pointer;transition:border-color .2s var(--ease),background-color .2s var(--ease)}
+#quote .form-choice:hover{border-color:var(--accent)}
+#quote .form-choice input{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+#quote .form-choice:has(input:focus-visible){outline:3px solid var(--accent);outline-offset:2px}
+#quote .form-choice::before{content:"";width:16px;height:16px;flex:none;border-radius:50%;border:1.5px solid var(--muted)}
+#quote .form-field--checkboxGroup .form-choice::before{border-radius:5px}
+#quote .form-choice--selected{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,var(--surface))}
+#quote .form-choice--selected::before{border-color:var(--accent);background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
+#quote .form-actions{display:flex;gap:12px;padding-top:4px}
+#quote .form-submit,#quote .form-next,#quote .form-back{min-height:52px;border-radius:999px;font:inherit;font-weight:700;cursor:pointer;border:2px solid transparent}
+#quote .form-submit,#quote .form-next{flex:1;background:var(--accent);color:var(--on-accent)}
+#quote .form-submit:hover,#quote .form-next:hover{background:var(--accent-hover)}
+#quote .form-back{background:none;border-color:var(--line);color:var(--ink);padding:0 20px}
+#quote .form-error,#quote .form-field-error{color:#B3261E;font-size:.9rem}
+#quote .form-success{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:32px 12px}
+@media (max-width:479px){#quote .form-choice{flex:1 1 auto}}
+
+/* Pay deposit, thank you, simple pages */
+.pay-steps{margin:0;padding-left:20px;display:grid;gap:8px}
+.facts{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.facts li{padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.legal h2{font-size:1.25rem;margin:28px 0 8px}
+.legal p,.legal ul{margin:0 0 10px;color:var(--ink)}
+.crumbs{font-size:.85rem;color:var(--muted);margin-bottom:6px}
+.crumbs a{color:var(--muted);font-weight:500}
+.ways{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:440px}
+.ways .btn{width:100%}
+.ways-num{color:var(--muted)}
+.need-line{font-weight:700;color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,var(--surface));padding:10px 14px;border-radius:12px;max-width:52ch}
+.faq-jump{margin-bottom:12px}
+.faq-group{margin-top:36px}
+.faq-group h2{font-size:1.35rem;margin-bottom:8px;scroll-margin-top:calc(var(--hdr) + 16px)}
+.two{display:grid;gap:16px;grid-template-columns:1fr 1fr;align-items:start}
+@media (max-width:759px){.two{grid-template-columns:1fr}}
+.price.big{font-size:clamp(2.4rem,7vw,3.2rem)}
+.hero .save{font-weight:700;color:var(--accent)}
+.hero .tag{margin-bottom:-4px}
+.prows{display:grid;gap:10px}
+.prow{display:grid;grid-template-columns:120px 1fr auto;align-items:center;gap:16px;padding:16px 20px;background:var(--bg);border:1px solid var(--line);border-radius:12px;text-decoration:none;transition:border-color .25s var(--ease),transform .25s var(--ease)}
+@media (hover:hover) and (pointer:fine){.prow:hover{border-color:var(--accent);transform:translateY(-2px)}}
+.prow-p{font-weight:700;font-size:1.25rem}
+@media (max-width:559px){.prow{grid-template-columns:1fr auto;gap:4px 12px}.prow .muted{grid-column:1/-1;grid-row:2;font-size:.9rem}}
+.sec-mid{padding-block:48px}
+.hero .tag{justify-self:start}
+.prose>h2+p,.prose p+p{margin-top:12px}
