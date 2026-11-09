@@ -25,6 +25,13 @@
 <link rel="stylesheet" href="/styles.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.callesgroup.com/"},{"@type":"ListItem","position":2,"name":"Packages","item":"https://www.callesgroup.com/pricing.html"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"OfferCatalog","@id":"https://www.callesgroup.com/pricing.html#catalog","name":"Calles Group website packages and add-ons","url":"https://www.callesgroup.com/pricing.html","itemListElement":[{"@type":"Offer","name":"Launch website","price":"1500","priceCurrency":"USD","url":"https://www.callesgroup.com/pricing.html#websites","seller":{"@id":"https://www.callesgroup.com/#business"},"description":"Up to 3 pages, built for mobile, about 2 weeks"},{"@type":"Offer","name":"Growth website","price":"2500","priceCurrency":"USD","url":"https://www.callesgroup.com/pricing.html#websites","seller":{"@id":"https://www.callesgroup.com/#business"},"description":"Up to 5 pages, custom layout, Google Business Profile setup, about 3 weeks"},{"@type":"Offer","name":"Premium website","price":"3800","priceCurrency":"USD","url":"https://www.callesgroup.com/pricing.html#websites","seller":{"@id":"https://www.callesgroup.com/#business"},"description":"Up to 8 pages with full copywriting, about 4 to 5 weeks"},{"@type":"Offer","name":"Launch website + Starter Kit","price":"1950","priceCurrency":"USD","url":"https://www.callesgroup.com/launch-bundle.html","seller":{"@id":"https://www.callesgroup.com/#business"}},{"@type":"Offer","name":"Growth website + Brand Kit","price":"3200","priceCurrency":"USD","url":"https://www.callesgroup.com/growth-bundle.html","seller":{"@id":"https://www.callesgroup.com/#business"}},{"@type":"Offer","name":"Premium website + Brand Kit","price":"4400","priceCurrency":"USD","url":"https://www.callesgroup.com/premium-bundle.html","seller":{"@id":"https://www.callesgroup.com/#business"}},{"@type":"Offer","name":"Logo design","price":"500","priceCurrency":"USD","url":"https://www.callesgroup.com/pricing.html#client-addons","seller":{"@id":"https://www.callesgroup.com/#business"}}]}</script>
+<style>
+.pr-tab{line-height:1.2;padding-block:6px}
+.pr-tab-save{display:block;font-size:.72rem;font-weight:600;color:var(--accent);transition:color .25s}
+.pr-tab[aria-selected="true"] .pr-tab-save{color:var(--on-accent);opacity:.8}
+.pr-swap{font-weight:600;color:var(--accent);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.pr-swap:hover{color:var(--ink)}
+</style>
 </head>
 <body class="has-mcta pr">
 <header>
@@ -80,9 +87,17 @@
     </svg>
   </div>
 
+  <div class="pr-tabs-wrap"><div class="wrap">
+    <div class="pr-tabs" role="tablist" aria-label="Website only or with a Brand Kit" style="grid-template-columns:repeat(2,1fr);max-width:460px">
+      <span class="pr-pill" aria-hidden="true"></span>
+      <button class="pr-tab" role="tab" id="t-websites" aria-controls="websites" aria-selected="true">Website only</button>
+      <button class="pr-tab" role="tab" id="t-bundles" aria-controls="bundles" aria-selected="false" tabindex="-1">Website + Brand Kit <span class="pr-tab-save">Save up to $300</span></button>
+    </div>
+  </div></div>
+
   <div class="wrap pr-panels">
     <!-- Websites -->
-    <section class="pr-panel" id="websites">
+    <section class="pr-panel" id="websites" role="tabpanel" aria-labelledby="t-websites" tabindex="-1">
       <div class="pr-head"><h2>Website design</h2><p>Built for phones, ready to bring in calls.</p></div>
       <div class="pr-grid">
         <article class="pr-card">
@@ -116,12 +131,13 @@
           <a class="btn ghost" href="/contact.html">Get a free quote</a>
         </article>
       </div>
+      <p class="pr-fine">Want your logo and business cards too? <a class="pr-swap" href="#bundles" data-tab="bundles">See the Brand Kit bundles</a></p>
       <p class="pr-fine">Timelines start once we have your text, photos and logo.</p>
     </section>
 
     <!-- Bundles -->
-    <section class="pr-panel" id="bundles">
-      <div class="pr-head"><h2>Website + branding bundles</h2><p>Your site and your look, done together. Save up to $300.</p></div>
+    <section class="pr-panel" id="bundles" role="tabpanel" aria-labelledby="t-bundles" tabindex="-1" hidden>
+      <div class="pr-head"><h2>Website + Brand Kit</h2><p>Your site, logo and business cards, done together. Save up to $300.</p></div>
       <div class="pr-grid">
         <article class="pr-card">
           <svg class="pr-vis" viewBox="0 0 300 120" role="img" aria-label="Illustration: a website, a logo mark and a business card"><rect x="24" y="22" width="150" height="76" rx="8" fill="#1E1E1E"/><rect x="38" y="36" width="122" height="20" rx="4" fill="#363431"/><rect x="38" y="64" width="56" height="20" rx="4" fill="#363431"/><rect x="104" y="64" width="56" height="20" rx="4" fill="#363431"/><rect x="190" y="26" width="34" height="34" rx="6" fill="#C9A962"/><rect x="190" y="70" width="86" height="28" rx="4" fill="#363431"/></svg>
@@ -151,6 +167,7 @@
           <a class="btn ghost" href="/contact.html">Get a free quote</a>
         </article>
       </div>
+      <p class="pr-fine">Just need the website? <a class="pr-swap" href="#websites" data-tab="websites">See website-only prices</a></p>
     </section>
   </div>
 
@@ -235,10 +252,46 @@
 <script src="/site.js" defer></script>
 <script>
 (function () {
+  // Website only / Website + Brand Kit switch
+  var tabs = [].slice.call(document.querySelectorAll(".pr-tab"));
+  var pill = document.querySelector(".pr-pill");
+  var ids = tabs.map(function (t) { return t.getAttribute("aria-controls"); });
+  function placePill(tab) {
+    pill.style.width = tab.offsetWidth + "px";
+    pill.style.transform = "translateX(" + (tab.offsetLeft - 6) + "px)";
+  }
+  function show(id, opts) {
+    opts = opts || {};
+    var i = ids.indexOf(id); if (i < 0) return;
+    tabs.forEach(function (t, j) {
+      var on = j === i;
+      t.setAttribute("aria-selected", on); t.tabIndex = on ? 0 : -1;
+      var p = document.getElementById(ids[j]);
+      if (on) { p.hidden = false; p.classList.remove("enter"); void p.offsetWidth; p.classList.add("enter"); } else { p.hidden = true; }
+    });
+    placePill(tabs[i]);
+    if (opts.focus) tabs[i].focus();
+    if (opts.scroll) document.querySelector(".pr-tabs-wrap").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+    if (opts.hash !== false && history.replaceState) history.replaceState(null, "", "#" + id);
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener("click", function () { show(ids[i]); });
+    t.addEventListener("keydown", function (e) {
+      var k = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+      if (k) { e.preventDefault(); show(ids[(i + k + ids.length) % ids.length], { focus: true }); }
+    });
+  });
+  document.querySelectorAll("[data-tab]").forEach(function (a) {
+    a.addEventListener("click", function (e) { e.preventDefault(); show(a.getAttribute("data-tab"), { scroll: true }); });
+  });
+  window.addEventListener("resize", function () { var s = document.querySelector('.pr-tab[aria-selected="true"]'); if (s) placePill(s); });
+  placePill(tabs[0]);
+
   // Old links: #care goes to the Care plans page; #branding was removed, so it lands on the client add-ons.
   function fromHash() {
     var h = location.hash.slice(1);
     if (h === "care") { location.replace("/care-plans.html"); return; }
+    if (ids.indexOf(h) >= 0) show(h, { scroll: true, hash: false });
     if (h === "addons") document.querySelector("#addons details").open = true;
     if (h === "branding") { var el = document.getElementById("client-addons"); if (el) el.scrollIntoView(); }
   }
