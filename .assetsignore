@@ -1,0 +1,12 @@
+# Source and tooling: not part of the public site.
+.git
+.github
+.gitignore
+.assetsignore
+wrangler.jsonc
+README.md
+src/
+partials/
+tools/
+data/
+palette-preview.html

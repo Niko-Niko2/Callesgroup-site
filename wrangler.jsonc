@@ -1,0 +1,11 @@
+// Cloudflare Workers static site. Every push to main deploys. Pages are plain files in the repo root.
+// html_handling "none" keeps the .html URLs exactly as they are (no redirects to extensionless URLs).
+{
+  "name": "callesgroup-site",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": ".",
+    "html_handling": "none",
+    "not_found_handling": "none"
+  }
+}

@@ -1,0 +1,130 @@
+<!--meta {"title": "Get a Free Website Quote | Elgin, IL | Calles Group",
+ "description": "Get a free quote for a website, Brand Kit or care plan in Elgin, IL. Tap a few answers or book a free call. Replies within 24 hours. Call or text 312-600-0590.",
+ "nav": "contact", "crumb": "Contact"} -->
+
+<section class="ct" aria-label="Get a free quote"><div class="wrap ct-grid">
+  <div class="ct-intro">
+    <p class="eyebrow">Free quote</p>
+    <h1>Let's talk about <em>your business.</em></h1>
+    <p class="need-line" id="needLine" hidden></p>
+    <ol class="trust">
+      <li><span class="num">1</span>Tap a few answers</li>
+      <li><span class="num">2</span>Get a plan and a price</li>
+      <li><span class="num">3</span>You decide, no pressure</li>
+    </ol>
+    <p class="fast"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M16 9v7l5 3"/></svg><span><b>Replies within 24 hours.</b> From Andrew, not a bot.</span></p>
+  </div>
+
+  <div class="ct-main">
+    <span id="book"></span><span id="details"></span>
+    <div class="switch-row">
+      <div class="seg seg-wide" data-switch="mode" role="group" aria-label="How do you want to start?">
+        <button type="button" data-value="book" data-hash="book" aria-pressed="false">Book a call</button>
+        <button type="button" data-value="details" data-hash="details" aria-pressed="true">Send your details</button>
+      </div>
+    </div>
+
+    <div class="mode" data-mode-show="book" data-pre-hide>
+      <!-- BOOKING: shows the Wix Bookings widget when "bookingLive" is true in data/offers.json, otherwise the placeholder. -->
+      {{booking}}
+    </div>
+
+    <div class="mode" data-mode-show="details">
+      <h2 class="sr">Quote request form</h2>
+      <div class="card form-card" id="formCard">
+        <div class="ct-bar" aria-hidden="true"><i id="ctBar"></i></div>
+        <!-- WIX FORM MOUNT: Wix installs the quote form (ID 8b564ebe-a6cc-4e87-8255-c3ebdfde4c20) here. Do not rebuild it. -->
+        <div id="quote"></div>
+        <noscript><p>The quote form needs JavaScript. Call or text {{phone}}, or email {{email}}, and Andrew will reply {{reply}}.</p></noscript>
+      </div>
+      <p class="small muted ct-fine">See our <a href="/privacy-policy.html">privacy policy</a>.</p>
+    </div>
+
+    <div class="other-ways">
+      <h2 class="h3">Rather talk now?</h2>
+      {{ways}}
+    </div>
+  </div>
+</div></section>
+
+<script>
+// ?need=<key> from package, bundle and care plan buttons. Built from data/offers.json.
+(function () {
+  var NEEDS = {{needs}};
+  var need = window.CG_NEED = NEEDS[new URLSearchParams(location.search).get("need")];
+  if (need && need.label) { var l = document.getElementById("needLine"); l.textContent = "You're asking about " + need.label + ". You can change it in the form."; l.hidden = false; }
+})();
+</script>
+<script type="module">
+// Wix's quote form. The renderer file is installed by Wix on the live site.
+import { renderForm } from "/js/wix/form-renderer.js";
+const { store } = renderForm(document.querySelector("#quote"), {
+  formId: "8b564ebe-a6cc-4e87-8255-c3ebdfde4c20",
+  text: { submit: "Send my request", next: "Continue", back: "Back", sending: "Sending…", stepOf: "Step {n} of {total}" },
+  onOutcome: () => document.getElementById("formCard").scrollIntoView({ block: "start" })
+});
+// Wix wants +1 phone numbers. Add it for a 10-digit US number.
+const toUSPhone = (v) => {
+  const s = String(v ?? "");
+  if (s.trim().startsWith("+")) return s;
+  const d = s.replace(/\D/g, "");
+  if (d.length === 10) return "+1" + d;
+  if (d.length === 11 && d[0] === "1") return "+" + d;
+  return s;
+};
+const setValue = store.setValue;
+store.setValue = (target, value) => {
+  const field = store.getState().form?.fields?.find((f) => f.target === target);
+  return setValue.call(store, target, field && field.control === "phone" ? toUSPhone(value) : value);
+};
+// Progress bar, a soft entrance for each new step, then the thank-you page when sent.
+const bar = document.getElementById("ctBar"), card = document.getElementById("formCard");
+const calm = matchMedia("(prefers-reduced-motion: reduce)");
+let lastStep = 0;
+store.subscribe(() => requestAnimationFrame(() => {
+  const q = document.querySelector("#quote"), form = q.querySelector(".form");
+  const input = q.querySelector(".form-field--phone input");
+  if (input && !input.placeholder) input.placeholder = "(847) 555-1234";
+  if (form && form.dataset.state === "done") { bar.style.width = "100%"; if (!window.cgSent) { window.cgSent = true; setTimeout(() => location.assign("/thank-you.html"), 600); } return; }
+  const m = (q.querySelector(".form-step-count")?.textContent || "").match(/(\d+)\D+(\d+)/);
+  const n = m ? +m[1] : 1, total = m ? +m[2] : 1;
+  bar.style.width = Math.max(8, (n / (total + 1)) * 100) + "%";
+  if (n !== lastStep) {
+    const fs = q.querySelector(".form-fields");
+    if (fs && lastStep) {
+      fs.classList.remove("enter"); void fs.offsetWidth; fs.classList.add("enter");
+      if (card.getBoundingClientRect().top < 0) card.scrollIntoView({ block: "start", behavior: calm.matches ? "auto" : "smooth" });
+    }
+    lastStep = n;
+  }
+}));
+// ?need=<key>: tick the matching "What do you need?" boxes and note the choice (map is set above).
+const need = window.CG_NEED;
+if (need) {
+  let done = false;
+  const apply = () => {
+    if (done) return;
+    const fields = store.getState().form?.fields;
+    if (!fields || !document.querySelector("#quote .form-field")) return;
+    done = true;
+    document.querySelectorAll("#quote .form-field").forEach((f) => {
+      const lab = f.querySelector(".form-label");
+      if (!lab || !/what do you need/i.test(lab.textContent)) return;
+      f.querySelectorAll("label").forEach((l) => {
+        if (!need.checks.includes(l.textContent.trim())) return;
+        const inp = l.querySelector("input") || document.getElementById(l.htmlFor);
+        if (inp && !inp.checked) inp.click();
+      });
+      // If the field is ever switched to a dropdown in Wix, pick the first match there.
+      const sel = f.querySelector("select");
+      const opt = sel && [...sel.options].find((o) => need.checks.includes(o.textContent.trim()));
+      if (opt) { sel.value = opt.value; sel.dispatchEvent(new Event("change", { bubbles: true })); }
+    });
+    const msgField = fields.find((f) => /^message/i.test(f.target)) || fields.find((f) => /textarea|paragraph/i.test(f.control || ""));
+    const current = msgField && store.getState().values?.[msgField.target];
+    if (need.note && msgField && !current) store.setValue(msgField.target, need.note);
+  };
+  store.subscribe(apply);
+  apply();
+}
+</script>

@@ -1,0 +1,23 @@
+<!--meta {"title": "Pay Your Deposit | Calles Group", "description": "Pay the deposit for your agreed Calles Group quote by card, Zelle or check.", "nav": "", "index": false} -->
+
+<section class="hero hero-short"><div class="wrap">
+  <div class="hero-copy">
+    <p class="eyebrow">For clients with an agreed quote</p>
+    <h1>Pay your <em>deposit.</em></h1>
+    <p class="lede">Your deposit starts the work on your agreed quote.</p>
+  </div>
+</div></section>
+
+<section class="sec sec-tight"><div class="wrap narrow">
+  <ul class="facts rv">
+    <li><b>How much:</b> {{policy payment deposit}} {{policy payment over2500}}</li>
+    <li><b>When work starts:</b> at the kickoff call or the first design, whichever comes first.</li>
+    <li><b>Refunds:</b> the deposit is non-refundable once work starts.</li>
+  </ul>
+  <div class="rv" style="margin-top:24px">
+    <!-- PAYMENT: shows the Wix Payments button when "paymentsLive" is true in data/offers.json, otherwise the placeholder. -->
+    {{payment}}
+  </div>
+  <p class="sec-end rv"><b>Questions? Call or text {{phone}}.</b></p>
+  <p class="small muted rv">No quote yet? <a href="/contact.html">Get a free quote first</a>.</p>
+</div></section>
