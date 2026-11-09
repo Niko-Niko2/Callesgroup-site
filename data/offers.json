@@ -1,0 +1,392 @@
+{
+  "flags": {
+    "bookingLive": false,
+    "paymentsLive": false
+  },
+  "business": {
+    "name": "Calles Group",
+    "owner": "Andrew Calles",
+    "city": "Elgin",
+    "state": "IL",
+    "tagline": "Based in Elgin, IL. Serving Chicagoland.",
+    "phoneDisplay": "312-600-0590",
+    "phoneHref": "tel:+13126000590",
+    "smsHref": "sms:+13126000590",
+    "email": "andrew@callesgroup.com",
+    "replyTime": "within 24 hours",
+    "siteUrl": "https://www.callesgroup.com",
+    "wixFormId": "8b564ebe-a6cc-4e87-8255-c3ebdfde4c20",
+    "booking": {
+      "service": "Free quote call",
+      "minutes": 20,
+      "where": "In person or video"
+    }
+  },
+  "packages": [
+    {
+      "key": "launch",
+      "name": "Launch",
+      "price": 1500,
+      "pitch": "Get online with a clean, professional site.",
+      "timeline": "About 2 weeks",
+      "keyFeatures": [
+        "Up to 3 pages",
+        "Template-based design built for mobile",
+        "Contact form",
+        "About 2 weeks"
+      ],
+      "moreFeatures": [
+        "Basic SEO (titles, descriptions, sitemap)",
+        "2 rounds of changes"
+      ]
+    },
+    {
+      "key": "growth",
+      "name": "Growth",
+      "price": 2500,
+      "popular": true,
+      "pitch": "A custom site built to bring in leads.",
+      "timeline": "About 3 weeks",
+      "keyFeatures": [
+        "Up to 5 pages, custom layout",
+        "Google Business Profile setup",
+        "Booking or quote request form",
+        "About 3 weeks"
+      ],
+      "moreFeatures": [
+        "Everything in Launch",
+        "Copy polish on every page",
+        "Google Search Console and analytics",
+        "3 rounds of changes"
+      ]
+    },
+    {
+      "key": "premium",
+      "name": "Premium",
+      "price": 3800,
+      "pitch": "The complete site, words written for you.",
+      "timeline": "About 4 to 5 weeks",
+      "keyFeatures": [
+        "Up to 8 pages",
+        "Full copywriting",
+        "30 days of free edits after launch",
+        "About 4 to 5 weeks"
+      ],
+      "moreFeatures": [
+        "Everything in Growth",
+        "Stock photo sourcing",
+        "Blog or project gallery",
+        "1-hour training call"
+      ]
+    }
+  ],
+  "bundles": [
+    {
+      "key": "launch-bundle",
+      "page": "launch-bundle.html",
+      "package": "launch",
+      "name": "Launch website + Starter Kit",
+      "price": 1950,
+      "regular": 2175,
+      "save": 225,
+      "pitch": "Get online with a clean, professional site and a logo to match.",
+      "website": [
+        "Launch website"
+      ],
+      "brand": [
+        "Logo design (3 concepts, 2 rounds, PNG/SVG/PDF in light and dark)",
+        "Business card design"
+      ]
+    },
+    {
+      "key": "growth-bundle",
+      "page": "growth-bundle.html",
+      "package": "growth",
+      "name": "Growth website + Brand Kit",
+      "price": 3200,
+      "regular": 3400,
+      "save": 200,
+      "popular": true,
+      "pitch": "A custom site built to bring in leads, with a full brand behind it.",
+      "website": [
+        "Growth website"
+      ],
+      "brand": [
+        "Logo",
+        "Business card design",
+        "Color palette",
+        "Font pairing",
+        "One-page brand guide",
+        "Social profile and cover images"
+      ]
+    },
+    {
+      "key": "premium-bundle",
+      "page": "premium-bundle.html",
+      "package": "premium",
+      "name": "Premium website + Brand Kit",
+      "price": 4400,
+      "regular": 4700,
+      "save": 300,
+      "pitch": "The complete site and full brand, words written for you.",
+      "website": [
+        "Premium website",
+        "Copywriting included"
+      ],
+      "brand": [
+        "Logo",
+        "Business card design",
+        "Color palette",
+        "Font pairing",
+        "One-page brand guide",
+        "Social profile and cover images"
+      ]
+    }
+  ],
+  "bundleSaveTag": "Save up to $300",
+  "carePlans": [
+    {
+      "key": "care-essentials",
+      "name": "Essentials",
+      "monthly": 99,
+      "yearlyPerMonth": 83,
+      "yearlyTotal": 996,
+      "yearlySave": 192,
+      "keyFeatures": [
+        "1 hour of edits a month",
+        "Edits within 3 business days",
+        "Monthly check of forms and links",
+        "Direct text line to your designer"
+      ],
+      "moreFeatures": [
+        "Broken links and forms fixed",
+        "Hours and prices kept current",
+        "Spam blocked on forms",
+        "Google search errors caught and fixed",
+        "Monthly phone layout check",
+        "Wix and domain renewal reminders"
+      ]
+    },
+    {
+      "key": "care-plus",
+      "name": "Plus",
+      "monthly": 199,
+      "yearlyPerMonth": 158,
+      "yearlyTotal": 1896,
+      "yearlySave": 492,
+      "popular": true,
+      "keyFeatures": [
+        "2.5 hours of edits a month",
+        "Edits within 2 business days",
+        "2 Google posts a month",
+        "Monthly visits and leads report"
+      ],
+      "moreFeatures": [
+        "Everything in Essentials",
+        "Google Business Profile kept fresh",
+        "New job or product photos added",
+        "Seasonal promos",
+        "Review link and QR code set up"
+      ]
+    },
+    {
+      "key": "care-growth",
+      "name": "Growth",
+      "monthly": 349,
+      "yearlyPerMonth": 262,
+      "yearlyTotal": 3144,
+      "yearlySave": 1044,
+      "keyFeatures": [
+        "4 hours of edits a month",
+        "Edits within 1 business day",
+        "4 Google posts and 4 social graphics a month",
+        "20-minute monthly call"
+      ],
+      "moreFeatures": [
+        "Everything in Plus",
+        "Quarterly SEO tune-up",
+        "Replies to Google reviews written for you",
+        "A new landing page each quarter"
+      ]
+    }
+  ],
+  "careYearlyTag": "Save up to 25%",
+  "careNotes": [
+    "Separate from your Wix plan. Wix hosts your site, we take care of it.",
+    "First month half off when you start at launch.",
+    "Unused hours don't roll over.",
+    "Cancel anytime. Your plan runs to the end of the month.",
+    "Billed monthly in advance."
+  ],
+  "extras": [
+    {
+      "group": "Website",
+      "items": [
+        {
+          "name": "Extra page",
+          "price": "$175"
+        },
+        {
+          "name": "Copywriting",
+          "price": "$100/page"
+        },
+        {
+          "name": "Rush, under 1 week (when schedule allows)",
+          "price": "+25%"
+        },
+        {
+          "name": "Redesign of an existing site",
+          "price": "from $900"
+        }
+      ]
+    },
+    {
+      "group": "Get found",
+      "items": [
+        {
+          "name": "Google Business Profile setup",
+          "price": "$250"
+        },
+        {
+          "name": "SEO starter setup",
+          "price": "$300"
+        }
+      ]
+    },
+    {
+      "group": "Booking & selling",
+      "items": [
+        {
+          "name": "Online booking setup",
+          "price": "$250"
+        },
+        {
+          "name": "Online store setup (up to 20 products, then $15 each)",
+          "price": "$750"
+        }
+      ]
+    },
+    {
+      "group": "Branding",
+      "items": [
+        {
+          "name": "Logo design (3 concepts, 2 rounds, PNG/SVG/PDF in light and dark)",
+          "price": "$500"
+        },
+        {
+          "name": "Business card design",
+          "price": "$175"
+        },
+        {
+          "name": "Social media kit (profile, cover, 5 post templates)",
+          "price": "$250"
+        },
+        {
+          "name": "Email signature",
+          "price": "$75"
+        }
+      ]
+    },
+    {
+      "group": "Email & training",
+      "items": [
+        {
+          "name": "Professional email setup",
+          "price": "$100"
+        },
+        {
+          "name": "Newsletter template and signup form",
+          "price": "$300"
+        },
+        {
+          "name": "Recorded training call",
+          "price": "$100/hr"
+        }
+      ]
+    },
+    {
+      "group": "Hourly",
+      "items": [
+        {
+          "name": "Work outside a package (30-minute minimum)",
+          "price": "$75/hr"
+        }
+      ]
+    }
+  ],
+  "printNote": "Business cards, signs, magnets and printed materials are available to website clients. Ask on your quote call.",
+  "policies": {
+    "payment": {
+      "deposit": "50% deposit to start, the rest before launch.",
+      "over2500": "Over $2,500: 50% to start, 25% at design approval, 25% before launch.",
+      "methods": [
+        "Card via Wix invoice",
+        "Zelle",
+        "Check"
+      ],
+      "invoiceDue": "Invoices are due in 7 days.",
+      "refund": "The deposit is non-refundable once work starts (the kickoff call or first design, whichever comes first)."
+    },
+    "ownership": [
+      "Your Wix account and domain are in your name, and you pay them directly.",
+      "Logo files and full admin access are handed over after final payment."
+    ],
+    "rounds": "A round of changes is one list of all your feedback, sent within 5 business days. Extra rounds are $75/hr.",
+    "pause": "If a project goes quiet for 30 days, it pauses and the next payment comes due. Restarting costs $150.",
+    "portfolio": "Finished work may be shown in our portfolio unless you opt out.",
+    "timeline": "2 to 5 weeks depending on the package. The clock starts once we have your text, photos and logo."
+  },
+  "serviceArea": {
+    "note": "In person or over video.",
+    "towns": [
+      {
+        "name": "Elgin",
+        "page": "web-design-elgin.html"
+      },
+      {
+        "name": "South Elgin",
+        "page": "web-design-south-elgin.html"
+      },
+      {
+        "name": "Bartlett",
+        "page": "web-design-bartlett.html"
+      },
+      {
+        "name": "Schaumburg",
+        "page": "web-design-schaumburg.html"
+      },
+      {
+        "name": "Hoffman Estates"
+      },
+      {
+        "name": "Barrington"
+      },
+      {
+        "name": "South Barrington"
+      },
+      {
+        "name": "Inverness"
+      },
+      {
+        "name": "St. Charles",
+        "page": "web-design-st-charles.html"
+      },
+      {
+        "name": "Geneva"
+      },
+      {
+        "name": "Algonquin"
+      },
+      {
+        "name": "Crystal Lake",
+        "page": "web-design-crystal-lake.html"
+      },
+      {
+        "name": "Naperville"
+      },
+      {
+        "name": "Chicago"
+      }
+    ]
+  }
+}
