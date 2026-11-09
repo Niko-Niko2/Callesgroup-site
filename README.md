@@ -69,11 +69,11 @@ All colors are the tokens at the top of `assets/styles.css` (`--bg`, `--surface`
 
 ## Publishing
 
-The site is hosted on Cloudflare (Workers static assets, see `wrangler.jsonc`), connected to this GitHub repo. Every push to `main` goes live.
+The site is hosted on GitHub Pages (deploy from `main`, root folder; custom domain in `CNAME`). DNS stays at Wix: `callesgroup.com` A records point to GitHub Pages and `www` is a CNAME to `niko-niko2.github.io`. Every push to `main` goes live.
 
 1. `python3 tools/build.py`
 2. Check it locally: `python3 -m http.server 8765`, then open http://localhost:8765 at phone and desktop widths.
-3. Commit and push to `main`. Cloudflare deploys it in about a minute.
+3. Commit and push to `main`. GitHub Pages deploys it in about a minute.
 
 `.assetsignore` keeps `src/`, `partials/`, `tools/`, `data/`, `README.md` and `palette-preview.html` off the public site. `html_handling: "none"` keeps every URL ending in `.html`.
 
