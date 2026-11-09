@@ -379,8 +379,8 @@ body.merch main :is(.trust,.check,.pack .for,.desc,.note,.sep,.saved,.muted,.ans
 @keyframes prUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
 /* Tabs */
-.pr-tabs-wrap{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--hdr));z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.pr-tabs{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;max-width:620px;margin-inline:auto;padding:6px;margin-block:10px;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.pr-tabs-wrap{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--hdr));z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding-block:10px}
+.pr-tabs{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;max-width:620px;margin-inline:auto;padding:6px;background:var(--surface);border:1px solid var(--line);border-radius:14px}
 .pr-tab{position:relative;z-index:1;min-height:44px;border:0;background:none;color:var(--muted);font:inherit;font-weight:600;font-size:.95rem;border-radius:10px;cursor:pointer;transition:color .25s}
 .pr-tab[aria-selected="true"]{color:var(--on-accent)}
 .pr-tab:not([aria-selected="true"]):hover{color:var(--ink)}
