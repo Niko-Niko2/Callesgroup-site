@@ -1,7 +1,7 @@
 // Quote request form. Same 3 steps and questions as the old Wix form.
 // Sends each request to Web3Forms, which emails it to andrew@callesgroup.com. No Wix needed.
 // The access key is public by design (it can only send to the inbox it was made for).
-export const ACCESS_KEY = "WEB3FORMS_ACCESS_KEY";
+export const ACCESS_KEY = "2bf04862-012a-4d8b-a824-e4bc6d93108b";
 
 const STEPS = [
   { title: "What can we help with?", fields: [
