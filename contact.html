@@ -39,8 +39,8 @@
   <div class="hdr-m"><a class="btn btn-primary btn-sm" href="/contact.html">Contact</a><a id="menuBtn" class="btn btn-ghost btn-sm" href="#footer" role="button" aria-controls="nav" aria-expanded="false">Menu</a></div>
 </div></header>
 <main id="main">
-<section class="hero hero-short"><div class="wrap">
-  <div class="hero-copy">
+<section class="ct" aria-label="Get a free quote"><div class="wrap ct-grid">
+  <div class="ct-intro">
     <p class="eyebrow">Free quote</p>
     <h1>Let's talk about <em>your business.</em></h1>
     <p class="need-line" id="needLine" hidden></p>
@@ -49,37 +49,38 @@
       <li><span class="num">2</span>Get a plan and a price</li>
       <li><span class="num">3</span>You decide, no pressure</li>
     </ol>
-  </div>
-</div></section>
-
-<section class="sec sec-tight" aria-label="Get in touch"><div class="wrap narrow">
-  <span id="book"></span><span id="details"></span>
-  <div class="switch-row">
-    <div class="seg seg-wide" data-switch="mode" role="group" aria-label="How do you want to start?">
-      <button type="button" data-value="book" data-hash="book" aria-pressed="false">Book a call</button>
-      <button type="button" data-value="details" data-hash="details" aria-pressed="true">Send your details</button>
-    </div>
-  </div>
-
-  <div class="mode" data-mode-show="book" data-pre-hide>
-    <!-- BOOKING: shows the Wix Bookings widget when "bookingLive" is true in data/offers.json, otherwise the placeholder. -->
-    <div class="card placeholder"><span class="tag">Coming soon</span><h2 class="h3">Online booking is coming soon.</h2><p class="muted">For now, call or text <a href="tel:+13126000590">312-600-0590</a> to set up your free 20-minute quote call, in person or video. Or send your details and Andrew will reach out to set a time.</p><div class="btns"><a class="btn btn-primary" href="tel:+13126000590">Call or text 312-600-0590</a><a class="btn btn-ghost" href="/contact.html#details">Send your details</a></div></div>
-  </div>
-
-  <div class="mode" data-mode-show="details">
-    <div class="card form-card" id="formCard">
-      <div class="ct-bar" aria-hidden="true"><i id="ctBar"></i></div>
-      <!-- WIX FORM MOUNT: Wix installs the quote form (ID 8b564ebe-a6cc-4e87-8255-c3ebdfde4c20) here. Do not rebuild it. -->
-      <div id="quote"></div>
-      <noscript><p>The quote form needs JavaScript. Call or text <a href="tel:+13126000590">312-600-0590</a>, or email <a href="mailto:andrew@callesgroup.com">andrew@callesgroup.com</a>, and Andrew will reply within 24 hours.</p></noscript>
-    </div>
     <p class="fast"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M16 9v7l5 3"/></svg><span><b>Replies within 24 hours.</b> From Andrew, not a bot.</span></p>
-    <p class="small muted">See our <a href="/privacy-policy.html">privacy policy</a>.</p>
   </div>
 
-  <div class="other-ways">
-    <h2 class="h3">Rather talk now?</h2>
-    <p class="ways-num">Call or text <a href="tel:+13126000590">312-600-0590</a> or email <a href="mailto:andrew@callesgroup.com">andrew@callesgroup.com</a></p><ul class="ways"><li><a class="btn btn-ghost" href="tel:+13126000590">Call</a></li><li><a class="btn btn-ghost" href="sms:+13126000590">Text</a></li><li><a class="btn btn-ghost" href="mailto:andrew@callesgroup.com">Email</a></li></ul>
+  <div class="ct-main">
+    <span id="book"></span><span id="details"></span>
+    <div class="switch-row">
+      <div class="seg seg-wide" data-switch="mode" role="group" aria-label="How do you want to start?">
+        <button type="button" data-value="book" data-hash="book" aria-pressed="false">Book a call</button>
+        <button type="button" data-value="details" data-hash="details" aria-pressed="true">Send your details</button>
+      </div>
+    </div>
+
+    <div class="mode" data-mode-show="book" data-pre-hide>
+      <!-- BOOKING: shows the Wix Bookings widget when "bookingLive" is true in data/offers.json, otherwise the placeholder. -->
+      <div class="card placeholder"><span class="tag">Coming soon</span><h2 class="h3">Online booking is coming soon.</h2><p class="muted">For now, call or text <a href="tel:+13126000590">312-600-0590</a> to set up your free 20-minute quote call, in person or video. Or send your details and Andrew will reach out to set a time.</p><div class="btns"><a class="btn btn-primary" href="tel:+13126000590">Call or text 312-600-0590</a><a class="btn btn-ghost" href="/contact.html#details">Send your details</a></div></div>
+    </div>
+
+    <div class="mode" data-mode-show="details">
+      <h2 class="sr">Quote request form</h2>
+      <div class="card form-card" id="formCard">
+        <div class="ct-bar" aria-hidden="true"><i id="ctBar"></i></div>
+        <!-- WIX FORM MOUNT: Wix installs the quote form (ID 8b564ebe-a6cc-4e87-8255-c3ebdfde4c20) here. Do not rebuild it. -->
+        <div id="quote"></div>
+        <noscript><p>The quote form needs JavaScript. Call or text <a href="tel:+13126000590">312-600-0590</a>, or email <a href="mailto:andrew@callesgroup.com">andrew@callesgroup.com</a>, and Andrew will reply within 24 hours.</p></noscript>
+      </div>
+      <p class="small muted ct-fine">See our <a href="/privacy-policy.html">privacy policy</a>.</p>
+    </div>
+
+    <div class="other-ways">
+      <h2 class="h3">Rather talk now?</h2>
+      <p class="ways-num">Call or text <a href="tel:+13126000590">312-600-0590</a> or email <a href="mailto:andrew@callesgroup.com">andrew@callesgroup.com</a></p><ul class="ways"><li><a class="btn btn-ghost" href="tel:+13126000590">Call</a></li><li><a class="btn btn-ghost" href="sms:+13126000590">Text</a></li><li><a class="btn btn-ghost" href="mailto:andrew@callesgroup.com">Email</a></li></ul>
+    </div>
   </div>
 </div></section>
 
@@ -113,8 +114,10 @@ store.setValue = (target, value) => {
   const field = store.getState().form?.fields?.find((f) => f.target === target);
   return setValue.call(store, target, field && field.control === "phone" ? toUSPhone(value) : value);
 };
-// Progress bar, then thank-you page when sent.
-const bar = document.getElementById("ctBar");
+// Progress bar, a soft entrance for each new step, then the thank-you page when sent.
+const bar = document.getElementById("ctBar"), card = document.getElementById("formCard");
+const calm = matchMedia("(prefers-reduced-motion: reduce)");
+let lastStep = 0;
 store.subscribe(() => requestAnimationFrame(() => {
   const q = document.querySelector("#quote"), form = q.querySelector(".form");
   const input = q.querySelector(".form-field--phone input");
@@ -123,6 +126,14 @@ store.subscribe(() => requestAnimationFrame(() => {
   const m = (q.querySelector(".form-step-count")?.textContent || "").match(/(\d+)\D+(\d+)/);
   const n = m ? +m[1] : 1, total = m ? +m[2] : 1;
   bar.style.width = Math.max(8, (n / (total + 1)) * 100) + "%";
+  if (n !== lastStep) {
+    const fs = q.querySelector(".form-fields");
+    if (fs && lastStep) {
+      fs.classList.remove("enter"); void fs.offsetWidth; fs.classList.add("enter");
+      if (card.getBoundingClientRect().top < 0) card.scrollIntoView({ block: "start", behavior: calm.matches ? "auto" : "smooth" });
+    }
+    lastStep = n;
+  }
 }));
 // ?need=<key>: tick the matching "What do you need?" boxes and note the choice (map is set above).
 const need = window.CG_NEED;
@@ -141,8 +152,12 @@ if (need) {
         const inp = l.querySelector("input") || document.getElementById(l.htmlFor);
         if (inp && !inp.checked) inp.click();
       });
+      // If the field is ever switched to a dropdown in Wix, pick the first match there.
+      const sel = f.querySelector("select");
+      const opt = sel && [...sel.options].find((o) => need.checks.includes(o.textContent.trim()));
+      if (opt) { sel.value = opt.value; sel.dispatchEvent(new Event("change", { bubbles: true })); }
     });
-    const msgField = fields.find((f) => /^message/i.test(f.target));
+    const msgField = fields.find((f) => /^message/i.test(f.target)) || fields.find((f) => /textarea|paragraph/i.test(f.control || ""));
     const current = msgField && store.getState().values?.[msgField.target];
     if (need.note && msgField && !current) store.setValue(msgField.target, need.note);
   };
