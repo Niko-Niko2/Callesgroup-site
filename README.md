@@ -51,7 +51,7 @@ Both are switched off in `data/offers.json`:
 
 ## The quote form
 
-The form is the existing Wix Form `8b564ebe-a6cc-4e87-8255-c3ebdfde4c20`. Wix installs `/js/wix/form-renderer.js` on the live site (it isn't in this repo), and `contact.html` mounts the form in `<div id="quote">`. Don't rebuild the form here.
+The form is the existing Wix Form `8b564ebe-a6cc-4e87-8255-c3ebdfde4c20`. `/js/wix/form-renderer.js` (in this repo) renders it, and `contact.html` mounts the form in `<div id="quote">`. Don't rebuild the form here.
 
 Links like `/contact.html?need=growth` pre-tick the form's "What do you need?" boxes (Website, Logo or branding, Care plan, Not sure yet) and write the choice into the message box. The list of keys is built from `offers.json` (`t_needs()` in `tools/build.py`): every package, bundle and care plan key, plus `care`, `extras` and `unsure`. If you rename an option in the Wix form, update `t_needs()` to match.
 
@@ -69,11 +69,15 @@ All colors are the tokens at the top of `assets/styles.css` (`--bg`, `--surface`
 
 ## Publishing
 
+The site is hosted on Cloudflare (Workers static assets, see `wrangler.jsonc`), connected to this GitHub repo. Every push to `main` goes live.
+
 1. `python3 tools/build.py`
 2. Check it locally: `python3 -m http.server 8765`, then open http://localhost:8765 at phone and desktop widths.
-3. Commit to `main`.
-4. Upload the changed files to the Wix site. Files to publish: every root `.html` except `palette-preview.html`, plus `assets/`, `favicon.svg`, `og-image.png`, `robots.txt`, `sitemap.xml` and `site-pages.xml`. `src/`, `partials/`, `tools/` and `data/` don't need to go to Wix, but uploading them does no harm.
-5. Hard refresh the live site (Ctrl+Shift+R) to check.
+3. Commit and push to `main`. Cloudflare deploys it in about a minute.
+
+`.assetsignore` keeps `src/`, `partials/`, `tools/`, `data/`, `README.md` and `palette-preview.html` off the public site. `html_handling: "none"` keeps every URL ending in `.html`.
+
+Wix still runs the quote form, bookings and invoices. `js/wix/` holds Wix's form scripts, unchanged (`config.js` holds the site's public client ID). Don't edit them.
 
 `sitemap.xml` and `site-pages.xml` are always identical. `site-pages.xml` is the one submitted to Google Search Console. Keep the `google-site-verification` meta tag on the home page (it's in `tools/build.py`).
 
