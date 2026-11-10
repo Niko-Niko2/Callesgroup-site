@@ -1,7 +1,5 @@
 # Calles Group website
 
-> **Sync note, 2026-11-09.** The page files in the repo root (`*.html`, `styles.css`, `site.js`, `js/wix/`, sitemaps) were replaced with an exact copy of what is live on Wix, minus the script tag Wix injects. The live site had been edited directly, so `src/`, `partials/`, `data/offers.json` and `tools/build.py` are now **out of date**. Do not run `tools/build.py` until they are brought back in line, because it would overwrite the live pages with the old design. The site is hosted on Wix (headless static files), not GitHub Pages or Cloudflare; the Publishing section below is historical.
-
 The live site is https://www.callesgroup.com, a Wix headless static site (site ID 95f7b2da-02f4-4d86-b63c-1c979194352b). This repo holds every file, and `main` should always match what is live.
 
 The pages are plain HTML, one stylesheet (`assets/styles.css`) and one small script (`assets/site.js`). There's no framework and nothing builds at runtime. Every page reads fine with JavaScript off.
