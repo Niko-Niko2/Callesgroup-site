@@ -97,10 +97,9 @@ def swipe_dots(n):
 # ---------- tokens ----------
 
 def t_price(key):
-    for lst in (D["packages"], D["bundles"]):
-        for x in lst:
-            if x["key"] == key:
-                return money(x["price"])
+    for x in D["packages"] + D["branding"] + [D["photos"]]:
+        if x["key"] == key:
+            return money(x["price"])
     p = find(D["carePlans"], key)
     return money(p["monthly"])
 
@@ -108,8 +107,8 @@ def t_price(key):
 def t_from(what):
     if what == "websites":
         return money(min(p["price"] for p in D["packages"]))
-    if what == "bundles":
-        return money(min(p["price"] for p in D["bundles"]))
+    if what == "branding":
+        return money(min(p["price"] for p in D["branding"]))
     if what == "care":
         return money(min(p["monthly"] for p in D["carePlans"]))
     raise KeyError(what)
@@ -139,71 +138,64 @@ def expander(uid, inner, label="See everything"):
             % (uid, uid, label, chev(), uid, uid, inner))
 
 
-def not_timeline(items):
-    return [i for i in items if not i.startswith("About ")]
-
-
 def t_packages():
-    """Website packages: one set of 3 cards that morph between Website only and Website + Brand Kit."""
+    """Website packages: 3 cards."""
     cards = []
     for p in D["packages"]:
-        b = next(x for x in D["bundles"] if x["package"] == p["key"])
-        kit_key = b["website"][:1] + b["brand"][:3]
-        kit_more = (tick_list(b["website"][1:] + b["brand"][3:]) if b["website"][1:] + b["brand"][3:] else "") + \
-            '<p class="xp-sub">The %s website includes</p>' % esc(p["name"]) + tick_list(not_timeline(p["keyFeatures"]) + p["moreFeatures"])
-        short = b["name"].replace(" website", "")
         cards.append(
             '<article class="card pkg rv%s" id="p-%s">' % (" pop" if p.get("popular") else "", p["key"]) +
             ('<span class="tag">Most popular</span>' if p.get("popular") else "") +
-            '<h3 data-kit-site="%s" data-kit-kit="%s">%s</h3>' % (esc(p["name"]), esc(short), esc(p["name"])) +
-            '<div class="price"><span class="roll" data-kit-site="%s" data-kit-kit="%s">%s</span><s data-kit-site="" data-kit-kit="%s"></s></div>'
-            % (money(p["price"]), money(b["price"]), money(p["price"]), money(b["regular"])) +
-            '<p class="muted pitch" data-kit-site="%s" data-kit-kit="%s">%s</p>' % (esc(p["pitch"]), esc(b["pitch"]), esc(p["pitch"])) +
-            '<div class="morph" data-kit-show="site">%s</div>' % tick_list(p["keyFeatures"]) +
-            '<div class="morph" data-kit-show="kit" data-pre-hide><p class="save"><span class="nojs">%s: %s, regular %s. </span>Save %s vs. buying separately.</p>%s</div>'
-            % (esc(b["name"]), money(b["price"]), money(b["regular"]), money(b["save"]), tick_list(kit_key)) +
-            expander(p["key"],
-                     '<div data-kit-show="site">%s</div><div data-kit-show="kit" data-pre-hide>%s<p class="xp-link"><a href="/%s">Full %s details</a></p></div>'
-                     % (tick_list(p["moreFeatures"]), kit_more, b["page"], esc(short))) +
-            '<a class="btn btn-primary" href="/contact.html?need=%s" data-kit-href-site="/contact.html?need=%s" data-kit-href-kit="/contact.html?need=%s">Get a free quote</a>'
-            % (p["key"], p["key"], b["key"]) +
+            '<h3>%s</h3>' % esc(p["name"]) +
+            '<div class="price">%s</div>' % money(p["price"]) +
+            '<p class="muted pitch">%s</p>' % esc(p["pitch"]) +
+            tick_list(p["keyFeatures"]) +
+            expander(p["key"], tick_list(p["moreFeatures"])) +
+            '<a class="btn btn-primary" href="/contact.html?need=%s">Get a free quote</a>' % p["key"] +
             "</article>")
-    return ('<div class="switch-row rv"><div class="seg" data-switch="kit" role="group" aria-label="Show prices for">'
-            '<button type="button" data-value="site" aria-pressed="true">Website only</button>'
-            '<button type="button" data-value="kit" data-hash="bundles" aria-pressed="false">Website + Brand Kit</button></div>'
-            '<span class="save-tag">%s</span></div>'
-            '<div class="row swipe cards3">%s</div>%s<p class="swipe-hint muted" aria-hidden="true">Swipe to compare</p>'
-            % (esc(D["bundleSaveTag"]), "".join(cards), swipe_dots(3)))
+    return ('<div class="row swipe cards3">%s</div>%s<p class="swipe-hint muted" aria-hidden="true">Swipe to compare</p>'
+            % ("".join(cards), swipe_dots(3)))
 
 
-def t_extras():
-    items = []
-    for g in D["extras"]:
-        rows = "".join('<li><span>%s</span><b>%s</b></li>' % (esc(i["name"]), esc(i["price"])) for i in g["items"])
-        gid = re.sub(r"[^a-z]+", "-", g["group"].lower()).strip("-")
-        items.append(("x-" + gid, g["group"], '<ul class="plist">%s</ul>' % rows))
-    return accordion(items, "open-desktop extras")
+def t_founding():
+    """Founding client banner."""
+    f = D["founding"]
+    return ('<div class="card teaser founding rv"><div><span class="save-tag">%s</span><p><b>%s:</b> %s</p></div>'
+            '<a class="btn btn-primary" href="/contact.html?need=%s">Get a free quote</a></div>'
+            % (esc(f["spots"]), esc(f["title"]), esc(f["text"]), f["key"]))
 
 
-def t_print():
-    return esc(D["printNote"])
+def t_brandcards():
+    """Branding and photo shoot cards."""
+    cards = []
+    for x in D["branding"] + [D["photos"]]:
+        cards.append(
+            '<article class="card pkg rv" id="%s"><h3>%s</h3><div class="price">%s</div>%s'
+            '<a class="btn btn-primary" href="/contact.html?need=%s">Get a free quote</a></article>'
+            % (x["key"], esc(x["name"]), money(x["price"]), tick_list(x["features"]), x["key"]))
+    return ('<div class="row swipe cards3">%s</div>%s<p class="swipe-hint muted" aria-hidden="true">Swipe to compare</p>'
+            % ("".join(cards), swipe_dots(len(cards))))
+
+
+def t_band():
+    return ('<div class="card teaser rv"><p>%s</p><a class="btn btn-ghost" href="/contact.html">Get a free quote</a></div>'
+            % esc(D["customBand"]))
 
 
 def t_care():
     """Care plans: 3 cards, Monthly | Yearly switch."""
     cards = []
     for c in D["carePlans"]:
-        m, y = money(c["monthly"]), money(c["yearlyPerMonth"])
+        m, y = money(c["monthly"]), money(c["yearlyTotal"])
         ml = "Billed monthly. Cancel anytime."
-        yl = "%s a year. Save %s." % (money(c["yearlyTotal"]), money(c["yearlySave"]))
+        yl = "Billed yearly. 1 month free."
         cards.append(
             '<article class="card plan rv%s" id="%s">' % (" pop" if c.get("popular") else "", c["key"]) +
             ('<span class="tag">Most popular</span>' if c.get("popular") else "") +
             '<h3>%s</h3>' % esc(c["name"]) +
-            '<div class="price"><span class="roll" data-care-monthly="%s" data-care-yearly="%s">%s</span><small>/mo</small></div>' % (m, y, m) +
-            '<p class="muted bill" data-care-monthly="%s" data-care-yearly="%s">%s<span class="nojs"> Or %s/mo paid yearly: %s</span></p>' % (ml, yl, ml, y, yl) +
+            '<div class="price"><span class="roll" data-care-monthly="%s" data-care-yearly="%s">%s</span><small data-care-monthly="/mo" data-care-yearly="/yr">/mo</small></div>' % (m, y, m) +
+            '<p class="muted bill" data-care-monthly="%s" data-care-yearly="%s">%s<span class="nojs"> Or %s/yr paid yearly (1 month free).</span></p>' % (ml, yl, ml, y) +
             tick_list(c["keyFeatures"]) +
-            expander(c["key"], tick_list(c["moreFeatures"])) +
+            (expander(c["key"], tick_list(c["moreFeatures"])) if c["moreFeatures"] else "") +
             '<a class="btn btn-primary" href="/contact.html?need=%s">Get a free quote</a>' % c["key"] +
             "</article>")
     return ('<div class="switch-row rv"><div class="seg" data-switch="care" role="group" aria-label="Show prices">'
@@ -227,13 +219,17 @@ def t_needs():
     checks = which "What do you need?" boxes to tick on the quote form; note = line written into the message box."""
     n = {"unsure": {"checks": ["Not sure yet"], "label": "", "note": ""},
          "care": {"checks": ["Care plan"], "label": "a care plan", "note": ""},
-         "extras": {"checks": [], "label": "an extra", "note": "I'm asking about an extra: "}}
+         "founding": {"checks": ["Website"], "label": "the founding client offer (Launch for $1,200)",
+                      "note": "I'm interested in the founding client offer (Launch for $1,200)."}}
     for p in D["packages"]:
         lab = "the %s website (%s)" % (p["name"], money(p["price"]))
         n[p["key"]] = {"checks": ["Website"], "label": lab, "note": "I'm interested in %s." % lab}
-    for b in D["bundles"]:
+    for b in D["branding"]:
         lab = "the %s (%s)" % (b["name"], money(b["price"]))
-        n[b["key"]] = {"checks": ["Website", "Logo or branding"], "label": lab, "note": "I'm interested in %s." % lab}
+        n[b["key"]] = {"checks": ["Logo or branding"], "label": lab, "note": "I'm interested in %s." % lab}
+    ph = D["photos"]
+    lab = "the %s (%s)" % (ph["name"].lower(), money(ph["price"]))
+    n[ph["key"]] = {"checks": [], "label": lab, "note": "I'm interested in %s." % lab}
     for c in D["carePlans"]:
         lab = "the %s care plan (%s/mo)" % (c["name"], money(c["monthly"]))
         n[c["key"]] = {"checks": ["Care plan"], "label": lab, "note": "I'm interested in %s." % lab}
@@ -310,9 +306,12 @@ TOKENS = {
     "email": lambda: '<a href="mailto:%s">%s</a>' % (B["email"], B["email"]),
     "reply": lambda: B["replyTime"],
     "partial": lambda name: part(name),  # {{partial before-after}}
-    "packages": t_packages,  # the 3 morphing website/bundle cards
-    "extras": t_extras,      # grouped extras accordion
-    "printnote": t_print,
+    "packages": t_packages,  # the 3 website cards
+    "founding": t_founding,  # founding client banner
+    "brandcards": t_brandcards,  # logo, Brand Kit and photo shoot cards
+    "brandnote": lambda: esc(D["brandingNote"]),
+    "photonote": lambda: esc(D["photosNote"]),
+    "band": t_band,          # "Need something that's not here?" band
     "care": t_care,          # the 3 care plan cards with Monthly | Yearly
     "carenotes": t_carenotes,
     "faqgroup": t_faqgroup,  # {{faqgroup Care plans}}
@@ -419,35 +418,18 @@ def crumbs(trail):
     return '<nav class="crumbs" aria-label="Breadcrumb">' + " / ".join(parts) + "</nav>"
 
 
-def build_bundles():
-    urls = []
-    for b in D["bundles"]:
-        p = find(D["packages"], b["package"])
-        slug = b["page"][:-5]
-        kit = "Starter Kit" if "Starter" in b["name"] else "Brand Kit"
-        trail = [("Home", "/"), ("Website Packages", "/pricing.html"), (b["name"], "/" + b["page"])]
-        site_list = p["keyFeatures"] + p["moreFeatures"] + b["website"][1:]
-        body = (
-            '<section class="hero hero-short"><div class="wrap"><div class="hero-copy">' + crumbs(trail) +
-            ('<span class="tag">Most popular</span>' if b.get("popular") else "") +
-            '<h1>%s website + <em>%s</em></h1>' % (esc(p["name"]), kit) +
-            '<div class="price big">%s <s>%s</s></div>' % (money(b["price"]), money(b["regular"])) +
-            '<p class="save">Save %s vs. buying separately.</p>' % money(b["save"]) +
-            '<p class="lede">%s</p>' % esc(b["pitch"]) +
-            '<div class="btns"><a class="btn btn-primary" href="/contact.html?need=%s">Get a free quote</a><a class="btn btn-ghost" href="/contact.html#book">Book a free call</a></div>' % b["key"] +
-            '</div></div></section>'
-            '<section class="sec sec-tight" aria-label="What\'s included"><div class="wrap"><div class="two">'
-            '<div class="card rv"><h2 class="h3">The website</h2><p class="muted">%s, %s</p>%s</div>' % (esc(p["name"]), money(p["price"]) + " on its own", tick_list(site_list)) +
-            '<div class="card rv"><h2 class="h3">The %s</h2>%s</div>' % (kit, tick_list(b["brand"])) +
-            '</div><p class="note-line rv">Timelines start once we have your text, photos and logo.</p>'
-            '<p class="sec-end rv"><a href="/pricing.html#bundles">Compare all packages and bundles</a></p></div></section>' +
-            t_cta("Ready when <em>you are.</em>", "Tell us about your business and Andrew will reply %s with a plan and a flat price." % B["replyTime"]))
-        meta = {"title": "%s | %s | Calles Group" % (b["name"], money(b["price"])),
-                "description": "%s for %s (regular %s). %s Elgin, IL. Free quote in 24 hours." % (b["name"], money(b["price"]), money(b["regular"]), b["pitch"]),
-                "nav": "pricing"}
-        urls.append(render(slug, meta, body, [schema_crumbs(trail)]))
-        print("built", b["page"])
-    return urls
+OLD_PAGES = ["launch-bundle", "growth-bundle", "premium-bundle"]
+
+
+def build_redirects():
+    """Bundles are retired. Their old URLs forward to the pricing page so old links don't break."""
+    for slug in OLD_PAGES:
+        open(os.path.join(ROOT, slug + ".html"), "w", encoding="utf-8").write(
+            '<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><title>Website Packages | Calles Group</title>'
+            '<meta name="robots" content="noindex, follow"><link rel="canonical" href="%s/pricing.html">'
+            '<meta http-equiv="refresh" content="0; url=/pricing.html"></head>'
+            '<body><p><a href="/pricing.html">See website packages and prices</a></p></body></html>\n' % BASE)
+        print("built", slug + ".html (redirect)")
 
 
 def build_towns():
@@ -471,7 +453,7 @@ def build_towns():
             '</div></div></section>'
             '<section class="sec sec-tight"><div class="wrap"><div class="prose rv"><h2>%s</h2>%s</div></div></section>' % (emlast(t["why_h"]), "".join("<p class=\"muted\">%s</p>" % esc(w) for w in t["why"])) +
             '<section class="sec band"><div class="wrap"><div class="sec-head rv"><h2>Website packages for %s <em>businesses</em></h2><p class="muted">Flat prices, the same in %s as everywhere else.</p></div>'
-            '<div class="prows">%s</div><p class="sec-end rv"><a href="/pricing.html">Compare packages, Brand Kits and extras</a></p></div></section>' % (esc(t["name"]), esc(t["name"]), rows) +
+            '<div class="prows">%s</div><p class="sec-end rv"><a href="/pricing.html">Compare website packages and branding</a></p></div></section>' % (esc(t["name"]), esc(t["name"]), rows) +
             '<section class="sec"><div class="wrap"><div class="sec-head rv"><h2>Who we build for in <em>%s</em></h2></div><div class="chips rv">%s</div></div></section>'
             % (esc(t["name"]), "".join('<span class="chip">%s</span>' % esc(w) for w in t["who"])) +
             '<section class="sec band"><div class="wrap narrow"><div class="sec-head rv"><h2>Questions from %s <em>business owners</em></h2></div><div class="rv">%s</div>'
@@ -500,6 +482,7 @@ def sitemap(urls):
 
 
 if __name__ == "__main__":
-    urls = build_src() + build_bundles() + build_towns()
+    build_redirects()
+    urls = build_src() + build_towns()
     sitemap(sorted(urls, key=lambda u: (u != BASE + "/", u)))
     print("sitemap.xml and site-pages.xml:", len(urls), "pages")

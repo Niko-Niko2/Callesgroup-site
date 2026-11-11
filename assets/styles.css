@@ -231,6 +231,9 @@ a.chip:hover{background:var(--accent);color:var(--on-accent)}
 .note-line{font-size:.92rem;color:var(--muted);margin-top:18px}
 .teaser{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:22px 24px}
 .teaser p{font-weight:700;font-size:1.05rem}
+.teaser>div{flex:1 1 280px;display:grid;gap:10px;justify-items:start}
+.founding{border-color:var(--accent);margin-bottom:28px}
+.founding p{font-weight:500}
 .plist{list-style:none;margin:0;padding:0}
 .plist li{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-top:1px dashed var(--line);color:var(--ink)}
 .plist li:first-child{border-top:0}

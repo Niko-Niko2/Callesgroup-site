@@ -31,11 +31,10 @@ TOWNS = [{'slug': 'elgin',
            'suburbs and Chicago. Elgin businesses get the same flat prices as everyone else.'],
           ['How much does a website cost in Elgin?',
            'Our websites start at $1,500 for a Launch site of up to 3 pages. A Growth site is $2,500 and a '
-           'Premium site with full copywriting is $3,800. You get a flat price on your free quote call, '
+           'Premium site with full copywriting is $4,100. You get a flat price on your free quote call, '
            'before any work starts.'],
           ['Can you help my Elgin business show up on Google Maps?',
-           'Yes. Google Business Profile setup is included in the Growth and Premium packages, or $250 on '
-           'its own. We set up your categories, service area, hours and photos so you can show up when '
+           'Yes. Google Business Profile setup is included in the Growth and Premium packages. We set up your categories, service area, hours and photos so you can show up when '
            'people nearby search for what you do.']]},
  {'slug': 'south-elgin',
   'name': 'South Elgin',
@@ -60,7 +59,7 @@ TOWNS = [{'slug': 'elgin',
   'faq': [['Are you close to South Elgin?',
            'Yes. Calles Group is based in Elgin, right next to South Elgin along the Fox River.'],
           ['What does a basic website cost?',
-           'A Launch site with up to 3 pages, a contact form and basic SEO is $1,500 and takes about 1 week '
+           'A Launch site with up to 3 pages, a contact form and basic SEO is $1,500 and takes 1 to 2 weeks '
            'once we have your text, photos and logo.'],
           ['Do I own my website?',
            'Yes. Your Wix account and domain are set up in your name, so the site is yours, even if you stop '
@@ -89,10 +88,9 @@ TOWNS = [{'slug': 'elgin',
            "Yes. We're based in Elgin and work with businesses in Bartlett and the nearby northwest "
            'suburbs.'],
           ['Can you redesign my existing website?',
-           'Yes. Redesigning an existing site starts at $900, depending on how many pages it has and what '
-           'needs to change.'],
+           'Yes. Tell us about your current site on your quote call and we\'ll send you a clear, flat quote.'],
           ['How long does a website take?',
-           'About 1 week for a Launch site, 1 to 2 weeks for Growth and about 2 weeks for Premium. Timelines '
+           '1 to 2 weeks for a Launch site, 2 to 3 weeks for Growth and 3 to 4 weeks for Premium. Timelines '
            'start once we have your text, photos and logo.']]},
  {'slug': 'schaumburg',
   'name': 'Schaumburg',
@@ -117,11 +115,9 @@ TOWNS = [{'slug': 'elgin',
   'faq': [['Why hire an Elgin studio instead of a big Schaumburg agency?',
            'You work directly with the person building your site, you get flat package prices with no '
            'retainer, and your site and domain are in your name.'],
-          ['Can you build an online store?',
-           'Yes. Online store setup is $750 for up to 20 products, then $15 for each additional product.'],
           ['Do you offer branding too?',
-           'Yes. Logo design is $500 with 3 concepts, 2 rounds of changes and files in PNG, SVG and PDF, '
-           'light and dark. Or pair a website with a Brand Kit and save up to $300.']]},
+           'Yes. A logo is $500 with 3 concepts, 2 rounds of changes and a full file pack. '
+           'Getting a website too? Add the Brand Kit for $900 instead of $1,100.']]},
  {'slug': 'st-charles',
   'name': 'St. Charles',
   'title': 'Web Design in St. Charles, IL | Calles Group',
@@ -146,9 +142,8 @@ TOWNS = [{'slug': 'elgin',
   'faq': [['Do you serve St. Charles and the Tri-Cities?',
            "Yes. We're based in Elgin and work with businesses in St. Charles, Geneva, Batavia and the rest "
            'of the Fox Valley.'],
-          ['Can customers book appointments on my site?',
-           'Yes. Online booking setup is $250, and a booking or quote request form is included in the Growth '
-           'and Premium packages.'],
+          ['Can customers request a quote on my site?',
+           'Yes. A quote request form is included in the Growth and Premium packages.'],
           ['Can you keep my site updated after launch?',
            'Yes. Monthly care plans start at $99 and include edit time, form and link checks and renewal '
            'reminders. You can cancel anytime.']]},
@@ -176,8 +171,6 @@ TOWNS = [{'slug': 'elgin',
            "Yes. We're based in Elgin and serve Crystal Lake, Algonquin and the surrounding McHenry and Kane "
            'County towns.'],
           ["What's included for local SEO?",
-           'Every site gets page titles, descriptions and a sitemap. The Growth package adds Google Business '
-           'Profile setup, Search Console and analytics, and the SEO starter setup is available on its own '
-           'for $300.'],
+           'Every site gets basic SEO. The Growth package adds Google Business Profile setup and SEO setup.'],
           ['Do I have to sign a long contract?',
            'No. Websites are a flat, one-time price, and monthly care plans can be canceled anytime.']]}]

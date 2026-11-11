@@ -29,14 +29,13 @@ python3 tools/build.py
 
 1. Open `data/offers.json` and change the number. For example, Growth: find `"key": "growth"` and change `"price": 2500`.
 2. If the number is also written out in sentences, search for it and update it too. These are the only places it appears in plain text:
-   - `faqs` in `offers.json` (for example "an extra page ($175) or a logo ($500)")
-   - `bundleSaveTag` / `careYearlyTag` in `offers.json`
+   - `faqs`, `policies`, `founding`, `brandingNote` and `photosNote` in `offers.json`
    - page titles and descriptions at the top of each `src/*.html` file, and the town copy in `tools/towns.py`
-   - the home page offer card line "Save up to $300" in `src/index.html`, and `tools/og-image.html` ("Websites from $1,500")
+   - `tools/og-image.html` ("Websites from $1,500")
    Quick check: `grep -rn '\$2,500' src partials tools data`
 3. Run `python3 tools/build.py`, look at the page, then commit and publish.
 
-The cards, bundle pages, care plan cards, extras list, "from" prices, quote form pre-fill and structured data all update on their own.
+The cards, care plan cards, "from" prices, quote form pre-fill and structured data all update on their own.
 
 ## Turning on online booking or payments
 
@@ -53,7 +52,7 @@ Both are switched off in `data/offers.json`:
 
 The form is the existing Wix Form `8b564ebe-a6cc-4e87-8255-c3ebdfde4c20`. `/js/wix/form-renderer.js` (in this repo) renders it, and `contact.html` mounts the form in `<div id="quote">`. Don't rebuild the form here.
 
-Links like `/contact.html?need=growth` pre-tick the form's "What do you need?" boxes (Website, Logo or branding, Care plan, Not sure yet) and write the choice into the message box. The list of keys is built from `offers.json` (`t_needs()` in `tools/build.py`): every package, bundle and care plan key, plus `care`, `extras` and `unsure`. If you rename an option in the Wix form, update `t_needs()` to match.
+Links like `/contact.html?need=growth` pre-tick the form's "What do you need?" boxes (Website, Logo or branding, Care plan, Not sure yet) and write the choice into the message box. The list of keys is built from `offers.json` (`t_needs()` in `tools/build.py`): every package, branding and care plan key, plus `care`, `founding` and `unsure`. If you rename an option in the Wix form, update `t_needs()` to match.
 
 After sending, the visitor goes to `/thank-you.html`.
 
