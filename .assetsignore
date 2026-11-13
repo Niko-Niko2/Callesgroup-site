@@ -12,3 +12,5 @@ data/
 palette-preview.html
 CNAME
 .nojekyll
+_preview/
+_tools/

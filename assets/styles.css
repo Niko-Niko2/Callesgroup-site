@@ -117,7 +117,7 @@ b,strong{font-weight:700}
 .est-row:last-child{border-bottom:0}
 .est-l{font-size:.86rem;font-weight:700;color:var(--blue);line-height:1.2}
 .est-in{width:100%;min-width:0;border:0;background:transparent;padding:4px 0;font-family:var(--hand);font-size:1.9rem;line-height:1.1;color:var(--pen);border-radius:0}
-.est-in::placeholder{color:var(--pen);opacity:.42}
+.est-in::placeholder{color:var(--pen);opacity:.66}
 .est-in:focus{outline:none;box-shadow:0 2px 0 var(--red)}
 .est-val{font-size:1.75rem}
 .est-chips{display:flex;gap:8px;overflow-x:auto;padding:4px 0 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin-right:-14px;padding-right:14px}
