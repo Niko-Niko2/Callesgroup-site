@@ -30,6 +30,31 @@ B = D["business"]
 BASE = B["siteUrl"]
 FLAGS = D["flags"]
 esc = html.escape
+LANG = "en"  # the language of the page being built; build_src sets it from the page's meta
+
+# Every interface word that changes with the language. Page copy lives in src/*.html.
+STR = {
+    "en": {"skip": "Skip to content", "navLabel": "Main", "close": "Close", "menu": "Menu", "home": "/",
+           "book": "Book a free call", "bookShort": "Book a call", "bookHref": "/contact.html#book",
+           "langHref": "/es.html", "langOther": "es", "langName": "Español", "callText": "Call or text",
+           "pagesLabel": "Pages", "areaLabel": "Web design near you", "privacy": "Privacy policy",
+           "textBtn": "Text Andrew", "sign": "your name here", "ctaFine": "Or call %s. Replies %s.",
+           "popular": "Most popular", "spots": "%d of %d spots left", "due": "Due today",
+           "dueNote": "The %d-minute quote call is free.", "from": "from", "mo": "/mo",
+           "care": ("Care plans", "We keep your site working and up to date. Cancel anytime."),
+           "logo": "3 concepts, 2 rounds of changes and the full file pack.",
+           "photos": "Up to 1 hour on-site and 25 edited photos."},
+    "es": {"skip": "Ir al contenido", "navLabel": "Principal", "close": "Cerrar", "menu": "Menú", "home": "/es.html",
+           "book": "Agende su llamada gratis", "bookShort": "Agendar", "bookHref": "/es.html#llamada",
+           "langHref": "/", "langOther": "en", "langName": "English", "callText": "Llame o escriba al",
+           "pagesLabel": "Páginas", "areaLabel": "Zonas de servicio (en inglés)", "tagline": "Con base en Elgin, IL. Servimos a todo Chicagoland.", "privacy": "Política de privacidad (en inglés)",
+           "textBtn": "Escríbale a Andrew", "sign": "su nombre aquí", "ctaFine": "O llame al %s. Respondemos en menos de 24 horas.",
+           "popular": "El más pedido", "spots": "Quedan %d de %d lugares", "due": "A pagar hoy",
+           "dueNote": "La llamada de %d minutos es gratis.", "from": "desde", "mo": "/mes",
+           "care": ("Planes de mantenimiento", "Mantenemos su sitio funcionando y al día. Cancele cuando quiera."),
+           "logo": "3 propuestas, 2 rondas de cambios y todos los archivos.",
+           "photos": "Hasta 1 hora en su negocio y 25 fotos editadas."},
+}
 
 
 def part(name):
@@ -52,10 +77,11 @@ def find(lst, key):
 
 
 COMMON = {"phone": B["phoneDisplay"], "phoneHref": B["phoneHref"], "email": B["email"],
-          "replyTime": B["replyTime"], "tagline": B["tagline"], "base": BASE}
+          "replyTime": B["replyTime"], "tagline": B["tagline"], "base": BASE, "smsHref": B["smsHref"]}
 
 NAV = [("home", "/", "Home"), ("pricing", "/pricing.html", "Website Packages"),
        ("care", "/care-plans.html", "Care Plans"), ("faq", "/faq.html", "FAQ"), ("contact", "/contact.html", "Contact")]
+NAV_ES = [("home", "/es.html", "Inicio"), ("pricing", "/pricing.html", "Paquetes (en inglés)")]
 
 
 # ---------- shared pieces ----------
@@ -129,7 +155,54 @@ def t_towns():
 
 
 def t_cta(title, text):
-    return fill(part("cta"), dict(COMMON, cta_title=title, cta_text=text))
+    L = STR[LANG]
+    fine = L["ctaFine"] % ('<a href="%s">%s</a>' % (B["phoneHref"], B["phoneDisplay"]), B["replyTime"]) if LANG == "en" \
+        else L["ctaFine"] % ('<a href="%s">%s</a>' % (B["phoneHref"], B["phoneDisplay"]))
+    return fill(part("cta"), dict(COMMON, cta_title=title, cta_text=text, book=L["book"], bookHref=L["bookHref"],
+                                  textBtn=L["textBtn"], sign=L["sign"], ctaFine=fine))
+
+
+def spots_text():
+    f = D["founding"]
+    return STR[LANG]["spots"] % (f["spotsLeft"], f["spotsTotal"])
+
+
+def t_lineitems():
+    """Home page: packages and extras set as estimate line items. Prices and words come from offers.json."""
+    L, es = STR[LANG], LANG == "es"
+    rows = []
+    for p in D["packages"]:
+        desc = (p["es"]["pitch"] + " " + p["es"]["detail"]) if es else "%s %s. %s." % (p["pitch"], p["keyFeatures"][0], p["timeline"].capitalize())
+        tag = '<span class="tag">%s</span>' % L["popular"] if p.get("popular") else ""
+        rows.append('<a class="item" href="/pricing.html#p-%s"><span class="item-n">%s%s</span><span class="item-p">%s</span><span class="item-d">%s</span></a>'
+                    % (p["key"], esc(p["name"]), tag, money(p["price"]), esc(desc)))
+    logo, kit, ph = find(D["branding"], "logo"), find(D["branding"], "brand-kit"), D["photos"]
+    extras = [(logo["name"], L["logo"], money(logo["price"]), "/pricing.html#branding"),
+              (kit["name"], D["brandingNote_es"] if es else D["brandingNote"], money(kit["price"]), "/pricing.html#branding"),
+              ("Sesión de fotos" if es else ph["name"], L["photos"], money(ph["price"]), "/pricing.html#branding"),
+              (L["care"][0], L["care"][1], "<small>%s</small> %s<small>%s</small>" % (L["from"], t_from("care"), L["mo"]), "/care-plans.html")]
+    for n, d, pr, href in extras:
+        rows.append('<a class="item sub" href="%s"><span class="item-n">%s</span><span class="item-p">%s</span><span class="item-d">%s</span></a>'
+                    % (href, esc(n), pr, esc(d)))
+    rows.append('<div class="item due"><span class="item-n">%s</span><span class="item-p">$0</span><span class="item-d">%s</span></div>'
+                % (L["due"], L["dueNote"] % B["booking"]["minutes"]))
+    return '<div class="items">' + "".join(rows) + "</div>"
+
+
+def t_stamp():
+    """The founding client offer as a rubber stamp."""
+    f = D["founding"]
+    title, text = (f["es"]["title"], f["es"]["text"]) if LANG == "es" else (f["title"], f["text"])
+    return '<div class="stamp"><b>%s</b><span>%s</span><i>%s</i></div>' % (esc(title), esc(text), esc(spots_text()))
+
+
+def t_pkgdata():
+    """Package names and prices for the calculator's payback line, so the script never hardcodes a price."""
+    return esc(json.dumps([{"k": p["key"], "n": p["name"], "p": p["price"]} for p in D["packages"]]), quote=True)
+
+
+def t_faqes(*ids):
+    return accordion([(f["id"], f["es"]["q"], "<p>%s</p>" % esc(f["es"]["a"])) for f in faq_items(ids=ids)])
 
 
 def expander(uid, inner, label="See everything"):
@@ -161,7 +234,7 @@ def t_founding():
     f = D["founding"]
     return ('<div class="card teaser founding rv"><div><span class="save-tag">%s</span><p><b>%s:</b> %s</p></div>'
             '<a class="btn btn-primary" href="/contact.html?need=%s">Get a free quote</a></div>'
-            % (esc(f["spots"]), esc(f["title"]), esc(f["text"]), f["key"]))
+            % (esc(spots_text()), esc(f["title"]), esc(f["text"]), f["key"]))
 
 
 def t_brandcards():
@@ -177,7 +250,7 @@ def t_brandcards():
 
 
 def t_band():
-    return ('<div class="card teaser rv"><p>%s</p><a class="btn btn-ghost" href="/contact.html">Get a free quote</a></div>'
+    return ('<div class="card teaser rv"><p>%s</p><a class="btn btn-ghost" href="/contact.html#details">Get a free quote</a></div>'
             % esc(D["customBand"]))
 
 
@@ -246,16 +319,30 @@ def contact_ways():
 
 
 def t_booking():
-    bk = B["booking"]
-    if FLAGS["bookingLive"]:
-        # Wix Bookings installs its widget here. Service: "Free quote call", 20 minutes, in person or video.
-        return ('<div class="card mount" id="wix-booking-mount" data-wix-bookings-service="%s"></div>' % esc(bk["service"]))
-    return ('<div class="card placeholder"><span class="tag">Coming soon</span>'
-            '<h2 class="h3">Online booking is coming soon.</h2>'
-            '<p class="muted">For now, call or text <a href="%s">%s</a> to set up your free %d-minute quote call, %s. '
-            'Or send your details and Andrew will reach out to set a time.</p>'
-            '<div class="btns"><a class="btn btn-primary" href="%s">Call or text %s</a><a class="btn btn-ghost" href="/contact.html#details">Send your details</a></div></div>'
-            % (B["phoneHref"], B["phoneDisplay"], bk["minutes"], bk["where"].lower(), B["phoneHref"], B["phoneDisplay"]))
+    """Book a call. The visitor picks a day and a time of day, then texts it or asks for a call back.
+    Put a real scheduler link in business.booking.url (offers.json) to add a "See open times" button on top."""
+    bk, es = B["booking"], LANG == "es"
+    T = {"open": "Vea los horarios disponibles", "or": "O pida un horario aquí abajo.", "day": "¿Qué día?", "time": "¿A qué hora?",
+         "times": [("morning", "En la mañana"), ("midday", "A mediodía"), ("evening", "Después de las 5")],
+         "biz": "El nombre de su negocio", "sum": "Usted pide:", "text": "Mandar por mensaje a Andrew", "call": "Llamar ahora",
+         "fine": "Llamada gratis de %d minutos, en persona o por video. Andrew le confirma la hora exacta por mensaje. Desde una computadora, escriba al %s."} if es else \
+        {"open": "See open times", "or": "Or ask for a time below.", "day": "Which day?", "time": "What time of day?",
+         "times": [("morning", "Morning"), ("midday", "Midday"), ("evening", "After 5pm")],
+         "biz": "Your business name", "sum": "You're asking for:", "text": "Text Andrew this time", "call": "Have Andrew call me",
+         "fine": "Free %d-minute quote call, in person or video. Andrew confirms the exact time by text. On a computer, text %s."}
+    top = ('<a class="btn btn-primary" href="%s" rel="noopener">%s</a><p class="muted">%s</p>' % (esc(bk["url"]), T["open"], T["or"])) if bk.get("url") else ""
+    times = "".join('<button type="button" class="pick" aria-pressed="%s" data-v="%s">%s</button>' % ("true" if k == "evening" else "false", k, n) for k, n in T["times"])
+    second = '<a class="btn btn-ghost" href="%s">%s</a>' % (B["phoneHref"], T["call"]) if es else \
+        '<a class="btn btn-ghost" data-bk-form href="/contact.html#details">%s</a>' % T["call"]
+    return ('<div class="bk" data-bk>%s'
+            '<fieldset class="bk-group"><legend>%s</legend><div class="bk-picks" data-bk-days></div></fieldset>'
+            '<fieldset class="bk-group"><legend>%s</legend><div class="bk-picks" data-bk-times>%s</div></fieldset>'
+            '<div><label class="bk-l" for="bkBiz">%s</label><input class="bk-in" id="bkBiz" type="text" maxlength="40" autocomplete="organization"></div>'
+            '<p class="bk-sum" aria-live="polite">%s <span class="hand" data-bk-sum></span></p>'
+            '<div class="btns"><a class="btn btn-primary" data-bk-text href="%s">%s</a>%s</div>'
+            '<p class="small muted">%s</p></div>'
+            % (top, T["day"], T["time"], times, T["biz"], T["sum"], B["smsHref"], T["text"], second,
+               T["fine"] % (bk["minutes"], B["phoneDisplay"])))
 
 
 def pay_methods():
@@ -317,10 +404,17 @@ TOKENS = {
     "faqgroup": t_faqgroup,  # {{faqgroup Care plans}}
     "faqall": t_faqall,      # every FAQ, grouped
     "needs": t_needs,        # JSON map of ?need= keys for the contact page
-    "booking": t_booking,    # booking mount, or the placeholder while flags.bookingLive is false
+    "booking": t_booking,    # the call request (day, time of day, text or call back)
     "payment": t_payment,    # payment mount, or the placeholder while flags.paymentsLive is false
     "ways": contact_ways,    # call / text / email buttons
     "policy": t_policy,      # {{policy payment deposit}}
+    "lineitems": t_lineitems,  # home: packages and extras as estimate line items
+    "stamp": t_stamp,          # the founding offer as a rubber stamp
+    "pkgdata": t_pkgdata,      # package prices for the calculator
+    "faqes": t_faqes,          # {{faqes own-site time-how}} in Spanish
+    "sms": lambda: B["smsHref"],
+    "tel": lambda: B["phoneHref"],
+    "phonenum": lambda: B["phoneDisplay"],
 }
 
 
@@ -347,6 +441,7 @@ def schema_business():
         "address": {"@type": "PostalAddress", "addressLocality": B["city"], "addressRegion": B["state"], "addressCountry": "US"},
         "areaServed": [{"@type": "City", "name": t["name"] + ", IL"} for t in D["serviceArea"]["towns"]],
         "description": "Website design and branding for local businesses in Elgin, the Fox Valley, the northwest suburbs and Chicago.",
+        "knowsLanguage": ["en", "es"],
     }
 
 
@@ -367,17 +462,25 @@ def jsonld(objs):
 # ---------- page assembly ----------
 
 def render(slug, meta, body, schemas=()):
+    lang = meta.get("lang", "en")
+    L = STR[lang]
     url = BASE + ("/" if slug == "index" else "/%s.html" % slug)
-    navlinks = "".join('<a href="%s"%s>%s</a>' % (h, ' aria-current="page"' if meta.get("nav") == k else "", n) for k, h, n in NAV)
-    foot = "".join('<a href="%s">%s</a>' % (h, n) for k, h, n in NAV) + '<a href="/contact.html#book">Book a free call</a><a href="/pay-deposit.html">Pay your deposit</a>'
+    nav = NAV_ES if lang == "es" else NAV
+    navlinks = "".join('<a href="%s"%s>%s</a>' % (h, ' aria-current="page"' if meta.get("nav") == k else "", n) for k, h, n in nav)
+    foot = "".join('<a href="%s">%s</a>' % (h, n) for k, h, n in nav)
+    foot += ('<a href="/es.html#llamada">%s</a><a href="/" lang="en">English</a>' % L["book"]) if lang == "es" else \
+        '<a href="/contact.html#book">Book a free call</a><a href="/pay-deposit.html">Pay your deposit</a><a href="/es.html" lang="es">Español</a>'
     towns = "".join('<a href="/%s">Web design %s</a>' % (t["page"], esc(t["name"])) for t in D["serviceArea"]["towns"] if t.get("page"))
-    head = fill(part("head"), dict(COMMON,
+    # The English home page and the Spanish page point at each other for search engines.
+    alt = ('<link rel="alternate" hreflang="en" href="%s/">\n<link rel="alternate" hreflang="es" href="%s/es.html">\n'
+           '<link rel="alternate" hreflang="x-default" href="%s/">\n' % (BASE, BASE, BASE)) if slug in ("index", "es") else ""
+    head = fill(part("head"), dict(COMMON, lang=lang, skip=L["skip"], alternates=alt,
         title=esc(meta["title"]), description=esc(meta["description"]), url=url,
         robots="index, follow" if meta.get("index", True) else "noindex, follow",
         verify='<meta name="google-site-verification" content="ADdwPb9axnmWCbzpY3gyaaUnq09scu5mJBVPGQg933g">\n' if slug == "index" else "",
         jsonld=jsonld(schemas)))
-    out = head + fill(part("header"), dict(COMMON, navlinks=navlinks)) + body.strip() + "\n" + \
-        fill(part("footer"), dict(COMMON, footlinks=foot, townlinks=towns, year=datetime.date.today().year, scripts=meta.get("scripts", "")))
+    out = head + fill(part("header"), {**COMMON, **L, "navlinks": navlinks}) + body.strip() + "\n" + \
+        fill(part("footer"), {**COMMON, **L, "footlinks": foot, "townlinks": towns, "year": datetime.date.today().year, "scripts": meta.get("scripts", "")})
     open(os.path.join(ROOT, slug + ".html"), "w", encoding="utf-8").write(out)
     return url if meta.get("index", True) else None
 
@@ -391,7 +494,10 @@ def build_src():
         raw = open(os.path.join(ROOT, "src", fn), encoding="utf-8").read()
         m = re.match(r"\s*<!--meta (.+?)-->", raw, re.S)
         meta = json.loads(m.group(1))
+        global LANG
+        LANG = meta.get("lang", "en")
         body = expand(raw[m.end():])
+        LANG = "en"
         schemas = []
         for s in meta.get("schema", []):
             if s == "business":
@@ -409,8 +515,8 @@ def build_src():
 
 
 def emlast(text, n=2):
-    w = text.split()
-    return esc(" ".join(w[:-n])) + " <em>" + esc(" ".join(w[-n:])) + "</em>"
+    """Headings used to accent their last words. The current look sets them as one piece."""
+    return esc(text)
 
 
 def crumbs(trail):
@@ -449,18 +555,18 @@ def build_towns():
             '<section class="hero hero-short"><div class="wrap"><div class="hero-copy">' + crumbs(trail) +
             '<h1>%s</h1>' % emlast(t["h1"], len(t["name"].split()) + 1) +
             '<p class="lede">%s</p>' % esc(t["lead"]) +
-            '<div class="btns"><a class="btn btn-primary" href="/contact.html">Get a free quote</a><a class="btn btn-ghost" href="/contact.html#book">Book a free call</a></div>'
+            '<div class="btns"><a class="btn btn-primary" href="/contact.html#book">Book a free call</a><a class="btn btn-ghost" href="/contact.html#details">Get a free quote</a></div>'
             '</div></div></section>'
             '<section class="sec sec-tight"><div class="wrap"><div class="prose rv"><h2>%s</h2>%s</div></div></section>' % (emlast(t["why_h"]), "".join("<p class=\"muted\">%s</p>" % esc(w) for w in t["why"])) +
-            '<section class="sec band"><div class="wrap"><div class="sec-head rv"><h2>Website packages for %s <em>businesses</em></h2><p class="muted">Flat prices, the same in %s as everywhere else.</p></div>'
+            '<section class="sec band"><div class="wrap"><div class="sec-head rv"><h2>Website packages for %s businesses</h2><p class="muted">Flat prices, the same in %s as everywhere else.</p></div>'
             '<div class="prows">%s</div><p class="sec-end rv"><a href="/pricing.html">Compare website packages and branding</a></p></div></section>' % (esc(t["name"]), esc(t["name"]), rows) +
-            '<section class="sec"><div class="wrap"><div class="sec-head rv"><h2>Who we build for in <em>%s</em></h2></div><div class="chips rv">%s</div></div></section>'
+            '<section class="sec"><div class="wrap"><div class="sec-head rv"><h2>Who we build for in %s</h2></div><div class="chips rv">%s</div></div></section>'
             % (esc(t["name"]), "".join('<span class="chip">%s</span>' % esc(w) for w in t["who"])) +
-            '<section class="sec band"><div class="wrap narrow"><div class="sec-head rv"><h2>Questions from %s <em>business owners</em></h2></div><div class="rv">%s</div>'
+            '<section class="sec band"><div class="wrap narrow"><div class="sec-head rv"><h2>Questions from %s business owners</h2></div><div class="rv">%s</div>'
             '<p class="sec-end rv"><a href="/faq.html">More answers in the FAQ</a></p></div></section>' % (esc(t["name"]), faq) +
-            '<section class="sec sec-mid"><div class="wrap"><div class="sec-head rv"><h2>Also serving <em>nearby</em></h2><p class="muted">%s</p></div><div class="chips rv">%s</div></div></section>'
+            '<section class="sec sec-mid"><div class="wrap"><div class="sec-head rv"><h2>Also serving nearby</h2><p class="muted">%s</p></div><div class="chips rv">%s</div></div></section>'
             % (esc(D["serviceArea"]["note"]), others) +
-            t_cta("Let's get your %s business <em>more calls.</em>" % esc(t["name"]), "Tell us about your business and Andrew will reply %s with a plan and a flat price." % B["replyTime"]))
+            t_cta("Let's get your %s business more calls." % esc(t["name"]), "Tell us about your business and Andrew will reply %s with a plan and a flat price." % B["replyTime"]))
         service = {"@context": "https://schema.org", "@type": "Service", "serviceType": "Web design", "name": t["h1"], "url": url,
                    "description": t["desc"], "provider": {"@id": BASE + "/#business", "@type": "ProfessionalService", "name": B["name"],
                    "telephone": "+1-312-600-0590", "url": BASE + "/"},

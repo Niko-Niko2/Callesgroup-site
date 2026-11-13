@@ -1,6 +1,5 @@
 {
   "flags": {
-    "bookingLive": false,
     "paymentsLive": false
   },
   "business": {
@@ -19,8 +18,13 @@
     "booking": {
       "service": "Free quote call",
       "minutes": 20,
-      "where": "In person or video"
-    }
+      "where": "In person or video",
+      "url": ""
+    },
+    "languages": [
+      "English",
+      "Spanish"
+    ]
   },
   "packages": [
     {
@@ -38,7 +42,11 @@
       "moreFeatures": [
         "Basic SEO",
         "2 rounds of changes"
-      ]
+      ],
+      "es": {
+        "pitch": "Entre a internet con un sitio limpio y profesional.",
+        "detail": "Hasta 3 páginas. De 1 a 2 semanas."
+      }
     },
     {
       "key": "growth",
@@ -58,7 +66,11 @@
         "Copy polish",
         "SEO setup",
         "3 rounds of changes"
-      ]
+      ],
+      "es": {
+        "pitch": "Un sitio a la medida, hecho para traer clientes.",
+        "detail": "Hasta 5 páginas, diseño a la medida. De 2 a 3 semanas."
+      }
     },
     {
       "key": "premium",
@@ -77,14 +89,23 @@
         "Blog or project gallery",
         "30 days of free edits after launch",
         "1-hour training call"
-      ]
+      ],
+      "es": {
+        "pitch": "El sitio completo, con los textos escritos por nosotros.",
+        "detail": "Hasta 8 páginas, textos y sesión de fotos. De 3 a 4 semanas."
+      }
     }
   ],
   "founding": {
     "key": "founding",
     "title": "Founding client offer",
     "text": "Launch for $1,200 (normally $1,500). First 3 clients only, in return for a Google review and a case study.",
-    "spots": "3 of 3 spots left"
+    "spotsLeft": 3,
+    "spotsTotal": 3,
+    "es": {
+      "title": "Oferta para clientes fundadores",
+      "text": "Launch por $1,200 (normalmente $1,500). Solo los primeros 3 clientes, a cambio de una reseña en Google y un caso de estudio."
+    }
   },
   "branding": [
     {
@@ -263,7 +284,11 @@
       "id": "pay-how",
       "group": "Payment",
       "q": "How does payment work?",
-      "a": "A 50% deposit starts the project and the rest is due before launch. Projects over $2,500 split into 50% to start, 25% at design approval and 25% before launch. Pay by card through a Wix invoice, Zelle or check. Invoices are due in 7 days."
+      "a": "A 50% deposit starts the project and the rest is due before launch. Projects over $2,500 split into 50% to start, 25% at design approval and 25% before launch. Pay by card through a Wix invoice, Zelle or check. Invoices are due in 7 days.",
+      "es": {
+        "q": "¿Cómo se paga?",
+        "a": "Un depósito del 50% inicia el proyecto y el resto se paga antes del lanzamiento. Los proyectos de más de $2,500 se dividen en 50% al inicio, 25% al aprobar el diseño y 25% antes del lanzamiento. Puede pagar con tarjeta por medio de una factura de Wix, por Zelle o con cheque. Las facturas vencen en 7 días."
+      }
     },
     {
       "id": "pay-refund",
@@ -281,7 +306,11 @@
       "id": "own-site",
       "group": "Ownership",
       "q": "Do I own my website?",
-      "a": "Yes. Your Wix account and domain are in your name, and you pay Wix for them directly. Your logo files and full admin access are handed over after the final payment."
+      "a": "Yes. Your Wix account and domain are in your name, and you pay Wix for them directly. Your logo files and full admin access are handed over after the final payment.",
+      "es": {
+        "q": "¿El sitio web es mío?",
+        "a": "Sí. Su cuenta de Wix y su dominio quedan a su nombre, y usted le paga a Wix directamente. Los archivos de su logo y el acceso completo de administrador se entregan después del pago final."
+      }
     },
     {
       "id": "own-wix",
@@ -299,7 +328,11 @@
       "id": "time-how",
       "group": "Timeline",
       "q": "How long does a website take?",
-      "a": "1 to 4 weeks depending on the package: 1 to 2 weeks for Launch, 2 to 3 weeks for Growth and 3 to 4 weeks for Premium. The clock starts once we have your text, photos and logo."
+      "a": "1 to 4 weeks depending on the package: 1 to 2 weeks for Launch, 2 to 3 weeks for Growth and 3 to 4 weeks for Premium. The clock starts once we have your text, photos and logo.",
+      "es": {
+        "q": "¿Cuánto tarda un sitio web?",
+        "a": "De 1 a 4 semanas según el paquete: de 1 a 2 semanas para Launch, de 2 a 3 para Growth y de 3 a 4 para Premium. El tiempo empieza a contar cuando tenemos sus textos, fotos y logo."
+      }
     },
     {
       "id": "time-rounds",
@@ -337,5 +370,6 @@
       "q": "Is there a deal for starting at launch?",
       "a": "Yes. Your first month is half off when you start a care plan at launch."
     }
-  ]
+  ],
+  "brandingNote_es": "¿También quiere sitio web? Agregue el Brand Kit por $900 en lugar de $1,100."
 }

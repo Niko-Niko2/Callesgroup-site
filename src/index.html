@@ -1,72 +1,119 @@
 <!--meta {"title": "Web Design in Elgin, IL | Websites & Branding | Calles Group",
- "description": "Websites built to bring in business for Elgin and Fox Valley companies. Flat prices from $1,500, built for phones, owned by you. Free quote in 24 hours.",
- "nav": "home", "schema": ["business"]} -->
+ "description": "Websites for contractors and local businesses in Elgin and the Fox Valley. See a sample with your name on it. Flat prices from $1,500. Free quote call.",
+ "nav": "home", "schema": ["business"], "scripts": "<script src=\"/assets/tools.js\" defer></script>\n"} -->
 
-<section class="hero"><div class="wrap">
+<section class="hero hero-home" id="top"><div class="wrap">
   <div class="hero-copy">
-    <p class="eyebrow">Website design &amp; branding · Elgin, IL</p>
-    <h1>Your website should <em>pull its weight.</em></h1>
-    <p class="lede">Websites built to bring in business, not just look good. Designed for phones, priced up front, owned by you.</p>
-    <div class="btns"><a class="btn btn-primary" href="/contact.html">Get a free quote</a><a class="btn btn-ghost" href="/contact.html#book">Book a free call</a></div>
+    <p class="hello" id="hello" hidden></p>
+    <h1>A website that gets you calls. Priced like a real estimate.</h1>
+    <p class="lede">Websites for contractors and local businesses in Elgin and Chicagoland. You get a flat price in writing before any work starts, and the site is yours.</p>
+    <form class="est" id="demoForm" action="/contact.html" autocomplete="off">
+      <div class="est-top"><span class="est-title">Estimate</span><time class="est-no" id="estDate"></time></div>
+      <div class="est-row"><label class="est-l" for="dBiz">Prepared for</label><input class="est-in" id="dBiz" name="biz" type="text" maxlength="40" placeholder="Your business name" enterkeyhint="done" autocapitalize="words" spellcheck="false"></div>
+      <div class="est-row"><span class="est-l" id="dTradeL">Trade</span><div class="est-chips" id="dTrades" role="group" aria-labelledby="dTradeL"><noscript>Turn on JavaScript to try the sample.</noscript></div></div>
+      <div class="est-row"><label class="est-l" for="dTown">Town</label><input class="est-in" id="dTown" name="town" type="text" maxlength="28" value="Elgin" autocapitalize="words" spellcheck="false"></div>
+    </form>
+    <div class="btns"><a class="btn btn-primary" href="/contact.html#book">Book a free call</a><a class="btn btn-ghost" id="demoText" href="{{sms}}">Text Andrew</a></div>
+    <p class="small muted">Free 20-minute quote call. Replies {{reply}}, from Andrew, not a bot.</p>
   </div>
-  {{partial before-after}}
+  <div class="demo" id="demo">
+    <div class="phone"><div class="ps" id="ps" data-pal="0" aria-label="Sample website">
+      <div class="ps-bar"><b class="ps-name" id="psName">Your Business Name</b><span class="ps-menu" aria-hidden="true"></span></div>
+      <div class="ps-hero">
+        <p class="ps-kicker" id="psKick">Roofing in Elgin, IL</p>
+        <p class="ps-h" id="psHead">Roof repair and replacement, done right the first time.</p>
+        <div class="ps-cta"><span class="ps-call" id="psCall">Call now</span><span class="ps-quote" id="psQuote">Free estimate</span></div>
+      </div>
+      <div class="ps-photo" id="psPhoto">Your job photos go here</div>
+      <ul class="ps-svc"><li id="psS1">Roof replacement</li><li id="psS2">Storm damage repair</li><li id="psS3">Gutters and siding</li></ul>
+      <p class="ps-rev"><span class="ps-stars" aria-hidden="true">&#9734;&#9734;&#9734;&#9734;&#9734;</span><span id="psRev">Your Google reviews show here</span></p>
+      <p class="ps-foot" id="psFoot">Serving Elgin and nearby towns</p>
+    </div></div>
+    <div class="swatches" role="group" aria-label="Sample colors"><span>Colors</span>
+      <button type="button" class="sw" style="--a:#1B1C1E;--b:#C8824A" data-pal="0" aria-pressed="true" aria-label="Graphite and copper"></button>
+      <button type="button" class="sw" style="--a:#0F1A2E;--b:#D9B04F" data-pal="1" aria-pressed="false" aria-label="Midnight and gold"></button>
+      <button type="button" class="sw" style="--a:#17251E;--b:#A7CDA8" data-pal="2" aria-pressed="false" aria-label="Forest and sage"></button>
+      <button type="button" class="sw" style="--a:#FFFFFF;--b:#D9480F" data-pal="3" aria-pressed="false" aria-label="White and orange"></button>
+    </div>
+    <p class="small muted demo-note">This is a sample. Your real site is designed around your own photos, services and colors.</p>
+  </div>
 </div></section>
 
-<section class="sec sec-tight" aria-labelledby="offers-h"><div class="wrap">
-  <div class="sec-head rv"><h2 id="offers-h">Pick a starting <em>point.</em></h2><p class="muted">Flat prices. You get your exact number on the free quote call.</p></div>
-  <div class="row swipe">
-    <a class="card offer rv" href="/pricing.html#packages">
-      <span class="offer-k">Websites</span><span class="offer-p"><small>from</small> {{from websites}}</span>
-      <span class="muted">Up to 3, 5 or 8 pages, built for phones.</span><span class="go">See website packages</span>
-    </a>
-    <a class="card offer rv" href="/pricing.html#branding">
-      <span class="offer-k">Branding</span><span class="offer-p"><small>from</small> {{from branding}}</span>
-      <span class="muted">A logo or a full Brand Kit.</span><span class="go">See branding</span>
-    </a>
-    <a class="card offer rv" href="/care-plans.html#plans">
-      <span class="offer-k">Care plans</span><span class="offer-p"><small>from</small> {{from care}}<small>/mo</small></span>
-      <span class="muted">We keep your site working and up to date.</span><span class="go">See care plans</span>
-    </a>
+<section class="sec sheet-canary" id="worth" aria-labelledby="worth-h"><div class="wrap">
+  <div class="sec-head"><h2 id="worth-h">What is one more call a week worth?</h2><p>Use your own numbers. This is a what-if, and every line can be changed.</p></div>
+  <div class="calc" id="calc" data-pkgs="{{pkgdata}}">
+    <div class="lines">
+      <div class="line">
+        <div class="line-top"><label for="cJob">Your average job</label><span class="money">$<input id="cJob" type="number" inputmode="numeric" min="50" max="1000000" step="50" value="12000"></span></div>
+        <input id="cJobR" type="range" min="100" max="40000" step="100" value="12000" aria-label="Average job, slider">
+        <p class="hint" id="cJobHint">A starting guess for roofing. Put in your real number.</p>
+      </div>
+      <div class="line">
+        <div class="line-top"><span class="lab" id="cWinL">Out of 10 estimates, you win</span>
+          <span class="step" role="group" aria-labelledby="cWinL"><button type="button" id="cWinDn" aria-label="One fewer">&minus;</button><output class="val" id="cWin">3</output><button type="button" id="cWinUp" aria-label="One more">+</button></span></div>
+      </div>
+      <div class="line">
+        <div class="line-top"><label for="cCalls">Extra calls a month from a site that works</label><output id="cCallsV" for="cCalls">4</output></div>
+        <input id="cCalls" type="range" min="1" max="30" step="1" value="4">
+        <p class="hint" id="cCallsHint">4 a month is about one a week.</p>
+      </div>
+    </div>
+    <div class="total">
+      <p class="total-l">That adds up to about</p>
+      <p class="total-n" id="cYear">$172,800</p>
+      <p class="total-l">a year in new work</p>
+      <div class="total-s"><div><b id="cMonth">$14,400</b><span>a month</span></div><div><b id="cJobs">1.2</b><span>more jobs a month</span></div></div>
+      <div class="payback"><div class="est-chips" id="cPkgs" role="group" aria-label="Website package"></div><p id="cPay"></p></div>
+      <div class="btns"><a class="btn btn-primary" href="/contact.html#book">Book a free call</a><a class="btn btn-ghost" id="cText" href="{{sms}}">Text Andrew these numbers</a></div>
+      <p class="fine">A what-if with your own numbers, not a promise. No website can guarantee calls. A site that shows up, loads fast and makes calling easy gives you a fair shot at them.</p>
+    </div>
   </div>
-  <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
-  <p class="swipe-hint muted" aria-hidden="true">Swipe to see all 3</p>
+</div></section>
+
+<section class="sec" id="price" aria-labelledby="price-h"><div class="wrap">
+  <div class="sec-head"><h2 id="price-h">What it costs, line by line.</h2><p class="muted">Flat prices. You get your exact number in writing on the free quote call.</p></div>
+  {{lineitems}}
+  <div class="stamp-row">{{stamp}}<div class="btns"><a class="btn btn-primary" href="/contact.html#book">Book a free call</a><a class="btn btn-ghost" href="/pricing.html">See what each package includes</a></div></div>
 </div></section>
 
 <section class="sec band" aria-labelledby="how-h"><div class="wrap">
-  <div class="sec-head rv"><h2 id="how-h">How it <em>works.</em></h2></div>
+  <div class="sec-head"><h2 id="how-h">How the job runs.</h2></div>
   <ol class="steps">
-    <li class="rv"><span class="num">1</span><h3>Free quote call</h3><p class="muted">20 minutes, in person or over video. You tell me about your business, I give you a plan and a flat price.</p></li>
-    <li class="rv"><span class="num">2</span><h3>You see it first</h3><p class="muted">I design and build your site. Nothing goes live until you approve it.</p></li>
-    <li class="rv"><span class="num">3</span><h3>Launch</h3><p class="muted">Your site goes live on a Wix account and domain in your name. It's yours.</p></li>
+    <li><span class="num">1</span><h3>Free quote call</h3><p class="muted">20 minutes, in person or over video. You tell me about your business, I give you a plan and a flat price.</p></li>
+    <li><span class="num">2</span><h3>You see it first</h3><p class="muted">I design and build your site. Nothing goes live until you approve it.</p></li>
+    <li><span class="num">3</span><h3>Launch</h3><p class="muted">Your site goes live on a Wix account and domain in your name. It's yours.</p></li>
   </ol>
-  <div class="sec-end rv"><a class="btn btn-primary" href="/contact.html">Get a free quote</a></div>
 </div></section>
 
-<section class="sec" aria-labelledby="me-h"><div class="wrap me rv">
-  <span class="me-badge" aria-hidden="true">AC</span>
+<section class="sec" aria-labelledby="me-h"><div class="wrap me">
   <div class="prose">
-    <h2 id="me-h">You work with <em>me directly.</em></h2>
-    <p class="muted">I'm Andrew Calles. Calles Group is me, based in Elgin. You work with me directly, from the first call to launch day. No account managers, no call center, no handoffs.</p>
-    <p><a href="/contact.html#book">Book a free call with Andrew</a></p>
+    <h2 id="me-h">You work with me directly.</h2>
+    <p>I'm Andrew Calles. Calles Group is me, based in Elgin. You work with me from the first call to launch day. No account managers, no call center, no handoffs.</p>
+    <p class="me-sig" aria-hidden="true">Andrew Calles</p>
   </div>
+  <ul class="facts-list">
+    <li>Replies {{reply}}</li>
+    <li>A flat price in writing before any work starts</li>
+    <li>Your Wix account and domain stay in your name</li>
+    <li>Hablo español. <a href="/es.html" lang="es" hreflang="es">Ver esta página en español</a></li>
+  </ul>
 </div></section>
 
 <!-- PROOF SLOT: hidden until Andrew supplies real reviews or client work. Remove the hidden attribute to show it. -->
 <section class="sec" id="proof" aria-labelledby="proof-h" hidden><div class="wrap">
-  <div class="sec-head"><h2 id="proof-h">What clients <em>say.</em></h2></div>
+  <div class="sec-head"><h2 id="proof-h">What clients say.</h2></div>
   <div class="row"><!-- Real reviews or project cards go here. --></div>
 </div></section>
 
-<section class="sec band" aria-labelledby="faq-h"><div class="wrap narrow">
-  <div class="sec-head rv"><h2 id="faq-h">Quick <em>answers.</em></h2></div>
-  <div class="rv">{{faq own-site time-how pay-how}}</div>
-  <p class="sec-end rv"><a href="/faq.html">See all questions</a></p>
+<section class="sec sheet-pink" aria-labelledby="faq-h"><div class="wrap narrow">
+  <div class="sec-head"><h2 id="faq-h">The fine print, in big print.</h2></div>
+  {{faq own-site time-how pay-how}}
+  <p class="sec-end"><a href="/faq.html">See all questions</a></p>
 </div></section>
 
 <section class="sec" aria-labelledby="area-h"><div class="wrap">
-  <div class="sec-head rv"><h2 id="area-h">Serving Elgin and <em>Chicagoland.</em></h2><p class="muted">In person or over video, across the Fox Valley, the northwest suburbs and Chicago.</p></div>
-  <div class="rv">{{towns}}</div>
-  <p class="sec-end rv"><a href="/contact.html">Get a free quote for your town</a></p>
+  <div class="sec-head"><h2 id="area-h">Serving Elgin and Chicagoland.</h2><p class="muted">In person or over video, across the Fox Valley, the northwest suburbs and Chicago.</p></div>
+  {{towns}}
 </div></section>
 
-{{cta Your business is good. Let's make it look <em>that way.</em> | Tell me about your business and I'll reply {{reply}} with a plan and a flat price.}}
+{{cta Your business is good. Let's make it look that way. | Tell me about your business and I'll reply {{reply}} with a plan and a flat price.}}

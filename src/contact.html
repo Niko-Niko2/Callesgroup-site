@@ -1,14 +1,14 @@
 <!--meta {"title": "Get a Free Website Quote | Elgin, IL | Calles Group",
- "description": "Get a free quote for a website, Brand Kit or care plan in Elgin, IL. Tap a few answers or book a free call. Replies within 24 hours. Call or text 312-600-0590.",
- "nav": "contact", "crumb": "Contact"} -->
+ "description": "Book a free 20-minute quote call for a website, Brand Kit or care plan in Elgin, IL, or send your details. Replies within 24 hours. Call or text 312-600-0590.",
+ "nav": "contact", "crumb": "Contact", "scripts": "<script src=\"/assets/tools.js\" defer></script>\n"} -->
 
-<section class="ct" aria-label="Get a free quote"><div class="wrap ct-grid">
+<section class="ct" aria-label="Book a free call or get a quote"><div class="wrap ct-grid">
   <div class="ct-intro">
     <p class="eyebrow">Free quote</p>
-    <h1>Let's talk about <em>your business.</em></h1>
+    <h1>Let's talk about your business.</h1>
     <p class="need-line" id="needLine" hidden></p>
     <ol class="trust">
-      <li><span class="num">1</span>Tap a few answers</li>
+      <li><span class="num">1</span>Pick a time or send your details</li>
       <li><span class="num">2</span>Get a plan and a price</li>
       <li><span class="num">3</span>You decide, no pressure</li>
     </ol>
@@ -19,17 +19,19 @@
     <span id="book"></span><span id="details"></span>
     <div class="switch-row">
       <div class="seg seg-wide" data-switch="mode" role="group" aria-label="How do you want to start?">
-        <button type="button" data-value="book" data-hash="book" aria-pressed="false">Book a call</button>
-        <button type="button" data-value="details" data-hash="details" aria-pressed="true">Send your details</button>
+        <button type="button" data-value="book" data-hash="book" aria-pressed="true">Book a call</button>
+        <button type="button" data-value="details" data-hash="details" aria-pressed="false">Send your details</button>
       </div>
     </div>
 
-    <div class="mode" data-mode-show="book" data-pre-hide>
-      <!-- BOOKING: shows the Wix Bookings widget when "bookingLive" is true in data/offers.json, otherwise the placeholder. -->
+    <div class="mode" data-mode-show="book">
+      <!-- BOOKING: pick a day and a time of day, then text it or ask for a call back.
+           Add a scheduler link to business.booking.url in data/offers.json to show "See open times" on top. -->
+      <h2 class="sr">Book a free call</h2>
       {{booking}}
     </div>
 
-    <div class="mode" data-mode-show="details">
+    <div class="mode" data-mode-show="details" data-pre-hide>
       <h2 class="sr">Quote request form</h2>
       <div class="card form-card" id="formCard">
         <div class="ct-bar" aria-hidden="true"><i id="ctBar"></i></div>
@@ -53,6 +55,8 @@
   var NEEDS = {{needs}};
   var need = window.CG_NEED = NEEDS[new URLSearchParams(location.search).get("need")];
   if (need && need.label) { var l = document.getElementById("needLine"); l.textContent = "You're asking about " + need.label + ". You can change it in the form."; l.hidden = false; }
+  // A package or plan button opens the form side. Everything else opens on Book a call.
+  if (need && !location.hash) history.replaceState(null, "", location.pathname + location.search + "#details");
 })();
 </script>
 <script type="module">
@@ -98,6 +102,19 @@ store.subscribe(() => requestAnimationFrame(() => {
     lastStep = n;
   }
 }));
+// "Have Andrew call me" on the Book a call side: tools.js puts the chosen time in window.CG_CALL_NOTE,
+// and this writes it into the message box once the form has loaded.
+let noteDone = "";
+window.cgSetNote = () => {
+  const n = window.CG_CALL_NOTE;
+  if (!n || n === noteDone) return;
+  const fields = store.getState().form?.fields;
+  const msg = fields && (fields.find((f) => /^message/i.test(f.target)) || fields.find((f) => /textarea|paragraph/i.test(f.control || "")));
+  if (!msg) return;
+  noteDone = n;
+  store.setValue(msg.target, n);
+};
+store.subscribe(window.cgSetNote);
 // ?need=<key>: tick the matching "What do you need?" boxes and note the choice (map is set above).
 const need = window.CG_NEED;
 if (need) {
