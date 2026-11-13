@@ -36,6 +36,7 @@ python3 tools/build.py
    - `faqs`, `policies`, `founding`, `brandingNote` and `photosNote` in `offers.json`, and their Spanish twins (`es` inside packages, FAQs and `founding`, plus `brandingNote_es`)
    - page titles and descriptions at the top of each `src/*.html` file, and the town copy in `tools/towns.py`
    - `tools/og-image.html` ("Websites from $1,500")
+   - the founding rate is also the number `founding.price` (it feeds the deposit table), so change both it and the sentence
    Quick check: `grep -rn '\$2,500' src partials tools data`
 3. Run `python3 tools/build.py`, look at the page, then commit and publish.
 

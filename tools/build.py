@@ -362,6 +362,18 @@ def t_payment():
             '<p class="muted small">%s</p></div>' % (B["phoneHref"], B["phoneDisplay"], esc(pay["invoiceDue"])))
 
 
+def t_deposits():
+    """Pay your deposit page: the 50% that starts each package, worked out from offers.json."""
+    f = D["founding"]
+    rows = [("%s, founding client rate" % find(D["packages"], "launch")["name"], f["price"])] if f.get("spotsLeft") else []
+    rows += [(p["name"], p["price"]) for p in D["packages"]]
+    out = []
+    for name, price in rows:
+        out.append('<div class="item"><span class="item-n">%s</span><span class="item-p">%s</span><span class="item-d">Half of %s starts the work.</span></div>'
+                   % (esc(name), money(price // 2), money(price)))
+    return '<div class="items">' + "".join(out) + "</div>"
+
+
 def t_policy(*path):
     v = D["policies"]
     for k in path:
@@ -412,6 +424,7 @@ TOKENS = {
     "stamp": t_stamp,          # the founding offer as a rubber stamp
     "pkgdata": t_pkgdata,      # package prices for the calculator
     "faqes": t_faqes,          # {{faqes own-site time-how}} in Spanish
+    "deposits": t_deposits,    # deposit amount per package
     "sms": lambda: B["smsHref"],
     "tel": lambda: B["phoneHref"],
     "phonenum": lambda: B["phoneDisplay"],

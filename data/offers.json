@@ -105,7 +105,8 @@
     "es": {
       "title": "Oferta para clientes fundadores",
       "text": "Launch por $1,200 (normalmente $1,500). Solo los primeros 3 clientes, a cambio de una reseña en Google y un caso de estudio."
-    }
+    },
+    "price": 1200
   },
   "branding": [
     {
