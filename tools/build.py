@@ -38,22 +38,24 @@ STR = {
            "book": "Book a free call", "bookShort": "Book a call", "bookHref": "/contact.html#book",
            "langHref": "/es.html", "langOther": "es", "langName": "Español", "callText": "Call or text",
            "pagesLabel": "Pages", "areaLabel": "Web design near you", "privacy": "Privacy policy",
-           "textBtn": "Text Andrew", "sign": "your name here", "ctaFine": "Or call %s. Replies %s.",
+           "textBtn": "Text Andrew", "ctaFine": "Or call %s. Replies %s.",
            "popular": "Most popular", "spots": "%d of %d spots left", "due": "Due today",
            "dueNote": "The %d-minute quote call is free.", "from": "from", "mo": "/mo",
            "care": ("Care plans", "We keep your site working and up to date. Cancel anytime."),
            "logo": "3 concepts, 2 rounds of changes and the full file pack.",
-           "photos": "Up to 1 hour on-site and 25 edited photos."},
+           "photos": "Up to 1 hour on-site and 25 edited photos.",
+           "groups": ("Websites", "Add-ons", "Monthly care"), "pages": "%s pages"},
     "es": {"skip": "Ir al contenido", "navLabel": "Principal", "close": "Cerrar", "menu": "Menú", "home": "/es.html",
            "book": "Agende su llamada gratis", "bookShort": "Agendar", "bookHref": "/es.html#llamada",
            "langHref": "/", "langOther": "en", "langName": "English", "callText": "Llame o escriba al",
            "pagesLabel": "Páginas", "areaLabel": "Zonas de servicio (en inglés)", "tagline": "Con base en Elgin, IL. Servimos a todo Chicagoland.", "privacy": "Política de privacidad (en inglés)",
-           "textBtn": "Escríbale a Andrew", "sign": "su nombre aquí", "ctaFine": "O llame al %s. Respondemos en menos de 24 horas.",
+           "textBtn": "Escríbale a Andrew", "ctaFine": "O llame al %s. Respondemos en menos de 24 horas.",
            "popular": "El más pedido", "spots": "Quedan %d de %d lugares", "due": "A pagar hoy",
            "dueNote": "La llamada de %d minutos es gratis.", "from": "desde", "mo": "/mes",
            "care": ("Planes de mantenimiento", "Mantenemos su sitio funcionando y al día. Cancele cuando quiera."),
            "logo": "3 propuestas, 2 rondas de cambios y todos los archivos.",
-           "photos": "Hasta 1 hora en su negocio y 25 fotos editadas."},
+           "photos": "Hasta 1 hora en su negocio y 25 fotos editadas.",
+           "groups": ("Sitios web", "Extras", "Mantenimiento mensual"), "pages": "%s páginas"},
 }
 
 
@@ -159,7 +161,7 @@ def t_cta(title, text):
     fine = L["ctaFine"] % ('<a href="%s">%s</a>' % (B["phoneHref"], B["phoneDisplay"]), B["replyTime"]) if LANG == "en" \
         else L["ctaFine"] % ('<a href="%s">%s</a>' % (B["phoneHref"], B["phoneDisplay"]))
     return fill(part("cta"), dict(COMMON, cta_title=title, cta_text=text, book=L["book"], bookHref=L["bookHref"],
-                                  textBtn=L["textBtn"], sign=L["sign"], ctaFine=fine))
+                                  textBtn=L["textBtn"], ctaFine=fine))
 
 
 def spots_text():
@@ -168,22 +170,26 @@ def spots_text():
 
 
 def t_lineitems():
-    """Home page: packages and extras set as estimate line items. Prices and words come from offers.json."""
+    """Home page prices in three groups: websites, add-ons, monthly care. Prices and words come from offers.json."""
     L, es = STR[LANG], LANG == "es"
-    rows = []
+    web, addons, care = L["groups"]
+    rows = ['<h3 class="items-h">%s</h3>' % web]
     for p in D["packages"]:
-        desc = (p["es"]["pitch"] + " " + p["es"]["detail"]) if es else "%s %s. %s." % (p["pitch"], p["keyFeatures"][0], p["timeline"].capitalize())
+        pitch, pages, time = (p["es"]["pitch"], p["es"]["pages"], p["es"]["timeline"]) if es else (p["pitch"], p["pages"], p["timeline"].capitalize())
         tag = '<span class="tag">%s</span>' % L["popular"] if p.get("popular") else ""
-        rows.append('<a class="item" href="/pricing.html#p-%s"><span class="item-n">%s%s</span><span class="item-p">%s</span><span class="item-d">%s</span></a>'
-                    % (p["key"], esc(p["name"]), tag, money(p["price"]), esc(desc)))
+        rows.append('<a class="item" href="/pricing.html#p-%s"><span class="item-n">%s%s</span><span class="item-p">%s</span><span class="item-d">%s</span>'
+                    '<span class="item-s"><i>%s</i><i>%s</i></span></a>'
+                    % (p["key"], esc(p["name"]), tag, money(p["price"]), esc(pitch), esc(L["pages"] % pages), esc(time)))
     logo, kit, ph = find(D["branding"], "logo"), find(D["branding"], "brand-kit"), D["photos"]
-    extras = [(logo["name"], L["logo"], money(logo["price"]), "/pricing.html#branding"),
-              (kit["name"], D["brandingNote_es"] if es else D["brandingNote"], money(kit["price"]), "/pricing.html#branding"),
-              ("Sesión de fotos" if es else ph["name"], L["photos"], money(ph["price"]), "/pricing.html#branding"),
-              (L["care"][0], L["care"][1], "<small>%s</small> %s<small>%s</small>" % (L["from"], t_from("care"), L["mo"]), "/care-plans.html")]
-    for n, d, pr, href in extras:
-        rows.append('<a class="item sub" href="%s"><span class="item-n">%s</span><span class="item-p">%s</span><span class="item-d">%s</span></a>'
-                    % (href, esc(n), pr, esc(d)))
+    rows.append('<h3 class="items-h">%s</h3>' % addons)
+    for n, d, pr in [(logo["name"], L["logo"], money(logo["price"])),
+                     (kit["name"], D["brandingNote_es"] if es else D["brandingNote"], money(kit["price"])),
+                     ("Sesión de fotos" if es else ph["name"], L["photos"], money(ph["price"]))]:
+        rows.append('<a class="item sub" href="/pricing.html#branding"><span class="item-n">%s</span><span class="item-p">%s</span><span class="item-d">%s</span></a>'
+                    % (esc(n), pr, esc(d)))
+    rows.append('<h3 class="items-h">%s</h3>' % care)
+    rows.append('<a class="item sub" href="/care-plans.html"><span class="item-n">%s</span><span class="item-p"><small>%s</small> %s<small>%s</small></span><span class="item-d">%s</span></a>'
+                % (esc(L["care"][0]), L["from"], t_from("care"), L["mo"], esc(L["care"][1])))
     rows.append('<div class="item due"><span class="item-n">%s</span><span class="item-p">$0</span><span class="item-d">%s</span></div>'
                 % (L["due"], L["dueNote"] % B["booking"]["minutes"]))
     return '<div class="items">' + "".join(rows) + "</div>"
@@ -212,20 +218,24 @@ def expander(uid, inner, label="See everything"):
 
 
 def t_packages():
-    """Website packages: 3 cards."""
+    """Website packages: 3 cards. Each card has the same three rows in the same order (pages, timeline, rounds),
+    then what is included, so the three compare at a glance."""
     cards = []
     for p in D["packages"]:
+        specs = "".join("<div><dt>%s</dt><dd>%s</dd></div>" % (k, esc(str(v))) for k, v in
+                        (("Pages", p["pages"]), ("Timeline", p["timeline"].capitalize()), ("Rounds of changes", p["rounds"])))
+        plus = '<p class="plus">Everything in %s, plus:</p>' % esc(p["buildsOn"]) if p.get("buildsOn") else ""
         cards.append(
             '<article class="card pkg rv%s" id="p-%s">' % (" pop" if p.get("popular") else "", p["key"]) +
             ('<span class="tag">Most popular</span>' if p.get("popular") else "") +
             '<h3>%s</h3>' % esc(p["name"]) +
             '<div class="price">%s</div>' % money(p["price"]) +
             '<p class="muted pitch">%s</p>' % esc(p["pitch"]) +
-            tick_list(p["keyFeatures"]) +
-            expander(p["key"], tick_list(p["moreFeatures"])) +
+            '<dl class="specs">%s</dl>' % specs +
+            expander(p["key"], plus + tick_list(p["includes"]), "What's included") +
             '<a class="btn btn-primary" href="/contact.html?need=%s">Get a free quote</a>' % p["key"] +
             "</article>")
-    return ('<div class="row swipe cards3">%s</div>%s<p class="swipe-hint muted" aria-hidden="true">Swipe to compare</p>'
+    return ('<div class="row swipe cards3 open-desktop">%s</div>%s<p class="swipe-hint muted" aria-hidden="true">Swipe to compare</p>'
             % ("".join(cards), swipe_dots(3)))
 
 
@@ -319,30 +329,31 @@ def contact_ways():
 
 
 def t_booking():
-    """Book a call. The visitor picks a day and a time of day, then texts it or asks for a call back.
-    Put a real scheduler link in business.booking.url (offers.json) to add a "See open times" button on top."""
+    """Book a call. The visitor picks a day and one of Andrew's call times, then texts it or asks for a call back.
+    The times come from business.booking.hours in offers.json (24-hour clock, the hours a call can start).
+    Put a real scheduler link in business.booking.url to add a "See open times" button on top."""
     bk, es = B["booking"], LANG == "es"
     T = {"open": "Vea los horarios disponibles", "or": "O pida un horario aquí abajo.", "day": "¿Qué día?", "time": "¿A qué hora?",
-         "times": [("morning", "En la mañana"), ("midday", "A mediodía"), ("evening", "Después de las 5")],
          "biz": "El nombre de su negocio", "sum": "Usted pide:", "text": "Mandar por mensaje a Andrew", "call": "Llamar ahora",
-         "fine": "Llamada gratis de %d minutos, en persona o por video. Andrew le confirma la hora exacta por mensaje. Desde una computadora, escriba al %s."} if es else \
-        {"open": "See open times", "or": "Or ask for a time below.", "day": "Which day?", "time": "What time of day?",
-         "times": [("morning", "Morning"), ("midday", "Midday"), ("evening", "After 5pm")],
+         "hours": bk["hoursNote_es"],
+         "fine": "Llamada gratis de %d minutos, en persona o por video. Andrew le confirma la hora por mensaje. Desde una computadora, escriba al %s."} if es else \
+        {"open": "See open times", "or": "Or ask for a time below.", "day": "Which day?", "time": "What time?",
          "biz": "Your business name", "sum": "You're asking for:", "text": "Text Andrew this time", "call": "Have Andrew call me",
-         "fine": "Free %d-minute quote call, in person or video. Andrew confirms the exact time by text. On a computer, text %s."}
+         "hours": bk["hoursNote"],
+         "fine": "Free %d-minute quote call, in person or video. Andrew confirms the time by text. On a computer, text %s."}
     top = ('<a class="btn btn-primary" href="%s" rel="noopener">%s</a><p class="muted">%s</p>' % (esc(bk["url"]), T["open"], T["or"])) if bk.get("url") else ""
-    times = "".join('<button type="button" class="pick" aria-pressed="%s" data-v="%s">%s</button>' % ("true" if k == "evening" else "false", k, n) for k, n in T["times"])
     second = '<a class="btn btn-ghost" href="%s">%s</a>' % (B["phoneHref"], T["call"]) if es else \
         '<a class="btn btn-ghost" data-bk-form href="/contact.html#details">%s</a>' % T["call"]
-    return ('<div class="bk" data-bk>%s'
+    hrs = bk["hours"]
+    return ('<div class="bk" data-bk data-weekday="%s" data-weekend="%s">%s'
             '<fieldset class="bk-group"><legend>%s</legend><div class="bk-picks" data-bk-days></div></fieldset>'
-            '<fieldset class="bk-group"><legend>%s</legend><div class="bk-picks" data-bk-times>%s</div></fieldset>'
+            '<fieldset class="bk-group"><legend>%s</legend><div class="bk-picks" data-bk-times></div><p class="small muted">%s</p></fieldset>'
             '<div><label class="bk-l" for="bkBiz">%s</label><input class="bk-in" id="bkBiz" type="text" maxlength="40" autocomplete="organization"></div>'
-            '<p class="bk-sum" aria-live="polite">%s <span class="hand" data-bk-sum></span></p>'
+            '<p class="bk-sum" aria-live="polite">%s <span data-bk-sum></span></p>'
             '<div class="btns"><a class="btn btn-primary" data-bk-text href="%s">%s</a>%s</div>'
             '<p class="small muted">%s</p></div>'
-            % (top, T["day"], T["time"], times, T["biz"], T["sum"], B["smsHref"], T["text"], second,
-               T["fine"] % (bk["minutes"], B["phoneDisplay"])))
+            % (",".join(map(str, hrs["weekday"])), ",".join(map(str, hrs["weekend"])), top, T["day"], T["time"], esc(T["hours"]),
+               T["biz"], T["sum"], B["smsHref"], T["text"], second, T["fine"] % (bk["minutes"], B["phoneDisplay"])))
 
 
 def pay_methods():
@@ -352,14 +363,13 @@ def pay_methods():
 def t_payment():
     pay = D["policies"]["payment"]
     if FLAGS["paymentsLive"]:
-        # Wix Payments: paste the pay button or payment link embed inside this mount.
+        # Paste the pay button or payment link inside this mount.
         return '<div class="card mount" id="wix-payment-mount"></div>'
-    return ('<div class="card placeholder"><span class="tag">Online payment coming soon</span>'
+    how = " or ".join(m.lower() if i else m for i, m in enumerate(pay["methods"]))
+    return ('<div class="card placeholder"><span class="tag">%s</span>'
             '<h2 class="h3">How to pay today</h2>'
-            '<ol class="pay-steps">'
-            '<li><b>Card:</b> pay the invoice Andrew emails you.</li>'
-            '<li><b>Zelle or check:</b> call or text <a href="%s">%s</a> and Andrew will give you the details.</li></ol>'
-            '<p class="muted small">%s</p></div>' % (B["phoneHref"], B["phoneDisplay"], esc(pay["invoiceDue"])))
+            '<p><b>%s.</b> Call or text <a href="%s">%s</a> and Andrew will give you the details.</p>'
+            '<p class="muted small">%s</p></div>' % (esc(pay["soon"]), esc(how), B["phoneHref"], B["phoneDisplay"], esc(pay["invoiceDue"])))
 
 
 def t_deposits():

@@ -5,13 +5,13 @@
 <section class="hero hero-home" id="top"><div class="wrap">
   <div class="hero-copy">
     <p class="hello" id="hello" hidden></p>
-    <h1>Un sitio web que le trae llamadas. Con precio claro, como un buen presupuesto.</h1>
+    <h1>Un sitio web que le trae llamadas.</h1>
     <p class="lede">Sitios web para contratistas y negocios locales en Elgin y Chicagoland. Usted recibe un precio fijo por escrito antes de empezar, y el sitio queda a su nombre.</p>
-    <form class="est" id="demoForm" action="/es.html" autocomplete="off">
-      <div class="est-top"><span class="est-title">Presupuesto</span><time class="est-no" id="estDate"></time></div>
-      <div class="est-row"><label class="est-l" for="dBiz">Preparado para</label><input class="est-in" id="dBiz" name="biz" type="text" maxlength="40" placeholder="Nombre de su negocio" enterkeyhint="done" autocapitalize="words" spellcheck="false"></div>
-      <div class="est-row"><span class="est-l" id="dTradeL">Oficio</span><div class="est-chips" id="dTrades" role="group" aria-labelledby="dTradeL"><noscript>Active JavaScript para probar la muestra.</noscript></div></div>
-      <div class="est-row"><label class="est-l" for="dTown">Ciudad</label><input class="est-in" id="dTown" name="town" type="text" maxlength="28" value="Elgin" autocapitalize="words" spellcheck="false"></div>
+    <form class="try" id="demoForm" action="/es.html" autocomplete="off">
+      <label class="try-l" for="dBiz">Véalo con el nombre de su negocio</label>
+      <input class="try-in" id="dBiz" name="biz" type="text" maxlength="40" placeholder="Nombre de su negocio" enterkeyhint="done" autocapitalize="words" spellcheck="false">
+      <span class="try-l" id="dTradeL">Su oficio</span>
+      <div class="chips-row" id="dTrades" role="group" aria-labelledby="dTradeL"><noscript>Active JavaScript para probar la muestra.</noscript></div>
     </form>
     <div class="btns"><a class="btn btn-primary" href="#llamada">Agende su llamada gratis</a><a class="btn btn-ghost" id="demoText" href="{{sms}}">Escríbale a Andrew</a></div>
     <p class="small muted">Llamada gratis de 20 minutos. Respondemos en menos de 24 horas. Le atiende Andrew, en español.</p>
@@ -29,18 +29,21 @@
       <p class="ps-rev"><span class="ps-stars" aria-hidden="true">&#9734;&#9734;&#9734;&#9734;&#9734;</span><span id="psRev">Aquí se ven sus reseñas de Google</span></p>
       <p class="ps-foot" id="psFoot">Servicio en Elgin y alrededores</p>
     </div></div>
-    <div class="swatches" role="group" aria-label="Colores de muestra"><span>Colores</span>
-      <button type="button" class="sw" style="--a:#1B1C1E;--b:#C8824A" data-pal="0" aria-pressed="true" aria-label="Grafito y cobre"></button>
-      <button type="button" class="sw" style="--a:#0F1A2E;--b:#D9B04F" data-pal="1" aria-pressed="false" aria-label="Azul noche y dorado"></button>
-      <button type="button" class="sw" style="--a:#17251E;--b:#A7CDA8" data-pal="2" aria-pressed="false" aria-label="Verde bosque y salvia"></button>
-      <button type="button" class="sw" style="--a:#FFFFFF;--b:#D9480F" data-pal="3" aria-pressed="false" aria-label="Blanco y naranja"></button>
+    <div class="tune">
+      <div class="swatches" role="group" aria-label="Colores de muestra"><span>Colores</span>
+        <button type="button" class="sw" style="--a:#FAF9F6;--b:#C9A962" data-pal="0" aria-pressed="true" aria-label="Blanco y dorado"></button>
+        <button type="button" class="sw" style="--a:#1B1C1E;--b:#C8824A" data-pal="1" aria-pressed="false" aria-label="Grafito y cobre"></button>
+        <button type="button" class="sw" style="--a:#0F1A2E;--b:#D9B04F" data-pal="2" aria-pressed="false" aria-label="Azul noche y dorado"></button>
+        <button type="button" class="sw" style="--a:#17251E;--b:#A7CDA8" data-pal="3" aria-pressed="false" aria-label="Verde bosque y salvia"></button>
+      </div>
+      <label class="town"><span>Ciudad</span><input id="dTown" name="town" type="text" maxlength="28" value="Elgin" autocapitalize="words" spellcheck="false" form="demoForm"></label>
     </div>
     <p class="small muted demo-note">Esto es una muestra. Su sitio real se diseña con sus fotos, sus servicios y sus colores.</p>
   </div>
 </div></section>
 
-<section class="sec sheet-canary" id="worth" aria-labelledby="worth-h"><div class="wrap">
-  <div class="sec-head"><h2 id="worth-h">¿Cuánto vale una llamada más por semana?</h2><p>Use sus propios números. Es un supuesto, y puede cambiar cada renglón.</p></div>
+<section class="sec band" id="worth" aria-labelledby="worth-h"><div class="wrap">
+  <div class="sec-head"><h2 id="worth-h">¿Cuánto vale una llamada más por semana?</h2><p class="muted">Use sus propios números. Es un supuesto, y puede cambiar cada renglón.</p></div>
   <div class="calc" id="calc" data-pkgs="{{pkgdata}}">
     <div class="lines">
       <div class="line">
@@ -63,7 +66,7 @@
       <p class="total-n" id="cYear">$172,800</p>
       <p class="total-l">al año en trabajo nuevo</p>
       <div class="total-s"><div><b id="cMonth">$14,400</b><span>al mes</span></div><div><b id="cJobs">1.2</b><span>trabajos más al mes</span></div></div>
-      <div class="payback"><div class="est-chips" id="cPkgs" role="group" aria-label="Paquete de sitio web"></div><p id="cPay"></p></div>
+      <div class="payback"><div class="chips-row" id="cPkgs" role="group" aria-label="Paquete de sitio web"></div><p id="cPay"></p></div>
       <div class="btns"><a class="btn btn-primary" href="#llamada">Agende su llamada gratis</a><a class="btn btn-ghost btn-wrap" id="cText" href="{{sms}}">Mandarle estos números a Andrew</a></div>
       <p class="fine">Es un supuesto con sus propios números, no una promesa. Ningún sitio web puede garantizar llamadas. Un sitio que aparece, carga rápido y hace fácil llamarle le da una oportunidad justa de recibirlas.</p>
     </div>
@@ -71,7 +74,7 @@
 </div></section>
 
 <section class="sec" id="price" aria-labelledby="price-h"><div class="wrap">
-  <div class="sec-head"><h2 id="price-h">Lo que cuesta, renglón por renglón.</h2><p class="muted">Precios fijos. Usted recibe su número exacto por escrito en la llamada gratis.</p></div>
+  <div class="sec-head"><h2 id="price-h">Lo que cuesta.</h2><p class="muted">Precios fijos. Usted recibe su número exacto por escrito en la llamada gratis.</p></div>
   {{lineitems}}
   <div class="stamp-row">{{stamp}}<div class="btns"><a class="btn btn-primary" href="#llamada">Agende su llamada gratis</a><a class="btn btn-ghost btn-wrap" href="/pricing.html">Ver qué incluye cada paquete (en inglés)</a></div></div>
 </div></section>
@@ -88,8 +91,7 @@
 <section class="sec" aria-labelledby="me-h"><div class="wrap me">
   <div class="prose">
     <h2 id="me-h">Usted trata directamente conmigo.</h2>
-    <p>Soy Andrew Calles. Calles Group soy yo, aquí en Elgin. Usted trata conmigo desde la primera llamada hasta el día del lanzamiento, y todo el proyecto se puede hacer en español.</p>
-    <p class="me-sig" aria-hidden="true">Andrew Calles</p>
+    <p class="muted">Soy Andrew Calles. Calles Group soy yo, aquí en Elgin. Usted trata conmigo desde la primera llamada hasta el día del lanzamiento, y todo el proyecto se puede hacer en español.</p>
   </div>
   <ul class="facts-list">
     <li>Respuesta en menos de 24 horas</li>
@@ -99,8 +101,8 @@
   </ul>
 </div></section>
 
-<section class="sec sheet-pink" aria-labelledby="faq-h"><div class="wrap narrow">
-  <div class="sec-head"><h2 id="faq-h">La letra chica, en letra grande.</h2></div>
+<section class="sec band" aria-labelledby="faq-h"><div class="wrap narrow">
+  <div class="sec-head"><h2 id="faq-h">Respuestas rápidas.</h2></div>
   {{faqes own-site time-how pay-how}}
   <p class="sec-end"><a href="/faq.html">Más respuestas (en inglés)</a></p>
 </div></section>

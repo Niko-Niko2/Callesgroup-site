@@ -2,7 +2,7 @@
    Everything runs in the visitor's browser. Nothing typed here is sent anywhere unless they tap a text or call button.
 
    Pitch links: add these to the home page address to open it already filled in for one owner.
-     ?b=Business+Name   &t=roofing   &c=Elgin   &p=0..3 (sample colors)
+     ?b=Business+Name   &t=roofing   &c=Elgin   &p=0..3 (sample colors: 0 white and gold, 1 graphite and copper, 2 midnight and gold, 3 forest and sage)
    Trade keys: roofing hvac plumbing remodeling electrical landscaping painting concrete detailing washing other */
 (function () {
   var d = document, es = d.documentElement.lang === "es";
@@ -61,8 +61,9 @@
     },
     smsDemo: function (s) { return s.biz ? "Hola Andrew, soy de " + s.biz + ". Vi la muestra del sitio para mi negocio de " + s.trade.toLowerCase() + " en " + s.town + ". Quiero una llamada gratis." : "Hola Andrew, vi la muestra en callesgroup.com. Quiero una llamada gratis para mi negocio."; },
     smsCalc: function (s, r) { return "Hola Andrew" + (s.biz ? ", soy de " + s.biz : "") + ". Hice las cuentas en su sitio: " + s.trade.toLowerCase() + ", trabajo promedio de " + r.job + ", " + r.calls + " llamadas extra al mes, como " + r.yr + " al año. Hablemos."; },
-    smsBook: function (s, when) { return "Hola Andrew" + (s.biz ? ", soy de " + s.biz : "") + ". Quiero una llamada gratis el " + when + "."; },
-    note: function (s, when) { return "Favor de llamarme: " + when + "." + (s.biz ? " Negocio: " + s.biz + "." : ""); },
+    smsBook: function (s, when) { return "Hola Andrew" + (s.biz ? ", soy de " + s.biz : "") + ". Quiero una llamada gratis " + when + "."; },
+    note: function (s, when) { return "Favor de llamarme " + when + "." + (s.biz ? " Negocio: " + s.biz + "." : ""); },
+    today: "Hoy", when: function (day, time, isToday) { return (isToday ? "hoy" : "el " + day) + " a las " + time; },
     loc: "es-US"
   } : {
     biz: "Your Business Name", kick: function (t, c) { return t + " in " + c; }, call: "Call now", quote: "Free estimate",
@@ -79,7 +80,8 @@
     smsDemo: function (s) { return s.biz ? "Hi Andrew, it's " + s.biz + ". I saw the sample site for my " + s.trade.toLowerCase() + " business in " + s.town + ". I'd like a free quote call." : "Hi Andrew, I saw the sample site on callesgroup.com. I'd like a free quote call for my business."; },
     smsCalc: function (s, r) { return "Hi Andrew" + (s.biz ? ", it's " + s.biz : "") + ". I ran the numbers on your site: " + s.trade.toLowerCase() + ", average job " + r.job + ", " + r.calls + " extra calls a month, about " + r.yr + " a year. Let's talk."; },
     smsBook: function (s, when) { return "Hi Andrew" + (s.biz ? ", it's " + s.biz : "") + ". I'd like a free quote call " + when + "."; },
-    note: function (s, when) { return "Please call me: " + when + "." + (s.biz ? " Business: " + s.biz + "." : ""); },
+    note: function (s, when) { return "Please call me " + when + "." + (s.biz ? " Business: " + s.biz + "." : ""); },
+    today: "Today", when: function (day, time, isToday) { return (isToday ? "today" : day) + " at " + time; },
     loc: "en-US"
   };
 
@@ -139,18 +141,13 @@
     var show = function () { if (S.biz && innerWidth < 940) $("demo").scrollIntoView({ block: "center", behavior: reduce ? "auto" : "smooth" }); };
     bizIn.addEventListener("change", show);
     $("demoForm").addEventListener("submit", function (e) { e.preventDefault(); bizIn.blur(); townIn.blur(); });
-    var dt = $("estDate");
-    if (dt) dt.textContent = new Date().toLocaleDateString(T.loc, { month: "short", day: "numeric", year: "numeric" });
     paint(false);
     // Keep the chosen trade in view inside the row of trade buttons.
     var on = chips.querySelector('[aria-pressed="true"]');
     if (on) chips.scrollLeft = Math.max(0, on.getBoundingClientRect().left - chips.getBoundingClientRect().left + chips.scrollLeft - 40);
-    // Opened from a pitch link: greet the owner by name, written in by hand.
+    // Opened from a pitch link: greet the owner by name.
     var hello = $("hello");
-    if (hello && linked) {
-      hello.textContent = T.hello(S.biz); hello.hidden = false; hello.classList.add("write");
-      requestAnimationFrame(function () { requestAnimationFrame(function () { hello.classList.add("go"); }); });
-    }
+    if (hello && linked) { hello.textContent = T.hello(S.biz); hello.hidden = false; }
   }
 
   /* ---------- 2. The what-if calculator ---------- */
@@ -194,29 +191,32 @@
   }
 
   /* ---------- 3. Ask for a call time ---------- */
+  // The times offered are Andrew's call hours, set in data/offers.json and passed in on the element.
   [].forEach.call(d.querySelectorAll("[data-bk]"), function (bk) {
     var days = bk.querySelector("[data-bk-days]"), times = bk.querySelector("[data-bk-times]"), biz = bk.querySelector("#bkBiz");
     var sum = bk.querySelector("[data-bk-sum]"), text = bk.querySelector("[data-bk-text]"), form = bk.querySelector("[data-bk-form]");
-    var now = new Date();
-    for (var i = 1; i <= 6; i++) {
+    var nums = function (v, fallback) { var a = String(v || "").split(",").map(Number).filter(function (n) { return n >= 0 && n < 24; }); return a.length ? a : fallback; };
+    var hours = { wd: nums(bk.dataset.weekday, [18, 19, 20]), we: nums(bk.dataset.weekend, [15, 16, 17, 18]) };
+    var now = new Date(), list = [], cur = 0;
+    // Today is offered only while a call time is still at least an hour or so away.
+    for (var i = 0; list.length < 6 && i < 12; i++) {
       var day = new Date(now.getFullYear(), now.getMonth(), now.getDate() + i);
-      var b = d.createElement("button"); b.type = "button"; b.className = "pick";
-      b.textContent = day.toLocaleDateString(T.loc, { weekday: "short", month: "short", day: "numeric" });
-      b.setAttribute("aria-pressed", i === 1); days.appendChild(b);
+      var hrs = (day.getDay() === 0 || day.getDay() === 6) ? hours.we : hours.wd;
+      if (i === 0) hrs = hrs.filter(function (h) { return h >= now.getHours() + 2; });
+      if (hrs.length) list.push({ label: day.toLocaleDateString(T.loc, { weekday: "short", month: "short", day: "numeric" }), hrs: hrs, today: i === 0 });
     }
+    var button = function (label, on) { var b = d.createElement("button"); b.type = "button"; b.className = "pick"; b.textContent = label; b.setAttribute("aria-pressed", on); return b; };
+    var clock = function (h) { return new Date(2000, 0, 1, h).toLocaleTimeString(T.loc, { hour: "numeric", minute: "2-digit" }); };
+    list.forEach(function (it, i) { var b = button(it.today ? T.today : it.label, i === 0); b.dataset.i = i; days.appendChild(b); });
+    var fillTimes = function () { times.textContent = ""; list[cur].hrs.forEach(function (h, j) { times.appendChild(button(clock(h), j === 0)); }); };
     if (biz) biz.value = S.biz;
-    var when = function () {
-      var dd = days.querySelector('[aria-pressed="true"]'), tt = times.querySelector('[aria-pressed="true"]');
-      return (dd ? dd.textContent : "") + ", " + (tt ? tt.textContent.toLowerCase() : "");
-    };
-    var paint = function () {
-      var w = when(); sum.textContent = w;
-      text.href = sms(T.smsBook(view(), w));
-    };
-    [days, times].forEach(function (g) { g.addEventListener("click", function (e) { var b = e.target.closest("button"); if (!b) return; press(g, b); paint(); }); });
+    var when = function () { var it = list[cur], tt = times.querySelector('[aria-pressed="true"]'); return T.when(it.label, tt ? tt.textContent : "", it.today); };
+    var paint = function () { var w = when(); sum.textContent = w.charAt(0).toUpperCase() + w.slice(1); text.href = sms(T.smsBook(view(), w)); };
+    days.addEventListener("click", function (e) { var b = e.target.closest("button"); if (!b) return; cur = +b.dataset.i; press(days, b); fillTimes(); paint(); });
+    times.addEventListener("click", function (e) { var b = e.target.closest("button"); if (!b) return; press(times, b); paint(); });
     if (biz) biz.addEventListener("input", function () { S.biz = clean(biz.value, 40); save(); paint(); });
     // "Have Andrew call me": carry the chosen time into the quote form's message box.
     if (form) form.addEventListener("click", function () { window.CG_CALL_NOTE = T.note(view(), when()); if (window.cgSetNote) window.cgSetNote(); });
-    paint();
+    fillTimes(); paint();
   });
 })();

@@ -5,13 +5,13 @@
 <section class="hero hero-home" id="top"><div class="wrap">
   <div class="hero-copy">
     <p class="hello" id="hello" hidden></p>
-    <h1>A website that gets you calls. Priced like a real estimate.</h1>
+    <h1>A website that gets you calls.</h1>
     <p class="lede">Websites for contractors and local businesses in Elgin and Chicagoland. You get a flat price in writing before any work starts, and the site is yours.</p>
-    <form class="est" id="demoForm" action="/contact.html" autocomplete="off">
-      <div class="est-top"><span class="est-title">Estimate</span><time class="est-no" id="estDate"></time></div>
-      <div class="est-row"><label class="est-l" for="dBiz">Prepared for</label><input class="est-in" id="dBiz" name="biz" type="text" maxlength="40" placeholder="Your business name" enterkeyhint="done" autocapitalize="words" spellcheck="false"></div>
-      <div class="est-row"><span class="est-l" id="dTradeL">Trade</span><div class="est-chips" id="dTrades" role="group" aria-labelledby="dTradeL"><noscript>Turn on JavaScript to try the sample.</noscript></div></div>
-      <div class="est-row"><label class="est-l" for="dTown">Town</label><input class="est-in" id="dTown" name="town" type="text" maxlength="28" value="Elgin" autocapitalize="words" spellcheck="false"></div>
+    <form class="try" id="demoForm" action="/contact.html" autocomplete="off">
+      <label class="try-l" for="dBiz">See it with your business name</label>
+      <input class="try-in" id="dBiz" name="biz" type="text" maxlength="40" placeholder="Type your business name" enterkeyhint="done" autocapitalize="words" spellcheck="false">
+      <span class="try-l" id="dTradeL">Your trade</span>
+      <div class="chips-row" id="dTrades" role="group" aria-labelledby="dTradeL"><noscript>Turn on JavaScript to try the sample.</noscript></div>
     </form>
     <div class="btns"><a class="btn btn-primary" href="/contact.html#book">Book a free call</a><a class="btn btn-ghost" id="demoText" href="{{sms}}">Text Andrew</a></div>
     <p class="small muted">Free 20-minute quote call. Replies {{reply}}, from Andrew, not a bot.</p>
@@ -29,18 +29,21 @@
       <p class="ps-rev"><span class="ps-stars" aria-hidden="true">&#9734;&#9734;&#9734;&#9734;&#9734;</span><span id="psRev">Your Google reviews show here</span></p>
       <p class="ps-foot" id="psFoot">Serving Elgin and nearby towns</p>
     </div></div>
-    <div class="swatches" role="group" aria-label="Sample colors"><span>Colors</span>
-      <button type="button" class="sw" style="--a:#1B1C1E;--b:#C8824A" data-pal="0" aria-pressed="true" aria-label="Graphite and copper"></button>
-      <button type="button" class="sw" style="--a:#0F1A2E;--b:#D9B04F" data-pal="1" aria-pressed="false" aria-label="Midnight and gold"></button>
-      <button type="button" class="sw" style="--a:#17251E;--b:#A7CDA8" data-pal="2" aria-pressed="false" aria-label="Forest and sage"></button>
-      <button type="button" class="sw" style="--a:#FFFFFF;--b:#D9480F" data-pal="3" aria-pressed="false" aria-label="White and orange"></button>
+    <div class="tune">
+      <div class="swatches" role="group" aria-label="Sample colors"><span>Colors</span>
+        <button type="button" class="sw" style="--a:#FAF9F6;--b:#C9A962" data-pal="0" aria-pressed="true" aria-label="White and gold"></button>
+        <button type="button" class="sw" style="--a:#1B1C1E;--b:#C8824A" data-pal="1" aria-pressed="false" aria-label="Graphite and copper"></button>
+        <button type="button" class="sw" style="--a:#0F1A2E;--b:#D9B04F" data-pal="2" aria-pressed="false" aria-label="Midnight and gold"></button>
+        <button type="button" class="sw" style="--a:#17251E;--b:#A7CDA8" data-pal="3" aria-pressed="false" aria-label="Forest and sage"></button>
+      </div>
+      <label class="town"><span>Town</span><input id="dTown" name="town" type="text" maxlength="28" value="Elgin" autocapitalize="words" spellcheck="false" form="demoForm"></label>
     </div>
     <p class="small muted demo-note">This is a sample. Your real site is designed around your own photos, services and colors.</p>
   </div>
 </div></section>
 
-<section class="sec sheet-canary" id="worth" aria-labelledby="worth-h"><div class="wrap">
-  <div class="sec-head"><h2 id="worth-h">What is one more call a week worth?</h2><p>Use your own numbers. This is a what-if, and every line can be changed.</p></div>
+<section class="sec band" id="worth" aria-labelledby="worth-h"><div class="wrap">
+  <div class="sec-head"><h2 id="worth-h">What is one more call a week worth?</h2><p class="muted">Use your own numbers. This is a what-if, and every line can be changed.</p></div>
   <div class="calc" id="calc" data-pkgs="{{pkgdata}}">
     <div class="lines">
       <div class="line">
@@ -63,7 +66,7 @@
       <p class="total-n" id="cYear">$172,800</p>
       <p class="total-l">a year in new work</p>
       <div class="total-s"><div><b id="cMonth">$14,400</b><span>a month</span></div><div><b id="cJobs">1.2</b><span>more jobs a month</span></div></div>
-      <div class="payback"><div class="est-chips" id="cPkgs" role="group" aria-label="Website package"></div><p id="cPay"></p></div>
+      <div class="payback"><div class="chips-row" id="cPkgs" role="group" aria-label="Website package"></div><p id="cPay"></p></div>
       <div class="btns"><a class="btn btn-primary" href="/contact.html#book">Book a free call</a><a class="btn btn-ghost" id="cText" href="{{sms}}">Text Andrew these numbers</a></div>
       <p class="fine">A what-if with your own numbers, not a promise. No website can guarantee calls. A site that shows up, loads fast and makes calling easy gives you a fair shot at them.</p>
     </div>
@@ -71,7 +74,7 @@
 </div></section>
 
 <section class="sec" id="price" aria-labelledby="price-h"><div class="wrap">
-  <div class="sec-head"><h2 id="price-h">What it costs, line by line.</h2><p class="muted">Flat prices. You get your exact number in writing on the free quote call.</p></div>
+  <div class="sec-head"><h2 id="price-h">What it costs.</h2><p class="muted">Flat prices. You get your exact number in writing on the free quote call.</p></div>
   {{lineitems}}
   <div class="stamp-row">{{stamp}}<div class="btns"><a class="btn btn-primary" href="/contact.html#book">Book a free call</a><a class="btn btn-ghost" href="/pricing.html">See what each package includes</a></div></div>
 </div></section>
@@ -88,8 +91,7 @@
 <section class="sec" aria-labelledby="me-h"><div class="wrap me">
   <div class="prose">
     <h2 id="me-h">You work with me directly.</h2>
-    <p>I'm Andrew Calles. Calles Group is me, based in Elgin. You work with me from the first call to launch day. No account managers, no call center, no handoffs.</p>
-    <p class="me-sig" aria-hidden="true">Andrew Calles</p>
+    <p class="muted">I'm Andrew Calles. Calles Group is me, based in Elgin. You work with me from the first call to launch day. No account managers, no call center, no handoffs.</p>
   </div>
   <ul class="facts-list">
     <li>Replies {{reply}}</li>
@@ -105,8 +107,8 @@
   <div class="row"><!-- Real reviews or project cards go here. --></div>
 </div></section>
 
-<section class="sec sheet-pink" aria-labelledby="faq-h"><div class="wrap narrow">
-  <div class="sec-head"><h2 id="faq-h">The fine print, in big print.</h2></div>
+<section class="sec band" aria-labelledby="faq-h"><div class="wrap narrow">
+  <div class="sec-head"><h2 id="faq-h">Quick answers.</h2></div>
   {{faq own-site time-how pay-how}}
   <p class="sec-end"><a href="/faq.html">See all questions</a></p>
 </div></section>

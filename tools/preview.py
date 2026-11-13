@@ -14,10 +14,10 @@ import shutil
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "_preview")
-BAR = ('<div style="background:#FFE66B;border-bottom:2px solid #0A2A9E;padding:8px 14px;font:700 14px/1.4 \'Libre Franklin\',Arial,sans-serif;color:#0F1B4C;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center">'
+BAR = ('<div style="background:#1E1E1E;border-bottom:1px solid #2E2C29;padding:9px 16px;font:600 13px/1.4 Montserrat,Arial,sans-serif;color:#A8A49E;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center">'
        '<span>Preview. Not live.</span>'
-       '<a href="index.html?b=Aguilera%27s+Painters&amp;t=painting&amp;c=Bartlett&amp;p=1" style="color:#0A2A9E">Open as a pitch link</a>'
-       '<a href="es.html?b=Aguilera%27s+Painters&amp;t=painting&amp;c=Bartlett&amp;p=1" style="color:#0A2A9E">En espa&ntilde;ol</a></div>')
+       '<a href="index.html?b=Aguilera%27s+Painters&amp;t=painting&amp;c=Bartlett&amp;p=1" style="color:#C9A962">Open as a pitch link</a>'
+       '<a href="es.html?b=Aguilera%27s+Painters&amp;t=painting&amp;c=Bartlett&amp;p=1" style="color:#C9A962">En espa&ntilde;ol</a></div>')
 NOTE = ('<script>document.getElementById("quote").innerHTML=\'<p style="padding:8px 0 24px"><b>The quote form loads here on the real site.</b> '
         'It is the same Wix form that is live today, so leads keep landing in Wix.</p>\';</script>')
 

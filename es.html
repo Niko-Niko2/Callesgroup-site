@@ -10,7 +10,7 @@
 <link rel="alternate" hreflang="es" href="https://www.callesgroup.com/es.html">
 <link rel="alternate" hreflang="x-default" href="https://www.callesgroup.com/">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#0A2A9E">
+<meta name="theme-color" content="#151515">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Calles Group">
 <meta property="og:title" content="Diseño de Páginas Web en Elgin, IL | Calles Group">
@@ -21,8 +21,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/assets/fonts/big-shoulders-display.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/libre-franklin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/montserrat.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/styles.css">
 <script>document.documentElement.classList.add("js")</script>
 </head>
@@ -43,13 +42,13 @@
 <section class="hero hero-home" id="top"><div class="wrap">
   <div class="hero-copy">
     <p class="hello" id="hello" hidden></p>
-    <h1>Un sitio web que le trae llamadas. Con precio claro, como un buen presupuesto.</h1>
+    <h1>Un sitio web que le trae llamadas.</h1>
     <p class="lede">Sitios web para contratistas y negocios locales en Elgin y Chicagoland. Usted recibe un precio fijo por escrito antes de empezar, y el sitio queda a su nombre.</p>
-    <form class="est" id="demoForm" action="/es.html" autocomplete="off">
-      <div class="est-top"><span class="est-title">Presupuesto</span><time class="est-no" id="estDate"></time></div>
-      <div class="est-row"><label class="est-l" for="dBiz">Preparado para</label><input class="est-in" id="dBiz" name="biz" type="text" maxlength="40" placeholder="Nombre de su negocio" enterkeyhint="done" autocapitalize="words" spellcheck="false"></div>
-      <div class="est-row"><span class="est-l" id="dTradeL">Oficio</span><div class="est-chips" id="dTrades" role="group" aria-labelledby="dTradeL"><noscript>Active JavaScript para probar la muestra.</noscript></div></div>
-      <div class="est-row"><label class="est-l" for="dTown">Ciudad</label><input class="est-in" id="dTown" name="town" type="text" maxlength="28" value="Elgin" autocapitalize="words" spellcheck="false"></div>
+    <form class="try" id="demoForm" action="/es.html" autocomplete="off">
+      <label class="try-l" for="dBiz">Véalo con el nombre de su negocio</label>
+      <input class="try-in" id="dBiz" name="biz" type="text" maxlength="40" placeholder="Nombre de su negocio" enterkeyhint="done" autocapitalize="words" spellcheck="false">
+      <span class="try-l" id="dTradeL">Su oficio</span>
+      <div class="chips-row" id="dTrades" role="group" aria-labelledby="dTradeL"><noscript>Active JavaScript para probar la muestra.</noscript></div>
     </form>
     <div class="btns"><a class="btn btn-primary" href="#llamada">Agende su llamada gratis</a><a class="btn btn-ghost" id="demoText" href="sms:+13126000590">Escríbale a Andrew</a></div>
     <p class="small muted">Llamada gratis de 20 minutos. Respondemos en menos de 24 horas. Le atiende Andrew, en español.</p>
@@ -67,18 +66,21 @@
       <p class="ps-rev"><span class="ps-stars" aria-hidden="true">&#9734;&#9734;&#9734;&#9734;&#9734;</span><span id="psRev">Aquí se ven sus reseñas de Google</span></p>
       <p class="ps-foot" id="psFoot">Servicio en Elgin y alrededores</p>
     </div></div>
-    <div class="swatches" role="group" aria-label="Colores de muestra"><span>Colores</span>
-      <button type="button" class="sw" style="--a:#1B1C1E;--b:#C8824A" data-pal="0" aria-pressed="true" aria-label="Grafito y cobre"></button>
-      <button type="button" class="sw" style="--a:#0F1A2E;--b:#D9B04F" data-pal="1" aria-pressed="false" aria-label="Azul noche y dorado"></button>
-      <button type="button" class="sw" style="--a:#17251E;--b:#A7CDA8" data-pal="2" aria-pressed="false" aria-label="Verde bosque y salvia"></button>
-      <button type="button" class="sw" style="--a:#FFFFFF;--b:#D9480F" data-pal="3" aria-pressed="false" aria-label="Blanco y naranja"></button>
+    <div class="tune">
+      <div class="swatches" role="group" aria-label="Colores de muestra"><span>Colores</span>
+        <button type="button" class="sw" style="--a:#FAF9F6;--b:#C9A962" data-pal="0" aria-pressed="true" aria-label="Blanco y dorado"></button>
+        <button type="button" class="sw" style="--a:#1B1C1E;--b:#C8824A" data-pal="1" aria-pressed="false" aria-label="Grafito y cobre"></button>
+        <button type="button" class="sw" style="--a:#0F1A2E;--b:#D9B04F" data-pal="2" aria-pressed="false" aria-label="Azul noche y dorado"></button>
+        <button type="button" class="sw" style="--a:#17251E;--b:#A7CDA8" data-pal="3" aria-pressed="false" aria-label="Verde bosque y salvia"></button>
+      </div>
+      <label class="town"><span>Ciudad</span><input id="dTown" name="town" type="text" maxlength="28" value="Elgin" autocapitalize="words" spellcheck="false" form="demoForm"></label>
     </div>
     <p class="small muted demo-note">Esto es una muestra. Su sitio real se diseña con sus fotos, sus servicios y sus colores.</p>
   </div>
 </div></section>
 
-<section class="sec sheet-canary" id="worth" aria-labelledby="worth-h"><div class="wrap">
-  <div class="sec-head"><h2 id="worth-h">¿Cuánto vale una llamada más por semana?</h2><p>Use sus propios números. Es un supuesto, y puede cambiar cada renglón.</p></div>
+<section class="sec band" id="worth" aria-labelledby="worth-h"><div class="wrap">
+  <div class="sec-head"><h2 id="worth-h">¿Cuánto vale una llamada más por semana?</h2><p class="muted">Use sus propios números. Es un supuesto, y puede cambiar cada renglón.</p></div>
   <div class="calc" id="calc" data-pkgs="[{&quot;k&quot;: &quot;launch&quot;, &quot;n&quot;: &quot;Launch&quot;, &quot;p&quot;: 1500}, {&quot;k&quot;: &quot;growth&quot;, &quot;n&quot;: &quot;Growth&quot;, &quot;p&quot;: 2500}, {&quot;k&quot;: &quot;premium&quot;, &quot;n&quot;: &quot;Premium&quot;, &quot;p&quot;: 4100}]">
     <div class="lines">
       <div class="line">
@@ -101,7 +103,7 @@
       <p class="total-n" id="cYear">$172,800</p>
       <p class="total-l">al año en trabajo nuevo</p>
       <div class="total-s"><div><b id="cMonth">$14,400</b><span>al mes</span></div><div><b id="cJobs">1.2</b><span>trabajos más al mes</span></div></div>
-      <div class="payback"><div class="est-chips" id="cPkgs" role="group" aria-label="Paquete de sitio web"></div><p id="cPay"></p></div>
+      <div class="payback"><div class="chips-row" id="cPkgs" role="group" aria-label="Paquete de sitio web"></div><p id="cPay"></p></div>
       <div class="btns"><a class="btn btn-primary" href="#llamada">Agende su llamada gratis</a><a class="btn btn-ghost btn-wrap" id="cText" href="sms:+13126000590">Mandarle estos números a Andrew</a></div>
       <p class="fine">Es un supuesto con sus propios números, no una promesa. Ningún sitio web puede garantizar llamadas. Un sitio que aparece, carga rápido y hace fácil llamarle le da una oportunidad justa de recibirlas.</p>
     </div>
@@ -109,8 +111,8 @@
 </div></section>
 
 <section class="sec" id="price" aria-labelledby="price-h"><div class="wrap">
-  <div class="sec-head"><h2 id="price-h">Lo que cuesta, renglón por renglón.</h2><p class="muted">Precios fijos. Usted recibe su número exacto por escrito en la llamada gratis.</p></div>
-  <div class="items"><a class="item" href="/pricing.html#p-launch"><span class="item-n">Launch</span><span class="item-p">$1,500</span><span class="item-d">Entre a internet con un sitio limpio y profesional. Hasta 3 páginas. De 1 a 2 semanas.</span></a><a class="item" href="/pricing.html#p-growth"><span class="item-n">Growth<span class="tag">El más pedido</span></span><span class="item-p">$2,500</span><span class="item-d">Un sitio a la medida, hecho para traer clientes. Hasta 5 páginas, diseño a la medida. De 2 a 3 semanas.</span></a><a class="item" href="/pricing.html#p-premium"><span class="item-n">Premium</span><span class="item-p">$4,100</span><span class="item-d">El sitio completo, con los textos escritos por nosotros. Hasta 8 páginas, textos y sesión de fotos. De 3 a 4 semanas.</span></a><a class="item sub" href="/pricing.html#branding"><span class="item-n">Logo</span><span class="item-p">$500</span><span class="item-d">3 propuestas, 2 rondas de cambios y todos los archivos.</span></a><a class="item sub" href="/pricing.html#branding"><span class="item-n">Brand Kit</span><span class="item-p">$1,100</span><span class="item-d">¿También quiere sitio web? Agregue el Brand Kit por $900 en lugar de $1,100.</span></a><a class="item sub" href="/pricing.html#branding"><span class="item-n">Sesión de fotos</span><span class="item-p">$400</span><span class="item-d">Hasta 1 hora en su negocio y 25 fotos editadas.</span></a><a class="item sub" href="/care-plans.html"><span class="item-n">Planes de mantenimiento</span><span class="item-p"><small>desde</small> $99<small>/mes</small></span><span class="item-d">Mantenemos su sitio funcionando y al día. Cancele cuando quiera.</span></a><div class="item due"><span class="item-n">A pagar hoy</span><span class="item-p">$0</span><span class="item-d">La llamada de 20 minutos es gratis.</span></div></div>
+  <div class="sec-head"><h2 id="price-h">Lo que cuesta.</h2><p class="muted">Precios fijos. Usted recibe su número exacto por escrito en la llamada gratis.</p></div>
+  <div class="items"><h3 class="items-h">Sitios web</h3><a class="item" href="/pricing.html#p-launch"><span class="item-n">Launch</span><span class="item-p">$1,500</span><span class="item-d">Entre a internet con un sitio limpio y profesional.</span><span class="item-s"><i>Hasta 3 páginas</i><i>De 1 a 2 semanas</i></span></a><a class="item" href="/pricing.html#p-growth"><span class="item-n">Growth<span class="tag">El más pedido</span></span><span class="item-p">$2,500</span><span class="item-d">Un sitio a la medida, hecho para traer clientes.</span><span class="item-s"><i>Hasta 5 páginas</i><i>De 2 a 3 semanas</i></span></a><a class="item" href="/pricing.html#p-premium"><span class="item-n">Premium</span><span class="item-p">$4,100</span><span class="item-d">El sitio completo, con los textos escritos por nosotros.</span><span class="item-s"><i>Hasta 8 páginas</i><i>De 3 a 4 semanas</i></span></a><h3 class="items-h">Extras</h3><a class="item sub" href="/pricing.html#branding"><span class="item-n">Logo</span><span class="item-p">$500</span><span class="item-d">3 propuestas, 2 rondas de cambios y todos los archivos.</span></a><a class="item sub" href="/pricing.html#branding"><span class="item-n">Brand Kit</span><span class="item-p">$1,100</span><span class="item-d">¿También quiere sitio web? Agregue el Brand Kit por $900 en lugar de $1,100.</span></a><a class="item sub" href="/pricing.html#branding"><span class="item-n">Sesión de fotos</span><span class="item-p">$400</span><span class="item-d">Hasta 1 hora en su negocio y 25 fotos editadas.</span></a><h3 class="items-h">Mantenimiento mensual</h3><a class="item sub" href="/care-plans.html"><span class="item-n">Planes de mantenimiento</span><span class="item-p"><small>desde</small> $99<small>/mes</small></span><span class="item-d">Mantenemos su sitio funcionando y al día. Cancele cuando quiera.</span></a><div class="item due"><span class="item-n">A pagar hoy</span><span class="item-p">$0</span><span class="item-d">La llamada de 20 minutos es gratis.</span></div></div>
   <div class="stamp-row"><div class="stamp"><b>Oferta para clientes fundadores</b><span>Launch por $1,200 (normalmente $1,500). Solo los primeros 3 clientes, a cambio de una reseña en Google y un caso de estudio.</span><i>Quedan 3 de 3 lugares</i></div><div class="btns"><a class="btn btn-primary" href="#llamada">Agende su llamada gratis</a><a class="btn btn-ghost btn-wrap" href="/pricing.html">Ver qué incluye cada paquete (en inglés)</a></div></div>
 </div></section>
 
@@ -126,8 +128,7 @@
 <section class="sec" aria-labelledby="me-h"><div class="wrap me">
   <div class="prose">
     <h2 id="me-h">Usted trata directamente conmigo.</h2>
-    <p>Soy Andrew Calles. Calles Group soy yo, aquí en Elgin. Usted trata conmigo desde la primera llamada hasta el día del lanzamiento, y todo el proyecto se puede hacer en español.</p>
-    <p class="me-sig" aria-hidden="true">Andrew Calles</p>
+    <p class="muted">Soy Andrew Calles. Calles Group soy yo, aquí en Elgin. Usted trata conmigo desde la primera llamada hasta el día del lanzamiento, y todo el proyecto se puede hacer en español.</p>
   </div>
   <ul class="facts-list">
     <li>Respuesta en menos de 24 horas</li>
@@ -137,21 +138,20 @@
   </ul>
 </div></section>
 
-<section class="sec sheet-pink" aria-labelledby="faq-h"><div class="wrap narrow">
-  <div class="sec-head"><h2 id="faq-h">La letra chica, en letra grande.</h2></div>
-  <div class="acc "><div class="acc-item"><h3><button type="button" class="acc-btn" aria-expanded="false" aria-controls="a-own-site" id="q-own-site">¿El sitio web es mío?<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h3><div class="acc-body" id="a-own-site" role="region" aria-labelledby="q-own-site"><div><div class="acc-in"><p>Sí. Su cuenta de Wix y su dominio quedan a su nombre, y usted le paga a Wix directamente. Los archivos de su logo y el acceso completo de administrador se entregan después del pago final.</p></div></div></div></div><div class="acc-item"><h3><button type="button" class="acc-btn" aria-expanded="false" aria-controls="a-time-how" id="q-time-how">¿Cuánto tarda un sitio web?<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h3><div class="acc-body" id="a-time-how" role="region" aria-labelledby="q-time-how"><div><div class="acc-in"><p>De 1 a 4 semanas según el paquete: de 1 a 2 semanas para Launch, de 2 a 3 para Growth y de 3 a 4 para Premium. El tiempo empieza a contar cuando tenemos sus textos, fotos y logo.</p></div></div></div></div><div class="acc-item"><h3><button type="button" class="acc-btn" aria-expanded="false" aria-controls="a-pay-how" id="q-pay-how">¿Cómo se paga?<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h3><div class="acc-body" id="a-pay-how" role="region" aria-labelledby="q-pay-how"><div><div class="acc-in"><p>Un depósito del 50% inicia el proyecto y el resto se paga antes del lanzamiento. Los proyectos de más de $2,500 se dividen en 50% al inicio, 25% al aprobar el diseño y 25% antes del lanzamiento. Puede pagar con tarjeta por medio de una factura de Wix, por Zelle o con cheque. Las facturas vencen en 7 días.</p></div></div></div></div></div>
+<section class="sec band" aria-labelledby="faq-h"><div class="wrap narrow">
+  <div class="sec-head"><h2 id="faq-h">Respuestas rápidas.</h2></div>
+  <div class="acc "><div class="acc-item"><h3><button type="button" class="acc-btn" aria-expanded="false" aria-controls="a-own-site" id="q-own-site">¿El sitio web es mío?<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h3><div class="acc-body" id="a-own-site" role="region" aria-labelledby="q-own-site"><div><div class="acc-in"><p>Sí. Su cuenta de Wix y su dominio quedan a su nombre, y usted le paga a Wix directamente. Los archivos de su logo y el acceso completo de administrador se entregan después del pago final.</p></div></div></div></div><div class="acc-item"><h3><button type="button" class="acc-btn" aria-expanded="false" aria-controls="a-time-how" id="q-time-how">¿Cuánto tarda un sitio web?<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h3><div class="acc-body" id="a-time-how" role="region" aria-labelledby="q-time-how"><div><div class="acc-in"><p>De 1 a 4 semanas según el paquete: de 1 a 2 semanas para Launch, de 2 a 3 para Growth y de 3 a 4 para Premium. El tiempo empieza a contar cuando tenemos sus textos, fotos y logo.</p></div></div></div></div><div class="acc-item"><h3><button type="button" class="acc-btn" aria-expanded="false" aria-controls="a-pay-how" id="q-pay-how">¿Cómo se paga?<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h3><div class="acc-body" id="a-pay-how" role="region" aria-labelledby="q-pay-how"><div><div class="acc-in"><p>Un depósito del 50% inicia el proyecto y el resto se paga antes del lanzamiento. Los proyectos de más de $2,500 se dividen en 50% al inicio, 25% al aprobar el diseño y 25% antes del lanzamiento. Puede pagar por Zelle o en efectivo. Pronto aceptaremos tarjeta. Las facturas vencen en 7 días.</p></div></div></div></div></div>
   <p class="sec-end"><a href="/faq.html">Más respuestas (en inglés)</a></p>
 </div></section>
 
 <section class="sec" id="llamada" aria-labelledby="bk-h"><div class="wrap narrow">
   <div class="sec-head"><h2 id="bk-h">Agende su llamada gratis.</h2><p class="muted">Escoja el día y la hora que le queden mejor.</p></div>
-  <div class="bk" data-bk><fieldset class="bk-group"><legend>¿Qué día?</legend><div class="bk-picks" data-bk-days></div></fieldset><fieldset class="bk-group"><legend>¿A qué hora?</legend><div class="bk-picks" data-bk-times><button type="button" class="pick" aria-pressed="false" data-v="morning">En la mañana</button><button type="button" class="pick" aria-pressed="false" data-v="midday">A mediodía</button><button type="button" class="pick" aria-pressed="true" data-v="evening">Después de las 5</button></div></fieldset><div><label class="bk-l" for="bkBiz">El nombre de su negocio</label><input class="bk-in" id="bkBiz" type="text" maxlength="40" autocomplete="organization"></div><p class="bk-sum" aria-live="polite">Usted pide: <span class="hand" data-bk-sum></span></p><div class="btns"><a class="btn btn-primary" data-bk-text href="sms:+13126000590">Mandar por mensaje a Andrew</a><a class="btn btn-ghost" href="tel:+13126000590">Llamar ahora</a></div><p class="small muted">Llamada gratis de 20 minutos, en persona o por video. Andrew le confirma la hora exacta por mensaje. Desde una computadora, escriba al 312-600-0590.</p></div>
+  <div class="bk" data-bk data-weekday="18,19,20" data-weekend="15,16,17,18,19,20"><fieldset class="bk-group"><legend>¿Qué día?</legend><div class="bk-picks" data-bk-days></div></fieldset><fieldset class="bk-group"><legend>¿A qué hora?</legend><div class="bk-picks" data-bk-times></div><p class="small muted">Entre semana después de las 6 pm. Sábado y domingo después de las 3 pm.</p></fieldset><div><label class="bk-l" for="bkBiz">El nombre de su negocio</label><input class="bk-in" id="bkBiz" type="text" maxlength="40" autocomplete="organization"></div><p class="bk-sum" aria-live="polite">Usted pide: <span data-bk-sum></span></p><div class="btns"><a class="btn btn-primary" data-bk-text href="sms:+13126000590">Mandar por mensaje a Andrew</a><a class="btn btn-ghost" href="tel:+13126000590">Llamar ahora</a></div><p class="small muted">Llamada gratis de 20 minutos, en persona o por video. Andrew le confirma la hora por mensaje. Desde una computadora, escriba al 312-600-0590.</p></div>
 </div></section>
 
 <section class="sec cta-band" aria-labelledby="cta-h"><div class="wrap">
   <h2 id="cta-h">Su negocio es bueno. Que se vea así.</h2>
   <p class="muted prose">Cuénteme de su negocio y le respondo en menos de 24 horas con un plan y un precio fijo.</p>
-  <p class="sign" aria-hidden="true">X <span>su nombre aquí</span></p>
   <div class="btns"><a class="btn btn-primary" href="/es.html#llamada">Agende su llamada gratis</a><a class="btn btn-ghost" href="sms:+13126000590">Escríbale a Andrew</a></div>
   <p class="small">O llame al <a href="tel:+13126000590">312-600-0590</a>. Respondemos en menos de 24 horas.</p>
 </div></section>

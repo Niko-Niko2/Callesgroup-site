@@ -19,7 +19,24 @@
       "service": "Free quote call",
       "minutes": 20,
       "where": "In person or video",
-      "url": ""
+      "url": "",
+      "hours": {
+        "weekday": [
+          18,
+          19,
+          20
+        ],
+        "weekend": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ]
+      },
+      "hoursNote": "Weekdays after 6pm. Saturday and Sunday after 3pm.",
+      "hoursNote_es": "Entre semana después de las 6 pm. Sábado y domingo después de las 3 pm."
     },
     "languages": [
       "English",
@@ -32,20 +49,18 @@
       "name": "Launch",
       "price": 1500,
       "pitch": "Get online with a clean, professional site.",
+      "pages": "Up to 3",
       "timeline": "1 to 2 weeks",
-      "keyFeatures": [
-        "Up to 3 pages",
+      "rounds": 2,
+      "includes": [
         "Template-based mobile design",
         "Contact form",
-        "1 to 2 weeks"
-      ],
-      "moreFeatures": [
-        "Basic SEO",
-        "2 rounds of changes"
+        "Basic SEO"
       ],
       "es": {
         "pitch": "Entre a internet con un sitio limpio y profesional.",
-        "detail": "Hasta 3 páginas. De 1 a 2 semanas."
+        "pages": "Hasta 3",
+        "timeline": "De 1 a 2 semanas"
       }
     },
     {
@@ -54,22 +69,21 @@
       "price": 2500,
       "popular": true,
       "pitch": "A custom site built to bring in leads.",
+      "pages": "Up to 5",
       "timeline": "2 to 3 weeks",
-      "keyFeatures": [
-        "Up to 5 pages, custom layout",
+      "rounds": 3,
+      "buildsOn": "Launch",
+      "includes": [
+        "Custom layout",
         "Google Business Profile setup",
         "Quote request form",
-        "2 to 3 weeks"
-      ],
-      "moreFeatures": [
-        "Everything in Launch",
         "Copy polish",
-        "SEO setup",
-        "3 rounds of changes"
+        "SEO setup"
       ],
       "es": {
         "pitch": "Un sitio a la medida, hecho para traer clientes.",
-        "detail": "Hasta 5 páginas, diseño a la medida. De 2 a 3 semanas."
+        "pages": "Hasta 5",
+        "timeline": "De 2 a 3 semanas"
       }
     },
     {
@@ -77,22 +91,21 @@
       "name": "Premium",
       "price": 4100,
       "pitch": "The complete site, words written for you.",
+      "pages": "Up to 8",
       "timeline": "3 to 4 weeks",
-      "keyFeatures": [
-        "Up to 8 pages",
+      "rounds": 3,
+      "buildsOn": "Growth",
+      "includes": [
         "Full copywriting",
         "On-site photo shoot (25 edited photos)",
-        "3 to 4 weeks"
-      ],
-      "moreFeatures": [
-        "Everything in Growth",
         "Blog or project gallery",
         "30 days of free edits after launch",
         "1-hour training call"
       ],
       "es": {
         "pitch": "El sitio completo, con los textos escritos por nosotros.",
-        "detail": "Hasta 8 páginas, textos y sesión de fotos. De 3 a 4 semanas."
+        "pages": "Hasta 8",
+        "timeline": "De 3 a 4 semanas"
       }
     }
   ],
@@ -211,12 +224,12 @@
       "deposit": "50% deposit to start, the rest before launch.",
       "over2500": "Over $2,500: 50% to start, 25% at design approval, 25% before launch.",
       "methods": [
-        "Card via Wix invoice",
         "Zelle",
-        "Check"
+        "Cash"
       ],
       "invoiceDue": "Invoices are due in 7 days.",
-      "refund": "The deposit is non-refundable once work starts (the kickoff call or first design, whichever comes first)."
+      "refund": "The deposit is non-refundable once work starts (the kickoff call or first design, whichever comes first).",
+      "soon": "Card payments are coming soon."
     },
     "ownership": [
       "Your Wix account and domain are in your name, and you pay them directly.",
@@ -285,10 +298,10 @@
       "id": "pay-how",
       "group": "Payment",
       "q": "How does payment work?",
-      "a": "A 50% deposit starts the project and the rest is due before launch. Projects over $2,500 split into 50% to start, 25% at design approval and 25% before launch. Pay by card through a Wix invoice, Zelle or check. Invoices are due in 7 days.",
+      "a": "A 50% deposit starts the project and the rest is due before launch. Projects over $2,500 split into 50% to start, 25% at design approval and 25% before launch. Pay by Zelle or cash. Card payments are coming soon. Invoices are due in 7 days.",
       "es": {
         "q": "¿Cómo se paga?",
-        "a": "Un depósito del 50% inicia el proyecto y el resto se paga antes del lanzamiento. Los proyectos de más de $2,500 se dividen en 50% al inicio, 25% al aprobar el diseño y 25% antes del lanzamiento. Puede pagar con tarjeta por medio de una factura de Wix, por Zelle o con cheque. Las facturas vencen en 7 días."
+        "a": "Un depósito del 50% inicia el proyecto y el resto se paga antes del lanzamiento. Los proyectos de más de $2,500 se dividen en 50% al inicio, 25% al aprobar el diseño y 25% antes del lanzamiento. Puede pagar por Zelle o en efectivo. Pronto aceptaremos tarjeta. Las facturas vencen en 7 días."
       }
     },
     {

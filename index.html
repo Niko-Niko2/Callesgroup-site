@@ -11,7 +11,7 @@
 <link rel="alternate" hreflang="es" href="https://www.callesgroup.com/es.html">
 <link rel="alternate" hreflang="x-default" href="https://www.callesgroup.com/">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#0A2A9E">
+<meta name="theme-color" content="#151515">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Calles Group">
 <meta property="og:title" content="Web Design in Elgin, IL | Websites &amp; Branding | Calles Group">
@@ -22,8 +22,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/assets/fonts/big-shoulders-display.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/libre-franklin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/montserrat.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/styles.css">
 <script>document.documentElement.classList.add("js")</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://www.callesgroup.com/#business","name":"Calles Group","url":"https://www.callesgroup.com/","telephone":"+1-312-600-0590","email":"andrew@callesgroup.com","image":"https://www.callesgroup.com/og-image.png","founder":{"@type":"Person","name":"Andrew Calles"},"address":{"@type":"PostalAddress","addressLocality":"Elgin","addressRegion":"IL","addressCountry":"US"},"areaServed":[{"@type":"City","name":"Elgin, IL"},{"@type":"City","name":"South Elgin, IL"},{"@type":"City","name":"Bartlett, IL"},{"@type":"City","name":"Schaumburg, IL"},{"@type":"City","name":"Hoffman Estates, IL"},{"@type":"City","name":"Barrington, IL"},{"@type":"City","name":"South Barrington, IL"},{"@type":"City","name":"Inverness, IL"},{"@type":"City","name":"St. Charles, IL"},{"@type":"City","name":"Geneva, IL"},{"@type":"City","name":"Algonquin, IL"},{"@type":"City","name":"Crystal Lake, IL"},{"@type":"City","name":"Naperville, IL"},{"@type":"City","name":"Chicago, IL"}],"description":"Website design and branding for local businesses in Elgin, the Fox Valley, the northwest suburbs and Chicago.","knowsLanguage":["en","es"]}</script>
@@ -45,13 +44,13 @@
 <section class="hero hero-home" id="top"><div class="wrap">
   <div class="hero-copy">
     <p class="hello" id="hello" hidden></p>
-    <h1>A website that gets you calls. Priced like a real estimate.</h1>
+    <h1>A website that gets you calls.</h1>
     <p class="lede">Websites for contractors and local businesses in Elgin and Chicagoland. You get a flat price in writing before any work starts, and the site is yours.</p>
-    <form class="est" id="demoForm" action="/contact.html" autocomplete="off">
-      <div class="est-top"><span class="est-title">Estimate</span><time class="est-no" id="estDate"></time></div>
-      <div class="est-row"><label class="est-l" for="dBiz">Prepared for</label><input class="est-in" id="dBiz" name="biz" type="text" maxlength="40" placeholder="Your business name" enterkeyhint="done" autocapitalize="words" spellcheck="false"></div>
-      <div class="est-row"><span class="est-l" id="dTradeL">Trade</span><div class="est-chips" id="dTrades" role="group" aria-labelledby="dTradeL"><noscript>Turn on JavaScript to try the sample.</noscript></div></div>
-      <div class="est-row"><label class="est-l" for="dTown">Town</label><input class="est-in" id="dTown" name="town" type="text" maxlength="28" value="Elgin" autocapitalize="words" spellcheck="false"></div>
+    <form class="try" id="demoForm" action="/contact.html" autocomplete="off">
+      <label class="try-l" for="dBiz">See it with your business name</label>
+      <input class="try-in" id="dBiz" name="biz" type="text" maxlength="40" placeholder="Type your business name" enterkeyhint="done" autocapitalize="words" spellcheck="false">
+      <span class="try-l" id="dTradeL">Your trade</span>
+      <div class="chips-row" id="dTrades" role="group" aria-labelledby="dTradeL"><noscript>Turn on JavaScript to try the sample.</noscript></div>
     </form>
     <div class="btns"><a class="btn btn-primary" href="/contact.html#book">Book a free call</a><a class="btn btn-ghost" id="demoText" href="sms:+13126000590">Text Andrew</a></div>
     <p class="small muted">Free 20-minute quote call. Replies within 24 hours, from Andrew, not a bot.</p>
@@ -69,18 +68,21 @@
       <p class="ps-rev"><span class="ps-stars" aria-hidden="true">&#9734;&#9734;&#9734;&#9734;&#9734;</span><span id="psRev">Your Google reviews show here</span></p>
       <p class="ps-foot" id="psFoot">Serving Elgin and nearby towns</p>
     </div></div>
-    <div class="swatches" role="group" aria-label="Sample colors"><span>Colors</span>
-      <button type="button" class="sw" style="--a:#1B1C1E;--b:#C8824A" data-pal="0" aria-pressed="true" aria-label="Graphite and copper"></button>
-      <button type="button" class="sw" style="--a:#0F1A2E;--b:#D9B04F" data-pal="1" aria-pressed="false" aria-label="Midnight and gold"></button>
-      <button type="button" class="sw" style="--a:#17251E;--b:#A7CDA8" data-pal="2" aria-pressed="false" aria-label="Forest and sage"></button>
-      <button type="button" class="sw" style="--a:#FFFFFF;--b:#D9480F" data-pal="3" aria-pressed="false" aria-label="White and orange"></button>
+    <div class="tune">
+      <div class="swatches" role="group" aria-label="Sample colors"><span>Colors</span>
+        <button type="button" class="sw" style="--a:#FAF9F6;--b:#C9A962" data-pal="0" aria-pressed="true" aria-label="White and gold"></button>
+        <button type="button" class="sw" style="--a:#1B1C1E;--b:#C8824A" data-pal="1" aria-pressed="false" aria-label="Graphite and copper"></button>
+        <button type="button" class="sw" style="--a:#0F1A2E;--b:#D9B04F" data-pal="2" aria-pressed="false" aria-label="Midnight and gold"></button>
+        <button type="button" class="sw" style="--a:#17251E;--b:#A7CDA8" data-pal="3" aria-pressed="false" aria-label="Forest and sage"></button>
+      </div>
+      <label class="town"><span>Town</span><input id="dTown" name="town" type="text" maxlength="28" value="Elgin" autocapitalize="words" spellcheck="false" form="demoForm"></label>
     </div>
     <p class="small muted demo-note">This is a sample. Your real site is designed around your own photos, services and colors.</p>
   </div>
 </div></section>
 
-<section class="sec sheet-canary" id="worth" aria-labelledby="worth-h"><div class="wrap">
-  <div class="sec-head"><h2 id="worth-h">What is one more call a week worth?</h2><p>Use your own numbers. This is a what-if, and every line can be changed.</p></div>
+<section class="sec band" id="worth" aria-labelledby="worth-h"><div class="wrap">
+  <div class="sec-head"><h2 id="worth-h">What is one more call a week worth?</h2><p class="muted">Use your own numbers. This is a what-if, and every line can be changed.</p></div>
   <div class="calc" id="calc" data-pkgs="[{&quot;k&quot;: &quot;launch&quot;, &quot;n&quot;: &quot;Launch&quot;, &quot;p&quot;: 1500}, {&quot;k&quot;: &quot;growth&quot;, &quot;n&quot;: &quot;Growth&quot;, &quot;p&quot;: 2500}, {&quot;k&quot;: &quot;premium&quot;, &quot;n&quot;: &quot;Premium&quot;, &quot;p&quot;: 4100}]">
     <div class="lines">
       <div class="line">
@@ -103,7 +105,7 @@
       <p class="total-n" id="cYear">$172,800</p>
       <p class="total-l">a year in new work</p>
       <div class="total-s"><div><b id="cMonth">$14,400</b><span>a month</span></div><div><b id="cJobs">1.2</b><span>more jobs a month</span></div></div>
-      <div class="payback"><div class="est-chips" id="cPkgs" role="group" aria-label="Website package"></div><p id="cPay"></p></div>
+      <div class="payback"><div class="chips-row" id="cPkgs" role="group" aria-label="Website package"></div><p id="cPay"></p></div>
       <div class="btns"><a class="btn btn-primary" href="/contact.html#book">Book a free call</a><a class="btn btn-ghost" id="cText" href="sms:+13126000590">Text Andrew these numbers</a></div>
       <p class="fine">A what-if with your own numbers, not a promise. No website can guarantee calls. A site that shows up, loads fast and makes calling easy gives you a fair shot at them.</p>
     </div>
@@ -111,8 +113,8 @@
 </div></section>
 
 <section class="sec" id="price" aria-labelledby="price-h"><div class="wrap">
-  <div class="sec-head"><h2 id="price-h">What it costs, line by line.</h2><p class="muted">Flat prices. You get your exact number in writing on the free quote call.</p></div>
-  <div class="items"><a class="item" href="/pricing.html#p-launch"><span class="item-n">Launch</span><span class="item-p">$1,500</span><span class="item-d">Get online with a clean, professional site. Up to 3 pages. 1 to 2 weeks.</span></a><a class="item" href="/pricing.html#p-growth"><span class="item-n">Growth<span class="tag">Most popular</span></span><span class="item-p">$2,500</span><span class="item-d">A custom site built to bring in leads. Up to 5 pages, custom layout. 2 to 3 weeks.</span></a><a class="item" href="/pricing.html#p-premium"><span class="item-n">Premium</span><span class="item-p">$4,100</span><span class="item-d">The complete site, words written for you. Up to 8 pages. 3 to 4 weeks.</span></a><a class="item sub" href="/pricing.html#branding"><span class="item-n">Logo</span><span class="item-p">$500</span><span class="item-d">3 concepts, 2 rounds of changes and the full file pack.</span></a><a class="item sub" href="/pricing.html#branding"><span class="item-n">Brand Kit</span><span class="item-p">$1,100</span><span class="item-d">Getting a website too? Add the Brand Kit for $900 instead of $1,100.</span></a><a class="item sub" href="/pricing.html#branding"><span class="item-n">On-site photo shoot</span><span class="item-p">$400</span><span class="item-d">Up to 1 hour on-site and 25 edited photos.</span></a><a class="item sub" href="/care-plans.html"><span class="item-n">Care plans</span><span class="item-p"><small>from</small> $99<small>/mo</small></span><span class="item-d">We keep your site working and up to date. Cancel anytime.</span></a><div class="item due"><span class="item-n">Due today</span><span class="item-p">$0</span><span class="item-d">The 20-minute quote call is free.</span></div></div>
+  <div class="sec-head"><h2 id="price-h">What it costs.</h2><p class="muted">Flat prices. You get your exact number in writing on the free quote call.</p></div>
+  <div class="items"><h3 class="items-h">Websites</h3><a class="item" href="/pricing.html#p-launch"><span class="item-n">Launch</span><span class="item-p">$1,500</span><span class="item-d">Get online with a clean, professional site.</span><span class="item-s"><i>Up to 3 pages</i><i>1 to 2 weeks</i></span></a><a class="item" href="/pricing.html#p-growth"><span class="item-n">Growth<span class="tag">Most popular</span></span><span class="item-p">$2,500</span><span class="item-d">A custom site built to bring in leads.</span><span class="item-s"><i>Up to 5 pages</i><i>2 to 3 weeks</i></span></a><a class="item" href="/pricing.html#p-premium"><span class="item-n">Premium</span><span class="item-p">$4,100</span><span class="item-d">The complete site, words written for you.</span><span class="item-s"><i>Up to 8 pages</i><i>3 to 4 weeks</i></span></a><h3 class="items-h">Add-ons</h3><a class="item sub" href="/pricing.html#branding"><span class="item-n">Logo</span><span class="item-p">$500</span><span class="item-d">3 concepts, 2 rounds of changes and the full file pack.</span></a><a class="item sub" href="/pricing.html#branding"><span class="item-n">Brand Kit</span><span class="item-p">$1,100</span><span class="item-d">Getting a website too? Add the Brand Kit for $900 instead of $1,100.</span></a><a class="item sub" href="/pricing.html#branding"><span class="item-n">On-site photo shoot</span><span class="item-p">$400</span><span class="item-d">Up to 1 hour on-site and 25 edited photos.</span></a><h3 class="items-h">Monthly care</h3><a class="item sub" href="/care-plans.html"><span class="item-n">Care plans</span><span class="item-p"><small>from</small> $99<small>/mo</small></span><span class="item-d">We keep your site working and up to date. Cancel anytime.</span></a><div class="item due"><span class="item-n">Due today</span><span class="item-p">$0</span><span class="item-d">The 20-minute quote call is free.</span></div></div>
   <div class="stamp-row"><div class="stamp"><b>Founding client offer</b><span>Launch for $1,200 (normally $1,500). First 3 clients only, in return for a Google review and a case study.</span><i>3 of 3 spots left</i></div><div class="btns"><a class="btn btn-primary" href="/contact.html#book">Book a free call</a><a class="btn btn-ghost" href="/pricing.html">See what each package includes</a></div></div>
 </div></section>
 
@@ -128,8 +130,7 @@
 <section class="sec" aria-labelledby="me-h"><div class="wrap me">
   <div class="prose">
     <h2 id="me-h">You work with me directly.</h2>
-    <p>I'm Andrew Calles. Calles Group is me, based in Elgin. You work with me from the first call to launch day. No account managers, no call center, no handoffs.</p>
-    <p class="me-sig" aria-hidden="true">Andrew Calles</p>
+    <p class="muted">I'm Andrew Calles. Calles Group is me, based in Elgin. You work with me from the first call to launch day. No account managers, no call center, no handoffs.</p>
   </div>
   <ul class="facts-list">
     <li>Replies within 24 hours</li>
@@ -145,9 +146,9 @@
   <div class="row"><!-- Real reviews or project cards go here. --></div>
 </div></section>
 
-<section class="sec sheet-pink" aria-labelledby="faq-h"><div class="wrap narrow">
-  <div class="sec-head"><h2 id="faq-h">The fine print, in big print.</h2></div>
-  <div class="acc "><div class="acc-item"><h3><button type="button" class="acc-btn" aria-expanded="false" aria-controls="a-own-site" id="q-own-site">Do I own my website?<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h3><div class="acc-body" id="a-own-site" role="region" aria-labelledby="q-own-site"><div><div class="acc-in"><p>Yes. Your Wix account and domain are in your name, and you pay Wix for them directly. Your logo files and full admin access are handed over after the final payment.</p></div></div></div></div><div class="acc-item"><h3><button type="button" class="acc-btn" aria-expanded="false" aria-controls="a-time-how" id="q-time-how">How long does a website take?<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h3><div class="acc-body" id="a-time-how" role="region" aria-labelledby="q-time-how"><div><div class="acc-in"><p>1 to 4 weeks depending on the package: 1 to 2 weeks for Launch, 2 to 3 weeks for Growth and 3 to 4 weeks for Premium. The clock starts once we have your text, photos and logo.</p></div></div></div></div><div class="acc-item"><h3><button type="button" class="acc-btn" aria-expanded="false" aria-controls="a-pay-how" id="q-pay-how">How does payment work?<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h3><div class="acc-body" id="a-pay-how" role="region" aria-labelledby="q-pay-how"><div><div class="acc-in"><p>A 50% deposit starts the project and the rest is due before launch. Projects over $2,500 split into 50% to start, 25% at design approval and 25% before launch. Pay by card through a Wix invoice, Zelle or check. Invoices are due in 7 days.</p></div></div></div></div></div>
+<section class="sec band" aria-labelledby="faq-h"><div class="wrap narrow">
+  <div class="sec-head"><h2 id="faq-h">Quick answers.</h2></div>
+  <div class="acc "><div class="acc-item"><h3><button type="button" class="acc-btn" aria-expanded="false" aria-controls="a-own-site" id="q-own-site">Do I own my website?<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h3><div class="acc-body" id="a-own-site" role="region" aria-labelledby="q-own-site"><div><div class="acc-in"><p>Yes. Your Wix account and domain are in your name, and you pay Wix for them directly. Your logo files and full admin access are handed over after the final payment.</p></div></div></div></div><div class="acc-item"><h3><button type="button" class="acc-btn" aria-expanded="false" aria-controls="a-time-how" id="q-time-how">How long does a website take?<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h3><div class="acc-body" id="a-time-how" role="region" aria-labelledby="q-time-how"><div><div class="acc-in"><p>1 to 4 weeks depending on the package: 1 to 2 weeks for Launch, 2 to 3 weeks for Growth and 3 to 4 weeks for Premium. The clock starts once we have your text, photos and logo.</p></div></div></div></div><div class="acc-item"><h3><button type="button" class="acc-btn" aria-expanded="false" aria-controls="a-pay-how" id="q-pay-how">How does payment work?<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h3><div class="acc-body" id="a-pay-how" role="region" aria-labelledby="q-pay-how"><div><div class="acc-in"><p>A 50% deposit starts the project and the rest is due before launch. Projects over $2,500 split into 50% to start, 25% at design approval and 25% before launch. Pay by Zelle or cash. Card payments are coming soon. Invoices are due in 7 days.</p></div></div></div></div></div>
   <p class="sec-end"><a href="/faq.html">See all questions</a></p>
 </div></section>
 
@@ -159,7 +160,6 @@
 <section class="sec cta-band" aria-labelledby="cta-h"><div class="wrap">
   <h2 id="cta-h">Your business is good. Let's make it look that way.</h2>
   <p class="muted prose">Tell me about your business and I'll reply within 24 hours with a plan and a flat price.</p>
-  <p class="sign" aria-hidden="true">X <span>your name here</span></p>
   <div class="btns"><a class="btn btn-primary" href="/contact.html#book">Book a free call</a><a class="btn btn-ghost" href="sms:+13126000590">Text Andrew</a></div>
   <p class="small">Or call <a href="tel:+13126000590">312-600-0590</a>. Replies within 24 hours.</p>
 </div></section>
