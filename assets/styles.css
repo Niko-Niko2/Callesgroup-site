@@ -61,8 +61,9 @@ b,strong{font-weight:700}
 .hdr{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid transparent;transition:border-color .2s var(--ease)}
 .hdr.scrolled{border-bottom-color:var(--line)}
 .hdr .wrap{display:flex;align-items:center;gap:12px;height:var(--hdr)}
-.brand{display:flex;align-items:center;text-decoration:none;min-height:44px;font-weight:800;font-size:1rem;letter-spacing:.14em;white-space:nowrap}
-.brand i{font-style:normal;color:var(--accent)}
+.brand{display:flex;align-items:center;gap:.6em;text-decoration:none;min-height:44px;font-weight:300;font-size:1rem;letter-spacing:.12em;white-space:nowrap}
+.brand b{font-weight:800}
+.brand-m{flex:none;width:2.2em;height:2.2em}
 .nav{display:flex;align-items:center;gap:2px;margin-left:auto}
 .nav a{color:var(--muted);display:flex;align-items:center;min-height:44px;padding:0 11px;border-radius:8px;text-decoration:none;font-weight:600;font-size:.92rem}
 .nav a:hover{color:var(--ink)}
@@ -81,9 +82,10 @@ b,strong{font-weight:700}
   .nav .nav-phone{display:flex;color:var(--accent)}
 }
 /* Phones: the wordmark and the two header buttons need 412px at full size, so anything narrower gets the compact header. */
-@media (max-width:419px){.brand{font-size:.86rem;letter-spacing:.1em}.hdr-m .btn-sm{padding:0 11px}}
+@media (max-width:419px){.brand{font-size:.8rem;letter-spacing:.08em;gap:.5em}.hdr-m .btn-sm{padding:0 11px}}
 @media (max-width:374px){.hdr-m{gap:6px}.hdr-m .btn-sm{padding:0 9px}}
-@media (max-width:359px){:root{--gut:14px}.brand{font-size:.78rem;letter-spacing:.06em}.hdr .wrap{gap:8px}.hdr-m .btn-sm{padding:0 8px;font-size:.84rem}}
+@media (max-width:374px){.brand{font-size:.74rem;letter-spacing:.06em}}
+@media (max-width:359px){:root{--gut:14px}.brand{font-size:.68rem;letter-spacing:.04em}.hdr .wrap{gap:8px}.hdr-m .btn-sm{padding:0 8px;font-size:.84rem}}
 
 /* Sections: generous space, a hairline, and a slightly lifted band every other one */
 .sec{padding-block:clamp(56px,9vw,96px)}
