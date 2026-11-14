@@ -81,8 +81,8 @@ b,strong{font-weight:700}
   .nav .nav-close{display:flex;align-self:flex-end;margin-bottom:6px;min-height:44px;border:1.5px solid var(--line-2)}
   .nav .nav-phone{display:flex;color:var(--accent)}
 }
-/* Phones: the wordmark and the two header buttons need 412px at full size, so anything narrower gets the compact header. */
-@media (max-width:419px){.brand{font-size:.8rem;letter-spacing:.08em;gap:.5em}.hdr-m .btn-sm{padding:0 11px}}
+/* Phones: the wordmark and the two header buttons need about 470px at full size, so anything narrower gets the compact header. */
+@media (max-width:479px){.brand{font-size:.8rem;letter-spacing:.08em;gap:.5em}.hdr-m .btn-sm{padding:0 11px}}
 @media (max-width:374px){.hdr-m{gap:6px}.hdr-m .btn-sm{padding:0 9px}}
 @media (max-width:374px){.brand{font-size:.74rem;letter-spacing:.06em}}
 @media (max-width:359px){:root{--gut:14px}.brand{font-size:.68rem;letter-spacing:.04em}.hdr .wrap{gap:8px}.hdr-m .btn-sm{padding:0 8px;font-size:.84rem}}
