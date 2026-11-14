@@ -1,7 +1,8 @@
 /* Calles Group. One stylesheet for every page.
    The look is Graphite & Gold: Andrew's graphite background, off-white text and ONE accent, gold.
    Gold is only for what can be tapped or what the number is. Everything else stays neutral.
-   One typeface (Montserrat). Hairlines instead of boxes, and room between sections so the eye can rest.
+   One typeface (Montserrat). Hairlines for lists, one clear outline for every box that holds a price,
+   and room between sections so the eye can rest.
    Colors live only in the tokens below. */
 :root{
   --bg:#151515;--band:#1A1918;--surface:#1E1E1E;--field:#121212;
@@ -77,7 +78,10 @@ b,strong{font-weight:700}
   .nav .nav-close{display:flex;align-self:flex-end;margin-bottom:6px;min-height:44px;border:1.5px solid var(--line-2)}
   .nav .nav-phone{display:flex;color:var(--accent)}
 }
-@media (max-width:379px){.brand{font-size:.86rem;letter-spacing:.1em}.hdr-m .btn-sm{padding:0 11px}}
+/* Phones: the wordmark and the two header buttons need 412px at full size, so anything narrower gets the compact header. */
+@media (max-width:419px){.brand{font-size:.86rem;letter-spacing:.1em}.hdr-m .btn-sm{padding:0 11px}}
+@media (max-width:374px){.hdr-m{gap:6px}.hdr-m .btn-sm{padding:0 9px}}
+@media (max-width:359px){:root{--gut:14px}.brand{font-size:.78rem;letter-spacing:.06em}.hdr .wrap{gap:8px}.hdr-m .btn-sm{padding:0 8px;font-size:.84rem}}
 
 /* Sections: generous space, a hairline, and a slightly lifted band every other one */
 .sec{padding-block:clamp(56px,9vw,96px)}
@@ -151,7 +155,7 @@ b,strong{font-weight:700}
 .demo-note{text-align:center;max-width:36ch}
 
 /* Calculator */
-.calc{display:grid;gap:28px}
+.calc{display:grid;grid-template-columns:minmax(0,1fr);gap:28px}
 @media (min-width:900px){.calc{grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:48px;align-items:start}}
 .lines{border-top:1px solid var(--line-2);display:grid}
 .line{display:grid;gap:8px;padding:16px 0;border-bottom:1px solid var(--line)}
@@ -171,7 +175,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .step{display:inline-flex;align-items:center;gap:12px}
 .step button{width:42px;height:42px;border-radius:10px;border:1.5px solid var(--line-2);background:transparent;color:var(--ink);font:700 1.2rem/1 var(--font);cursor:pointer}
 .step button:hover{border-color:var(--accent);color:var(--accent)}
-.total{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px 22px;display:grid;gap:10px}
+.total{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px 22px;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
 .total-l{font-weight:600;color:var(--muted)}
 .total-n{font-weight:800;font-size:clamp(2.7rem,12.5vw,4.4rem);line-height:1;letter-spacing:-.03em;color:var(--accent);font-variant-numeric:tabular-nums}
 .total-s{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);margin-top:8px}
@@ -184,7 +188,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .total .btns{margin-top:6px}
 .fine{font-size:.84rem;color:var(--muted)}
 
-/* Prices on the home page: grouped lists, not boxes */
+/* Price lists: rows with hairlines (the home page puts them in boxes, see Pricing boxes near the end) */
 .items{display:grid}
 .items>.item:first-child{border-top:1px solid var(--line-2)}
 .items-h{font-size:.86rem;font-weight:600;letter-spacing:0;color:var(--muted);padding:28px 0 10px;border-bottom:1px solid var(--line-2)}
@@ -416,6 +420,62 @@ a.chip:hover{background:var(--accent);color:var(--on-accent)}
 .prow:hover b{color:var(--accent)}
 .prow-p{font-weight:700;font-size:1.2rem;font-variant-numeric:tabular-nums}
 @media (max-width:559px){.prow{grid-template-columns:1fr auto;gap:4px 12px}.prow .muted{grid-column:1/-1;grid-row:2;font-size:.92rem}}
+
+/* Pricing boxes. Every box that holds a price shares one outline: clear at rest, the accent color on the
+   popular one, and lit for a moment when the price inside finishes rolling (.lit, set by site.js). */
+.box,.card.pkg,.card.plan,.total,.prows{border:1.5px solid var(--line-2);transition:border-color .3s var(--ease),box-shadow .3s var(--ease)}
+@supports (color:color-mix(in srgb,red,blue)){
+  .box,.card.pkg,.card.plan,.total,.prows{border-color:color-mix(in srgb,var(--ink) 36%,var(--bg));--glow:color-mix(in srgb,var(--accent) 26%,transparent)}
+}
+.box,.prows{background:var(--surface);border-radius:16px}
+a.box:hover{border-color:var(--accent)}
+.box.pop,.card.pop{border-color:var(--accent);box-shadow:0 0 0 1.5px var(--accent)}
+.box.lit,.card.lit,.total.lit,.prows.lit{border-color:var(--accent);box-shadow:0 0 0 4px var(--glow,transparent)}
+.box.pop.lit,.card.pop.lit{box-shadow:0 0 0 1.5px var(--accent),0 0 0 5px var(--glow,transparent)}
+.founding,.stamp,.need-line{border-width:1.5px}
+/* Ordinary desktop screens round 1.5px down to 1px, so they get 2px. */
+@media (max-resolution:1.49dppx){.box,.card.pkg,.card.plan,.total,.prows,.founding,.stamp,.need-line{border-width:2px}}
+/* Home page prices: one box per website package, then add-ons and monthly care in grouped boxes */
+.boxed .items-h{border-bottom:0;padding:26px 0 10px}
+.boxed>.items-h:first-child{padding-top:0}
+.boxes{display:grid;gap:12px}
+.pair{display:grid;gap:0 18px}
+.box.item{padding:18px;align-content:start}
+.box.group{padding:2px 18px}
+.box.group .item:last-child{border-bottom:0}
+.boxes .item-p{font-size:1.5rem;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.boxed .item.due{margin-top:22px}
+@media (min-width:900px){
+  .boxes{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+  .boxes .box{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto 1fr auto;gap:6px;padding:22px}
+  .boxes .item-n{min-height:30px}
+  .boxes .item-p{grid-row:auto;grid-column:1;font-size:2.3rem;line-height:1;margin:4px 0 6px}
+  .boxes .item-s{margin-top:10px}
+  .pair{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);align-items:start}
+}
+/* Town pages: the three package rows sit in one box */
+.prows{padding:2px 18px}
+.prows .prow:last-child{border-bottom:0}
+
+/* Motion. Three things move, and only once each: boxes that hold a price rise as they come into view,
+   the price rolls like a slot machine, and the sample site builds itself inside the phone.
+   site.js adds .in when an element is on screen. Visitors who ask for less motion get none of it. */
+.js .card.rv:not(.in),.js .box.rv:not(.in),.js .prows.rv:not(.in){opacity:0;transform:translateY(16px)}
+.js .card.rv.in,.js .box.rv.in,.js .prows.rv.in{transition:opacity .5s var(--ease),transform .5s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease)}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.js .phone.rv:not(.in) .ps>*{opacity:0}
+.js .phone.rv.in .ps>*{animation:rise .5s var(--ease) both}
+.js .phone.rv.in .ps>:nth-child(2){animation-delay:.08s}
+.js .phone.rv.in .ps>:nth-child(3){animation-delay:.16s}
+.js .phone.rv.in .ps>:nth-child(4){animation-delay:.24s}
+.js .phone.rv.in .ps>:nth-child(5){animation-delay:.32s}
+.js .phone.rv.in .ps>:nth-child(6){animation-delay:.4s}
+/* The rolling price. site.js builds these for about a second and a half, then puts the plain text back. */
+.item-p,.price,.prow-p,.total-n,.total-s b{font-kerning:none;font-variant-numeric:tabular-nums}
+.reel-c{display:inline-block;position:relative;clip-path:inset(0 -.25em)}
+.reel-g{visibility:hidden}
+.reel-s{position:absolute;left:0;top:0;will-change:transform}
+.reel-s i{display:block;font-style:normal}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}

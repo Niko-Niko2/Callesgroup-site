@@ -117,10 +117,13 @@
     mark();
   });
 
-  // Fade sections up once as they enter the viewport. Cards stagger by 60ms.
-  var rv = d.querySelectorAll(".rv");
+  // Mark things .in once as they enter the viewport (the stylesheet decides what that looks like). Siblings stagger by 60ms.
+  // If the browser never reports back, everything is shown after a moment so nothing can stay hidden.
+  var rv = d.querySelectorAll(".rv"), showAll = function () { rv.forEach(function (el) { el.classList.add("in"); }); };
   if (!reduce && "IntersectionObserver" in window) {
+    var heard = false;
     var io = new IntersectionObserver(function (es) {
+      heard = true;
       es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
     }, { rootMargin: "0px 0px -8% 0px" });
     rv.forEach(function (el) {
@@ -128,7 +131,50 @@
       if (sib.length > 1) el.style.transitionDelay = (sib.indexOf(el) * 60) + "ms";
       io.observe(el);
     });
-  } else rv.forEach(function (el) { el.classList.add("in"); });
+    setTimeout(function () { if (!heard) showAll(); }, 1500);
+  } else showAll();
+
+  // Prices roll like a slot machine the first time they scroll into view. The real price never leaves the page:
+  // each digit spins two full turns and lands back on itself, then the plain text is put back exactly as it was.
+  // When the last digit lands, the box around the price lights up for a moment (.lit in the stylesheet).
+  var TURNS = 20;
+  function light(el) {
+    var box = el.closest(".box,.card,.total,.prows"); if (!box) return;
+    box.classList.add("lit"); clearTimeout(box._lit);
+    box._lit = setTimeout(function () { box.classList.remove("lit"); }, 900);
+  }
+  function reel(el, wait) {
+    var tw = d.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), nodes = [], n, strips = [], undo = [];
+    while ((n = tw.nextNode())) if (/\d/.test(n.nodeValue)) nodes.push(n);
+    nodes.forEach(function (tn) {
+      var wrap = d.createElement("span"), sr = d.createElement("span"), vis = d.createElement("span");
+      sr.className = "sr"; sr.textContent = tn.nodeValue; vis.setAttribute("aria-hidden", "true");
+      tn.nodeValue.split(/(\d)/).forEach(function (part) {
+        if (!part) return;
+        if (!/^\d$/.test(part)) { vis.appendChild(d.createTextNode(part)); return; }
+        var cell = d.createElement("span"), ghost = d.createElement("span"), strip = d.createElement("span"), html = "";
+        cell.className = "reel-c"; ghost.className = "reel-g"; strip.className = "reel-s"; ghost.textContent = part;
+        // Top to bottom: one digit past the target (seen only in the bounce), the target, then the turns that lead down to it.
+        for (var j = -1; j <= TURNS; j++) html += "<i>" + ((+part + 30 - j) % 10) + "</i>";
+        strip.innerHTML = html; cell.appendChild(ghost); cell.appendChild(strip); vis.appendChild(cell); strips.push(strip);
+      });
+      wrap.appendChild(sr); wrap.appendChild(vis); tn.parentNode.replaceChild(wrap, tn);
+      undo.push(function () { if (wrap.parentNode) wrap.parentNode.replaceChild(tn, wrap); });
+    });
+    var N = TURNS + 2, done = function () { undo.forEach(function (f) { f(); }); light(el); };
+    Promise.all(strips.map(function (strip, k) {
+      return strip.animate([{ transform: "translateY(" + (-(N - 1) / N * 100) + "%)" }, { transform: "translateY(" + (-100 / N) + "%)" }],
+        { duration: 1100 + k * 140, delay: wait, easing: "cubic-bezier(.16,.84,.3,1.07)", fill: "both" }).finished;
+    })).then(done, done);
+  }
+  var prices = d.querySelectorAll(".item-p,.price,.prow-p,.total-n,.total-s b");
+  if (prices.length && !reduce && "IntersectionObserver" in window && d.body.animate) {
+    var pio = new IntersectionObserver(function (es) {
+      var i = 0;
+      es.forEach(function (e) { if (e.isIntersecting) { pio.unobserve(e.target); reel(e.target, 120 + i++ * 110); } });
+    }, { threshold: 0.9, rootMargin: "0px 0px -6% 0px" });
+    prices.forEach(function (el) { pio.observe(el); });
+  }
 
   de.classList.add("ready");
   var yr = d.getElementById("yr"); if (yr) yr.textContent = new Date().getFullYear();

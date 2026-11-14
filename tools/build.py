@@ -170,29 +170,32 @@ def spots_text():
 
 
 def t_lineitems():
-    """Home page prices in three groups: websites, add-ons, monthly care. Prices and words come from offers.json."""
+    """Home page prices as outlined boxes: one box per website package, then add-ons and monthly care in grouped boxes.
+    Prices and words come from offers.json."""
     L, es = STR[LANG], LANG == "es"
     web, addons, care = L["groups"]
-    rows = ['<h3 class="items-h">%s</h3>' % web]
+    boxes = []
     for p in D["packages"]:
         pitch, pages, time = (p["es"]["pitch"], p["es"]["pages"], p["es"]["timeline"]) if es else (p["pitch"], p["pages"], p["timeline"].capitalize())
         tag = '<span class="tag">%s</span>' % L["popular"] if p.get("popular") else ""
-        rows.append('<a class="item" href="/pricing.html#p-%s"><span class="item-n">%s%s</span><span class="item-p">%s</span><span class="item-d">%s</span>'
-                    '<span class="item-s"><i>%s</i><i>%s</i></span></a>'
-                    % (p["key"], esc(p["name"]), tag, money(p["price"]), esc(pitch), esc(L["pages"] % pages), esc(time)))
+        boxes.append('<a class="item box rv%s" href="/pricing.html#p-%s"><span class="item-n">%s%s</span><span class="item-p">%s</span><span class="item-d">%s</span>'
+                     '<span class="item-s"><i>%s</i><i>%s</i></span></a>'
+                     % (" pop" if p.get("popular") else "", p["key"], esc(p["name"]), tag, money(p["price"]), esc(pitch), esc(L["pages"] % pages), esc(time)))
     logo, kit, ph = find(D["branding"], "logo"), find(D["branding"], "brand-kit"), D["photos"]
-    rows.append('<h3 class="items-h">%s</h3>' % addons)
+    subs = []
     for n, d, pr in [(logo["name"], L["logo"], money(logo["price"])),
                      (kit["name"], D["brandingNote_es"] if es else D["brandingNote"], money(kit["price"])),
                      ("Sesión de fotos" if es else ph["name"], L["photos"], money(ph["price"]))]:
-        rows.append('<a class="item sub" href="/pricing.html#branding"><span class="item-n">%s</span><span class="item-p">%s</span><span class="item-d">%s</span></a>'
+        subs.append('<a class="item sub" href="/pricing.html#branding"><span class="item-n">%s</span><span class="item-p">%s</span><span class="item-d">%s</span></a>'
                     % (esc(n), pr, esc(d)))
-    rows.append('<h3 class="items-h">%s</h3>' % care)
-    rows.append('<a class="item sub" href="/care-plans.html"><span class="item-n">%s</span><span class="item-p"><small>%s</small> %s<small>%s</small></span><span class="item-d">%s</span></a>'
-                % (esc(L["care"][0]), L["from"], t_from("care"), L["mo"], esc(L["care"][1])))
-    rows.append('<div class="item due"><span class="item-n">%s</span><span class="item-p">$0</span><span class="item-d">%s</span></div>'
-                % (L["due"], L["dueNote"] % B["booking"]["minutes"]))
-    return '<div class="items">' + "".join(rows) + "</div>"
+    carerow = ('<a class="item sub" href="/care-plans.html"><span class="item-n">%s</span><span class="item-p"><small>%s</small> %s<small>%s</small></span><span class="item-d">%s</span></a>'
+               % (esc(L["care"][0]), L["from"], t_from("care"), L["mo"], esc(L["care"][1])))
+    due = ('<div class="item due"><span class="item-n">%s</span><span class="item-p">$0</span><span class="item-d">%s</span></div>'
+           % (L["due"], L["dueNote"] % B["booking"]["minutes"]))
+    return ('<div class="items boxed"><h3 class="items-h">%s</h3><div class="boxes">%s</div>'
+            '<div class="pair"><div class="pair-c"><h3 class="items-h">%s</h3><div class="box group rv">%s</div></div>'
+            '<div class="pair-c"><h3 class="items-h">%s</h3><div class="box group rv">%s</div></div></div>%s</div>'
+            % (web, "".join(boxes), addons, "".join(subs), care, carerow, due))
 
 
 def t_stamp():
@@ -582,7 +585,7 @@ def build_towns():
             '</div></div></section>'
             '<section class="sec sec-tight"><div class="wrap"><div class="prose rv"><h2>%s</h2>%s</div></div></section>' % (emlast(t["why_h"]), "".join("<p class=\"muted\">%s</p>" % esc(w) for w in t["why"])) +
             '<section class="sec band"><div class="wrap"><div class="sec-head rv"><h2>Website packages for %s businesses</h2><p class="muted">Flat prices, the same in %s as everywhere else.</p></div>'
-            '<div class="prows">%s</div><p class="sec-end rv"><a href="/pricing.html">Compare website packages and branding</a></p></div></section>' % (esc(t["name"]), esc(t["name"]), rows) +
+            '<div class="prows rv">%s</div><p class="sec-end rv"><a href="/pricing.html">Compare website packages and branding</a></p></div></section>' % (esc(t["name"]), esc(t["name"]), rows) +
             '<section class="sec"><div class="wrap"><div class="sec-head rv"><h2>Who we build for in %s</h2></div><div class="chips rv">%s</div></div></section>'
             % (esc(t["name"]), "".join('<span class="chip">%s</span>' % esc(w) for w in t["who"])) +
             '<section class="sec band"><div class="wrap narrow"><div class="sec-head rv"><h2>Questions from %s business owners</h2></div><div class="rv">%s</div>'

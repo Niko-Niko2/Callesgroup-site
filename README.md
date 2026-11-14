@@ -1,6 +1,6 @@
 # Calles Group website
 
-The live site is https://www.callesgroup.com, a Wix headless static site (site ID 95f7b2da-02f4-4d86-b63c-1c979194352b). This repo holds every file, and `main` should always match what is live.
+The live site is https://www.callesgroup.com, hosted on GitHub Pages from `main`. Wix (site ID 95f7b2da-02f4-4d86-b63c-1c979194352b) still runs the quote form, bookings, invoices and DNS. This repo holds every file, and `main` should always match what is live.
 
 The pages are plain HTML, one stylesheet (`assets/styles.css`) and two small scripts (`assets/site.js` for menus and switches, `assets/tools.js` for the selling tools). There's no framework and nothing builds at runtime. Every page reads fine with JavaScript off.
 
@@ -31,7 +31,7 @@ python3 tools/build.py
 
 ## How the packages are organized
 
-Every website package in `offers.json` carries the same facts in the same order: `pages`, `timeline`, `rounds` (of changes), then `includes` (what it adds) and `buildsOn` (the package below it). The package cards on `pricing.html` show those three rows identically on every card, then "What's included", so the three compare at a glance. The home page lists prices in three groups: Websites, Add-ons, Monthly care.
+Every website package in `offers.json` carries the same facts in the same order: `pages`, `timeline`, `rounds` (of changes), then `includes` (what it adds) and `buildsOn` (the package below it). The package cards on `pricing.html` show those three rows identically on every card, then "What's included", so the three compare at a glance. The home page shows each website package in its own outlined box (three across on a desktop, stacked on a phone), then Add-ons and Monthly care in two grouped boxes, then the "Due today $0" line.
 
 ## How to change a price
 
@@ -88,7 +88,7 @@ After sending, the visitor goes to `/thank-you.html`.
 
 ## The look: Graphite & Gold
 
-Andrew's graphite background, off-white text and **one** accent, gold. Gold is only for what can be tapped and for the number that matters (a price that is due, the calculator's total). Everything else stays neutral, with hairlines instead of boxes and plenty of room between sections. If a page starts to feel busy, take something away before adding a color.
+Andrew's graphite background, off-white text and **one** accent, gold. Gold is only for what can be tapped and for the number that matters (a price that is due, the calculator's total). Everything else stays neutral, with hairlines for lists, one clear outline for every box that holds a price, and plenty of room between sections. If a page starts to feel busy, take something away before adding a color.
 
 All colors are the tokens at the top of `assets/styles.css`: `--bg` (#151515), `--band`, `--surface`, `--field`, `--line`, `--line-2`, `--ink`, `--muted`, `--accent` (#C9A962), `--accent-hover`, `--on-accent`. Keep body text at 4.5:1 contrast or better. If the graphite or gold changes, also update `theme-color` in `partials/head.html`, `favicon.svg` and `tools/og-image.html`.
 
@@ -97,6 +97,19 @@ One typeface, Montserrat, hosted on the site (`assets/fonts/montserrat.woff2`). 
 The sample site inside the phone has its own colors on purpose, because it stands for the visitor's site. Its four palettes are in `styles.css` under `.ps`.
 
 To redraw the link preview image, open `tools/og-image.html` at 1200 by 630 in a headless browser and save a screenshot as `og-image.png`.
+
+### Pricing boxes
+
+Every box that holds a price shares one outline, set in one place near the end of `assets/styles.css` ("Pricing boxes"): the home page package boxes (`.box`), the package and care plan cards (`.card.pkg`, `.card.plan`), the calculator result (`.total`) and the package rows on town pages (`.prows`). The outline is 1.5px in a strong neutral (text color mixed into the page color), 2px on ordinary 1x desktop screens, which would otherwise round it down to 1px. The popular package gets the accent color and a second ring. `.lit` is the short moment the outline turns to the accent color after a price finishes rolling (see Animation rules).
+
+### Color options (temporary)
+
+Andrew is choosing a new look. `tools/looks.py` holds eleven options (A to K) as sets of the same eleven tokens, and adds a switcher to the private preview only:
+
+    python3 tools/build.py && python3 tools/preview.py && python3 tools/looks.py
+    python3 tools/looks.py --check     # contrast of every option
+
+Nothing in the real pages changes. When a look is chosen: copy its tokens into `:root` in `assets/styles.css`, set `color-scheme`, update `theme-color` in `partials/head.html`, `favicon.svg`, `tools/og-image.html` and the scoreboard in `_tools/`. A light look also needs the darker form error color, the softer phone shadow and the check mark color that `looks.py` writes for it, and a two-tone look (G, J) needs its dark set on `.hdr`, `.hero`, `.cta-band` and `.ftr`. Then delete `tools/looks.py` and this section.
 
 ## Publishing
 
@@ -119,4 +132,23 @@ Wix still runs the quote form, bookings and invoices. `js/wix/` holds Wix's form
 
 ## Animation rules
 
-Motion only answers something the visitor did (a switch, an accordion, a button press, the sample changing trade). The one exception is the handwritten hello on a pitch link. Sections do not fade in on scroll. Everything uses one easing, `cubic-bezier(.2,.7,.2,1)` (`--ease`), and with "reduce motion" turned on everything appears instantly.
+Three things move on their own, once each, as they come into view. Everything else moves only in answer to the visitor (a switch, an accordion, a button press, the sample changing trade).
+
+1. **Boxes that hold a price rise in.** `site.js` adds `.in` to anything with the class `rv` when it is on screen; the stylesheet gives that a look only for `.card.rv`, `.box.rv` and `.prows.rv`. Text sections do not fade in. If the browser never reports what is on screen, everything is shown after 1.5 seconds, so nothing can stay hidden.
+2. **Prices roll like a slot machine.** The first time a price (`.item-p`, `.price`, `.prow-p`, `.total-n`, `.total-s b`) is on screen, each digit spins two full turns and lands back on itself, left to right. The real price never leaves the page: the digits only show other numbers while they are visibly spinning, screen readers are given the real price for that second and a half, and the plain text is put back exactly as it was. When it lands, the box around it gets `.lit` for 0.9 seconds. Changing a calculator number or the Monthly/Yearly switch mid-roll simply wins.
+3. **The sample site builds itself inside the phone** when the phone comes into view.
+
+All of it uses one easing, `cubic-bezier(.2,.7,.2,1)` (`--ease`), and with "reduce motion" turned on nothing rolls or rises: everything is simply there. Before adding a fourth moving thing, take one away. The first version of this design had too much going on and was hard on the eyes.
+
+## Checking the work
+
+Serve the site on port 8765 (`python3 -m http.server 8765` in this folder), then:
+
+    python3 tools/tests/check.py         # links, anchors, titles, structured data, prices against offers.json
+    python3 tools/tests/test_tools.py    # the selling tools on the home page, the Spanish page, booking
+    python3 tools/tests/test_motion.py   # pricing boxes, the price roll, reveals, scripts off, reduce motion,
+                                         # and sideways scroll at 320, 344, 360, 390, 430, 900 and 1280px
+
+The browser tests need Playwright for Python and Chrome at `/usr/bin/google-chrome`. The Wix quote form cannot load from a test machine, so its network error is ignored.
+
+Test on a true 2x screen (start Chrome with `--force-device-scale-factor=2`). Plain device emulation rounds a 1.5px line down to 1px, which real phones do not do, and that once hid a header that ran 2px off a 390px screen. The wordmark and the two header buttons need 412px at full size, so anything narrower gets the compact header (`max-width:419px` in the stylesheet).
