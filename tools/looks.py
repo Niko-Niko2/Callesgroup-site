@@ -124,7 +124,7 @@ def check(th):
 
 
 # ---- the switcher added to the preview copy ----
-NOW = ("", "Now", "Graphite & Gold", "#151515")
+NOW = ("", "Now", "Graphite & Bone", "#151515")
 LOOKS = [NOW] + [(t["id"], t["letter"], t["name"], (t.get("frame") or t["t"])["bg"]) for t in THEMES]
 
 TOOL_CSS = """

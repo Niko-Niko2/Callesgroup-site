@@ -8,7 +8,7 @@
   --bg:#151515;--band:#1A1918;--surface:#1E1E1E;--field:#121212;
   --line:#2E2C29;--line-2:#45413B;
   --ink:#EDEAE6;--muted:#A8A49E;
-  --accent:#C9A962;--accent-hover:#DABB75;--on-accent:#151515;
+  --accent:#EDEAE6;--accent-hover:#FFFFFF;--on-accent:#151515;
   /* Two signal colors, used sparingly: red only for money a visitor could be missing, orange only for the popular tag. */
   --loss:#FF7A6E;--loss-fill:#C8321F;--on-loss:#FFFFFF;--hot:#FF8A1F;--on-hot:#1A1206;
   --font:"Montserrat","Montserrat Fallback",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
@@ -503,6 +503,8 @@ a.box:hover{border-color:var(--accent)}
 .est-bar[hidden]{display:none}
 .more-link{font-weight:600}
 .est .item-d{grid-column:1/-1;max-width:none}
+.est .item.sub .item-n{flex-wrap:nowrap;align-items:flex-start}
+.est .item.sub .item-p{white-space:nowrap}
 .boxed .items-h{border-bottom:0;padding:26px 0 10px}
 .boxed>.items-h:first-child{padding-top:0}
 .boxes{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}

@@ -4,7 +4,7 @@ The live site is https://www.callesgroup.com, hosted on GitHub Pages from `main`
 
 The pages are plain HTML, one stylesheet (`assets/styles.css`) and two small scripts (`assets/site.js` for menus and switches, `assets/tools.js` for the selling tools). There's no framework and nothing builds at runtime. Every page reads fine with JavaScript off.
 
-**This branch (`v2-estimate`) is the staged redesign. Nothing here is live until it is merged into `main`.**
+The redesign was built on the `v2-estimate` branch and went live on 2026-11-13. Work on a branch, preview, then merge into `main`.
 
 ## The one rule: prices live in one file
 
@@ -66,7 +66,7 @@ The cards, care plan cards, "from" prices, quote form pre-fill and structured da
 All three run in the visitor's browser (`assets/tools.js`). Nothing they type is sent anywhere unless they tap a text or call button.
 
 - **The sample site.** The visitor types their business name on the estimate, picks a trade and a town, and the phone shows a sample home page with their name on it. The sample never shows invented reviews, photos or credentials: those spots say "Your job photos go here" and "Your Google reviews show here".
-- **The what-if calculator.** Average job, estimates won out of 10, and extra calls a month give a yearly figure and how fast each package would be paid back. Every number is the visitor's own. The average job starts as a guess per trade (the `TRADES` list at the top of `tools.js`) and the page says to replace it. Package prices come from `offers.json`, never from the script. Keep the "not a promise" line under the result.
+- **The missed-calls calculator.** What one job is worth, calls missed a month and wins out of 10 give a yearly figure in red, two bars that set it next to a website's price, and how fast each package would be paid back.
 - **Pitch links.** Add the owner's details to the home page address and it opens already filled in, with a hello by name:
 
   ```
@@ -74,7 +74,7 @@ All three run in the visitor's browser (`assets/tools.js`). Nothing they type is
   https://www.callesgroup.com/es.html?b=Techos+Garc%C3%ADa&t=roofing&c=Elgin
   ```
 
-  `b` business name, `t` trade (roofing hvac plumbing remodeling electrical landscaping painting concrete detailing washing other), `c` town, `p` sample colors (0 white and gold, 1 graphite and copper, 2 midnight and gold, 3 forest and sage). Add `#worth` to land on the calculator.
+  `b` business name, `t` trade (roofing hvac plumbing remodeling electrical landscaping painting concrete detailing washing other), `c` town, `p` sample colors (0 to 5, in the order of the buttons). Add `#worth` to land on the calculator.
 
 ## The Spanish page
 
@@ -94,11 +94,11 @@ After sending, the visitor goes to `/thank-you.html`.
 2. In `data/offers.json`, under `serviceArea.towns`, add `"page": "web-design-<slug>.html"` to the town (or add the town).
 3. Run `python3 tools/build.py`. The page, footer links, "Also serving nearby" chips, home page chips and both sitemaps all update.
 
-## The look: Graphite & Gold
+## The look: Graphite & Bone
 
-Andrew's graphite background, off-white text and **one** accent, gold. Gold is only for what can be tapped and for the number that matters (a price that is due, the calculator's total). Everything else stays neutral, with hairlines for lists, one clear outline for every box that holds a price, and plenty of room between sections. If a page starts to feel busy, take something away before adding a color.
+Andrew's graphite background, off-white text, and no brand color: buttons and the things you can tap are bone white (`--accent`). The color on the page comes from the sample site in the phone, plus two signal colors (red for missed money, orange for the popular tag). Everything else stays neutral, with hairlines for lists, one clear outline for every box that holds a price, and plenty of room between sections. If a page starts to feel busy, take something away before adding a color.
 
-All colors are the tokens at the top of `assets/styles.css`: `--bg` (#151515), `--band`, `--surface`, `--field`, `--line`, `--line-2`, `--ink`, `--muted`, `--accent` (#C9A962), `--accent-hover`, `--on-accent`. Keep body text at 4.5:1 contrast or better. If the graphite or gold changes, also update `theme-color` in `partials/head.html`, `favicon.svg` and `tools/og-image.html`.
+All colors are the tokens at the top of `assets/styles.css`: `--bg` (#151515), `--band`, `--surface`, `--field`, `--line`, `--line-2`, `--ink`, `--muted`, `--accent` (#EDEAE6), `--accent-hover`, `--on-accent`. Keep body text at 4.5:1 contrast or better. If the graphite or the accent changes, also update `theme-color` in `partials/head.html`, `favicon.svg` and `tools/og-image.html`.
 
 One typeface, Montserrat, hosted on the site (`assets/fonts/montserrat.woff2`). No script or handwriting faces: everything a visitor types or reads is set in the same plain face. Headings are set as one piece, with no accented last phrase.
 
