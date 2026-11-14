@@ -15,7 +15,7 @@
     { k: "roofing", n: ["Roofing", "Techos"], job: 12000,
       h: ["Roof repair and replacement, done right the first time.", "Reparación y cambio de techos, bien hechos a la primera."],
       s: [["Roof replacement", "Storm damage repair", "Gutters and siding"], ["Cambio de techo", "Daños por tormenta", "Canaletas y siding"]] },
-    { k: "hvac", n: ["Heating and cooling", "Calefacción y aire"], job: 6500,
+    { k: "hvac", n: ["Heating and cooling", "Calefacción y aire"], c: ["HVAC", "Clima"], job: 6500,
       h: ["Heating and cooling you can count on.", "Calefacción y aire en los que puede confiar."],
       s: [["Furnace repair", "AC installation", "Seasonal tune-ups"], ["Reparación de calefacción", "Instalación de aire", "Mantenimiento de temporada"]] },
     { k: "plumbing", n: ["Plumbing", "Plomería"], job: 900,
@@ -36,13 +36,25 @@
     { k: "concrete", n: ["Concrete", "Concreto"], job: 6000,
       h: ["Driveways, patios and flatwork that last.", "Entradas, patios y pisos que duran."],
       s: [["Driveways", "Patios", "Stamped concrete"], ["Entradas", "Patios", "Concreto estampado"]] },
-    { k: "detailing", n: ["Auto detailing", "Detallado de autos"], job: 250,
+    { k: "detailing", n: ["Auto detailing", "Detallado de autos"], c: ["Detailing", "Detallado"], job: 250,
       h: ["Your car, back to showroom clean.", "Su auto, como recién salido de agencia."],
       s: [["Interior detail", "Paint correction", "Ceramic coating"], ["Detallado interior", "Corrección de pintura", "Recubrimiento cerámico"]] },
-    { k: "washing", n: ["Pressure washing", "Lavado a presión"], job: 400,
+    { k: "washing", n: ["Pressure washing", "Lavado a presión"], c: ["Power wash", "Lavado"], job: 400,
       h: ["Years of grime gone in an afternoon.", "Años de mugre fuera en una tarde."],
       s: [["House washing", "Driveways", "Decks and fences"], ["Lavado de casas", "Entradas", "Terrazas y cercas"]] },
-    { k: "other", n: ["Something else", "Otro"], job: 2500,
+    { k: "flooring", n: ["Flooring", "Pisos"], job: 4500,
+      h: ["New floors, installed clean and level.", "Pisos nuevos, bien nivelados y bien instalados."],
+      s: [["Hardwood", "Tile", "Vinyl plank"], ["Madera", "Loseta", "Vinil"]] },
+    { k: "siding", n: ["Siding and windows", "Siding y ventanas"], c: ["Siding", "Siding"], job: 12000,
+      h: ["Siding, windows and doors that hold up to Illinois weather.", "Siding, ventanas y puertas que aguantan el clima de Illinois."],
+      s: [["Siding", "Window replacement", "Entry doors"], ["Siding", "Cambio de ventanas", "Puertas de entrada"]] },
+    { k: "trees", n: ["Tree service", "Servicio de árboles"], c: ["Trees", "Árboles"], job: 1500,
+      h: ["Trees trimmed and removed, yard left clean.", "Poda y retiro de árboles, con el patio limpio al final."],
+      s: [["Tree removal", "Trimming", "Stump grinding"], ["Retiro de árboles", "Poda", "Retiro de tocones"]] },
+    { k: "cleaning", n: ["Cleaning", "Limpieza"], job: 300,
+      h: ["A clean you can see the minute you walk in.", "Una limpieza que se nota al entrar."],
+      s: [["House cleaning", "Office cleaning", "Move-out cleaning"], ["Limpieza de casas", "Limpieza de oficinas", "Limpieza de mudanza"]] },
+    { k: "other", n: ["Something else", "Otro"], c: ["Other", "Otro"], job: 2500,
       h: ["Quality work, done right.", "Trabajo de calidad, bien hecho."],
       s: [["Your main service", "Your second service", "Your third service"], ["Su servicio principal", "Su segundo servicio", "Su tercer servicio"]] }
   ];
@@ -121,7 +133,7 @@
   if (ps) {
     var bizIn = $("dBiz"), townIn = $("dTown"), chips = $("dTrades"), swapT;
     TRADES.forEach(function (t) {
-      var b = d.createElement("button"); b.type = "button"; b.className = "pick"; b.textContent = t.n[L];
+      var b = d.createElement("button"); b.type = "button"; b.className = "pick"; b.textContent = (t.c || t.n)[L];
       b.dataset.k = t.k; b.setAttribute("aria-pressed", t.k === S.tk); chips.appendChild(b);
     });
     var paint = function (animate) {

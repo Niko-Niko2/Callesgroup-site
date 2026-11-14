@@ -116,7 +116,7 @@ b,strong{font-weight:700}
 .chips-row::-webkit-scrollbar{display:none}
 @media (max-width:939px){.try .chips-row{margin-right:-18px;padding-right:18px;-webkit-mask-image:linear-gradient(90deg,#000 84%,transparent);mask-image:linear-gradient(90deg,#000 84%,transparent)}}
 @media (min-width:940px){.chips-row{flex-wrap:wrap;overflow:visible}}
-.pick{flex:none;min-height:42px;padding:0 14px;border:1.5px solid var(--line-2);border-radius:999px;background:transparent;color:var(--ink);font:600 .9rem var(--font);cursor:pointer;white-space:nowrap;transition:border-color .15s var(--ease),background-color .15s var(--ease),color .15s var(--ease)}
+.pick{flex:none;min-height:40px;padding:0 13px;border:1.5px solid var(--line-2);border-radius:999px;background:transparent;color:var(--ink);font:600 .9rem var(--font);cursor:pointer;white-space:nowrap;transition:border-color .15s var(--ease),background-color .15s var(--ease),color .15s var(--ease)}
 .pick:hover{border-color:var(--accent)}
 .pick[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 
@@ -269,6 +269,8 @@ a.item:hover .item-n{color:var(--accent)}
 .ticks li::before{content:"";position:absolute;left:2px;top:.5em;width:11px;height:6px;border-left:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(-45deg)}
 .row{display:grid;gap:18px;grid-template-columns:repeat(3,minmax(0,1fr))}
 .cards3{align-items:start}
+.cards3:has(>.plan){align-items:stretch}
+.plan>.btn{margin-top:auto}
 .pkg .pitch{min-height:3.3em}
 .swipe-hint,.dots{display:none}
 @media (max-width:759px){

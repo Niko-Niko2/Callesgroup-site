@@ -39,7 +39,7 @@ STR = {
            "langHref": "/es.html", "langOther": "es", "langName": "Español", "callText": "Call or text",
            "pagesLabel": "Pages", "areaLabel": "Web design near you", "privacy": "Privacy policy",
            "textBtn": "Text Andrew", "ctaFine": "Or call %s. Replies %s.",
-           "popular": "Most popular", "spots": "%d of %d spots left", "due": "Due today",
+           "popular": "Recommended", "spots": "%d of %d spots left", "due": "Due today",
            "dueNote": "The %d-minute quote call is free.", "from": "from", "mo": "/mo",
            "care": ("Care plans", "We keep your site working and up to date. Cancel anytime."),
            "logo": "3 concepts, 2 rounds of changes and the full file pack.",
@@ -59,7 +59,7 @@ STR = {
            "langHref": "/", "langOther": "en", "langName": "English", "callText": "Llame o escriba al",
            "pagesLabel": "Páginas", "areaLabel": "Zonas de servicio (en inglés)", "tagline": "Con base en Elgin, IL. Servimos a todo Chicagoland.", "privacy": "Política de privacidad (en inglés)",
            "textBtn": "Escríbale a Andrew", "ctaFine": "O llame al %s. Respondemos en menos de 24 horas.",
-           "popular": "El más pedido", "spots": "Quedan %d de %d lugares", "due": "A pagar hoy",
+           "popular": "Recomendado", "spots": "Quedan %d de %d lugares", "due": "A pagar hoy",
            "dueNote": "La llamada de %d minutos es gratis.", "from": "desde", "mo": "/mes",
            "care": ("Planes de mantenimiento", "Mantenemos su sitio funcionando y al día. Cancele cuando quiera."),
            "logo": "3 propuestas, 2 rondas de cambios y todos los archivos.",
@@ -316,7 +316,7 @@ def t_packages():
         plus = '<p class="plus">Everything in %s, plus:</p>' % esc(p["buildsOn"]) if p.get("buildsOn") else ""
         cards.append(
             '<article class="card pkg rv%s" id="p-%s">' % (" pop" if p.get("popular") else "", p["key"]) +
-            ('<span class="tag">Most popular</span>' if p.get("popular") else "") +
+            ('<span class="tag">Recommended</span>' if p.get("popular") else "") +
             '<h3>%s</h3>' % esc(p["name"]) +
             '<div class="price">%s</div>' % money(p["price"]) +
             '<p class="muted pitch">%s</p>' % esc(p["pitch"]) +
@@ -362,7 +362,7 @@ def t_care():
         yl = "Billed yearly. 1 month free."
         cards.append(
             '<article class="card plan rv%s" id="%s">' % (" pop" if c.get("popular") else "", c["key"]) +
-            ('<span class="tag">Most popular</span>' if c.get("popular") else "") +
+            ('<span class="tag">Recommended</span>' if c.get("popular") else "") +
             '<h3>%s</h3>' % esc(c["name"]) +
             '<div class="price"><span class="roll" data-care-monthly="%s" data-care-yearly="%s">%s</span><small data-care-monthly="/mo" data-care-yearly="/yr">/mo</small></div>' % (m, y, m) +
             '<p class="muted bill" data-care-monthly="%s" data-care-yearly="%s">%s<span class="nojs"> Or %s/yr paid yearly (1 month free).</span></p>' % (ml, yl, ml, y) +
