@@ -60,7 +60,12 @@
       "es": {
         "pitch": "Entre a internet con un sitio limpio y profesional.",
         "pages": "Hasta 3",
-        "timeline": "De 1 a 2 semanas"
+        "timeline": "De 1 a 2 semanas",
+        "includes": [
+          "Diseño móvil basado en plantilla",
+          "Formulario de contacto",
+          "SEO básico"
+        ]
       }
     },
     {
@@ -83,7 +88,14 @@
       "es": {
         "pitch": "Un sitio a la medida, hecho para traer clientes.",
         "pages": "Hasta 5",
-        "timeline": "De 2 a 3 semanas"
+        "timeline": "De 2 a 3 semanas",
+        "includes": [
+          "Diseño a la medida",
+          "Configuración de su Perfil de Negocio en Google",
+          "Formulario para pedir presupuesto",
+          "Pulido de textos",
+          "Configuración de SEO"
+        ]
       }
     },
     {
@@ -105,7 +117,14 @@
       "es": {
         "pitch": "El sitio completo, con los textos escritos por nosotros.",
         "pages": "Hasta 8",
-        "timeline": "De 3 a 4 semanas"
+        "timeline": "De 3 a 4 semanas",
+        "includes": [
+          "Redacción completa de los textos",
+          "Sesión de fotos en su negocio (25 fotos editadas)",
+          "Blog o galería de proyectos",
+          "30 días de cambios gratis después del lanzamiento",
+          "Llamada de capacitación de 1 hora"
+        ]
       }
     }
   ],
@@ -144,7 +163,22 @@
         "One-page brand guide",
         "Social profile and cover images",
         "Email signature"
-      ]
+      ],
+      "withWebsite": 900,
+      "includesKeys": [
+        "logo"
+      ],
+      "es": {
+        "features": [
+          "Logo",
+          "Diseño de tarjeta de presentación",
+          "Paleta de colores",
+          "Tipografías",
+          "Guía de marca de una página",
+          "Imágenes de perfil y portada para redes",
+          "Firma de correo"
+        ]
+      }
     }
   ],
   "brandingNote": "Getting a website too? Add the Brand Kit for $900 instead of $1,100.",
@@ -157,6 +191,9 @@
       "25 edited photos",
       "Uploaded to your Google Business Profile and website",
       "Within 25 miles of Elgin"
+    ],
+    "includedIn": [
+      "premium"
     ]
   },
   "photosNote": "Outside 25 miles, including Chicago, there's a $75 travel fee.",
@@ -229,7 +266,11 @@
       ],
       "invoiceDue": "Invoices are due in 7 days.",
       "refund": "The deposit is non-refundable once work starts (the kickoff call or first design, whichever comes first).",
-      "soon": "Card payments are coming soon."
+      "soon": "Card payments are coming soon.",
+      "es": {
+        "deposit": "50% de depósito para empezar, el resto antes del lanzamiento.",
+        "over2500": "Más de $2,500: 50% para empezar, 25% al aprobar el diseño y 25% antes del lanzamiento."
+      }
     },
     "ownership": [
       "Your Wix account and domain are in your name, and you pay them directly.",

@@ -167,7 +167,7 @@
         { duration: 1100 + k * 140, delay: wait, easing: "cubic-bezier(.16,.84,.3,1.07)", fill: "both" }).finished;
     })).then(done, done);
   }
-  var prices = d.querySelectorAll(".item-p,.price,.prow-p,.total-n,.total-s b");
+  var prices = d.querySelectorAll(".item-p,.price,.prow-p,.total-n,.total-s b,.est-n");
   if (prices.length && !reduce && "IntersectionObserver" in window && d.body.animate) {
     var pio = new IntersectionObserver(function (es) {
       var i = 0;

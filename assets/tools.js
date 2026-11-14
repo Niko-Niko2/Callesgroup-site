@@ -1,8 +1,8 @@
-/* Calles Group selling tools: the live sample site, the what-if calculator, pitch links and the call request.
+/* Calles Group selling tools: the live sample site, the missed-calls calculator, the estimate, pitch links and the call request.
    Everything runs in the visitor's browser. Nothing typed here is sent anywhere unless they tap a text or call button.
 
    Pitch links: add these to the home page address to open it already filled in for one owner.
-     ?b=Business+Name   &t=roofing   &c=Elgin   &p=0..3 (sample colors: 0 white and gold, 1 graphite and copper, 2 midnight and gold, 3 forest and sage)
+     ?b=Business+Name   &t=roofing   &c=Elgin   &p=0..5 (sample colors, in the order of the buttons: Daylight, Ember, Evergreen, Barn red, Harbor, Glacier)
    Trade keys: roofing hvac plumbing remodeling electrical landscaping painting concrete detailing washing other */
 (function () {
   var d = document, es = d.documentElement.lang === "es";
@@ -53,14 +53,15 @@
     hello: function (b) { return "Hola, " + b + ". Esta muestra es para usted."; },
     jobHint: function (t) { return "Un número inicial para " + t.toLowerCase() + ". Ponga su número real."; },
     callsHint: function (n) { return n === 1 ? "Una sola llamada más al mes." : n + " al mes es como " + (n / 4.33 < 1.5 ? "una por semana." : Math.round(n / 4.33) + " por semana."); },
-    pay: function (n, p, t, k) { return "Un sitio " + n + " de " + p + " se pagaría en <b>" + t + "</b> a ese ritmo. Eso es " + k + (k === 1 ? " trabajo." : " trabajos."); },
+    pay: function (t, k) { return "A ese ritmo se paga solo en <b>" + t + "</b>. Eso es " + k + (k === 1 ? " trabajo." : " trabajos."); },
     payNone: "Suba las llamadas o el valor del trabajo para ver en cuánto tiempo se paga.",
+    siteBar: function (n) { return "Un sitio " + n + ", un solo pago"; },
     dur: function (x) {
       if (x <= 1.5) return "más o menos un día"; if (x < 14) return "unos " + Math.round(x) + " días";
       if (x < 60) return "unas " + Math.round(x / 7) + " semanas"; if (x < 1100) return "unos " + Math.round(x / 30) + " meses"; return "más de 3 años";
     },
     smsDemo: function (s) { return s.biz ? "Hola Andrew, soy de " + s.biz + ". Vi la muestra del sitio para mi negocio de " + s.trade.toLowerCase() + " en " + s.town + ". Quiero una llamada gratis." : "Hola Andrew, vi la muestra en callesgroup.com. Quiero una llamada gratis para mi negocio."; },
-    smsCalc: function (s, r) { return "Hola Andrew" + (s.biz ? ", soy de " + s.biz : "") + ". Hice las cuentas en su sitio: " + s.trade.toLowerCase() + ", trabajo promedio de " + r.job + ", " + r.calls + " llamadas extra al mes, como " + r.yr + " al año. Hablemos."; },
+    smsCalc: function (s, r) { return "Hola Andrew" + (s.biz ? ", soy de " + s.biz : "") + ". Hice las cuentas en su sitio: " + s.trade.toLowerCase() + ", trabajo promedio de " + r.job + ", unas " + r.calls + " llamadas perdidas al mes. Son como " + r.yr + " al año. Hablemos."; },
     smsBook: function (s, when) { return "Hola Andrew" + (s.biz ? ", soy de " + s.biz : "") + ". Quiero una llamada gratis " + when + "."; },
     note: function (s, when) { return "Favor de llamarme " + when + "." + (s.biz ? " Negocio: " + s.biz + "." : ""); },
     today: "Hoy", when: function (day, time, isToday) { return (isToday ? "hoy" : "el " + day) + " a las " + time; },
@@ -71,14 +72,15 @@
     hello: function (b) { return b + ", this sample is for you."; },
     jobHint: function (t) { return "A starting guess for " + t.toLowerCase() + ". Put in your real number."; },
     callsHint: function (n) { return n === 1 ? "Just one more call a month." : n + " a month is about " + (n / 4.33 < 1.5 ? "one a week." : Math.round(n / 4.33) + " a week."); },
-    pay: function (n, p, t, k) { return "A " + n + " site at " + p + " would be paid back in <b>" + t + "</b> at that pace. That is " + k + (k === 1 ? " job." : " jobs."); },
+    pay: function (t, k) { return "At that pace it pays for itself in <b>" + t + "</b>. That is " + k + (k === 1 ? " job." : " jobs."); },
     payNone: "Raise the calls or the job value to see how fast a site pays for itself.",
+    siteBar: function (n) { return "A " + n + " website, paid once"; },
     dur: function (x) {
       if (x <= 1.5) return "about a day"; if (x < 14) return "about " + Math.round(x) + " days";
       if (x < 60) return "about " + Math.round(x / 7) + " weeks"; if (x < 1100) return "about " + Math.round(x / 30) + " months"; return "more than 3 years";
     },
     smsDemo: function (s) { return s.biz ? "Hi Andrew, it's " + s.biz + ". I saw the sample site for my " + s.trade.toLowerCase() + " business in " + s.town + ". I'd like a free quote call." : "Hi Andrew, I saw the sample site on callesgroup.com. I'd like a free quote call for my business."; },
-    smsCalc: function (s, r) { return "Hi Andrew" + (s.biz ? ", it's " + s.biz : "") + ". I ran the numbers on your site: " + s.trade.toLowerCase() + ", average job " + r.job + ", " + r.calls + " extra calls a month, about " + r.yr + " a year. Let's talk."; },
+    smsCalc: function (s, r) { return "Hi Andrew" + (s.biz ? ", it's " + s.biz : "") + ". I ran the numbers on your site: " + s.trade.toLowerCase() + ", average job " + r.job + ", about " + r.calls + " missed calls a month. That is about " + r.yr + " a year. Let's talk."; },
     smsBook: function (s, when) { return "Hi Andrew" + (s.biz ? ", it's " + s.biz : "") + ". I'd like a free quote call " + when + "."; },
     note: function (s, when) { return "Please call me " + when + "." + (s.biz ? " Business: " + s.biz + "." : ""); },
     today: "Today", when: function (day, time, isToday) { return (isToday ? "today" : day) + " at " + time; },
@@ -89,6 +91,14 @@
   function money(n) { return "$" + Math.round(n).toLocaleString("en-US"); }
   function sms(body) { return "sms:" + PHONE + "?&body=" + encodeURIComponent(body); }
   function trade(k) { for (var i = 0; i < TRADES.length; i++) if (TRADES[i].k === k) return TRADES[i]; return null; }
+  // Ease a dollar figure to its new value. Each element remembers what it is showing.
+  function count(el, to) {
+    cancelAnimationFrame(el._raf);
+    if (reduce || el._v == null) { el._v = to; el.textContent = money(to); return; }
+    var from = el._v, t0 = performance.now();
+    var step = function (t) { var k = Math.min(1, (t - t0) / 380), e = 1 - Math.pow(1 - k, 3); el._v = from + (to - from) * e; el.textContent = money(el._v); if (k < 1) el._raf = requestAnimationFrame(step); };
+    el._raf = requestAnimationFrame(step);
+  }
   function press(group, btn) { [].forEach.call(group.querySelectorAll("button"), function (b) { b.setAttribute("aria-pressed", b === btn); }); }
 
   // What we know about this visitor: from a pitch link first, then from earlier in this visit.
@@ -98,9 +108,9 @@
   if (linked) S.biz = clean(q.get("b"), 40);
   if (trade(q.get("t"))) S.tk = q.get("t");
   if (clean(q.get("c"), 28)) S.town = clean(q.get("c"), 28);
-  if (/^[0-3]$/.test(q.get("p") || "")) S.pal = +q.get("p");
+  if (/^[0-5]$/.test(q.get("p") || "")) S.pal = +q.get("p");
   if (!trade(S.tk)) S.tk = "roofing";
-  S.biz = clean(S.biz, 40); S.town = clean(S.town, 28) || "Elgin"; S.pal = +S.pal || 0;
+  S.biz = clean(S.biz, 40); S.town = clean(S.town, 28) || "Elgin"; S.pal = +S.pal >= 0 && +S.pal <= 5 ? Math.floor(+S.pal) : 0;
   function save() { try { sessionStorage.setItem("cg", JSON.stringify(S)); } catch (e) {} }
   function view() { var t = trade(S.tk); return { biz: S.biz, trade: t.n[L], town: S.town }; }
   var listeners = [];
@@ -123,7 +133,10 @@
       $("psCall").textContent = T.call; $("psQuote").textContent = T.quote; $("psPhoto").textContent = T.photo; $("psRev").textContent = T.rev;
       $("psFoot").textContent = T.foot(S.town);
       ps.dataset.pal = S.pal;
-      [].forEach.call(d.querySelectorAll(".sw"), function (b) { b.setAttribute("aria-pressed", +b.dataset.pal === S.pal); });
+      [].forEach.call(d.querySelectorAll(".sw"), function (b) {
+        b.setAttribute("aria-pressed", +b.dataset.pal === S.pal);
+        if (+b.dataset.pal === S.pal && $("swName")) $("swName").textContent = b.dataset.name;
+      });
       var tx = $("demoText"); if (tx) tx.href = sms(T.smsDemo(view()));
       if (animate && !reduce) { ps.classList.remove("swap"); void ps.offsetWidth; ps.classList.add("swap"); clearTimeout(swapT); swapT = setTimeout(function () { ps.classList.remove("swap"); }, 600); }
     };
@@ -150,24 +163,18 @@
     if (hello && linked) { hello.textContent = T.hello(S.biz); hello.hidden = false; }
   }
 
-  /* ---------- 2. The what-if calculator ---------- */
+  /* ---------- 2. The missed-calls calculator ---------- */
+  // Missed calls a month x wins out of 10 x what one job is worth. Two bars put a year of that next to a website's price.
   var calc = $("calc");
   if (calc) {
     var job = $("cJob"), jobR = $("cJobR"), winO = $("cWin"), calls = $("cCalls"), pk = $("cPkgs");
     var pkgs = []; try { pkgs = JSON.parse(calc.dataset.pkgs); } catch (e) {}
-    var win = 3, pick = pkgs[0], touched = false, shown = null, raf;
+    var win = 3, pick = pkgs[0], touched = false;
     pkgs.forEach(function (p, i) {
       var b = d.createElement("button"); b.type = "button"; b.className = "pick"; b.textContent = p.n + " " + money(p.p);
       b.setAttribute("aria-pressed", i === 0); b.dataset.i = i; pk.appendChild(b);
     });
-    pk.addEventListener("click", function (e) { var b = e.target.closest("button"); if (!b) return; pick = pkgs[+b.dataset.i]; press(pk, b); run(false); });
-    var count = function (el, to) {
-      cancelAnimationFrame(raf);
-      if (reduce || shown == null) { shown = to; el.textContent = money(to); return; }
-      var from = shown, t0 = performance.now();
-      var step = function (t) { var k = Math.min(1, (t - t0) / 380), e = 1 - Math.pow(1 - k, 3); shown = from + (to - from) * e; el.textContent = money(shown); if (k < 1) raf = requestAnimationFrame(step); };
-      raf = requestAnimationFrame(step);
-    };
+    pk.addEventListener("click", function (e) { var b = e.target.closest("button"); if (!b) return; pick = pkgs[+b.dataset.i]; press(pk, b); run(); });
     var run = function () {
       var j = Math.max(0, Math.min(1000000, +job.value || 0)), c = +calls.value, jobs = c * win / 10, mo = jobs * j, yr = mo * 12;
       winO.textContent = win; $("cCallsV").textContent = c; $("cCallsHint").textContent = T.callsHint(c);
@@ -175,7 +182,13 @@
       count($("cYear"), yr); $("cMonth").textContent = money(mo);
       $("cJobs").textContent = jobs < 10 ? (Math.round(jobs * 10) / 10).toLocaleString(T.loc) : Math.round(jobs);
       var pay = $("cPay");
-      if (pick && mo > 0 && j > 0) pay.innerHTML = T.pay(pick.n, money(pick.p), T.dur(pick.p / (mo / 30)), Math.max(1, Math.ceil(pick.p / j)));
+      if (pick) {
+        // Both bars share one scale, so the website's bar is as small next to the year as it really is.
+        var top = Math.max(yr, pick.p, 1);
+        $("cBarLoss").style.width = (yr / top * 100) + "%"; $("cBarSite").style.width = (pick.p / top * 100) + "%";
+        $("cBarLossV").textContent = money(yr); $("cBarSiteV").textContent = money(pick.p); $("cBarSiteL").textContent = T.siteBar(pick.n);
+      }
+      if (pick && mo > 0 && j > 0) pay.innerHTML = T.pay(T.dur(pick.p / (mo / 30)), Math.max(1, Math.ceil(pick.p / j)));
       else pay.textContent = T.payNone;
       $("cText").href = sms(T.smsCalc(view(), { job: money(j), calls: c, yr: money(yr) }));
     };
@@ -190,7 +203,50 @@
     setJob(trade(S.tk).job); run();
   }
 
-  /* ---------- 3. Ask for a call time ---------- */
+  /* ---------- 3. The estimate on the price list ---------- */
+  // Tap a website, tick any extras, and the last box adds it up. Every price and rule arrives in data-est from offers.json:
+  // the Brand Kit covers the logo, Premium already comes with the photo shoot, and care is a monthly line of its own.
+  var est = $("est");
+  if (est) {
+    var E = null; try { E = JSON.parse(est.dataset.est); } catch (e) {}
+    var rows = {}; [].forEach.call(est.querySelectorAll("label[data-k]"), function (l) { rows[l.dataset.k] = l; });
+    var boxes = [].slice.call(est.querySelectorAll(".pk")), barEl = $("estBar");
+    var put = function (tpl) { var a = arguments, i = 1; return tpl.replace(/%s/g, function () { return a[i++]; }); };
+    var sum = function () {
+      var inp = est.querySelector('input[name="est-site"]:checked'), site = null, total = 0, items = [], on = {};
+      E.sites.forEach(function (x) { if (inp && x.k === inp.value) site = x; });
+      boxes.forEach(function (b) { b.classList.toggle("on", !!site && b.dataset.k === site.k); });
+      if (site) { total += site.p; items.push([put(E.t.site, site.n), money(site.p)]); }
+      E.adds.forEach(function (a) { on[a.k] = rows[a.k].querySelector("input").checked; });
+      E.adds.forEach(function (a) {
+        var row = rows[a.k], box = row.querySelector("input"), price = row.querySelector(".item-p"), why = "";
+        E.adds.forEach(function (o) { if (o.covers && o.covers.indexOf(a.k) >= 0 && on[o.k]) why = E.t.inKit; });
+        if (a.inside && site && a.inside.indexOf(site.k) >= 0) why = E.t.inPremium;
+        if (price._own == null) price._own = price.innerHTML;
+        if (why) { price.textContent = ""; var sm = d.createElement("small"); sm.textContent = why; price.appendChild(sm); }
+        else if (row.classList.contains("covered")) price.innerHTML = price._own;
+        row.classList.toggle("covered", !!why); box.disabled = !!why;
+        if (box.checked && !why) { total += a.p; items.push([a.n, money(a.p)]); }
+      });
+      var care = rows.care.querySelector("input").checked;
+      $("estCare").hidden = !care;
+      var list = $("estLines"); list.textContent = "";
+      items.forEach(function (it) { var li = d.createElement("li"), n = d.createElement("span"), v = d.createElement("b"); n.textContent = it[0]; v.textContent = it[1]; li.appendChild(n); li.appendChild(v); list.appendChild(li); });
+      count($("estTotal"), total); count($("estBarN"), total); $("estDep").textContent = money(Math.round(total / 2));
+      var f = E.founding, payLine = total > 2500 ? E.pay[1] : E.pay[0];
+      if (site && f && f.left > 0 && site.k === f.k) payLine += " " + put(E.t.founding, site.n, money(f.p)) + " " + E.spots + ".";
+      $("estPay").textContent = payLine;
+      $("estText").href = sms(put(E.t.sms, S.biz ? put(E.t.smsMe, S.biz) : "", items.map(function (it) { return it[0] + " " + it[1]; }).join(", "), money(total), care ? E.t.smsCare : ""));
+    };
+    if (E) {
+      est.addEventListener("change", sum); listeners.push(sum); sum();
+      // The riding bar shows while the choices are on screen and steps aside once the estimate itself is in view.
+      barEl.hidden = false;
+      if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { barEl.classList.toggle("off", es[0].isIntersecting); }, { threshold: 0.35 }).observe($("estSum"));
+    }
+  }
+
+  /* ---------- 4. Ask for a call time ---------- */
   // The times offered are Andrew's call hours, set in data/offers.json and passed in on the element.
   [].forEach.call(d.querySelectorAll("[data-bk]"), function (bk) {
     var days = bk.querySelector("[data-bk-days]"), times = bk.querySelector("[data-bk-times]"), biz = bk.querySelector("#bkBiz");

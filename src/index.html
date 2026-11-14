@@ -30,12 +30,7 @@
       <p class="ps-foot" id="psFoot">Serving Elgin and nearby towns</p>
     </div></div>
     <div class="tune">
-      <div class="swatches" role="group" aria-label="Sample colors"><span>Colors</span>
-        <button type="button" class="sw" style="--a:#FAF9F6;--b:#C9A962" data-pal="0" aria-pressed="true" aria-label="White and gold"></button>
-        <button type="button" class="sw" style="--a:#1B1C1E;--b:#C8824A" data-pal="1" aria-pressed="false" aria-label="Graphite and copper"></button>
-        <button type="button" class="sw" style="--a:#0F1A2E;--b:#D9B04F" data-pal="2" aria-pressed="false" aria-label="Midnight and gold"></button>
-        <button type="button" class="sw" style="--a:#17251E;--b:#A7CDA8" data-pal="3" aria-pressed="false" aria-label="Forest and sage"></button>
-      </div>
+      {{swatches}}
       <label class="town"><span>Town</span><input id="dTown" name="town" type="text" maxlength="28" value="Elgin" autocapitalize="words" spellcheck="false" form="demoForm"></label>
     </div>
     <p class="small muted demo-note">This is a sample. Your real site is designed around your own photos, services and colors.</p>
@@ -43,30 +38,38 @@
 </div></section>
 
 <section class="sec band" id="worth" aria-labelledby="worth-h"><div class="wrap">
-  <div class="sec-head"><h2 id="worth-h">What is one more call a week worth?</h2><p class="muted">Use your own numbers. This is a what-if, and every line can be changed.</p></div>
+  <div class="sec-head"><h2 id="worth-h">How much are missed calls costing you?</h2><p class="muted">When people can't find you online, they call someone else. Three quick numbers show what that could add up to.</p></div>
   <div class="calc" id="calc" data-pkgs="{{pkgdata}}">
-    <div class="lines">
-      <div class="line">
-        <div class="line-top"><label for="cJob">Your average job</label><span class="money">$<input id="cJob" type="number" inputmode="numeric" min="50" max="1000000" step="50" value="12000"></span></div>
-        <input id="cJobR" type="range" min="100" max="40000" step="100" value="12000" aria-label="Average job, slider">
+    <ol class="lines">
+      <li class="line">
+        <div class="line-top"><label for="cJob"><i class="n" aria-hidden="true">1</i>One job is worth</label><span class="money">$<input id="cJob" type="number" inputmode="numeric" min="50" max="1000000" step="50" value="12000"></span></div>
+        <input id="cJobR" type="range" min="100" max="40000" step="100" value="12000" aria-label="What one job is worth, slider">
         <p class="hint" id="cJobHint">A starting guess for roofing. Put in your real number.</p>
-      </div>
-      <div class="line">
-        <div class="line-top"><span class="lab" id="cWinL">Out of 10 estimates, you win</span>
-          <span class="step" role="group" aria-labelledby="cWinL"><button type="button" id="cWinDn" aria-label="One fewer">&minus;</button><output class="val" id="cWin">3</output><button type="button" id="cWinUp" aria-label="One more">+</button></span></div>
-      </div>
-      <div class="line">
-        <div class="line-top"><label for="cCalls">Extra calls a month from a site that works</label><output id="cCallsV" for="cCalls">4</output></div>
+      </li>
+      <li class="line">
+        <div class="line-top"><label for="cCalls"><i class="n" aria-hidden="true">2</i>Calls you miss each month</label><output id="cCallsV" for="cCalls">4</output></div>
         <input id="cCalls" type="range" min="1" max="30" step="1" value="4">
         <p class="hint" id="cCallsHint">4 a month is about one a week.</p>
-      </div>
-    </div>
-    <div class="total">
-      <p class="total-l">That adds up to about</p>
+      </li>
+      <li class="line">
+        <div class="line-top"><span class="lab" id="cWinL"><i class="n" aria-hidden="true">3</i>Out of 10 calls, how many become jobs?</span>
+          <span class="step" role="group" aria-labelledby="cWinL"><button type="button" id="cWinDn" aria-label="One fewer">&minus;</button><output class="val" id="cWin">3</output><button type="button" id="cWinUp" aria-label="One more">+</button></span></div>
+      </li>
+    </ol>
+    <div class="total loss rv">
+      <p class="total-l"><span class="tag tag-loss">You could be missing about</span></p>
       <p class="total-n" id="cYear">$172,800</p>
-      <p class="total-l">a year in new work</p>
-      <div class="total-s"><div><b id="cMonth">$14,400</b><span>a month</span></div><div><b id="cJobs">1.2</b><span>more jobs a month</span></div></div>
-      <div class="payback"><div class="chips-row" id="cPkgs" role="group" aria-label="Website package"></div><p id="cPay"></p></div>
+      <p class="total-l">a year</p>
+      <div class="total-s"><div><b id="cMonth">$14,400</b><span>a month</span></div><div><b id="cJobs">1.2</b><span>jobs a month</span></div></div>
+      <div class="viz">
+        <p class="viz-h">Now put that next to the price of a website</p>
+        <div class="chips-row" id="cPkgs" role="group" aria-label="Website package"></div>
+        <div class="bars" aria-hidden="true">
+          <div class="bar-row"><span class="bar-l">What you miss in a year</span><b class="bar-v loss" id="cBarLossV">$172,800</b><span class="bar"><i class="bar-f loss" id="cBarLoss"></i></span></div>
+          <div class="bar-row"><span class="bar-l" id="cBarSiteL">A Launch website, paid once</span><b class="bar-v" id="cBarSiteV">$1,500</b><span class="bar"><i class="bar-f" id="cBarSite"></i></span></div>
+        </div>
+        <p class="pay" id="cPay"></p>
+      </div>
       <div class="btns"><a class="btn btn-primary" href="/contact.html#book">Book a free call</a><a class="btn btn-ghost btn-wrap" id="cText" href="{{sms}}">Text Andrew these numbers</a></div>
       <p class="fine">A what-if with your own numbers, not a promise. No website can guarantee calls. A site that shows up, loads fast and makes calling easy gives you a fair shot at them.</p>
     </div>
@@ -76,7 +79,7 @@
 <section class="sec" id="price" aria-labelledby="price-h"><div class="wrap">
   <div class="sec-head"><h2 id="price-h">What it costs.</h2><p class="muted">Flat prices. You get your exact number in writing on the free quote call.</p></div>
   {{lineitems}}
-  <div class="stamp-row">{{stamp}}<div class="btns"><a class="btn btn-primary" href="/contact.html#book">Book a free call</a><a class="btn btn-ghost btn-wrap" href="/pricing.html">See what each package includes</a></div></div>
+  <div class="stamp-row">{{stamp}}<a class="more-link" href="/pricing.html">Compare the packages side by side</a></div>
 </div></section>
 
 <section class="sec band" aria-labelledby="how-h"><div class="wrap">

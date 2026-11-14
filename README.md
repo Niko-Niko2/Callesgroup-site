@@ -33,6 +33,14 @@ python3 tools/build.py
 
 Every website package in `offers.json` carries the same facts in the same order: `pages`, `timeline`, `rounds` (of changes), then `includes` (what it adds) and `buildsOn` (the package below it). The package cards on `pricing.html` show those three rows identically on every card, then "What's included", so the three compare at a glance. The home page shows each website package in its own outlined box (three across on a desktop, stacked on a phone), then Add-ons and Monthly care in two grouped boxes, then the "Due today $0" line.
 
+## The estimate on the home page
+
+The price section on the home page (and the Spanish page) is an estimate builder. A visitor taps a website box to pick it, ticks add-ons and monthly care, and the last box adds it up: one-time total, 50% to start, and "Due today $0". Nothing leaves the page. `tools/build.py` (`t_lineitems`) writes the boxes and passes every price and rule to `assets/tools.js` in `data-est`, so the script holds no prices. The rules live in `offers.json`: the Brand Kit's `withWebsite` price and `includesKeys` (it covers the logo), and the photo shoot's `includedIn` (Premium already has it). The build stops if `withWebsite` and the two Brand Kit notes disagree. Growth is picked to start with.
+
+The section above it is the missed-calls calculator: what one job is worth, calls missed a month, wins out of 10. Red is used only there, for money a visitor could be missing. Orange is used only for the popular tag.
+
+The sample phone has six color sets (Daylight, Ember, Evergreen, Barn red, Harbor, Glacier). Colors are in `assets/styles.css` (`.ps` and `.sw` share them), names in `PALETTES` in `tools/build.py`, and a pitch link picks one with `p=0` to `p=5`. The scoreboard in `_tools/sprint.html` keeps its own copy of the list.
+
 ## How to change a price
 
 1. Open `data/offers.json` and change the number. For example, Growth: find `"key": "growth"` and change `"price": 2500`.

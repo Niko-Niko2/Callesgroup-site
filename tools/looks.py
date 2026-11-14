@@ -22,45 +22,33 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PREVIEW = os.path.join(ROOT, "_preview")
 
 TOKENS = ("bg", "band", "surface", "field", "line", "line-2", "ink", "muted", "accent", "accent-hover", "on-accent")
-SAMPLE = ("p-bg", "p-sf", "p-ink", "p-mu", "p-ac", "p-ak", "p-on")
 
 THEMES = [
     dict(id="a", letter="A", name="Paper & Cobalt", feel="Bank clean. Light page, one blue button.", scheme="light",
-         t=dict(zip(TOKENS, "#F9F8F4 #F1EFE8 #FFFFFF #FFFFFF #E3E0D6 #ACA79B #14171C #5A606B #1B45D4 #1535A8 #FFFFFF".split())),
-         s=dict(zip(SAMPLE, "#FFFFFF #F0F2F8 #14171C #5A606B #1B45D4 #1B45D4 #FFFFFF".split()))),
+         t=dict(zip(TOKENS, "#F9F8F4 #F1EFE8 #FFFFFF #FFFFFF #E3E0D6 #ACA79B #14171C #5A606B #1B45D4 #1535A8 #FFFFFF".split()))),
     dict(id="b", letter="B", name="Stone & Wine", feel="Warm, established, least expected.", scheme="light",
-         t=dict(zip(TOKENS, "#F4F1EA #EBE6DC #FBF9F4 #FFFFFF #DFD8CA #ADA392 #1E1A18 #645B54 #7F1D2D #651623 #FFF9F3".split())),
-         s=dict(zip(SAMPLE, "#FFFDF9 #F2EDE4 #1E1A18 #645B54 #7F1D2D #7F1D2D #FFF9F3".split()))),
+         t=dict(zip(TOKENS, "#F4F1EA #EBE6DC #FBF9F4 #FFFFFF #DFD8CA #ADA392 #1E1A18 #645B54 #7F1D2D #651623 #FFF9F3".split()))),
     dict(id="c", letter="C", name="Chalk & Ink", feel="No color at all. Black buttons on white.", scheme="light",
-         t=dict(zip(TOKENS, "#FFFFFF #F5F5F2 #F7F7F4 #FFFFFF #E5E5E0 #AFAFA8 #111111 #5C5C58 #111111 #3A3A3A #FFFFFF".split())),
-         s=dict(zip(SAMPLE, "#FFFFFF #F1F1EE #111111 #5C5C58 #111111 #111111 #FFFFFF".split()))),
+         t=dict(zip(TOKENS, "#FFFFFF #F5F5F2 #F7F7F4 #FFFFFF #E5E5E0 #AFAFA8 #111111 #5C5C58 #111111 #3A3A3A #FFFFFF".split()))),
     dict(id="d", letter="D", name="Midnight & Ice", feel="Deep navy, pale blue button. Calm.", scheme="dark",
-         t=dict(zip(TOKENS, "#0A1424 #0D192C #122038 #08101D #1D2E49 #334766 #EDF1F7 #A0AEC4 #8FC0FF #B4D5FF #0A1424".split())),
-         s=dict(zip(SAMPLE, "#FFFFFF #EEF2F9 #0F1A2E #56617A #1F5AD6 #1F5AD6 #FFFFFF".split()))),
+         t=dict(zip(TOKENS, "#0A1424 #0D192C #122038 #08101D #1D2E49 #334766 #EDF1F7 #A0AEC4 #8FC0FF #B4D5FF #0A1424".split()))),
     dict(id="e", letter="E", name="Graphite & Bone", feel="Your graphite, gold removed. Smallest change.", scheme="dark",
-         t=dict(zip(TOKENS, "#151515 #1A1918 #1E1E1E #121212 #2E2C29 #45413B #EDEAE6 #A8A49E #EDEAE6 #FFFFFF #151515".split())),
-         s=dict(zip(SAMPLE, "#FAF9F6 #EFECE6 #1A1A1A #615E58 #1A1A1A #1A1A1A #FAF9F6".split()))),
+         t=dict(zip(TOKENS, "#151515 #1A1918 #1E1E1E #121212 #2E2C29 #45413B #EDEAE6 #A8A49E #EDEAE6 #FFFFFF #151515".split()))),
     dict(id="f", letter="F", name="Fog & Teal", feel="Cool and fresh. Softer than blue.", scheme="light",
-         t=dict(zip(TOKENS, "#F2F5F5 #E8EDED #FFFFFF #FFFFFF #DAE1E1 #9FACAD #0F1E20 #53646A #0B6A72 #08545B #FFFFFF".split())),
-         s=dict(zip(SAMPLE, "#FFFFFF #EDF2F2 #0F1E20 #53646A #0B6A72 #0B6A72 #FFFFFF".split()))),
+         t=dict(zip(TOKENS, "#F2F5F5 #E8EDED #FFFFFF #FFFFFF #DAE1E1 #9FACAD #0F1E20 #53646A #0B6A72 #08545B #FFFFFF".split()))),
     dict(id="g", letter="G", name="Midnight & Paper", feel="Navy first screen, light body.", scheme="light",
          t=dict(zip(TOKENS, "#F9F8F4 #F1EFE8 #FFFFFF #FFFFFF #E3E0D6 #ACA79B #14171C #5A606B #1B45D4 #1535A8 #FFFFFF".split())),
-         s=dict(zip(SAMPLE, "#FFFFFF #F0F2F8 #14171C #5A606B #1B45D4 #1B45D4 #FFFFFF".split())),
          frame=dict(zip(TOKENS, "#0A1424 #0D192C #122038 #08101D #1D2E49 #334766 #EDF1F7 #A0AEC4 #8FC0FF #B4D5FF #0A1424".split()))),
     # --- greens (second round) ---
     dict(id="h", letter="H", name="Linen & Moss", feel="Moss green on a light page.", scheme="light",
-         t=dict(zip(TOKENS, "#F6F5EE #EDECE2 #FFFFFF #FFFFFF #E1E0D3 #A8A996 #1A1D16 #5A5F51 #4D6630 #3D5325 #FFFFFF".split())),
-         s=dict(zip(SAMPLE, "#FFFFFF #F1F2EA #1A1D16 #5A5F51 #4D6630 #4D6630 #FFFFFF".split()))),
+         t=dict(zip(TOKENS, "#F6F5EE #EDECE2 #FFFFFF #FFFFFF #E1E0D3 #A8A996 #1A1D16 #5A5F51 #4D6630 #3D5325 #FFFFFF".split()))),
     dict(id="i", letter="I", name="Sage & Evergreen", feel="The whole page leans green.", scheme="light",
-         t=dict(zip(TOKENS, "#EDF1EA #E3E9DF #F9FBF7 #FFFFFF #D5DDD0 #9CA897 #142019 #4F5E55 #1F5A44 #174735 #FFFFFF".split())),
-         s=dict(zip(SAMPLE, "#FFFFFF #EDF2EC #142019 #4F5E55 #1F5A44 #1F5A44 #FFFFFF".split()))),
+         t=dict(zip(TOKENS, "#EDF1EA #E3E9DF #F9FBF7 #FFFFFF #D5DDD0 #9CA897 #142019 #4F5E55 #1F5A44 #174735 #FFFFFF".split()))),
     dict(id="j", letter="J", name="Evergreen & Paper", feel="Green first screen, light body.", scheme="light",
          t=dict(zip(TOKENS, "#F8F7F2 #EFEEE6 #FFFFFF #FFFFFF #E2E0D5 #A9A899 #141A16 #586058 #1F6B4A #175538 #FFFFFF".split())),
-         s=dict(zip(SAMPLE, "#FFFFFF #EEF2EC #141A16 #586058 #1F6B4A #1F6B4A #FFFFFF".split())),
-         frame=dict(zip(TOKENS, "#0E2A20 #113025 #17392D #0A2019 #23473A #3A6252 #EEF3EC #A5B8AC #A8DDB9 #C6EBD2 #0E2A20".split()))),
+         frame=dict(zip(TOKENS, "#0E2A20 #113025 #17392D #0A2019 #23473A #3A6252 #EEF3EC #A5B8AC #A8DDB9 #C6EBD2 #0E2A20".split())), dark=("#price",)),
     dict(id="k", letter="K", name="Evergreen & Mint", feel="Deep green all the way down.", scheme="dark",
-         t=dict(zip(TOKENS, "#0E2A20 #113025 #17392D #0A2019 #23473A #3A6252 #EEF3EC #A5B8AC #A8DDB9 #C6EBD2 #0E2A20".split())),
-         s=dict(zip(SAMPLE, "#FFFFFF #EEF2EC #141A16 #586058 #1F6B4A #1F6B4A #FFFFFF".split()))),
+         t=dict(zip(TOKENS, "#0E2A20 #113025 #17392D #0A2019 #23473A #3A6252 #EEF3EC #A5B8AC #A8DDB9 #C6EBD2 #0E2A20".split()))),
 ]
 BY_ID = {t["id"]: t for t in THEMES}
 FRAME = (".hdr", ".hero", ".cta-band", ".ftr")  # the parts that take the second (dark) token set in a two-tone theme
@@ -68,11 +56,10 @@ FRAME = (".hdr", ".hero", ".cta-band", ".ftr")  # the parts that take the second
 
 def css(th, root=":root"):
     """Override CSS for one option. root is the selector that carries the tokens (':root' or 'html[data-look=a]')."""
-    t, s = th["t"], th["s"]
+    t = th["t"]
     light = th["scheme"] == "light"
-    out = ["%s{%s;color-scheme:%s}" % (root, ";".join("--%s:%s" % (k, t[k]) for k in TOKENS), th["scheme"])]
-    out.append("%s .ps[data-pal=\"0\"]{%s}" % (root, ";".join("--%s:%s" % (k, s[k]) for k in SAMPLE)))
-    out.append("%s .sw[data-pal=\"0\"]{--a:%s!important;--b:%s!important}" % (root, s["p-bg"], s["p-ac"]))
+    loss = ";--loss:#B92A18" if light else ""
+    out = ["%s{%s%s;color-scheme:%s}" % (root, ";".join("--%s:%s" % (k, t[k]) for k in TOKENS), loss, th["scheme"])]
     if light:
         out.append("%s .phone{box-shadow:0 0 0 1px var(--line-2),0 34px 60px -34px rgba(20,22,30,.38)}" % root)
         out.append("%s #quote .form-error,%s #quote .form-form-error{color:#B3261E}" % (root, root))
@@ -80,7 +67,12 @@ def css(th, root=":root"):
     if th.get("frame"):
         f = th["frame"]
         sel = ",".join("%s %s" % (root, x) for x in FRAME)
-        out.append("%s{%s;color:var(--ink);color-scheme:dark}" % (sel, ";".join("--%s:%s" % (k, f[k]) for k in TOKENS)))
+        dark = ";".join("--%s:%s" % (k, f[k]) for k in TOKENS) + ";--loss:#FF7A6E"
+        out.append("%s{%s;color:var(--ink);color-scheme:dark}" % (sel, dark))
+        # A test on some looks: named sections go dark too, and the boxes inside keep the light set so they stand out.
+        for sec in th.get("dark", ()):
+            out.append("%s %s{%s;background:var(--bg);color:var(--ink);color-scheme:dark}" % (root, sec, dark))
+            out.append("%s %s .box{%s;--loss:#B92A18;color:var(--ink);color-scheme:light}" % (root, sec, ";".join("--%s:%s" % (k, t[k]) for k in TOKENS)))
         out.append("%s .hero,%s .ftr{background:var(--bg)}" % (root, root))
         out.append("%s .ftr{border-top-color:var(--line)}" % root)
         out.append("%s .hero .phone{box-shadow:0 0 0 1px var(--line-2),0 34px 60px -34px rgba(0,0,0,.9)}" % root)
@@ -110,7 +102,7 @@ def ratio(a, b):
 
 
 def check(th):
-    t, s = th["t"], th["s"]
+    t = th["t"]
     rows = []
     for fg, need in (("ink", 7.0), ("muted", 4.5), ("accent", 4.5)):
         for bgk in ("bg", "band", "surface"):
@@ -119,11 +111,6 @@ def check(th):
     rows.append(("on-accent on accent-hover", ratio(t["on-accent"], t["accent-hover"]), 4.5))
     rows.append(("ink on field", ratio(t["ink"], t["field"]), 7.0))
     rows.append(("muted (placeholder) on field", ratio(t["muted"], t["field"]), 4.5))
-    rows.append(("sample ink on bg", ratio(s["p-ink"], s["p-bg"]), 7.0))
-    rows.append(("sample muted on bg", ratio(s["p-mu"], s["p-bg"]), 4.5))
-    rows.append(("sample muted on card", ratio(s["p-mu"], s["p-sf"]), 4.5))
-    rows.append(("sample accent text on bg", ratio(s["p-ak"], s["p-bg"]), 4.5))
-    rows.append(("sample button text", ratio(s["p-on"], s["p-ac"]), 4.5))
     if th.get("frame"):
         f = th["frame"]
         for fg, need in (("ink", 7.0), ("muted", 4.5), ("accent", 4.5)):
@@ -182,7 +169,7 @@ PILL = ('<div class="lk" role="group" aria-label="Flip through color options">'
         'document.querySelector(".pv-looks").addEventListener("click",function(e){var b=e.target.closest("button");if(b)set(b.getAttribute("data-look"))});'
         'document.getElementById("lkPrev").addEventListener("click",function(){set(LOOKS[(at()+LOOKS.length-1)%%LOOKS.length][0])});'
         'document.getElementById("lkNext").addEventListener("click",function(){set(LOOKS[(at()+1)%%LOOKS.length][0])});'
-        'paint()})();</script>\n') % json.dumps([list(x) for x in LOOKS])
+        'if(document.getElementById("est"))document.querySelector(".lk").style.bottom="78px";paint()})();</script>\n') % json.dumps([list(x) for x in LOOKS])
 
 
 OLD_BAR = re.compile(r'<div style="background:#1E1E1E;border-bottom:1px solid #2E2C29;[^>]*>.*?</div>', re.S)

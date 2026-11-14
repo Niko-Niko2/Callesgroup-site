@@ -9,6 +9,8 @@
   --line:#2E2C29;--line-2:#45413B;
   --ink:#EDEAE6;--muted:#A8A49E;
   --accent:#C9A962;--accent-hover:#DABB75;--on-accent:#151515;
+  /* Two signal colors, used sparingly: red only for money a visitor could be missing, orange only for the popular tag. */
+  --loss:#FF7A6E;--loss-fill:#C8321F;--on-loss:#FFFFFF;--hot:#FF8A1F;--on-hot:#1A1206;
   --font:"Montserrat","Montserrat Fallback",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
   --ease:cubic-bezier(.2,.7,.2,1);--hdr:64px;--max:1100px;--gut:20px;--r:12px;
   color-scheme:dark;
@@ -121,11 +123,15 @@ b,strong{font-weight:700}
 /* The phone and the sample site inside it. The sample has its own colors on purpose: it is the visitor's site, not ours. */
 .demo{display:grid;gap:16px;justify-items:center;min-width:0}
 .phone{width:min(312px,86vw);border:8px solid #0B0B0B;border-radius:38px;overflow:hidden;background:#0B0B0B;box-shadow:0 0 0 1px var(--line-2),0 34px 60px -34px rgba(0,0,0,.9)}
-.ps{--p-bg:#FAF9F6;--p-sf:#EFECE6;--p-ink:#1A1A1A;--p-mu:#615E58;--p-ac:#C9A962;--p-ak:#7A5A16;--p-on:#151515;
-  background:var(--p-bg);color:var(--p-ink);font-family:var(--font);min-height:540px;display:flex;flex-direction:column;transition:background-color .3s var(--ease),color .3s var(--ease)}
-.ps[data-pal="1"]{--p-bg:#1B1C1E;--p-sf:#26282B;--p-ink:#F1EDE6;--p-mu:#A9A49A;--p-ac:#C8824A;--p-ak:#C8824A;--p-on:#1B1C1E}
-.ps[data-pal="2"]{--p-bg:#0F1A2E;--p-sf:#1A2740;--p-ink:#F2EEE3;--p-mu:#A6AEC0;--p-ac:#D9B04F;--p-ak:#D9B04F;--p-on:#0F1A2E}
-.ps[data-pal="3"]{--p-bg:#17251E;--p-sf:#21332A;--p-ink:#EEF3EC;--p-mu:#A5B5A8;--p-ac:#A7CDA8;--p-ak:#A7CDA8;--p-on:#17251E}
+/* The sample site's color sets. The phone (.ps) and the round color buttons (.sw) read the same values.
+   Names, in order: Daylight, Ember, Evergreen, Barn red, Harbor, Glacier (tools/build.py PALETTES). */
+.ps,.sw{--p-bg:#FFFFFF;--p-sf:#EEF2FB;--p-ink:#0F172A;--p-mu:#55607A;--p-ac:#1F4FE0;--p-ak:#1F4FE0;--p-on:#FFFFFF}
+.ps[data-pal="1"],.sw[data-pal="1"]{--p-bg:#17181A;--p-sf:#232528;--p-ink:#F5F3EF;--p-mu:#A9A7A1;--p-ac:#FF7A1A;--p-ak:#FF9447;--p-on:#17181A}
+.ps[data-pal="2"],.sw[data-pal="2"]{--p-bg:#0E2A20;--p-sf:#17392D;--p-ink:#EEF3EC;--p-mu:#A5B8AC;--p-ac:#B6EE6C;--p-ak:#B6EE6C;--p-on:#0E2A20}
+.ps[data-pal="3"],.sw[data-pal="3"]{--p-bg:#FBF5EC;--p-sf:#F1E7D8;--p-ink:#2A1D17;--p-mu:#6A5A50;--p-ac:#B5362A;--p-ak:#A83024;--p-on:#FFFFFF}
+.ps[data-pal="4"],.sw[data-pal="4"]{--p-bg:#0C1D3A;--p-sf:#16294C;--p-ink:#F4F6FA;--p-mu:#A7B4CB;--p-ac:#FFC83D;--p-ak:#FFC83D;--p-on:#0C1D3A}
+.ps[data-pal="5"],.sw[data-pal="5"]{--p-bg:#F2F8F8;--p-sf:#DFEDED;--p-ink:#0E2326;--p-mu:#4E6468;--p-ac:#097378;--p-ak:#097378;--p-on:#FFFFFF}
+.ps{background:var(--p-bg);color:var(--p-ink);font-family:var(--font);min-height:540px;display:flex;flex-direction:column;transition:background-color .3s var(--ease),color .3s var(--ease)}
 .ps-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 16px 12px}
 .ps-name{font-weight:800;font-size:.92rem;line-height:1.2;min-width:0}
 .ps-menu{flex:none;width:20px;height:14px;border-block:2px solid var(--p-ink);position:relative}
@@ -145,9 +151,11 @@ b,strong{font-weight:700}
 .ps-stars{letter-spacing:2px;color:var(--p-ak);font-size:.8rem}
 .ps-foot{margin-top:auto;padding:14px 16px 18px;font-size:.68rem;color:var(--p-mu)}
 .tune{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 22px}
-.swatches{display:flex;align-items:center;gap:10px}
-.swatches span,.town span{font-size:.86rem;font-weight:600;color:var(--muted)}
-.sw{width:40px;height:40px;border-radius:50%;border:2px solid var(--line-2);cursor:pointer;padding:0;background:linear-gradient(135deg,var(--a) 50%,var(--b) 50%)}
+.swatches{display:grid;gap:10px;justify-items:center}
+.sw-row{display:flex;gap:10px}
+.sw-l,.town span{font-size:.86rem;font-weight:600;color:var(--muted)}
+.sw-l b{color:var(--ink);font-weight:700}
+.sw{width:40px;height:40px;border-radius:50%;border:2px solid var(--line-2);cursor:pointer;padding:0;background:linear-gradient(135deg,var(--p-bg) 50%,var(--p-ac) 50%)}
 .sw[aria-pressed=true]{border-color:var(--bg);outline:2px solid var(--accent)}
 .town{display:flex;align-items:center;gap:8px}
 .town input{width:9.5rem;min-height:40px;padding:0 12px;border:1.5px solid var(--line-2);border-radius:10px;background:var(--field);color:var(--ink);font:600 .92rem var(--font)}
@@ -157,10 +165,11 @@ b,strong{font-weight:700}
 /* Calculator */
 .calc{display:grid;grid-template-columns:minmax(0,1fr);gap:28px}
 @media (min-width:900px){.calc{grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:48px;align-items:start}}
-.lines{border-top:1px solid var(--line-2);display:grid}
+.lines{list-style:none;margin:0;padding:0;border-top:1px solid var(--line-2);display:grid}
 .line{display:grid;gap:8px;padding:16px 0;border-bottom:1px solid var(--line)}
 .line-top{display:flex;align-items:center;justify-content:space-between;gap:14px}
-.line label,.line .lab{font-weight:600}
+.line label,.line .lab{font-weight:600;display:flex;align-items:center;gap:10px}
+.line .n{flex:none;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--bg);font:800 .82rem/1 var(--font);font-style:normal}
 .line output,.line .val{font-weight:700;font-size:1.3rem;line-height:1;color:var(--accent);white-space:nowrap;font-variant-numeric:tabular-nums}
 .line .hint{font-size:.86rem;color:var(--muted)}
 .money{display:flex;align-items:center;gap:4px;font-weight:700;font-size:1.3rem;color:var(--accent)}
@@ -183,13 +192,25 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .total-s div+div{padding-left:16px;border-left:1px solid var(--line)}
 .total-s b{font-weight:700;font-size:1.3rem;line-height:1.1;font-variant-numeric:tabular-nums}
 .total-s span{font-size:.86rem;color:var(--muted)}
-.payback{border-top:1px solid var(--line);padding-top:16px;margin-top:6px;display:grid;gap:12px}
-.payback p b{color:var(--accent)}
+.total.loss .total-n{color:var(--loss)}
+.tag.tag-loss{background:var(--loss-fill);border-color:var(--loss-fill);color:var(--on-loss);font-size:.8rem;padding:5px 11px}
+.viz{border-top:1px solid var(--line);padding-top:18px;margin-top:8px;display:grid;gap:14px}
+.viz-h{font-weight:700}
+.bars{display:grid;gap:14px}
+.bar-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;align-items:baseline}
+.bar-l{font-size:.92rem;font-weight:600}
+.bar-v{font-weight:800;font-variant-numeric:tabular-nums}
+.bar-v.loss{color:var(--loss)}
+.bar{grid-column:1/-1;display:block;height:18px;border-radius:9px;background:var(--line);overflow:hidden}
+.bar-f{display:block;height:100%;width:0;min-width:6px;border-radius:9px;background:var(--accent);transition:width .7s var(--ease)}
+.bar-f.loss{background:var(--loss-fill)}
+.pay{font-size:1.12rem;font-weight:600}
+.pay b{color:var(--accent);font-weight:800}
 .total .btns{margin-top:6px}
 .fine{font-size:.84rem;color:var(--muted)}
 
 /* Price lists: rows with hairlines (the home page puts them in boxes, see Pricing boxes near the end) */
-.items{display:grid}
+.items{display:grid;grid-template-columns:minmax(0,1fr)}
 .items>.item:first-child{border-top:1px solid var(--line-2)}
 .items-h{font-size:.86rem;font-weight:600;letter-spacing:0;color:var(--muted);padding:28px 0 10px;border-bottom:1px solid var(--line-2)}
 .items-h:first-child{padding-top:0}
@@ -410,7 +431,7 @@ a.chip:hover{background:var(--accent);color:var(--on-accent)}
 .legal h2{font-size:1.3rem;margin:32px 0 8px}
 .legal p,.legal ul{margin:0 0 10px;color:var(--muted)}
 .crumbs{font-size:.86rem;color:var(--muted);margin-bottom:2px}
-.crumbs a{color:var(--muted);font-weight:500}
+.crumbs a{color:var(--ink);font-weight:600}
 .faq-jump{margin-bottom:12px}
 .faq-group{margin-top:40px}
 .faq-group h2{font-size:1.35rem;margin-bottom:10px;scroll-margin-top:calc(var(--hdr) + 16px)}
@@ -429,26 +450,74 @@ a.chip:hover{background:var(--accent);color:var(--on-accent)}
 }
 .box,.prows{background:var(--surface);border-radius:16px}
 a.box:hover{border-color:var(--accent)}
-.box.pop,.card.pop{border-color:var(--accent);box-shadow:0 0 0 1.5px var(--accent)}
+.box.pop,.card.pop{border-color:var(--hot);box-shadow:0 0 0 1.5px var(--hot)}
+.pop .tag{background:var(--hot);border-color:var(--hot);color:var(--on-hot);font-weight:800}
 .box.lit,.card.lit,.total.lit,.prows.lit{border-color:var(--accent);box-shadow:0 0 0 4px var(--glow,transparent)}
 .box.pop.lit,.card.pop.lit{box-shadow:0 0 0 1.5px var(--accent),0 0 0 5px var(--glow,transparent)}
+.box.pk.on{border-color:var(--accent);box-shadow:0 0 0 1.5px var(--accent)}
 .founding,.stamp,.need-line{border-width:1.5px}
 /* Ordinary desktop screens round 1.5px down to 1px, so they get 2px. */
 @media (max-resolution:1.49dppx){.box,.card.pkg,.card.plan,.total,.prows,.founding,.stamp,.need-line{border-width:2px}}
-/* Home page prices: one box per website package, then add-ons and monthly care in grouped boxes */
+/* Home page prices are an estimate builder: tap a website box to pick it, tick add-ons and care, and the last box adds it up.
+   The radio and checkboxes are real inputs kept out of sight; .mark is the circle or square that shows their state. */
+.est-hint{color:var(--muted);margin-bottom:4px}
+.boxed .est-hint+.items-h{padding-top:14px}
+.items-h span{margin-left:6px;padding:2px 8px;border-radius:999px;border:1px solid var(--line-2);font-size:.74rem;font-weight:600}
+.box.pk{display:grid;align-content:start}
+.pk>.item,.box.group .item{cursor:pointer}
+.pk>.item{padding:18px;border-bottom:0;align-content:start}
+.pk-in{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.mark{display:none}
+.js .mark{flex:none;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;border:2px solid var(--line-2);transition:background-color .15s var(--ease),border-color .15s var(--ease)}
+.js .mark.sq{border-radius:7px}
+.pk-in:checked~.item-n .mark{background:var(--accent);border-color:var(--accent)}
+.pk-in:checked~.item-n .mark::after{content:"";width:11px;height:6px;margin-top:-3px;border-left:2.5px solid var(--on-accent);border-bottom:2.5px solid var(--on-accent);transform:rotate(-45deg)}
+.pk-in:focus-visible~.item-n .mark{outline:2px solid var(--accent);outline-offset:3px}
+.item.covered{cursor:default}
+.item.covered .item-n,.item.covered .item-d{opacity:.6}
+.more{margin:0 18px;border-top:1px solid var(--line)}
+.more summary{list-style:none;cursor:pointer;min-height:46px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:600;font-size:.92rem;color:var(--accent)}
+.more summary::-webkit-details-marker{display:none}
+.more summary::after{content:"";flex:none;width:9px;height:9px;margin-right:4px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translate(-2px,-2px);transition:transform .2s var(--ease)}
+.more[open] summary::after{transform:rotate(-135deg) translate(-2px,-2px)}
+.more .plus{font-size:.86rem;font-weight:600;color:var(--muted);margin-bottom:8px}
+.more .ticks{padding-bottom:16px;font-size:.94rem}
+/* The estimate: what was picked, the one-time total, the deposit, and what is due today (nothing). */
+.box.sum{display:grid;gap:10px;margin-top:22px;padding:22px;border-color:var(--accent)}
+.sum-h{font-size:1.2rem}
+.sum-lines{list-style:none;margin:0;padding:0;display:grid;gap:6px;color:var(--muted)}
+.sum-lines li,.sum-row{display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+.sum-lines b{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.sum-row{font-weight:600}
+.sum-row b{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sum-row small{font-weight:500;font-size:.82rem;color:var(--muted)}
+.sum-total{border-top:1.5px solid var(--line-2);padding-top:14px;margin-top:4px}
+.sum-total b{font-size:2.1rem;font-weight:800;letter-spacing:-.02em;line-height:1;font-kerning:none}
+.sum-due b{color:var(--accent)}
+.box.sum .btns{margin-top:8px}
+/* On a phone the total is far below the first choice, so a slim bar rides the bottom of the screen with the running total. */
+.est-stick{position:sticky;bottom:0;height:0;z-index:20}
+.est-bar{position:absolute;right:0;bottom:12px;width:100%;max-width:420px;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:0 18px;border-radius:14px;background:var(--accent);color:var(--on-accent);text-decoration:none;font-weight:700;box-shadow:0 12px 30px -12px rgba(0,0,0,.6);transition:opacity .2s var(--ease),transform .2s var(--ease)}
+.est-bar b{font-size:1.25rem;font-weight:800;font-variant-numeric:tabular-nums}
+.est-bar.off{opacity:0;pointer-events:none;transform:translateY(8px)}
+.est-bar[hidden]{display:none}
+.more-link{font-weight:600}
+.est .item-d{grid-column:1/-1;max-width:none}
 .boxed .items-h{border-bottom:0;padding:26px 0 10px}
 .boxed>.items-h:first-child{padding-top:0}
-.boxes{display:grid;gap:12px}
-.pair{display:grid;gap:0 18px}
-.box.item{padding:18px;align-content:start}
+.boxes{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+.pair{display:grid;grid-template-columns:minmax(0,1fr);gap:0 18px}
 .box.group{padding:2px 18px}
 .box.group .item:last-child{border-bottom:0}
 .boxes .item-p{font-size:1.5rem;font-weight:800;letter-spacing:-.02em;line-height:1.1}
 .boxed .item.due{margin-top:22px}
 @media (min-width:900px){
   .boxes{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-  .boxes .box{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto 1fr auto;gap:6px;padding:22px}
+  .boxes{align-items:start}
+  .pk>.item{grid-template-columns:minmax(0,1fr);gap:6px;padding:22px 22px 18px}
+  .more{margin:0 22px}
   .boxes .item-n{min-height:30px}
+  .boxes .item-d{min-height:3.3em}
   .boxes .item-p{grid-row:auto;grid-column:1;font-size:2.3rem;line-height:1;margin:4px 0 6px}
   .boxes .item-s{margin-top:10px}
   .pair{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);align-items:start}
@@ -460,8 +529,11 @@ a.box:hover{border-color:var(--accent)}
 /* Motion. Three things move, and only once each: boxes that hold a price rise as they come into view,
    the price rolls like a slot machine, and the sample site builds itself inside the phone.
    site.js adds .in when an element is on screen. Visitors who ask for less motion get none of it. */
-.js .card.rv:not(.in),.js .box.rv:not(.in),.js .prows.rv:not(.in){opacity:0;transform:translateY(16px)}
-.js .card.rv.in,.js .box.rv.in,.js .prows.rv.in{transition:opacity .5s var(--ease),transform .5s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease)}
+.js .card.rv:not(.in),.js .box.rv:not(.in),.js .prows.rv:not(.in),.js .total.rv:not(.in){opacity:0;transform:translateY(16px)}
+.js .total.rv:not(.in) .bar-f{width:0!important}
+@keyframes pop{0%{transform:scale(.5);opacity:0}70%{transform:scale(1.14);opacity:1}100%{transform:scale(1)}}
+.js .rv.in.pop .tag{animation:pop .45s var(--ease) .3s both}
+.js .card.rv.in,.js .box.rv.in,.js .prows.rv.in,.js .total.rv.in{transition:opacity .5s var(--ease),transform .5s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease)}
 @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .js .phone.rv:not(.in) .ps>*{opacity:0}
 .js .phone.rv.in .ps>*{animation:rise .5s var(--ease) both}
@@ -471,7 +543,7 @@ a.box:hover{border-color:var(--accent)}
 .js .phone.rv.in .ps>:nth-child(5){animation-delay:.32s}
 .js .phone.rv.in .ps>:nth-child(6){animation-delay:.4s}
 /* The rolling price. site.js builds these for about a second and a half, then puts the plain text back. */
-.item-p,.price,.prow-p,.total-n,.total-s b{font-kerning:none;font-variant-numeric:tabular-nums}
+.item-p,.price,.prow-p,.total-n,.total-s b,.est-n{font-kerning:none;font-variant-numeric:tabular-nums}
 .reel-c{display:inline-block;position:relative;clip-path:inset(0 -.25em)}
 .reel-g{visibility:hidden}
 .reel-s{position:absolute;left:0;top:0;will-change:transform}

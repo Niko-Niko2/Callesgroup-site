@@ -44,7 +44,16 @@ STR = {
            "care": ("Care plans", "We keep your site working and up to date. Cancel anytime."),
            "logo": "3 concepts, 2 rounds of changes and the full file pack.",
            "photos": "Up to 1 hour on-site and 25 edited photos.",
-           "groups": ("Websites", "Add-ons", "Monthly care"), "pages": "%s pages"},
+           "groups": ("Websites", "Add-ons", "Monthly care"), "pages": "%s pages",
+           "est": {"hint": "Tap a website and any extras. Your total adds up as you go.", "pick": "Pick one", "optional": "Optional",
+                   "incl": "What's included", "plus": "Everything in %s, plus:", "title": "Your estimate",
+                   "total": "One-time total", "start": "To start (50% deposit)", "monthly": "Monthly care", "bar": "Your estimate",
+                   "fine": "This is an estimate, not a quote. You get your exact price in writing on the free call.",
+                   "text": "Text Andrew this estimate", "kit": "Includes: %s.", "alone": "%s on its own.", "withSite": "with a website",
+                   "carePlans": "See the three plans", "compare": "Compare the packages side by side",
+                   "site": "%s website", "inKit": "In the Brand Kit", "inPremium": "In Premium", "founding": "Founding client rate: %s for %s.",
+                   "sms": "Hi Andrew%s. My estimate from your site: %s. One-time total %s%s. I'd like a free quote call.",
+                   "smsMe": ", it's %s", "smsCare": ", plus a monthly care plan"}},
     "es": {"skip": "Ir al contenido", "navLabel": "Principal", "close": "Cerrar", "menu": "Menú", "home": "/es.html",
            "book": "Agende su llamada gratis", "bookShort": "Agendar", "bookHref": "/es.html#llamada",
            "langHref": "/", "langOther": "en", "langName": "English", "callText": "Llame o escriba al",
@@ -55,7 +64,16 @@ STR = {
            "care": ("Planes de mantenimiento", "Mantenemos su sitio funcionando y al día. Cancele cuando quiera."),
            "logo": "3 propuestas, 2 rondas de cambios y todos los archivos.",
            "photos": "Hasta 1 hora en su negocio y 25 fotos editadas.",
-           "groups": ("Sitios web", "Extras", "Mantenimiento mensual"), "pages": "%s páginas"},
+           "groups": ("Sitios web", "Extras", "Mantenimiento mensual"), "pages": "%s páginas",
+           "est": {"hint": "Toque un sitio web y los extras que quiera. Su total se suma solo.", "pick": "Elija uno", "optional": "Opcional",
+                   "incl": "Qué incluye", "plus": "Todo lo de %s, más:", "title": "Su estimado",
+                   "total": "Total de un solo pago", "start": "Para empezar (depósito del 50%)", "monthly": "Mantenimiento mensual", "bar": "Su estimado",
+                   "fine": "Es un estimado, no una cotización. Su precio exacto se lo doy por escrito en la llamada gratis.",
+                   "text": "Mandarle este estimado a Andrew", "kit": "Incluye: %s.", "alone": "%s por separado.", "withSite": "con un sitio web",
+                   "carePlans": "Ver los tres planes", "compare": "",
+                   "site": "Sitio web %s", "inKit": "En el Brand Kit", "inPremium": "En Premium", "founding": "Precio de cliente fundador: %s por %s.",
+                   "sms": "Hola Andrew%s. Mi estimado de su sitio: %s. Total de un solo pago %s%s. Quiero una llamada gratis.",
+                   "smsMe": ", soy de %s", "smsCare": ", más un plan de mantenimiento mensual"}},
 }
 
 
@@ -169,33 +187,101 @@ def spots_text():
     return STR[LANG]["spots"] % (f["spotsLeft"], f["spotsTotal"])
 
 
+def sentence(items):
+    """["Logo", "Color palette", "Fonts"] -> "logo, color palette and fonts" (Spanish joins with "y")."""
+    low = [items[0]] + [x[0].lower() + x[1:] for x in items[1:]]
+    return ", ".join(low[:-1]) + (" y " if LANG == "es" else " and ") + low[-1] if len(low) > 1 else low[0]
+
+
+def est_parts():
+    """Everything the estimate on the home page can add up, straight from offers.json."""
+    es = LANG == "es"
+    logo, kit, ph = find(D["branding"], "logo"), find(D["branding"], "brand-kit"), D["photos"]
+    # The bundle price is written out in the note under the branding cards. Fail loudly if the two ever disagree.
+    assert money(kit["withWebsite"]) in D["brandingNote"] and money(kit["withWebsite"]) in D["brandingNote_es"], "Brand Kit bundle price differs from brandingNote"
+    return logo, kit, ph, es
+
+
 def t_lineitems():
-    """Home page prices as outlined boxes: one box per website package, then add-ons and monthly care in grouped boxes.
-    Prices and words come from offers.json."""
-    L, es = STR[LANG], LANG == "es"
+    """Home page prices as an estimate builder. Each website package is a box you tap to pick (nothing leaves the page),
+    add-ons and monthly care tick on and off, and the box at the bottom adds it up. Prices and words come from offers.json.
+    With scripts off it still reads as a price list, with the popular package's total shown."""
+    L, E = STR[LANG], STR[LANG]["est"]
+    logo, kit, ph, es = est_parts()
     web, addons, care = L["groups"]
+    pop = next(p for p in D["packages"] if p.get("popular"))
     boxes = []
     for p in D["packages"]:
-        pitch, pages, time = (p["es"]["pitch"], p["es"]["pages"], p["es"]["timeline"]) if es else (p["pitch"], p["pages"], p["timeline"].capitalize())
+        pitch, pages, time, inc = (p["es"]["pitch"], p["es"]["pages"], p["es"]["timeline"], p["es"]["includes"]) if es \
+            else (p["pitch"], p["pages"], p["timeline"].capitalize(), p["includes"])
+        on = p is pop
         tag = '<span class="tag">%s</span>' % L["popular"] if p.get("popular") else ""
-        boxes.append('<a class="item box rv%s" href="/pricing.html#p-%s"><span class="item-n">%s%s</span><span class="item-p">%s</span><span class="item-d">%s</span>'
-                     '<span class="item-s"><i>%s</i><i>%s</i></span></a>'
-                     % (" pop" if p.get("popular") else "", p["key"], esc(p["name"]), tag, money(p["price"]), esc(pitch), esc(L["pages"] % pages), esc(time)))
-    logo, kit, ph = find(D["branding"], "logo"), find(D["branding"], "brand-kit"), D["photos"]
-    subs = []
-    for n, d, pr in [(logo["name"], L["logo"], money(logo["price"])),
-                     (kit["name"], D["brandingNote_es"] if es else D["brandingNote"], money(kit["price"])),
-                     ("Sesión de fotos" if es else ph["name"], L["photos"], money(ph["price"]))]:
-        subs.append('<a class="item sub" href="/pricing.html#branding"><span class="item-n">%s</span><span class="item-p">%s</span><span class="item-d">%s</span></a>'
-                    % (esc(n), pr, esc(d)))
-    carerow = ('<a class="item sub" href="/care-plans.html"><span class="item-n">%s</span><span class="item-p"><small>%s</small> %s<small>%s</small></span><span class="item-d">%s</span></a>'
-               % (esc(L["care"][0]), L["from"], t_from("care"), L["mo"], esc(L["care"][1])))
-    due = ('<div class="item due"><span class="item-n">%s</span><span class="item-p">$0</span><span class="item-d">%s</span></div>'
-           % (L["due"], L["dueNote"] % B["booking"]["minutes"]))
-    return ('<div class="items boxed"><h3 class="items-h">%s</h3><div class="boxes">%s</div>'
-            '<div class="pair"><div class="pair-c"><h3 class="items-h">%s</h3><div class="box group rv">%s</div></div>'
-            '<div class="pair-c"><h3 class="items-h">%s</h3><div class="box group rv">%s</div></div></div>%s</div>'
-            % (web, "".join(boxes), addons, "".join(subs), care, carerow, due))
+        plus = '<p class="plus">%s</p>' % esc(E["plus"] % p["buildsOn"]) if p.get("buildsOn") else ""
+        boxes.append(
+            '<div class="box pk rv%s%s" data-k="%s"><label class="item"><input class="pk-in" type="radio" name="est-site" value="%s"%s>'
+            '<span class="item-n"><i class="mark" aria-hidden="true"></i>%s%s</span><span class="item-p">%s</span><span class="item-d">%s</span>'
+            '<span class="item-s"><i>%s</i><i>%s</i></span></label>'
+            '<details class="more"><summary>%s</summary>%s%s</details></div>'
+            % (" pop" if p.get("popular") else "", " on" if on else "", p["key"], p["key"], " checked" if on else "",
+               esc(p["name"]), tag, money(p["price"]), esc(pitch), esc(L["pages"] % pages), esc(time), esc(E["incl"]), plus, tick_list(inc)))
+    kit_feats = kit["es"]["features"] if es else kit["features"]
+    rows = [("logo", logo["name"], money(logo["price"]), "", esc(L["logo"])),
+            ("brand-kit", kit["name"], money(kit["withWebsite"]), "<small>%s</small>" % esc(E["withSite"]),
+             esc(E["kit"] % sentence(kit_feats)) + " " + esc(E["alone"] % money(kit["price"]))),
+            ("photo-shoot", "Sesión de fotos" if es else ph["name"], money(ph["price"]), "", esc(L["photos"]))]
+    subs = "".join(
+        '<label class="item sub" data-k="%s"><input class="pk-in" type="checkbox" value="%s"><span class="item-n"><i class="mark sq" aria-hidden="true"></i>%s</span>'
+        '<span class="item-p">%s%s</span><span class="item-d">%s</span></label>' % (k, k, esc(n), pr, (" " + small) if small else "", d)
+        for k, n, pr, small, d in rows)
+    carerow = ('<label class="item sub" data-k="care"><input class="pk-in" type="checkbox" value="care"><span class="item-n"><i class="mark sq" aria-hidden="true"></i>%s</span>'
+               '<span class="item-p"><small>%s</small> %s<small>%s</small></span><span class="item-d">%s <a href="/care-plans.html">%s</a></span></label>'
+               % (esc(L["care"][0]), L["from"], t_from("care"), L["mo"], esc(L["care"][1]), esc(E["carePlans"])))
+    pay = D["policies"]["payment"]
+    data = {
+        "sites": [{"k": p["key"], "n": p["name"], "p": p["price"]} for p in D["packages"]],
+        "adds": [{"k": "logo", "n": logo["name"], "p": logo["price"]},
+                 {"k": "brand-kit", "n": kit["name"], "p": kit["withWebsite"], "covers": kit["includesKeys"]},
+                 {"k": "photo-shoot", "n": "Sesión de fotos" if es else ph["name"], "p": ph["price"], "inside": ph["includedIn"]}],
+        "care": {"from": min(c["monthly"] for c in D["carePlans"])},
+        "founding": {"k": "launch", "p": D["founding"]["price"], "left": D["founding"]["spotsLeft"]},
+        "pay": [pay["es"]["deposit"] if es else pay["deposit"], pay["es"]["over2500"] if es else pay["over2500"]],
+        "t": {k: E[k] for k in ("site", "inKit", "inPremium", "founding", "sms", "smsMe", "smsCare")},
+        "from": L["from"], "mo": L["mo"], "careName": L["care"][0], "spots": spots_text(),
+    }
+    summary = (
+        '<div class="est-stick"><a class="est-bar" id="estBar" href="#estSum" hidden><span>%s</span><b id="estBarN">%s</b></a></div>'
+        '<div class="box sum rv" id="estSum"><h3 class="sum-h">%s</h3><ul class="sum-lines" id="estLines"><li><span>%s</span><b>%s</b></li></ul>'
+        '<p class="sum-row sum-total"><span>%s</span><b class="est-n" id="estTotal">%s</b></p>'
+        '<p class="sum-row"><span>%s</span><b id="estDep">%s</b></p><p class="fine" id="estPay">%s</p>'
+        '<p class="sum-row" id="estCare" hidden><span>%s</span><b><small>%s</small> %s<small>%s</small></b></p>'
+        '<p class="sum-row sum-due"><span>%s</span><b>$0</b></p>'
+        '<p class="fine" id="estNote">%s %s</p>'
+        '<div class="btns"><a class="btn btn-primary" href="%s">%s</a><a class="btn btn-ghost btn-wrap" id="estText" href="%s">%s</a></div></div>'
+        % (esc(E["bar"]), money(pop["price"]), esc(E["title"]), esc(E["site"] % pop["name"]), money(pop["price"]),
+           esc(E["total"]), money(pop["price"]), esc(E["start"]), money(pop["price"] // 2),
+           esc((pay["es"] if es else pay)["over2500" if pop["price"] > 2500 else "deposit"]),
+           esc(E["monthly"]), L["from"], t_from("care"), L["mo"], esc(L["due"]),
+           esc(L["dueNote"] % B["booking"]["minutes"]), esc(E["fine"]), L["bookHref"], esc(L["book"]), B["smsHref"], esc(E["text"])))
+    head = lambda title, note: '<h3 class="items-h">%s <span>%s</span></h3>' % (title, esc(note))
+    return ('<div class="items boxed est" id="est" data-est="%s"><p class="est-hint">%s</p>%s<div class="boxes">%s</div>'
+            '<div class="pair"><div class="pair-c">%s<div class="box group rv">%s</div></div>'
+            '<div class="pair-c">%s<div class="box group rv">%s</div></div></div>%s</div>'
+            % (esc(json.dumps(data, ensure_ascii=False), quote=True), esc(E["hint"]), head(web, E["pick"]), "".join(boxes),
+               head(addons, E["optional"]), subs, head(care, E["optional"]), carerow, summary))
+
+
+# The sample site's color sets. The colors themselves are in assets/styles.css (.ps and .sw share them);
+# these are only the names, in the same order. tools.js accepts p=0..5 on a pitch link.
+PALETTES = [("Daylight", "Luz de día"), ("Ember", "Brasa"), ("Evergreen", "Siempre verde"), ("Barn red", "Rojo granero"), ("Harbor", "Puerto"), ("Glacier", "Glaciar")]
+
+
+def t_swatches():
+    es = LANG == "es"
+    names = [n[1] if es else n[0] for n in PALETTES]
+    btns = "".join('<button type="button" class="sw" data-pal="%d" aria-pressed="%s" aria-label="%s" data-name="%s"></button>'
+                   % (i, "true" if i == 0 else "false", esc(n), esc(n)) for i, n in enumerate(names))
+    return ('<div class="swatches" role="group" aria-label="%s"><span class="sw-l">%s <b id="swName">%s</b></span><div class="sw-row">%s</div></div>'
+            % ("Colores de muestra" if es else "Sample colors", "Colores:" if es else "Colors:", esc(names[0]), btns))
 
 
 def t_stamp():
@@ -411,6 +497,7 @@ def t_faqall():
 
 TOKENS = {
     "price": t_price,      # {{price growth}}     -> $2,500
+    "swatches": t_swatches,  # the sample site's color buttons
     "from": t_from,        # {{from websites}}    -> $1,500
     "faq": t_faq,          # {{faq own-site time-how}}
     "towns": t_towns,      # {{towns}}            -> service area chips
@@ -524,6 +611,9 @@ def build_src():
         LANG = meta.get("lang", "en")
         body = expand(raw[m.end():])
         LANG = "en"
+        # Inner pages get a "Home / This page" line at the top, so there is always a way back.
+        if meta.get("crumb") and '<div class="hero-copy">' in body:
+            body = body.replace('<div class="hero-copy">', '<div class="hero-copy">' + crumbs([("Home", "/"), (meta["crumb"], None)]), 1)
         schemas = []
         for s in meta.get("schema", []):
             if s == "business":
