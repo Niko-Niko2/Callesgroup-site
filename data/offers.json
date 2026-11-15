@@ -71,7 +71,7 @@
     {
       "key": "growth",
       "name": "Growth",
-      "price": 2500,
+      "price": 2000,
       "popular": true,
       "pitch": "A custom site built to bring in leads.",
       "pages": "Up to 5",
@@ -101,9 +101,9 @@
     {
       "key": "premium",
       "name": "Premium",
-      "price": 4100,
-      "pitch": "The complete site, words written for you.",
-      "pages": "Up to 8",
+      "price": 3500,
+      "pitch": "A complete site with copywriting and extra support, priced to fit your project.",
+      "pages": "Up to 8 (bigger sites quoted on your call)",
       "timeline": "3 to 4 weeks",
       "rounds": 3,
       "buildsOn": "Growth",
@@ -115,8 +115,8 @@
         "1-hour training call"
       ],
       "es": {
-        "pitch": "El sitio completo, con los textos escritos por nosotros.",
-        "pages": "Hasta 8",
+        "pitch": "Un sitio completo con textos y apoyo extra, con precio según su proyecto.",
+        "pages": "Hasta 8 (sitios más grandes se cotizan en la llamada)",
         "timeline": "De 3 a 4 semanas",
         "includes": [
           "Redacción completa de los textos",
@@ -125,7 +125,8 @@
           "30 días de cambios gratis después del lanzamiento",
           "Llamada de capacitación de 1 hora"
         ]
-      }
+      },
+      "priceFrom": true
     }
   ],
   "founding": {
@@ -202,59 +203,64 @@
     {
       "key": "care-essentials",
       "name": "Essentials",
-      "monthly": 99,
-      "yearlyTotal": 1089,
-      "keyFeatures": [
-        "1 hour of edits",
-        "Monthly site check",
-        "Renewal reminders",
-        "Edits in 3 business days"
-      ],
-      "moreFeatures": []
+      "monthly": 79,
+      "features": [
+        {
+          "t": "Hosting included",
+          "bold": true
+        },
+        {
+          "t": "1 hour of changes a month"
+        },
+        {
+          "t": "We check your site every month"
+        }
+      ]
     },
     {
       "key": "care-plus",
       "name": "Plus",
-      "monthly": 199,
-      "yearlyTotal": 2189,
+      "monthly": 159,
       "popular": true,
-      "keyFeatures": [
-        "2.5 hours of edits",
-        "New photos added",
-        "2 Google posts a month",
-        "Edits in 2 business days"
-      ],
-      "moreFeatures": [
-        "Everything in Essentials",
-        "Monthly report"
+      "features": [
+        {
+          "t": "Hosting included"
+        },
+        {
+          "t": "2.5 hours of changes a month"
+        },
+        {
+          "t": "2 Google posts a month"
+        },
+        {
+          "t": "Monthly report: visits, calls, leads"
+        }
       ]
     },
     {
       "key": "care-growth",
       "name": "Growth",
       "monthly": 479,
-      "yearlyTotal": 5269,
-      "keyFeatures": [
-        "4 hours of edits",
-        "4 Google posts",
-        "4 social graphics",
-        "20-minute monthly call"
-      ],
-      "moreFeatures": [
-        "Everything in Plus",
-        "Quarterly SEO tune-up",
-        "Quarterly photo shoot (10 photos)"
+      "features": [
+        {
+          "t": "New photos of your business every 3 months",
+          "bold": true,
+          "spotlight": true
+        },
+        {
+          "t": "Hosting included"
+        },
+        {
+          "t": "4 hours of changes a month"
+        },
+        {
+          "t": "4 Google posts and 4 social graphics a month"
+        },
+        {
+          "t": "Monthly 20-minute call"
+        }
       ]
     }
-  ],
-  "careYearlyTag": "Yearly = 1 month free",
-  "careNotes": [
-    "Separate from your Wix plan. Wix hosts your site, we take care of it.",
-    "Pay yearly and get 1 month free.",
-    "First month half off when you start at launch.",
-    "Unused hours don't roll over.",
-    "Cancel anytime. Your plan runs to the end of the month.",
-    "Billed monthly in advance."
   ],
   "policies": {
     "payment": {
@@ -273,8 +279,8 @@
       }
     },
     "ownership": [
-      "Your Wix account and domain are in your name, and you pay them directly.",
-      "Logo files and full admin access are handed over after final payment."
+      "Your domain is in your name, and your words, photos and logo are yours.",
+      "Hosting is included in your care plan. If you leave, we give you your website files."
     ],
     "rounds": "A round of changes is one list of all your feedback, sent within 5 business days. Extra rounds are $100 per hour.",
     "pause": "If a project goes quiet for 30 days, it pauses and the next payment comes due. Restarting costs $150.",
@@ -360,18 +366,18 @@
     {
       "id": "own-site",
       "group": "Ownership",
-      "q": "Do I own my website?",
-      "a": "Yes. Your Wix account and domain are in your name, and you pay Wix for them directly. Your logo files and full admin access are handed over after the final payment.",
+      "q": "Who owns the website?",
+      "a": "You do. Your domain is in your name, and your words, photos and logo are yours. We host your site as part of your care plan, so there's no extra website bill. If you ever leave, we give you your website files. Your logo files and website files are handed over once your final payment is made.",
       "es": {
-        "q": "¿El sitio web es mío?",
-        "a": "Sí. Su cuenta de Wix y su dominio quedan a su nombre, y usted le paga a Wix directamente. Los archivos de su logo y el acceso completo de administrador se entregan después del pago final."
+        "q": "¿De quién es el sitio web?",
+        "a": "Es suyo. Su dominio está a su nombre, y sus textos, fotos y logo son suyos. Nosotros alojamos su sitio como parte de su plan de mantenimiento, así que no hay otra factura por el sitio. Si algún día se va, le damos los archivos de su sitio. Los archivos de su logo y de su sitio se entregan después del pago final."
       }
     },
     {
       "id": "own-wix",
       "group": "Ownership",
-      "q": "Do I pay Wix separately?",
-      "a": "Yes. Your Wix plan and domain are billed by Wix to you, in your name. Our prices cover the design and build, and care plans cover upkeep."
+      "q": "Do I need Wix?",
+      "a": "Most businesses don't. We host your site for you, and it's included in your care plan. If you need online booking or a store, we build it on Wix, and Wix charges $24 to $46 a month, paid to them, on top of your plan."
     },
     {
       "id": "own-portfolio",
@@ -402,29 +408,24 @@
       "a": "After 30 days with no reply, the project pauses and the next payment comes due. Restarting costs $150."
     },
     {
-      "id": "care-wix",
-      "group": "Care plans",
-      "q": "Is a care plan the same as my Wix plan?",
-      "a": "No. Wix hosts your site and bills you for that. A care plan is us taking care of the site: edits, checks and fixes."
-    },
-    {
       "id": "care-cancel",
       "group": "Care plans",
-      "q": "Can I cancel anytime?",
-      "a": "Yes. Plans are billed monthly in advance, and when you cancel your plan runs to the end of that month."
+      "q": "Can I cancel a care plan?",
+      "a": "Yes, anytime. Plans are billed monthly by autopay, and your plan runs to the end of that month. If you leave, we give you your website files."
     },
     {
       "id": "care-hours",
       "group": "Care plans",
       "q": "Do unused hours roll over?",
       "a": "No. Each month's edit hours are for that month."
-    },
-    {
-      "id": "care-launch",
-      "group": "Care plans",
-      "q": "Is there a deal for starting at launch?",
-      "a": "Yes. Your first month is half off when you start a care plan at launch."
     }
   ],
-  "brandingNote_es": "¿También quiere sitio web? Agregue el Brand Kit por $900 en lugar de $1,100."
+  "brandingNote_es": "¿También quiere sitio web? Agregue el Brand Kit por $900 en lugar de $1,100.",
+  "careHead": {
+    "title": "Care Plans",
+    "sub": "We keep your website fast, safe, and up to date. You run your business.",
+    "bold": "Hosting is included in every plan. No extra website bill."
+  },
+  "careWixBox": "Need online booking or a store? We build those on Wix. Wix charges $24 to $46 a month, paid to them, on top of your plan. Not sure what you need? We'll tell you on your free call.",
+  "careFine": "Billed monthly. Cancel anytime. If you leave, we give you your website files."
 }

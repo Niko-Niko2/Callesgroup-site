@@ -305,6 +305,11 @@ a.item:hover .item-n{color:var(--accent)}
 .benefits svg{grid-row:span 2;width:32px;height:32px;fill:none;stroke:var(--accent);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 @media (min-width:860px){.benefits{grid-template-columns:repeat(3,minmax(0,1fr));gap:36px}.benefits.b2{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .plan .bill{font-size:.9rem;min-height:1.5em}
+.care-bold{margin-top:10px;font-size:1.05rem;color:var(--ink)}
+.plan .ticks li.spot{background:color-mix(in srgb,var(--accent) 12%,transparent);border-radius:8px;padding:8px 10px 8px 32px;margin:0 -4px}
+.plan .ticks li.spot::before{left:10px;top:calc(8px + .5em)}
+.wix-box{margin-top:24px;padding:20px 22px;border-radius:12px;background:var(--surface);border:1px solid var(--line)}
+.wix-box p{margin:0}
 
 /* Segmented switch */
 .switch-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-bottom:24px}

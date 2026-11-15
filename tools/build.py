@@ -39,9 +39,9 @@ STR = {
            "langHref": "/es.html", "langOther": "es", "langName": "Español", "callText": "Call or text",
            "pagesLabel": "Pages", "areaLabel": "Web design near you", "privacy": "Privacy policy",
            "textBtn": "Text Andrew", "ctaFine": "Or call %s. Replies %s.",
-           "popular": "Recommended", "spots": "%d of %d spots left", "due": "Due today",
+           "popular": "Most popular", "spots": "%d of %d spots left", "due": "Due today",
            "dueNote": "The %d-minute quote call is free.", "from": "from", "mo": "/mo",
-           "care": ("Care plans", "We keep your site working and up to date. Cancel anytime."),
+           "care": ("Care plans", "Hosting included. We keep your site fast, safe and up to date. Cancel anytime."),
            "logo": "3 concepts, 2 rounds of changes and the full file pack.",
            "photos": "Up to 1 hour on-site and 25 edited photos.",
            "groups": ("Websites", "Add-ons", "Monthly care"), "pages": "%s pages",
@@ -59,9 +59,9 @@ STR = {
            "langHref": "/", "langOther": "en", "langName": "English", "callText": "Llame o escriba al",
            "pagesLabel": "Páginas", "areaLabel": "Zonas de servicio (en inglés)", "tagline": "Con base en Elgin, IL. Servimos a todo Chicagoland.", "privacy": "Política de privacidad (en inglés)",
            "textBtn": "Escríbale a Andrew", "ctaFine": "O llame al %s. Respondemos en menos de 24 horas.",
-           "popular": "Recomendado", "spots": "Quedan %d de %d lugares", "due": "A pagar hoy",
+           "popular": "Más popular", "spots": "Quedan %d de %d lugares", "due": "A pagar hoy",
            "dueNote": "La llamada de %d minutos es gratis.", "from": "desde", "mo": "/mes",
-           "care": ("Planes de mantenimiento", "Mantenemos su sitio funcionando y al día. Cancele cuando quiera."),
+           "care": ("Planes de mantenimiento", "Alojamiento incluido. Mantenemos su sitio rápido, seguro y al día. Cancele cuando quiera."),
            "logo": "3 propuestas, 2 rondas de cambios y todos los archivos.",
            "photos": "Hasta 1 hora en su negocio y 25 fotos editadas.",
            "groups": ("Sitios web", "Extras", "Mantenimiento mensual"), "pages": "%s páginas",
@@ -87,6 +87,11 @@ def fill(t, values):
 
 def money(n):
     return "${:,}".format(n)
+
+
+def pmoney(x):
+    """A package price as shown: "$1,500", or "from $3,500" for a package priced by quote (priceFrom)."""
+    return ("%s %s" % (STR[LANG]["from"], money(x["price"]))) if x.get("priceFrom") else money(x["price"])
 
 
 def find(lst, key):
@@ -145,7 +150,7 @@ def swipe_dots(n):
 def t_price(key):
     for x in D["packages"] + D["branding"] + [D["photos"]]:
         if x["key"] == key:
-            return money(x["price"])
+            return pmoney(x)
     p = find(D["carePlans"], key)
     return money(p["monthly"])
 
@@ -223,7 +228,7 @@ def t_lineitems():
             '<span class="item-s"><i>%s</i><i>%s</i></span></label>'
             '<details class="more"><summary>%s</summary>%s%s</details></div>'
             % (" pop" if p.get("popular") else "", " on" if on else "", p["key"], p["key"], " checked" if on else "",
-               esc(p["name"]), tag, money(p["price"]), esc(pitch), esc(L["pages"] % pages), esc(time), esc(E["incl"]), plus, tick_list(inc)))
+               esc(p["name"]), tag, pmoney(p), esc(pitch), esc(L["pages"] % pages), esc(time), esc(E["incl"]), plus, tick_list(inc)))
     kit_feats = kit["es"]["features"] if es else kit["features"]
     rows = [("logo", logo["name"], money(logo["price"]), "", esc(L["logo"])),
             ("brand-kit", kit["name"], money(kit["withWebsite"]), "<small>%s</small>" % esc(E["withSite"]),
@@ -316,9 +321,9 @@ def t_packages():
         plus = '<p class="plus">Everything in %s, plus:</p>' % esc(p["buildsOn"]) if p.get("buildsOn") else ""
         cards.append(
             '<article class="card pkg rv%s" id="p-%s">' % (" pop" if p.get("popular") else "", p["key"]) +
-            ('<span class="tag">Recommended</span>' if p.get("popular") else "") +
+            ('<span class="tag">Most popular</span>' if p.get("popular") else "") +
             '<h3>%s</h3>' % esc(p["name"]) +
-            '<div class="price">%s</div>' % money(p["price"]) +
+            ('<div class="price"><small>from</small> %s</div>' % money(p["price"]) if p.get("priceFrom") else '<div class="price">%s</div>' % money(p["price"])) +
             '<p class="muted pitch">%s</p>' % esc(p["pitch"]) +
             '<dl class="specs">%s</dl>' % specs +
             expander(p["key"], plus + tick_list(p["includes"]), "What's included") +
@@ -354,32 +359,21 @@ def t_band():
 
 
 def t_care():
-    """Care plans: 3 cards, Monthly | Yearly switch."""
+    """Care plans: 3 cards, monthly prices only. A feature can be bold, and one can be the spotlight (highlighted)."""
     cards = []
     for c in D["carePlans"]:
-        m, y = money(c["monthly"]), money(c["yearlyTotal"])
-        ml = "Billed monthly. Cancel anytime."
-        yl = "Billed yearly. 1 month free."
+        lis = "".join('<li%s>%s</li>' % (' class="spot"' if f.get("spotlight") else "",
+                                          ("<b>%s</b>" if f.get("bold") else "%s") % esc(f["t"])) for f in c["features"])
         cards.append(
             '<article class="card plan rv%s" id="%s">' % (" pop" if c.get("popular") else "", c["key"]) +
-            ('<span class="tag">Recommended</span>' if c.get("popular") else "") +
+            ('<span class="tag">Most popular</span>' if c.get("popular") else "") +
             '<h3>%s</h3>' % esc(c["name"]) +
-            '<div class="price"><span class="roll" data-care-monthly="%s" data-care-yearly="%s">%s</span><small data-care-monthly="/mo" data-care-yearly="/yr">/mo</small></div>' % (m, y, m) +
-            '<p class="muted bill" data-care-monthly="%s" data-care-yearly="%s">%s<span class="nojs"> Or %s/yr paid yearly (1 month free).</span></p>' % (ml, yl, ml, y) +
-            tick_list(c["keyFeatures"]) +
-            (expander(c["key"], tick_list(c["moreFeatures"])) if c["moreFeatures"] else "") +
+            '<div class="price">%s<small>/mo</small></div>' % money(c["monthly"]) +
+            '<ul class="ticks">%s</ul>' % lis +
             '<a class="btn btn-primary" href="/contact.html?need=%s">Get a free quote</a>' % c["key"] +
             "</article>")
-    return ('<div class="switch-row rv"><div class="seg" data-switch="care" role="group" aria-label="Show prices">'
-            '<button type="button" data-value="monthly" aria-pressed="true">Monthly</button>'
-            '<button type="button" data-value="yearly" data-hash="yearly" aria-pressed="false">Yearly</button></div>'
-            '<span class="save-tag">%s</span></div>'
-            '<div class="row swipe cards3">%s</div>%s<p class="swipe-hint muted" aria-hidden="true">Swipe to compare</p>'
-            % (esc(D["careYearlyTag"]), "".join(cards), swipe_dots(3)))
-
-
-def t_carenotes():
-    return " ".join(esc(n) for n in D["careNotes"])
+    return ('<div class="row swipe cards3">%s</div>%s<p class="swipe-hint muted" aria-hidden="true">Swipe to compare</p>'
+            % ("".join(cards), swipe_dots(3)))
 
 
 def t_faqgroup(*words):
@@ -394,7 +388,7 @@ def t_needs():
          "founding": {"checks": ["Website"], "label": "the founding client offer (Launch for $1,200)",
                       "note": "I'm interested in the founding client offer (Launch for $1,200)."}}
     for p in D["packages"]:
-        lab = "the %s website (%s)" % (p["name"], money(p["price"]))
+        lab = "the %s website (%s)" % (p["name"], pmoney(p))
         n[p["key"]] = {"checks": ["Website"], "label": lab, "note": "I'm interested in %s." % lab}
     for b in D["branding"]:
         lab = "the %s (%s)" % (b["name"], money(b["price"]))
@@ -465,11 +459,13 @@ def t_deposits():
     """Pay your deposit page: the 50% that starts each package, worked out from offers.json."""
     f = D["founding"]
     rows = [("%s, founding client rate" % find(D["packages"], "launch")["name"], f["price"])] if f.get("spotsLeft") else []
-    rows += [(p["name"], p["price"]) for p in D["packages"]]
+    rows += [(p["name"], p["price"], p.get("priceFrom")) for p in D["packages"]]
     out = []
-    for name, price in rows:
-        out.append('<div class="item"><span class="item-n">%s</span><span class="item-p">%s</span><span class="item-d">Half of %s starts the work.</span></div>'
-                   % (esc(name), money(price // 2), money(price)))
+    for row in rows:
+        name, price, quoted = (row + (False,))[:3]
+        out.append('<div class="item"><span class="item-n">%s</span><span class="item-p">%s</span><span class="item-d">%s</span></div>'
+                   % (esc(name), ("from " if quoted else "") + money(price // 2),
+                      "Half of your quoted price starts the work." if quoted else "Half of %s starts the work." % money(price)))
     return '<div class="items">' + "".join(out) + "</div>"
 
 
@@ -496,7 +492,7 @@ def t_faqall():
 
 
 TOKENS = {
-    "price": t_price,      # {{price growth}}     -> $2,500
+    "price": t_price,      # {{price growth}}     -> $2,000
     "swatches": t_swatches,  # the sample site's color buttons
     "from": t_from,        # {{from websites}}    -> $1,500
     "faq": t_faq,          # {{faq own-site time-how}}
@@ -511,8 +507,10 @@ TOKENS = {
     "brandnote": lambda: esc(D["brandingNote"]),
     "photonote": lambda: esc(D["photosNote"]),
     "band": t_band,          # "Need something that's not here?" band
-    "care": t_care,          # the 3 care plan cards with Monthly | Yearly
-    "carenotes": t_carenotes,
+    "care": t_care,          # the 3 care plan cards (monthly only)
+    "carehead": lambda k: esc(D["careHead"][k]),  # {{carehead title}}
+    "carewix": lambda: esc(D["careWixBox"]),
+    "carefine": lambda: esc(D["careFine"]),
     "faqgroup": t_faqgroup,  # {{faqgroup Care plans}}
     "faqall": t_faqall,      # every FAQ, grouped
     "needs": t_needs,        # JSON map of ?need= keys for the contact page
@@ -664,7 +662,7 @@ def build_towns():
         trail = [("Home", "/"), ("Web design " + t["name"], "/" + page)]
         rows = "".join(
             '<a class="prow rv" href="/pricing.html#p-%s"><b>%s</b><span class="muted">%s</span><span class="prow-p">%s</span></a>'
-            % (p["key"], esc(p["name"]), esc(p["pitch"]), money(p["price"])) for p in D["packages"])
+            % (p["key"], esc(p["name"]), esc(p["pitch"]), pmoney(p)) for p in D["packages"])
         faq = accordion([("%s-%d" % (t["slug"], i), q, "<p>%s</p>" % esc(a)) for i, (q, a) in enumerate(t["faq"])])
         others = "".join('<a class="chip" href="/%s">%s</a>' % (o["page"], esc(o["name"])) for o in linked if o["page"] != page)
         body = (
@@ -688,7 +686,7 @@ def build_towns():
                    "telephone": "+1-312-600-0590", "url": BASE + "/"},
                    "areaServed": {"@type": "City", "name": t["name"] + ", IL"},
                    "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": str(min(p["price"] for p in D["packages"])),
-                              "highPrice": str(max(p["price"] for p in D["packages"])), "offerCount": str(len(D["packages"]))}}
+                              "offerCount": str(len(D["packages"]))}}
         meta = {"title": t["title"], "description": t["desc"], "nav": ""}
         urls.append(render(page[:-5], meta, body, [service, schema_crumbs(trail), schema_faq(t["faq"])]))
         print("built", page)

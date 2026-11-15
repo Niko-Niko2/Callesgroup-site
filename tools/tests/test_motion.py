@@ -11,7 +11,7 @@ import os
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 D = json.load(open(os.path.join(ROOT, "data", "offers.json"), encoding="utf-8"))
 money = lambda n: "${:,}".format(n)
-PK = [money(p["price"]) for p in D["packages"]]
+PK = [("from " if p.get("priceFrom") else "") + money(p["price"]) for p in D["packages"]]
 ok = 0; bad = []
 def check(name, cond, detail=""):
     global ok
@@ -79,17 +79,15 @@ with sync_playwright() as p:
     check("no roll parts left in the calculator", pg.evaluate("document.querySelectorAll('#worth .reel-c,#worth .sr').length") == 0)
     check("calculator box has the strong outline", pg.evaluate("getComputedStyle(document.querySelector('#worth .total')).borderTopWidth") == "1.5px")
 
-    # ---------- care plans: switch monthly / yearly during and after a roll ----------
+    # ---------- care plans: monthly prices only ----------
     pg.goto(B + "/care-plans.html", wait_until="load"); pg.wait_for_timeout(400)
     first = "document.querySelector('.plan .price').textContent.replace(/\\s+/g,'')"
     pg.evaluate("document.querySelector('.plan .price').scrollIntoView({block:'center'})"); pg.wait_for_timeout(400)
     rolling = pg.evaluate("document.querySelectorAll('.plan .reel-c').length")
     check("care plan prices roll", rolling >= 2, str(rolling))
-    pg.click('.seg [data-value="yearly"]'); pg.wait_for_timeout(2600)
-    yearly = money(D["carePlans"][0]["yearlyTotal"]) + "/yr"
-    check("yearly switch mid-roll shows the yearly price", pg.evaluate(first) == yearly, pg.evaluate(first))
-    pg.click('.seg [data-value="monthly"]'); pg.wait_for_timeout(700)
-    check("back to monthly", pg.evaluate(first) == money(D["carePlans"][0]["monthly"]) + "/mo", pg.evaluate(first))
+    pg.wait_for_timeout(2600)
+    check("monthly price lands", pg.evaluate(first) == money(D["carePlans"][0]["monthly"]) + "/mo", pg.evaluate(first))
+    check("no yearly switch", pg.evaluate("document.querySelectorAll('.seg').length") == 0)
     check("no roll parts left on care plans", pg.evaluate("document.querySelectorAll('.reel-c').length") == 0)
     check("plan cards have the strong outline", pg.evaluate("getComputedStyle(document.querySelector('.card.plan')).borderTopWidth") == "1.5px")
 
@@ -124,7 +122,7 @@ with sync_playwright() as p:
         check("nothing hidden on " + page, pg.evaluate("[...document.querySelectorAll('.rv')].filter(e=>e.offsetParent&&e.getBoundingClientRect().left<innerWidth-8&&getComputedStyle(e).opacity!=='1').length") == 0)  # cards still off to the side wait for the swipe
         check("no sideways scroll on " + page, pg.evaluate("document.documentElement.scrollWidth-document.documentElement.clientWidth") == 0)
     es = pg.goto(B + "/es.html", wait_until="load"); pg.wait_for_timeout(300)
-    check("Spanish care price intact", "desde $99/mes" in " ".join(pg.evaluate(TXT, "#price .item-p")))
+    check("Spanish care price intact", "desde $79/mes" in " ".join(pg.evaluate(TXT, "#price .item-p")))
     check("town page rows sit in a box", (pg.goto(B + "/web-design-elgin.html"), pg.evaluate("getComputedStyle(document.querySelector('.prows')).borderTopWidth"))[1] == "1.5px")
     check("no page errors", not errs, str(errs[:4]))
     c.close()

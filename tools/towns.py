@@ -30,8 +30,8 @@ TOWNS = [{'slug': 'elgin',
            "Elgin is where we're based, and we work with businesses across the Fox Valley, the northwest "
            'suburbs and Chicago. Elgin businesses get the same flat prices as everyone else.'],
           ['How much does a website cost in Elgin?',
-           'Our websites start at $1,500 for a Launch site of up to 3 pages. A Growth site is $2,500 and a '
-           'Premium site with full copywriting is $4,100. You get a flat price on your free quote call, '
+           'Our websites start at $1,500 for a Launch site of up to 3 pages. A Growth site is $2,000 and a '
+           'Premium site with full copywriting starts at $3,500. You get a flat price on your free quote call, '
            'before any work starts.'],
           ['Can you help my Elgin business show up on Google Maps?',
            'Yes. Google Business Profile setup is included in the Growth and Premium packages. We set up your categories, service area, hours and photos so you can show up when '
@@ -62,8 +62,8 @@ TOWNS = [{'slug': 'elgin',
            'A Launch site with up to 3 pages, a contact form and basic SEO is $1,500 and takes 1 to 2 weeks '
            'once we have your text, photos and logo.'],
           ['Do I own my website?',
-           'Yes. Your Wix account and domain are set up in your name, so the site is yours, even if you stop '
-           'working with us.']]},
+           'Yes. Your domain is set up in your name, and if you ever stop working with us, we give you your '
+           'website files.']]},
  {'slug': 'bartlett',
   'name': 'Bartlett',
   'title': 'Web Design in Bartlett, IL | Calles Group',
@@ -145,8 +145,8 @@ TOWNS = [{'slug': 'elgin',
           ['Can customers request a quote on my site?',
            'Yes. A quote request form is included in the Growth and Premium packages.'],
           ['Can you keep my site updated after launch?',
-           'Yes. Monthly care plans start at $99 and include edit time, form and link checks and renewal '
-           'reminders. You can cancel anytime.']]},
+           'Yes. Monthly care plans start at $79 and include hosting, an hour of changes and a monthly site '
+           'check. You can cancel anytime.']]},
  {'slug': 'crystal-lake',
   'name': 'Crystal Lake',
   'title': 'Web Design in Crystal Lake, IL | Calles Group',

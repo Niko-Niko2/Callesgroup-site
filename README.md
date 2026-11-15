@@ -43,7 +43,7 @@ The sample phone has six color sets (Daylight, Ember, Evergreen, Barn red, Harbo
 
 ## How to change a price
 
-1. Open `data/offers.json` and change the number. For example, Growth: find `"key": "growth"` and change `"price": 2500`.
+1. Open `data/offers.json` and change the number. For example, Growth: find `"key": "growth"` and change `"price": 2000`. A package with `"priceFrom": true` (Premium) shows as "from $3,500" everywhere.
 2. If the number is also written out in sentences, search for it and update it too. These are the only places it appears in plain text:
    - `faqs`, `policies`, `founding`, `brandingNote` and `photosNote` in `offers.json`, and their Spanish twins (`es` inside packages, FAQs and `founding`, plus `brandingNote_es`)
    - page titles and descriptions at the top of each `src/*.html` file, and the town copy in `tools/towns.py`
@@ -53,6 +53,10 @@ The sample phone has six color sets (Daylight, Ember, Evergreen, Barn red, Harbo
 3. Run `python3 tools/build.py`, look at the page, then commit and publish.
 
 The cards, care plan cards, "from" prices, quote form pre-fill and structured data all update on their own.
+
+## Care plans
+
+Care plans show monthly prices only (no yearly prices, no switch). Each plan's `features` in `offers.json` is a list of `{"t": text, "bold": true, "spotlight": true}`; the spotlight line is highlighted. The words above and below the cards are `careHead`, `careWixBox` and `careFine`. Hosting is included in every plan; never name the hosting company on the site. Wix is mentioned only in the booking/store box and the "Do I need Wix?" answer.
 
 ## Booking and payments
 
@@ -143,7 +147,7 @@ Wix still runs the quote form, bookings and invoices. `js/wix/` holds Wix's form
 Three things move on their own, once each, as they come into view. Everything else moves only in answer to the visitor (a switch, an accordion, a button press, the sample changing trade).
 
 1. **Boxes that hold a price rise in.** `site.js` adds `.in` to anything with the class `rv` when it is on screen; the stylesheet gives that a look only for `.card.rv`, `.box.rv` and `.prows.rv`. Text sections do not fade in. If the browser never reports what is on screen, everything is shown after 1.5 seconds, so nothing can stay hidden.
-2. **Prices roll like a slot machine.** The first time a price (`.item-p`, `.price`, `.prow-p`, `.total-n`, `.total-s b`) is on screen, each digit spins two full turns and lands back on itself, left to right. The real price never leaves the page: the digits only show other numbers while they are visibly spinning, screen readers are given the real price for that second and a half, and the plain text is put back exactly as it was. When it lands, the box around it gets `.lit` for 0.9 seconds. Changing a calculator number or the Monthly/Yearly switch mid-roll simply wins.
+2. **Prices roll like a slot machine.** The first time a price (`.item-p`, `.price`, `.prow-p`, `.total-n`, `.total-s b`) is on screen, each digit spins two full turns and lands back on itself, left to right. The real price never leaves the page: the digits only show other numbers while they are visibly spinning, screen readers are given the real price for that second and a half, and the plain text is put back exactly as it was. When it lands, the box around it gets `.lit` for 0.9 seconds. Changing a calculator number mid-roll simply wins.
 3. **The sample site builds itself inside the phone** when the phone comes into view.
 
 All of it uses one easing, `cubic-bezier(.2,.7,.2,1)` (`--ease`), and with "reduce motion" turned on nothing rolls or rises: everything is simply there. Before adding a fourth moving thing, take one away. The first version of this design had too much going on and was hard on the eyes.
