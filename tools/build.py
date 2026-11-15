@@ -100,7 +100,7 @@ COMMON = {"phone": B["phoneDisplay"], "phoneHref": B["phoneHref"], "email": B["e
           "replyTime": B["replyTime"], "tagline": B["tagline"], "base": BASE, "smsHref": B["smsHref"]}
 
 NAV = [("home", "/", "Home"), ("pricing", "/pricing.html", "Website Packages"),
-       ("care", "/care-plans.html", "Care Plans"), ("faq", "/faq.html", "FAQ"), ("contact", "/contact.html", "Contact")]
+       ("care", "/care-plans.html", "Care Plans"), ("faq", "/faq.html", "FAQ"), ("found", "/get-found.html", "Get Found")]
 NAV_ES = [("home", "/es.html", "Inicio"), ("pricing", "/pricing.html", "Paquetes (en inglés)")]
 
 
